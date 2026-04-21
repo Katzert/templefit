@@ -256,6 +256,70 @@
             </div>
         </section>
 
+        <!-- Financial Transparency (Investor Detail) -->
+        <section id="transparency" class="space-y-12">
+            <div class="flex items-center justify-between gap-6">
+                <h3 class="text-4xl font-serif italic text-temple-navy">Transparencia Financiera</h3>
+                <div class="flex-grow h-[2px] bg-slate-200"></div>
+                <span class="text-[10px] font-black uppercase text-temple-gold tracking-widest">Planificación Auditada</span>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-12">
+                <!-- Planning Showcase -->
+                <div class="xl:col-span-1 space-y-6">
+                    <div class="relative rounded-[3rem] overflow-hidden shadow-2xl h-full min-h-[400px]">
+                        <img src="planning.png" alt="Planificación" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-temple-navy opacity-80"></div>
+                        <div class="absolute bottom-8 left-8 right-8 text-white space-y-4">
+                            <h4 class="text-2xl font-serif italic text-temple-gold">Estrategia Meticulosa</h4>
+                            <p class="text-xs opacity-80 leading-relaxed">
+                                Cada gasto está optimizado para maximizar el retorno de inversión (ROI) y asegurar la sostenibilidad a largo plazo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Table -->
+                <div class="xl:col-span-2 bg-white p-10 rounded-[3rem] shadow-2xl border border-slate-100 overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b border-slate-100">
+                                <th class="pb-6 text-[10px] uppercase tracking-[0.2em] font-black text-slate-400">Categoría</th>
+                                <th class="pb-6 text-[10px] uppercase tracking-[0.2em] font-black text-slate-400">Detalle Operativo</th>
+                                <th class="pb-6 text-[10px] uppercase tracking-[0.2em] font-black text-temple-gold text-right">Monto Estimado</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-50">
+                            <tr>
+                                <td class="py-6 font-bold text-temple-navy">Membresías</td>
+                                <td class="py-6 text-sm text-slate-500">Plan Elite, Trimestral y Anual (Retención 85%)</td>
+                                <td class="py-6 font-black text-temple-navy text-right">45,000 Bs.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-6 font-bold text-temple-navy">Snack Bar (Keto)</td>
+                                <td class="py-6 text-sm text-slate-500">Venta de alimentos bíblicos y suplementos</td>
+                                <td class="py-6 font-black text-temple-navy text-right">12,400 Bs.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-6 font-bold text-temple-navy">Indumentaria</td>
+                                <td class="py-6 text-sm text-slate-500">Ropa deportiva premium 'Vintage Victory'</td>
+                                <td class="py-6 font-black text-temple-navy text-right">10,000 Bs.</td>
+                            </tr>
+                            <tr class="bg-slate-50/50">
+                                <td class="py-6 font-bold text-temple-red uppercase tracking-widest text-[10px]">Costos Fijos</td>
+                                <td class="py-6 text-sm text-slate-500 italic">Alquiler, Servicios, Mantenimiento</td>
+                                <td class="py-6 font-black text-temple-red text-right">-13,500 Bs.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mt-8 p-6 bg-temple-navy rounded-2xl flex justify-between items-center text-white">
+                        <span class="text-xs uppercase font-bold tracking-widest text-temple-gold">Utilidad Neta Operativa</span>
+                        <span class="text-2xl font-black italic">53,900 Bs. / Mes</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Team & AI Ops -->
         <section id="team" class="space-y-12">
             <div class="flex items-center justify-between gap-6">
@@ -264,7 +328,6 @@
                 <span class="text-[10px] font-black uppercase text-temple-gold tracking-widest">Optimización IA</span>
             </div>
             
-            <!-- TEAM GRID (DYNAMO) -->
             <div id="teamGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- JS Populated -->
             </div>
@@ -282,6 +345,31 @@
                         <p class="text-[10px] font-bold text-temple-gold uppercase mb-2">Ahorro Est.</p>
                         <p class="text-4xl font-black italic text-white">35%</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Extension: Trust & Infrastructure -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="rounded-[2.5rem] overflow-hidden shadow-xl h-64 relative group">
+                <img src="storefront.png" alt="Fachada" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="text-white font-serif italic text-2xl border-b-2 border-temple-gold pb-1">Ubicación Premium</span>
+                </div>
+            </div>
+            <div class="rounded-[2.5rem] overflow-hidden shadow-xl h-64 relative group">
+                <img src="meeting.png" alt="Reunión" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="text-white font-serif italic text-2xl border-b-2 border-temple-gold pb-1">Gobierno Corporativo</span>
+                </div>
+            </div>
+            <div class="rounded-[2.5rem] overflow-hidden shadow-xl h-64 relative group">
+                <img src="tech.png" alt="Tecnología" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="text-white font-serif italic text-2xl border-b-2 border-temple-gold pb-1">Tecnología Elite</span>
                 </div>
             </div>
         </section>
