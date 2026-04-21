@@ -49,51 +49,51 @@ main section {
     animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Metric Cards */
-.metric-card {
+/* Metric Cards & Interactive Elements */
+.metric-card, .legend-item, #teamGrid > div {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Range Input Styling */
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 28px;
-    height: 28px;
-    background: var(--temple-gold);
-    cursor: pointer;
-    border-radius: 50%;
-    border: 4px solid var(--temple-navy);
-    box-shadow: 0 0 15px rgba(197, 160, 89, 0.5);
-    transition: transform 0.2s;
+.metric-card:hover, .legend-item:hover, #teamGrid > div:hover {
+    transform: translateY(-10px) skewX(-2deg);
+    box-shadow: 0 25px 50px -12px rgba(0, 33, 71, 0.25);
+    border-color: var(--temple-gold);
 }
 
-input[type="range"]::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
+/* Glassmorphism Dynamic */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Pulse Glow for Logo */
+@keyframes logoGlow {
+    0% { filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.3)); }
+    50% { filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.6)); }
+    100% { filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.3)); }
+}
+
+header img {
+    animation: logoGlow 3s infinite ease-in-out;
 }
 
 /* Scale Buttons */
+.scale-btn {
+    transition: all 0.3s ease;
+}
+
+.scale-btn:hover {
+    transform: translateY(-3px) skewX(-5deg);
+    box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2);
+}
+
 .scale-btn.active {
     background-color: var(--temple-gold) !important;
     color: var(--temple-navy) !important;
     border-color: var(--temple-navy) !important;
-    transform: scale(1.05);
+    transform: scale(1.1) skewX(-5deg) !important;
     box-shadow: 0 15px 35px rgba(197, 160, 89, 0.4);
-}
-
-/* Legend Item */
-.legend-item {
-    background: rgba(248, 250, 252, 1);
-    border: 1px solid rgba(226, 232, 240, 1);
-    padding: 1rem;
-    border-radius: 1.5rem;
-    transition: all 0.3s ease;
-}
-
-.legend-item:hover {
-    border-color: var(--temple-gold);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
 /* Typography italics for sports feel */
@@ -104,5 +104,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* Chart Container Overrides */
 canvas {
-    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.05));
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.08));
+}
+
+/* Dynamic Gradient Backgrounds */
+.bg-vibrant-navy {
+    background: linear-gradient(135deg, #002147 0%, #003366 100%);
 }

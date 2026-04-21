@@ -291,7 +291,7 @@ function renderTeamCards() {
             <h5 class="font-black text-xl text-temple-navy italic leading-none mb-2">${role.name}</h5>
             <p class="text-xs text-slate-400 font-medium mb-6">${role.desc}</p>
             <div class="pt-4 border-t border-slate-50 flex justify-between items-center">
-                <span class="text-[10px] font-bold text-slate-400 uppercase">Equity / Fee</span>
+                <span class="text-[10px] font-bold text-slate-400 uppercase">Participación / Comisión</span>
                 <span class="text-xl font-black text-temple-red italic">${role.percentage}%</span>
             </div>
         `;
