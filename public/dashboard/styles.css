@@ -1,0 +1,108 @@
+/* TEMPLEFIT Victory Dashboard Premium Styles */
+
+:root {
+    --temple-navy: #002147;
+    --temple-gold: #C5A059;
+    --temple-red: #D32F2F;
+    --temple-cream: #F9F6F0;
+}
+
+/* Base Styles */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 33, 71, 0.05);
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--temple-gold);
+    border-radius: 10px;
+}
+
+/* Animations */
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-in-left { animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-slide-in-right { animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+main section {
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Metric Cards */
+.metric-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Range Input Styling */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    background: var(--temple-gold);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 4px solid var(--temple-navy);
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.5);
+    transition: transform 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Scale Buttons */
+.scale-btn.active {
+    background-color: var(--temple-gold) !important;
+    color: var(--temple-navy) !important;
+    border-color: var(--temple-navy) !important;
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(197, 160, 89, 0.4);
+}
+
+/* Legend Item */
+.legend-item {
+    background: rgba(248, 250, 252, 1);
+    border: 1px solid rgba(226, 232, 240, 1);
+    padding: 1rem;
+    border-radius: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.legend-item:hover {
+    border-color: var(--temple-gold);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* Typography italics for sports feel */
+.italic-sport {
+    font-style: italic;
+    transform: skewX(-5deg);
+}
+
+/* Chart Container Overrides */
+canvas {
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.05));
+}
