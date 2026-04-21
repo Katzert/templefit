@@ -4,8 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Si vas a usar GitHub Pages, descomenta la siguiente línea y pon el nombre de tu repositorio
-  // basePath: '/templefit',
+  basePath: '/templefit',
+  trailingSlash: true,
 };
 
 export default nextConfig;
