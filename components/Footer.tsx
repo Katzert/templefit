@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="font-serif text-lg font-semibold text-accent-gold mb-4">Nuestra Regla</h3>
-            <p className="text-sm opacity-80 italic">"Todo lo que hagan, háganlo de corazón."</p>
+            <p className="text-sm opacity-80 italic">&quot;Todo lo que hagan, háganlo de corazón.&quot;</p>
             <p className="mt-4 text-xs opacity-60">© 2024 Templefit S.R.L. Todos los derechos reservados.</p>
           </div>
         </div>

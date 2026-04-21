@@ -60,14 +60,14 @@ export default function Home() {
       <section className="py-24 bg-vintage-base border-t border-vintage-dark/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-navy-base mb-4">El "Show Fit" en Acción</h2>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-navy-base mb-4">El &quot;Show Fit&quot; en Acción</h2>
             <p className="text-lg text-navy-light max-w-2xl mx-auto">Nuestros escuadrones transformando parques urbanos y vidas reales.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
               <div key={i} className="bg-vintage-light p-8 rounded-xl shadow-md border border-vintage-dark/20 relative">
-                <div className="text-accent-gold text-4xl font-serif absolute top-4 left-4 opacity-30">"</div>
+                <div className="text-accent-gold text-4xl font-serif absolute top-4 left-4 opacity-30">&quot;</div>
                 <p className="text-navy-base italic mb-6 relative z-10 pt-4">
                   {i === 1 && "El reto de 21 días no solo cambió mi físico, sino mi forma de afrontar la vida. La comunidad y los valores cristianos detrás de Templefit me dieron el propósito que me faltaba."}
                   {i === 2 && "Increíble ver cómo la nutrición y el ejercicio funcional se complementan. Me siento con más energía y claridad espiritual que nunca."}

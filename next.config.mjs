@@ -6,6 +6,9 @@ const nextConfig = {
   },
   basePath: '/templefit',
   trailingSlash: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

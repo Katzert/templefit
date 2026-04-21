@@ -55,7 +55,7 @@ export default function TiendaPage() {
               <div className="bg-vintage-light aspect-square rounded-lg mb-4 flex items-center justify-center border border-vintage-dark/10 group-hover:border-accent-gold/50 transition-colors">
                 <Shirt className="w-16 h-16 text-navy-light opacity-50" />
               </div>
-              <h3 className="font-bold text-navy-base">Camiseta "Escuadrón Alpha"</h3>
+              <h3 className="font-bold text-navy-base">Camiseta &quot;Escuadrón Alpha&quot;</h3>
               <p className="text-sm text-navy-light my-2">Estilo Vintage. Algodón premium.</p>
               <div className="flex justify-between items-center mt-4">
                 <span className="font-serif font-bold text-lg text-navy-base">$35.00</span>
