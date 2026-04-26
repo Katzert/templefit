@@ -1,241 +1,52 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEMPLEFIT | Centro de Inteligencia para Inversores</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'temple-navy': '#002147',
-                        'temple-gold': '#C5A059',
-                        'temple-red': '#D32F2F',
-                        'temple-cream': '#F9F6F0',
-                    },
-                    fontFamily: {
-                        'serif': ['Playfair Display', 'serif'],
-                        'sans': ['Outfit', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-</head>
-<body class="bg-temple-cream text-temple-navy font-sans overflow-x-hidden">
-    <div class="scanlines"></div>
-
-    <!-- Encabezado -->
-    <header class="fixed top-0 w-full z-[100] bg-temple-navy/95 backdrop-blur-xl border-b-4 border-temple-gold">
-        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-6">
-                <img src="image_745d64.png" alt="TEMPLEFIT Logo" class="h-14 w-14 object-contain bg-white rounded-none border-4 border-temple-navy shadow-[4px_4px_0px_0px_#C5A059]">
-                <div>
-                    <h1 class="text-4xl font-black tracking-tighter uppercase italic-sport text-white hover-glitch">TEMPLE<span class="text-temple-gold">FIT</span></h1>
-                    <p class="text-[9px] font-bold tracking-[0.5em] uppercase text-temple-gold/60">Comando de Inteligencia Táctica</p>
-                </div>
-            </div>
-            <div class="hidden lg:flex items-center space-x-10 text-white font-black text-[10px] tracking-widest uppercase">
-                <a href="#ecosistema" class="nav-link-vibe hover:text-temple-gold transition-colors">Ecosistema</a>
-                <a href="#finanzas" class="nav-link-vibe hover:text-temple-gold transition-colors">Finanzas</a>
-                <a href="#utilidades" class="nav-link-vibe hover:text-temple-gold transition-colors">Utilidades</a>
-                <div class="bg-temple-red px-8 py-3 -skew-x-12 shadow-[6px_6px_0px_0px_#C5A059] text-sm">
-                    MODO OPERATIVO
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Sección de Visión (Héroe Vibe) -->
-    <section class="section-dynamic min-h-[85vh] flex items-center pt-24 pb-48 skew-divider-bottom">
-        <div class="dynamic-overlay" style="opacity: 0.3; filter: hue-rotate(15deg) contrast(1.5);"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-temple-navy/40 via-temple-navy/60 to-temple-navy"></div>
-        
-        <div class="relative container mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div class="lg:col-span-7 space-y-12">
-                <div class="inline-block bg-temple-red text-white font-black tracking-[0.4em] uppercase text-[12px] px-8 py-3 -skew-x-12 shadow-2xl border-2 border-white/20">
-                    SISTEMA DE CONTROL TEMPLEFIT v2.0
-                </div>
-                <h2 class="text-8xl md:text-[12rem] font-serif font-black leading-none text-white uppercase italic-sport tracking-tighter text-glow hover-glitch">
-                    PULSO <br><span class="text-temple-gold">VICTORIA</span>.
-                </h2>
-                <p class="text-2xl md:text-4xl text-white/90 leading-tight max-w-3xl font-bold uppercase italic-sport border-l-8 border-temple-gold pl-8">
-                    "La fuerza no es una opción, es un mandato." <br>
-                    <span class="text-lg font-light normal-case italic opacity-60">Centro de mando táctico del piloto operativo en Santa Cruz.</span>
-                </p>
-                <div class="flex gap-20 items-end pt-12">
-                    <div class="text-left group">
-                        <span class="text-9xl font-black italic-sport text-white group-hover:text-temple-gold transition-colors tracking-tighter">65</span>
-                        <p class="text-[10px] uppercase tracking-[0.5em] font-black text-temple-gold mt-4">Atletas Activos</p>
-                    </div>
-                    <div class="w-[8px] h-32 bg-temple-red -skew-x-12"></div>
-                    <div class="text-left group">
-                        <span class="text-9xl font-black italic-sport text-white group-hover:text-temple-gold transition-colors tracking-tighter">10.5K</span>
-                        <p class="text-[10px] uppercase tracking-[0.5em] font-black text-temple-gold mt-4">Flujo Mensual (Bs)</p>
-                    </div>
-                </div>
-            </div>
-            <div class="lg:col-span-5 relative group">
-                <div class="absolute -inset-20 bg-temple-red/20 blur-[150px] rounded-full group-hover:bg-temple-gold/30 transition-all duration-1000"></div>
-                <div class="brutalist-card p-6 shadow-[30px_30px_0px_0px_rgba(197,160,89,0.3)] relative overflow-hidden group">
-                    <img src="team_spirit.png" alt="Espíritu de Equipo" class="w-full h-[700px] object-cover contrast-125 brightness-75 group-hover:brightness-100 transition-all duration-1000">
-                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-temple-navy via-transparent to-transparent opacity-60"></div>
-                    <div class="absolute bottom-12 left-12 right-12 space-y-4">
-                        <div class="bg-temple-gold text-temple-navy px-4 py-1 text-[10px] font-black uppercase inline-block -skew-x-12">ESTADO: ACTIVO</div>
-                        <h4 class="text-5xl font-black italic-sport text-white uppercase text-glow">Fuerza Colectiva</h4>
-                        <p class="text-base text-white/80 leading-tight font-medium uppercase tracking-wider">"Donde dos o tres se reúnen..."</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ecosistema de Operación (Vibe) -->
-    <section id="ecosistema" class="py-16 pt-32 bg-temple-cream relative z-10">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-12">
-                <div class="max-w-4xl">
-                    <h2 class="font-serif text-8xl md:text-[10rem] font-black text-temple-navy uppercase leading-none italic-sport hover-glitch">
-                        ADN <span class="text-temple-gold block">OPERATIVO</span>
-                    </h2>
-                    <p class="text-3xl text-temple-navy/60 font-bold mt-12 uppercase italic-sport border-l-4 border-temple-red pl-6">Infraestructura de alto rendimiento diseñada para la victoria local.</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div class="service-card group brutalist-card !border-none">
-                    <img src="training.png" alt="Entrenamiento" class="contrast-125">
-                    <div class="service-overlay"></div>
-                    <div class="service-content">
-                        <div class="bg-temple-red text-white px-3 py-1 text-[9px] font-black inline-block mb-4">ENTRENAMIENTO</div>
-                        <h4 class="text-4xl font-black italic-sport text-glow">CALISTENIA & CROSSFIT</h4>
-                    </div>
-                </div>
-                <div class="service-card group brutalist-card !border-none">
-                    <img src="keto_variety.png" alt="Nutrición" class="contrast-125">
-                    <div class="service-overlay"></div>
-                    <div class="service-content">
-                        <div class="bg-temple-red text-white px-3 py-1 text-[9px] font-black inline-block mb-4">NUTRICIÓN</div>
-                        <h4 class="text-4xl font-black italic-sport text-glow">BIO-OPTIMIZACIÓN</h4>
-                    </div>
-                </div>
-                <div class="service-card group brutalist-card !border-none">
-                    <img src="apparel.png" alt="Mercadeo" class="contrast-125">
-                    <div class="service-overlay"></div>
-                    <div class="service-content">
-                        <div class="bg-temple-red text-white px-3 py-1 text-[9px] font-black inline-block mb-4">ESTILO</div>
-                        <h4 class="text-4xl font-black italic-sport text-glow">ARMADURA VINTAGE</h4>
-                    </div>
-                </div>
-                <div class="service-card group brutalist-card !border-none">
-                    <img src="community.png" alt="Valores" class="contrast-125">
-                    <div class="service-overlay"></div>
-                    <div class="service-content">
-                        <div class="bg-temple-red text-white px-3 py-1 text-[9px] font-black inline-block mb-4">COMUNIDAD</div>
-                        <h4 class="text-4xl font-black italic-sport text-glow">MENTORÍA BÍBLICA</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Indicadores Tácticos -->
-    <section class="py-16 bg-temple-navy border-y-8 border-temple-gold">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div class="brutalist-card bg-transparent !border-white/10 p-10 text-center space-y-4 group hover:!border-temple-gold transition-all">
-                    <p class="text-[10px] font-black text-temple-gold uppercase tracking-[0.5em]">FLUJO MENSUAL</p>
-                    <p class="text-7xl font-black italic-sport text-white text-glow indicador-valor">---</p>
-                    <p class="text-xs font-bold text-white/40 uppercase">Bs. Promedio</p>
-                </div>
-                <div class="brutalist-card bg-transparent !border-white/10 p-10 text-center space-y-4 group hover:!border-temple-red transition-all">
-                    <p class="text-[10px] font-black text-temple-gold uppercase tracking-[0.5em]">EFICIENCIA</p>
-                    <p class="text-7xl font-black italic-sport text-white text-glow indicador-valor">---</p>
-                    <p class="text-xs font-bold text-white/40 uppercase">Margen Operativo</p>
-                </div>
-                <div class="brutalist-card bg-transparent !border-white/10 p-10 text-center space-y-4 group hover:!border-temple-gold transition-all">
-                    <p class="text-[10px] font-black text-temple-gold uppercase tracking-[0.5em]">RETENCIÓN</p>
-                    <p class="text-7xl font-black italic-sport text-white text-glow">92%</p>
-                    <p class="text-xs font-bold text-white/40 uppercase">Efecto Escuadrón</p>
-                </div>
-                <div class="brutalist-card bg-transparent !border-white/10 p-10 text-center space-y-4 group hover:!border-temple-red transition-all">
-                    <p class="text-[10px] font-black text-temple-gold uppercase tracking-[0.5em]">UBICACIÓN</p>
-                    <p class="text-7xl font-black italic-sport text-white text-glow">SCZ</p>
-                    <p class="text-xs font-bold text-white/40 uppercase">Santa Cruz Piloto</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Inteligencia Táctica (Finanzas) -->
     <section id="finanzas" class="py-16 bg-temple-cream relative overflow-hidden">
         <div class="absolute right-0 top-0 w-1/2 h-full bg-temple-navy/5 -skew-x-12 transform translate-x-48"></div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row justify-between items-end mb-16 gap-16">
                 <div class="max-w-4xl">
-                    <h2 class="font-serif text-8xl md:text-[10rem] font-black text-temple-navy uppercase leading-none italic-sport hover-glitch">
+                    <h2 class="font-serif text-5xl md:text-8xl lg:text-[10rem] font-black text-temple-navy uppercase leading-none italic-sport hover-glitch">
                         INTELIGENCIA <br><span class="text-temple-gold">TÁCTICA</span>
                     </h2>
-                    <p class="text-3xl text-temple-navy/60 font-bold mt-12 max-w-2xl uppercase italic-sport border-l-4 border-temple-red pl-6">Transparencia absoluta en el flujo de capital. Monitoreo de precisión táctica.</p>
+                    <p class="text-xl md:text-3xl text-temple-navy/60 font-bold mt-12 max-w-2xl uppercase italic-sport border-l-4 border-temple-red pl-6">Transparencia absoluta en el flujo de capital. Monitoreo de precisión táctica.</p>
                 </div>
-                <div class="bg-temple-navy text-white px-16 py-12 -skew-x-12 shadow-[20px_20px_0px_0px_#D32F2F] border-4 border-temple-gold brutalist-card !border-temple-gold">
+                <div class="bg-temple-navy text-white px-8 md:px-16 py-8 md:py-12 -skew-x-12 shadow-[15px_15px_0px_0px_#D32F2F] md:shadow-[20px_20px_0px_0px_#D32F2F] border-4 border-temple-gold brutalist-card !border-temple-gold">
                     <p class="text-[10px] font-black uppercase tracking-[0.5em] text-temple-gold mb-3">COSECHA ACUMULADA</p>
-                    <p id="totalIncomeDisplay" class="text-8xl font-black italic-sport tracking-tighter text-glow">0 Bs.</p>
+                    <p id="totalIncomeDisplay" class="text-5xl md:text-8xl font-black italic-sport tracking-tighter text-glow">0 Bs.</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
-                <div class="lg:col-span-8 space-y-16">
-                    <div class="brutalist-card p-12 shadow-2xl relative bg-white">
-                        <div class="absolute -top-8 -left-8 bg-temple-gold text-white px-8 py-3 -skew-x-12 font-black text-sm uppercase tracking-widest shadow-xl border-4 border-temple-navy"> AUDITORÍA DE INGRESOS </div>
-                        <div class="h-[400px] w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+                <div class="lg:col-span-8 space-y-12">
+                    <div class="bg-white p-8 md:p-12 brutalist-card !shadow-[15px_15px_0px_0px_#D32F2F] md:shadow-[20px_20px_0px_0px_#D32F2F]">
+                        <div class="absolute -top-6 -left-6 bg-temple-gold text-white px-6 py-2 -skew-x-12 font-black text-xs uppercase tracking-widest shadow-xl z-20"> AUDITORÍA DE INGRESOS </div>
+                        <div class="h-[300px] md:h-[400px] w-full">
                             <canvas id="incomeExpenseChart"></canvas>
                         </div>
                     </div>
-                    <div class="brutalist-card p-12 shadow-2xl relative bg-white">
-                        <div class="absolute -top-8 -left-8 bg-temple-red text-white px-8 py-3 -skew-x-12 font-black text-sm uppercase tracking-widest shadow-xl border-4 border-temple-navy"> CRECIMIENTO DE CAPITAL </div>
-                        <div class="h-[300px] w-full">
+                    <div class="bg-white p-8 md:p-12 brutalist-card !shadow-[15px_15px_0px_0px_#C5A059] md:shadow-[20px_20px_0px_0px_#C5A059]">
+                        <div class="absolute -top-6 -left-6 bg-temple-red text-white px-6 py-2 -skew-x-12 font-black text-xs uppercase tracking-widest shadow-xl z-20"> CRECIMIENTO DE CAPITAL </div>
+                        <div class="h-[300px] md:h-[400px] w-full">
                             <canvas id="cashFlowChart"></canvas>
                         </div>
                     </div>
                 </div>
 
-                <div class="lg:col-span-4 space-y-12">
-                    <div class="brutalist-card p-10 bg-white border-t-8 border-temple-navy sticky top-32">
-                        <div class="flex items-center space-x-6 mb-12">
-                            <div class="w-16 h-16 bg-temple-navy text-temple-gold flex items-center justify-center -skew-x-12 font-black text-3xl shadow-[6px_6px_0px_0px_#D32F2F]">⚙️</div>
-                            <h4 class="text-3xl font-black uppercase tracking-tighter italic-sport text-temple-navy">SIMULADOR</h4>
+                <div class="lg:col-span-4 space-y-8 md:space-y-12">
+                    <div class="brutalist-card p-6 md:p-10 bg-white border-t-8 border-temple-navy lg:sticky lg:top-32">
+                        <div class="flex items-center space-x-6 mb-8 md:mb-12">
+                            <div class="w-12 h-12 bg-temple-navy text-temple-gold flex items-center justify-center -skew-x-12 font-black text-2xl shadow-[4px_4px_0px_0px_#D32F2F]">⚙️</div>
+                            <h4 class="text-2xl md:text-3xl font-black uppercase tracking-tighter italic-sport text-temple-navy">SIMULADOR</h4>
                         </div>
-                        <div id="correctionForm" class="space-y-6 max-h-[500px] overflow-y-auto pr-4 custom-scrollbar">
+                        <div id="correctionForm" class="space-y-4 md:space-y-6 max-h-[400px] md:max-h-[500px] overflow-y-auto pr-4 custom-scrollbar">
                             <!-- JS Populated -->
                         </div>
                     </div>
-                    <div class="brutalist-card p-10 space-y-6">
+                    <div class="brutalist-card p-6 md:p-10 space-y-6 bg-white">
                         <p class="text-[10px] font-black text-temple-gold uppercase tracking-[0.5em]">RATIO DE VICTORIA</p>
-                        <h5 class="text-6xl font-black italic-sport text-temple-navy uppercase leading-none">+12% <span class="text-lg block not-italic font-bold text-temple-navy/40 mt-2">Margen Neto Mensual</span></h5>
+                        <h5 class="text-4xl md:text-6xl font-black italic-sport text-temple-navy uppercase leading-none">+12% <span class="text-sm block not-italic font-bold text-temple-navy/40 mt-2">Margen Neto Mensual</span></h5>
                         <div class="h-2 w-full bg-temple-navy/10 relative overflow-hidden">
                             <div class="absolute inset-0 bg-temple-gold w-[12%]"></div>
                         </div>
-                    </div>
-                    <div class="brutalist-card p-10 bg-temple-navy text-white space-y-6">
-                        <p class="text-[10px] font-black text-temple-gold uppercase tracking-[0.5em]">ESTADO DE COMANDO</p>
-                        <ul class="space-y-6">
-                            <li class="flex items-center justify-between border-b border-white/10 pb-4">
-                                <span class="text-sm font-bold uppercase">Sede Santa Cruz (Piloto)</span>
-                                <span class="bg-temple-gold text-temple-navy px-3 py-0.5 text-[9px] font-black uppercase">ACTIVO</span>
-                            </li>
-                            <li class="flex items-center justify-between border-b border-white/10 pb-4">
-                                <span class="text-sm font-bold uppercase">Expansión Local (SCZ)</span>
-                                <span class="bg-white/20 text-white px-3 py-0.5 text-[9px] font-black uppercase">EN PLANIFICACIÓN</span>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -249,22 +60,22 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-5 space-y-12">
                     <div class="space-y-6">
-                        <h3 class="text-8xl font-serif italic text-white uppercase italic-sport leading-none text-glow hover-glitch">FUENTES DE <br><span class="text-temple-gold">COSECHA</span></h3>
-                        <p class="text-white/60 text-2xl font-bold uppercase italic-sport border-l-4 border-temple-gold pl-6">Análisis detallado del origen de ingresos operativos.</p>
+                        <h3 class="text-5xl md:text-8xl font-serif italic text-white uppercase italic-sport leading-none text-glow hover-glitch">FUENTES DE <br><span class="text-temple-gold">COSECHA</span></h3>
+                        <p class="text-white/60 text-xl md:text-2xl font-bold uppercase italic-sport border-l-4 border-temple-gold pl-6">Análisis detallado del origen de ingresos operativos.</p>
                     </div>
-                    <div class="bg-white p-12 brutalist-card !shadow-[20px_20px_0px_0px_#D32F2F]">
+                    <div class="bg-white p-8 md:p-12 brutalist-card !shadow-[15px_15px_0px_0px_#D32F2F] md:shadow-[20px_20px_0px_0px_#D32F2F]">
                         <label class="text-[11px] font-black uppercase tracking-[0.5em] text-temple-navy block mb-8">INGRESO MENSUAL PROMEDIO</label>
-                        <p id="profitPoolValue" class="text-9xl font-black italic-sport tracking-tighter text-temple-navy mb-10 text-glow">0 <span class="text-3xl not-italic text-temple-gold">Bs.</span></p>
+                        <p id="profitPoolValue" class="text-5xl md:text-9xl font-black italic-sport tracking-tighter text-temple-navy mb-10 text-glow">0 <span class="text-xl md:text-3xl not-italic text-temple-gold">Bs.</span></p>
                         <input type="range" id="profitPoolSlider" min="0" max="100000" step="1" value="0" class="w-full pointer-events-none opacity-50">
                         <p class="text-[9px] uppercase tracking-widest font-bold text-temple-navy/40 mt-6 italic">* Desglose basado en las categorías de la hoja oficial.</p>
                     </div>
                 </div>
                 <div class="lg:col-span-7">
-                    <div class="bg-white p-16 brutalist-card !shadow-[30px_30px_0px_0px_rgba(197,160,89,0.3)]">
-                        <div class="h-[550px] w-full mb-12">
+                    <div class="bg-white p-6 md:p-16 brutalist-card !shadow-[15px_15px_0px_0px_rgba(197,160,89,0.3)] md:shadow-[30px_30px_0px_0px_rgba(197,160,89,0.3)]">
+                        <div class="h-[300px] md:h-[550px] w-full mb-12">
                             <canvas id="profitDistributionChart"></canvas>
                         </div>
-                        <div id="distributionLegend" class="grid grid-cols-2 md:grid-cols-3 gap-12">
+                        <div id="distributionLegend" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-12">
                             <!-- JS Populated -->
                         </div>
                     </div>
@@ -277,64 +88,59 @@
     <section class="py-16 bg-temple-cream relative overflow-hidden">
         <div class="absolute inset-0 opacity-[0.03] bg-[url('bg_dynamic.png')] bg-fixed"></div>
         <div class="container mx-auto px-6 relative z-10">
-            <div class="mb-24">
-                <h2 class="text-7xl md:text-9xl font-serif font-black text-temple-navy leading-tight italic-sport uppercase tracking-tighter">HOJA DE RUTA <br><span class="text-temple-gold">EXPANSIÓN</span></h2>
-                <div class="w-32 h-2 bg-temple-red mt-8 -skew-x-12"></div>
+            <div class="mb-16 md:mb-24 text-center lg:text-left">
+                <h2 class="text-6xl md:text-9xl font-serif font-black text-temple-navy leading-tight italic-sport uppercase tracking-tighter">HOJA DE RUTA <br><span class="text-temple-gold">EXPANSIÓN</span></h2>
+                <div class="w-32 h-2 bg-temple-red mt-8 -skew-x-12 mx-auto lg:mx-0"></div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
-                <!-- Fases de Operación (Santa Cruz 1 Año) -->
-                <div class="lg:col-span-5 space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+                <div class="lg:col-span-5 space-y-6 md:space-y-8">
                     <div onclick="updatePhase(1, 'team_spirit.png')" class="phase-card active group" id="phase-1">
                         <div class="flex items-center gap-6">
-                            <div class="text-4xl font-black text-temple-gold opacity-30 group-[.active]:opacity-100">M1</div>
+                            <div class="text-3xl md:text-4xl font-black text-temple-gold opacity-30 group-[.active]:opacity-100">M1</div>
                             <div>
-                                <h3 class="text-3xl font-black uppercase italic-sport text-temple-navy">Conexión Inicial</h3>
-                                <p class="text-temple-navy/60">Mes 1. Viralización en redes, venta de conceptos y reclutamiento de instructores élite.</p>
+                                <h3 class="text-2xl md:text-3xl font-black uppercase italic-sport text-temple-navy">Conexión Inicial</h3>
+                                <p class="text-sm md:text-base text-temple-navy/60">Mes 1. Viralización en redes, venta de conceptos y reclutamiento de instructores élite.</p>
                             </div>
                         </div>
                     </div>
-
                     <div onclick="updatePhase(2, 'outdoor_challenge.png')" class="phase-card group" id="phase-2">
                         <div class="flex items-center gap-6">
-                            <div class="text-4xl font-black text-temple-gold opacity-30 group-[.active]:opacity-100">M2-6</div>
+                            <div class="text-3xl md:text-4xl font-black text-temple-gold opacity-30 group-[.active]:opacity-100">M2-6</div>
                             <div>
-                                <h3 class="text-3xl font-black uppercase italic-sport text-temple-navy">Validación & Reto</h3>
-                                <p class="text-temple-navy/60">Meses 2 al 6. Lanzamiento del Reto 21 Días y entrenamientos masivos al aire libre.</p>
+                                <h3 class="text-2xl md:text-3xl font-black uppercase italic-sport text-temple-navy">Validación & Reto</h3>
+                                <p class="text-sm md:text-base text-temple-navy/60">Meses 2 al 6. Lanzamiento del Reto 21 Días y entrenamientos masivos al aire libre.</p>
                             </div>
                         </div>
                     </div>
-
                     <div onclick="updatePhase(3, 'business_union.png')" class="phase-card group" id="phase-3">
                         <div class="flex items-center gap-6">
-                            <div class="text-4xl font-black text-temple-gold opacity-30 group-[.active]:opacity-100">M7-12</div>
+                            <div class="text-3xl md:text-4xl font-black text-temple-gold opacity-30 group-[.active]:opacity-100">M7-12</div>
                             <div>
-                                <h3 class="text-3xl font-black uppercase italic-sport text-temple-navy">Consolidación</h3>
-                                <p class="text-temple-navy/60">Meses 7 al 12. Sumatoria de empresas aliadas y expansión de servicios deportivos.</p>
+                                <h3 class="text-2xl md:text-3xl font-black uppercase italic-sport text-temple-navy">Consolidación</h3>
+                                <p class="text-sm md:text-base text-temple-navy/60">Meses 7 al 12. Sumatoria de empresas aliadas y expansión de servicios deportivos.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Visualización de Impacto -->
-                <div class="lg:col-span-7">
-                    <div class="relative group">
-                        <div class="absolute -inset-4 border-2 border-temple-gold/20 -skew-x-3 group-hover:border-temple-gold transition-all duration-700"></div>
-                        <img id="phaseImage" src="team_spirit.png" alt="Operación Santa Cruz" class="w-full h-[700px] object-cover shadow-2xl transition-all duration-1000 transform group-hover:scale-[1.02]">
-                        
-                        <div class="absolute -bottom-10 -right-10 bg-temple-red p-12 md:p-20 shadow-[20px_20px_0px_0px_#C5A059] text-white animate-float">
-                            <p class="text-xs font-black uppercase tracking-[0.4em] mb-4 opacity-80">PROYECCIÓN DE COSECHA (Bs)</p>
-                            <p id="scaledProfit" class="text-6xl md:text-8xl font-black italic-sport leading-none">0 Bs.</p>
-                            <p class="text-[8px] uppercase tracking-widest opacity-40 mt-4">* Basado en utilidad promedio mensual actual.</p>
-                            <div class="mt-8 flex items-center gap-4 border-t border-white/20 pt-8">
+                <div class="lg:col-span-7 relative group">
+                    <div class="absolute -inset-10 bg-temple-gold/10 blur-[100px] rounded-full"></div>
+                    <div class="brutalist-card p-4 md:p-8 bg-white relative overflow-hidden">
+                        <img id="phaseImage" src="team_spirit.png" alt="Operación Santa Cruz" class="w-full h-[300px] md:h-[600px] object-cover shadow-2xl transition-all duration-1000 transform group-hover:scale-[1.02]">
+                        <div class="absolute -bottom-5 -right-5 md:-bottom-10 md:-right-10 bg-temple-red p-6 md:p-12 shadow-[10px_10px_0px_0px_#C5A059] md:shadow-[20px_20px_0px_0px_#C5A059] text-white animate-float z-20">
+                            <p class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] mb-4 opacity-80">PROYECCIÓN DE COSECHA (Bs)</p>
+                            <p id="scaledProfit" class="text-3xl md:text-7xl font-black italic-sport leading-none">0 Bs.</p>
+                            <p class="text-[7px] md:text-[8px] uppercase tracking-widest opacity-40 mt-4">* Basado en utilidad promedio mensual actual.</p>
+                            <div class="mt-6 md:mt-8 flex items-center gap-4 border-t border-white/20 pt-6 md:pt-8">
                                 <div>
-                                    <p class="text-[10px] uppercase opacity-60">ENGANCHE</p>
-                                    <p id="scaledAthletes" class="text-3xl font-black italic-sport">65</p>
+                                    <p class="text-[8px] md:text-[10px] uppercase opacity-60">ENGANCHE</p>
+                                    <p id="scaledAthletes" class="text-xl md:text-3xl font-black italic-sport">0</p>
                                 </div>
-                                <div class="w-px h-10 bg-white/20 mx-4"></div>
+                                <div class="w-px h-8 bg-white/20"></div>
                                 <div>
-                                    <p class="text-[10px] uppercase opacity-60">CIUDAD</p>
-                                    <p class="text-3xl font-black italic-sport uppercase">SCZ</p>
+                                    <p class="text-[8px] md:text-[10px] uppercase opacity-60">CIUDAD</p>
+                                    <p class="text-xl md:text-3xl font-black italic-sport uppercase">SCZ</p>
                                 </div>
                             </div>
                         </div>
@@ -345,16 +151,16 @@
     </section>
 
     <!-- Pie de Página -->
-    <footer class="py-20 bg-temple-navy border-t-8 border-temple-gold">
-        <div class="container mx-auto px-6 text-center space-y-20">
-            <div class="flex flex-col items-center space-y-10">
-                <h5 class="text-9xl font-serif italic-sport text-white uppercase font-black tracking-tighter">TEMPLE<span class="text-temple-gold">FIT</span></h5>
-                <div class="h-3 w-48 bg-temple-red mx-auto -skew-x-12 shadow-[6px_6px_0px_0px_#C5A059]"></div>
-                <p class="text-sm tracking-[2em] uppercase opacity-40 font-black text-white">ATLETAS VALIENTES ● NEGOCIOS DIVINOS</p>
+    <footer class="py-16 md:py-20 bg-temple-navy border-t-8 border-temple-gold">
+        <div class="container mx-auto px-6 text-center space-y-12 md:space-y-20">
+            <div class="flex flex-col items-center space-y-6 md:space-y-10">
+                <h5 class="text-6xl md:text-9xl font-serif italic-sport text-white uppercase font-black tracking-tighter">TEMPLE<span class="text-temple-gold">FIT</span></h5>
+                <div class="h-2 md:h-3 w-32 md:w-48 bg-temple-red mx-auto -skew-x-12 shadow-[4px_4px_0px_0px_#C5A059]"></div>
+                <p class="text-[8px] md:text-sm tracking-[1em] md:tracking-[2em] uppercase opacity-40 font-black text-white">ATLETAS VALIENTES ● NEGOCIOS DIVINOS</p>
             </div>
-            <div class="pt-32 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[11px] opacity-20 uppercase font-black tracking-[0.6em] gap-12 text-white">
+            <div class="pt-12 md:pt-32 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[9px] md:text-[11px] opacity-20 uppercase font-black tracking-[0.3em] md:tracking-[0.6em] gap-8 md:gap-12 text-white">
                 <p>&copy; 2026 TEMPLEFIT S.R.L. - UNIDAD DE ESTRATEGIA FINANCIERA</p>
-                <div class="flex gap-16">
+                <div class="flex gap-8 md:gap-16">
                     <span>BOLIVIA HUB</span>
                     <span>REINO DIGITAL</span>
                 </div>
