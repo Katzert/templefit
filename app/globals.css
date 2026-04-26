@@ -3,17 +3,47 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 26, 37, 58; /* navy-base */
-  --background-rgb: 245, 239, 230; /* vintage-light */
+  --temple-navy: #002147;
+  --temple-gold: #C5A059;
+  --temple-red: #D32F2F;
+  --temple-cream: #F9F6F0;
+  --foreground-rgb: 0, 33, 71;
+  --background-rgb: 249, 246, 240;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 33, 71, 0.05);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--temple-gold);
+  border-radius: 10px;
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  
+  .metric-card {
+    @apply transition-all duration-500 ease-out hover:-translate-y-2 hover:-skew-x-2 hover:shadow-2xl hover:border-temple-gold border border-transparent;
+  }
+  
+  .skew-btn {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:-skew-x-6 active:scale-95;
+  }
+
+  .italic-sport {
+    @apply italic -skew-x-6;
   }
 }

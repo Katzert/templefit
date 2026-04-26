@@ -1,89 +1,131 @@
-import { ShoppingBag, Utensils, Shirt } from 'lucide-react';
+import { ShoppingBag, Utensils, Shirt, Zap, Star, ShieldCheck } from 'lucide-react';
+import { products, siteConfig } from '@/data/content';
+
+const IconMap: Record<string, any> = {
+  Shirt,
+  Zap,
+  Star
+};
 
 export default function TiendaPage() {
   return (
-    <div className="min-h-screen bg-vintage-light py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="text-center mb-16">
-          <span className="text-accent-gold font-bold tracking-widest uppercase text-sm mb-4 block">E-Commerce Minimalista</span>
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-navy-base">Nutrición y Equipamiento</h1>
-          <p className="text-navy-light mt-4 max-w-2xl mx-auto">Potencia tu transformación con nuestros planes de Batch Cooking y porta nuestra armadura con orgullo.</p>
+    <div className="animate-fade-in-up bg-temple-cream min-h-screen">
+      {/* Header Section */}
+      <section className="bg-vibrant-navy text-temple-cream py-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <div className="inline-block bg-temple-gold text-temple-navy font-black tracking-widest uppercase text-xs px-4 py-2 mb-6 -skew-x-12">
+            Equipamiento & Nutrición de Élite
+          </div>
+          <h1 className="font-serif text-5xl md:text-7xl font-black text-white uppercase italic-sport mb-6 tracking-tighter">
+            La <span className="text-temple-gold">Armería</span>
+          </h1>
+          <p className="text-xl text-white/70 max-w-2xl mx-auto font-light leading-relaxed">
+            Potencia tu transformación con protocolos de Batch Cooking y porta la armadura oficial del Escuadrón con orgullo.
+          </p>
         </div>
+      </section>
 
-        {/* Categoria Nutricion (Suscripciones) */}
-        <div className="mb-20">
-          <div className="flex items-center gap-3 mb-8 border-b border-vintage-dark/30 pb-4">
-            <Utensils className="w-8 h-8 text-accent-rust" />
-            <h2 className="font-serif text-3xl font-bold text-navy-base">Suscripciones: Batch Cooking</h2>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        
+        {/* Nutrición Section */}
+        <div className="mb-32">
+          <div className="flex items-center justify-between mb-12 border-b-4 border-temple-navy pb-6">
+            <div className="flex items-center gap-4">
+              <div className="bg-temple-red p-3 -skew-x-12">
+                <Utensils className="w-8 h-8 text-white" />
+              </div>
+              <h2 className="font-serif text-3xl md:text-5xl font-black text-temple-navy uppercase italic-sport">Combustible <span className="text-temple-red">Keto</span></h2>
+            </div>
+            <div className="hidden md:flex gap-2">
+              {[1, 2, 3].map(i => <div key={i} className="w-8 h-1 bg-temple-gold -skew-x-12"></div>)}
+            </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Producto 1 */}
-            <div className="flex flex-col md:flex-row bg-vintage-base rounded-2xl overflow-hidden shadow-sm border border-vintage-dark/20">
-              <div className="md:w-2/5 bg-navy-dark relative min-h-[200px]">
-                {/* Placeholder Image */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                   <Utensils className="w-20 h-20 text-vintage-light" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            {products.filter(p => p.category === 'Suscripción').map((product) => (
+              <div key={product.id} className="relative group overflow-hidden">
+                <div className="absolute -inset-1 bg-gradient-to-r from-temple-gold to-temple-red opacity-20 group-hover:opacity-40 transition-opacity blur"></div>
+                <div className="relative flex flex-col md:flex-row bg-white border-l-8 border-temple-navy shadow-2xl">
+                  <div className="md:w-2/5 bg-vibrant-navy relative min-h-[250px] overflow-hidden">
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:scale-110 transition-transform duration-700"
+                      style={{ backgroundImage: `url(${product.image})` }}
+                    ></div>
+                    <div className="absolute top-4 left-4 bg-temple-gold text-temple-navy font-black text-xs px-3 py-1 -skew-x-12">RECOMENDADO</div>
+                  </div>
+                  <div className="p-10 md:w-3/5 flex flex-col justify-between">
+                    <div>
+                      <h3 className="font-serif text-3xl font-black text-temple-navy mb-4 uppercase italic-sport">{product.name}</h3>
+                      <p className="text-temple-navy/60 text-lg leading-relaxed mb-6 italic">{product.description}</p>
+                      <ul className="space-y-2 mb-8">
+                        <li className="flex items-center gap-2 text-sm font-bold uppercase tracking-tighter text-temple-navy/80">
+                          <ShieldCheck className="w-4 h-4 text-temple-red" /> Sin Gluten / Sin Azúcar
+                        </li>
+                        <li className="flex items-center gap-2 text-sm font-bold uppercase tracking-tighter text-temple-navy/80">
+                          <ShieldCheck className="w-4 h-4 text-temple-red" /> Entrega Diaria 6:00 AM
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="font-serif font-black text-3xl text-temple-navy italic-sport">${product.price}<span className="text-sm uppercase opacity-50 ml-1">/mes</span></span>
+                      <button className="bg-temple-red text-white px-8 py-3 font-black uppercase tracking-widest skew-btn shadow-lg">Suscribirse</button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="p-6 md:w-3/5 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-bold text-xl text-navy-base mb-2">Plan Keto Pro (5 Comidas/Día)</h3>
-                  <p className="text-sm text-navy-light mb-4">Tercerizado con cocinas ocultas. Entregas diarias para optimizar tu rendimiento en el Reto 21 Días.</p>
-                </div>
-                <div className="flex items-center justify-between mt-4">
-                  <span className="font-serif font-bold text-2xl text-accent-rust">$250/mes</span>
-                  {/* TODO: Connect with Payment Gateway API (Stripe/MercadoPago) */}
-                  <button className="bg-navy-base text-vintage-light px-6 py-2 rounded-full font-bold hover:bg-navy-light transition-colors">Suscribirse</button>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        {/* Categoria Merchandising */}
+        {/* Merch Section */}
         <div>
-          <div className="flex items-center gap-3 mb-8 border-b border-vintage-dark/30 pb-4">
-            <Shirt className="w-8 h-8 text-accent-gold" />
-            <h2 className="font-serif text-3xl font-bold text-navy-base">Armadura Templefit</h2>
+          <div className="flex items-center justify-between mb-12 border-b-4 border-temple-gold pb-6">
+            <div className="flex items-center gap-4">
+              <div className="bg-temple-navy p-3 -skew-x-12">
+                <Shirt className="w-8 h-8 text-temple-gold" />
+              </div>
+              <h2 className="font-serif text-3xl md:text-5xl font-black text-temple-navy uppercase italic-sport">Armadura <span className="text-temple-gold">TempleFit</span></h2>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Merch Item */}
-            <div className="bg-vintage-base rounded-xl p-4 border border-vintage-dark/20 text-center group cursor-pointer hover:shadow-md transition-all">
-              <div className="bg-vintage-light aspect-square rounded-lg mb-4 flex items-center justify-center border border-vintage-dark/10 group-hover:border-accent-gold/50 transition-colors">
-                <Shirt className="w-16 h-16 text-navy-light opacity-50" />
-              </div>
-              <h3 className="font-bold text-navy-base">Camiseta &quot;Escuadrón Alpha&quot;</h3>
-              <p className="text-sm text-navy-light my-2">Estilo Vintage. Algodón premium.</p>
-              <div className="flex justify-between items-center mt-4">
-                <span className="font-serif font-bold text-lg text-navy-base">$35.00</span>
-                <button className="text-accent-rust font-bold hover:underline flex items-center gap-1">
-                  <ShoppingBag className="w-4 h-4" /> Agregar
-                </button>
-              </div>
-            </div>
-            {/* Suplementos Item */}
-            <div className="bg-vintage-base rounded-xl p-4 border border-vintage-dark/20 text-center group cursor-pointer hover:shadow-md transition-all">
-              <div className="bg-vintage-light aspect-square rounded-lg mb-4 flex items-center justify-center border border-vintage-dark/10 group-hover:border-accent-gold/50 transition-colors">
-                <div className="w-12 h-16 bg-navy-light rounded-sm opacity-50 relative">
-                  <div className="absolute top-0 w-full h-4 bg-navy-base rounded-t-sm"></div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            {products.filter(p => p.category !== 'Suscripción').map((item, i) => {
+              const Icon = IconMap[item.icon || 'Star'];
+              return (
+                <div key={item.id} className="glass-panel p-6 metric-card group border-b-4 border-temple-navy/10 hover:border-temple-gold transition-all">
+                  <div className="bg-vibrant-navy aspect-square mb-8 flex items-center justify-center -skew-x-2 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-temple-navy to-transparent opacity-50"></div>
+                    <div className="text-temple-gold group-hover:scale-125 transition-transform duration-500">
+                      {Icon && <Icon className="w-12 h-12" />}
+                    </div>
+                    <div className="absolute bottom-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white border border-white/20">
+                      {item.category}
+                    </div>
+                  </div>
+                  <h3 className="font-serif text-2xl font-black text-temple-navy mb-2 uppercase italic-sport">{item.name}</h3>
+                  <div className="flex justify-between items-center mt-6">
+                    <span className="font-serif font-black text-2xl text-temple-navy italic-sport">${item.price.toFixed(2)}</span>
+                    <button className="flex items-center gap-2 bg-temple-navy text-white px-6 py-2 font-black uppercase tracking-tighter skew-btn hover:bg-temple-red transition-colors">
+                      <ShoppingBag className="w-4 h-4" /> COMPRAR
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <h3 className="font-bold text-navy-base">Proteína Isolatada</h3>
-              <p className="text-sm text-navy-light my-2">Gluten-Free. Sabor Vainilla Francesa.</p>
-              <div className="flex justify-between items-center mt-4">
-                <span className="font-serif font-bold text-lg text-navy-base">$60.00</span>
-                <button className="text-accent-rust font-bold hover:underline flex items-center gap-1">
-                  <ShoppingBag className="w-4 h-4" /> Agregar
-                </button>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
 
       </div>
+
+      {/* Trust Banner */}
+      <section className="bg-vibrant-navy py-12 border-y-4 border-temple-gold/20">
+        <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-12 items-center opacity-50">
+          <div className="font-black text-2xl text-white italic-sport">ENVÍOS NACIONALES</div>
+          <div className="font-black text-2xl text-white italic-sport">PAGO SEGURO</div>
+          <div className="font-black text-2xl text-white italic-sport">CALIDAD ÉLITE</div>
+        </div>
+      </section>
     </div>
   );
 }

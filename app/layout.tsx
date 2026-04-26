@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${inter.variable} ${playfair.variable} font-sans bg-vintage-light text-navy-base min-h-screen flex flex-col`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans bg-temple-cream text-temple-navy min-h-screen flex flex-col custom-scrollbar`}>
         <Navbar />
         <main className="flex-grow">
           {children}

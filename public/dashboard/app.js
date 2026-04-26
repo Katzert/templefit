@@ -1,322 +1,284 @@
 /**
- * TEMPLEFIT Dashboard Logic - Investor Victory Edition
- * Handles CSV Loading, Interactive Charts, and Profit Simulation
+ * TEMPLEFIT Dashboard Logic - Santa Cruz Pilot Edition
+ * Fixed: Scope, Visibility, and Chart Initialization
  */
 
-// Dataset de respaldo (Fallback) con datos optimizados
 const FALLBACK_DATA = [
-    { "Mes": "Abril", "Total Ingresos": "67400", "Total Gastos": "10500", "Flujo Acumulado": "56900" },
-    { "Mes": "Mayo", "Total Ingresos": "67400", "Total Gastos": "10500", "Flujo Acumulado": "113800" },
-    { "Mes": "Junio", "Total Ingresos": "72000", "Total Gastos": "11000", "Flujo Acumulado": "174800" },
-    { "Mes": "Julio", "Total Ingresos": "75000", "Total Gastos": "11500", "Flujo Acumulado": "238300" },
-    { "Mes": "Agosto", "Total Ingresos": "80000", "Total Gastos": "12000", "Flujo Acumulado": "306300" },
-    { "Mes": "Septiembre", "Total Ingresos": "85000", "Total Gastos": "12500", "Flujo Acumulado": "378800" },
-    { "Mes": "Octubre", "Total Ingresos": "90000", "Total Gastos": "13000", "Flujo Acumulado": "455800" },
-    { "Mes": "Noviembre", "Total Ingresos": "95000", "Total Gastos": "13500", "Flujo Acumulado": "537300" }
+    { "Mes": "Mayo", "Total Ingresos": "10500", "Total Gastos": "9200", "Flujo Acumulado": "1300" },
+    { "Mes": "Junio", "Total Ingresos": "10500", "Total Gastos": "9200", "Flujo Acumulado": "2600" },
+    { "Mes": "Julio", "Total Ingresos": "10500", "Total Gastos": "9200", "Flujo Acumulado": "3900" },
+    { "Mes": "Agosto", "Total Ingresos": "10500", "Total Gastos": "9200", "Flujo Acumulado": "5200" },
+    { "Mes": "Septiembre", "Total Ingresos": "10500", "Total Gastos": "9200", "Flujo Acumulado": "6500" },
+    { "Mes": "Octubre", "Total Ingresos": "10500", "Total Gastos": "9200", "Flujo Acumulado": "7800" },
+    { "Mes": "Noviembre", "Total Ingresos": "10500", "Total Gastos": "9200", "Flujo Acumulado": "9100" },
+    { "Mes": "Diciembre", "Total Ingresos": "10500", "Total Gastos": "9200", "Flujo Acumulado": "10400" }
+];
+
+const BRAND = {
+    navy: '#002147',
+    gold: '#C5A059',
+    red: '#D32F2F',
+    cream: '#F9F6F0'
+};
+
+const INCOME_CATEGORIES = [
+    { id: 'reto', name: 'Reto 21 Días', field: 'Inscripcion Reto 21 Dias', color: '#002147' },
+    { id: 'bebidas', name: 'Bebidas', field: 'Venta de Bebidas', color: '#C5A059' },
+    { id: 'snacks', name: 'Snacks', field: 'Venta de Snacks', color: '#D32F2F' },
+    { id: 'medicos', name: 'Comisiones Médicas', field: 'Comisiones Medicas', color: '#5D6D7E' },
+    { id: 'suplementos', name: 'Suplementos', field: 'Venta de Suplementos', color: '#A04000' },
+    { id: 'souvenirs', name: 'Souvenirs', field: 'Ingresos de Souvenirs', color: '#1D8348' }
 ];
 
 let financialData = [];
 let charts = {};
 
-// Configuration for Roles & Profits (Investor View)
-const ROLES_CONFIG = [
-    { id: 'founder', name: 'Fundador', percentage: 25, type: 'Estratégico', icon: '👑', desc: 'Gestión y visión' },
-    { id: 'knowhow', name: 'Know How', percentage: 10, type: 'Regalía', icon: '🧠', desc: 'Propiedad Intelectual' },
-    { id: 'operator', name: 'Manager', percentage: 10, type: 'Fijo', icon: '⚙️', desc: 'Operación diaria' },
-    { id: 'marketing', name: 'Marketing', percentage: 5, type: 'Variable', icon: '📢', desc: 'Captación de atletas' },
-    { id: 'sales', name: 'Ventas', percentage: 10, type: 'Variable', icon: '🤝', desc: 'Conversión (Closers)' },
-    { id: 'production', name: 'Producción', percentage: 10, type: 'Variable', icon: '🥗', desc: 'Alimentos y Snack Bar' },
-    { id: 'instructors', name: 'Instructores', percentage: 10, type: 'Variable', icon: '🏋️', desc: 'Ejecución técnica' },
-    { id: 'teamfund', name: 'Fondo Equipo', percentage: 5, type: 'Bonus', icon: '⭐', desc: 'Incentivos KPIs' },
-    { id: 'reserve', name: 'Reserva', percentage: 15, type: 'Reserva', icon: '🛡️', desc: 'Crecimiento de Capital' }
-];
+// --- FUNCIONES DE CÁLCULO ---
 
-document.addEventListener('DOMContentLoaded', () => {
-    initDashboard();
-});
-
-async function initDashboard() {
-    console.log("Iniciando Dashboard...");
+function calculateScaling(months) {
+    if (!financialData || financialData.length === 0) return;
     
-    try {
-        const response = await fetch('Ingresos y Gastos - Hoja 1.csv');
-        if (!response.ok) throw new Error("CSV not found");
-        
-        const csvText = await response.text();
-        Papa.parse(csvText, {
-            header: true,
-            skipEmptyLines: true,
-            complete: (results) => {
-                financialData = results.data;
-                startDashboardFlow();
-            }
-        });
-    } catch (error) {
-        financialData = JSON.parse(JSON.stringify(FALLBACK_DATA));
-        startDashboardFlow();
-    }
-}
-
-function startDashboardFlow() {
-    setupCharts();
-    setupCorrectionForm();
-    calculateInitialTotal();
-    setupProfitSimulator();
-    renderTeamCards();
-    calculateScaling(1);
-}
-
-function setupCharts() {
-    const months = financialData.map(d => d.Mes);
-    const incomes = financialData.map(d => parseFloat(d['Total Ingresos'].toString().replace(',', '')));
-    const expenses = financialData.map(d => parseFloat(d['Total Gastos'] ? d['Total Gastos'].toString().replace(',', '') : '10500'));
-    const accumulated = financialData.map(d => parseFloat(d['Flujo Acumulado'].toString().replace(',', '')));
-
-    // Chart.js Brand Config
-    Chart.defaults.color = '#002147';
-    Chart.defaults.font.family = 'Outfit';
-
-    // Bar Chart
-    const ctx1 = document.getElementById('incomeExpenseChart').getContext('2d');
-    charts.incomeExpense = new Chart(ctx1, {
-        type: 'bar',
-        data: {
-            labels: months,
-            datasets: [
-                {
-                    label: 'Ingresos (Bs.)',
-                    data: incomes,
-                    backgroundColor: '#C5A059',
-                    borderRadius: 8
-                },
-                {
-                    label: 'Gastos (Bs.)',
-                    data: expenses,
-                    backgroundColor: '#002147',
-                    borderRadius: 8
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { position: 'top', labels: { usePointStyle: true, font: { weight: 'bold' } } },
-                title: { display: true, text: 'AUDITORÍA DE FLUJO MENSUAL', font: { size: 16, weight: '900' }, padding: 20 }
-            },
-            scales: {
-                y: { grid: { color: 'rgba(0,0,0,0.03)' }, ticks: { font: { weight: 'bold' } } },
-                x: { grid: { display: false } }
-            }
-        }
-    });
-
-    // Line Chart
-    const ctx2 = document.getElementById('cashFlowChart').getContext('2d');
-    charts.cashFlow = new Chart(ctx2, {
-        type: 'line',
-        data: {
-            labels: months,
-            datasets: [{
-                label: 'Flujo Acumulado (Bs.)',
-                data: accumulated,
-                borderColor: '#D32F2F',
-                backgroundColor: 'rgba(211, 47, 47, 0.05)',
-                fill: true,
-                tension: 0.4,
-                borderWidth: 4,
-                pointBackgroundColor: '#FFFFFF',
-                pointBorderColor: '#D32F2F',
-                pointBorderWidth: 3,
-                pointRadius: 6
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                title: { display: true, text: 'TRAYECTORIA DE CAPITAL ACUMULADO', font: { size: 16, weight: '900' }, padding: 20 }
-            },
-            scales: {
-                y: { grid: { color: 'rgba(0,0,0,0.03)' }, ticks: { font: { weight: 'bold' } } },
-                x: { grid: { display: false } }
-            }
-        }
-    });
-}
-
-function setupCorrectionForm() {
-    const form = document.getElementById('correctionForm');
-    form.innerHTML = '';
-    financialData.forEach((monthData, index) => {
-        const val = parseFloat(monthData['Total Ingresos'].toString().replace(',', ''));
-        const div = document.createElement('div');
-        div.className = 'bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-temple-gold transition-all';
-        div.innerHTML = `
-            <div class="flex justify-between items-center mb-1">
-                <label for="month-${index}" class="text-[9px] font-black uppercase tracking-widest text-slate-400">${monthData.Mes} 2026</label>
-            </div>
-            <div class="flex items-center space-x-2">
-                <span class="text-temple-navy font-black text-sm">Bs.</span>
-                <input type="number" id="month-${index}" value="${val}" 
-                       class="w-full bg-transparent text-temple-navy font-black text-xl focus:outline-none"
-                       oninput="updateFinancials(${index}, this.value)">
-            </div>
-        `;
-        form.appendChild(div);
-    });
-}
-
-function updateFinancials(index, newValue) {
-    const val = parseFloat(newValue) || 0;
-    financialData[index]['Total Ingresos'] = val.toString();
+    const totalInc = financialData.reduce((acc, d) => acc + parseFloat((d['Total Ingresos'] || '0').toString().replace(/[Bs.,\s]/g, '')), 0);
+    const totalExp = financialData.reduce((acc, d) => acc + parseFloat((d['Total Gastos'] || '0').toString().replace(/[Bs.,\s]/g, '')), 0);
+    const avgProfit = (totalInc - totalExp) / financialData.length;
     
-    let currentTotal = 0;
-    financialData.forEach((d, i) => {
-        const inc = parseFloat(d['Total Ingresos'].toString().replace(',', ''));
-        const exp = parseFloat(d['Total Gastos'] ? d['Total Gastos'].toString().replace(',', '') : '10500');
-        currentTotal += inc;
-        
-        if (i === 0) {
-            d['Flujo Acumulado'] = (inc - exp).toString();
-        } else {
-            const prevAcc = parseFloat(financialData[i-1]['Flujo Acumulado'].toString().replace(',', ''));
-            d['Flujo Acumulado'] = (prevAcc + (inc - exp)).toString();
-        }
-    });
+    const profitDisplay = document.getElementById('scaledProfit');
+    const athletesDisplay = document.getElementById('scaledAthletes');
 
-    charts.incomeExpense.data.datasets[0].data = financialData.map(d => parseFloat(d['Total Ingresos']));
-    charts.cashFlow.data.datasets[0].data = financialData.map(d => parseFloat(d['Flujo Acumulado']));
-    
-    charts.incomeExpense.update('none');
-    charts.cashFlow.update('none');
+    if (profitDisplay) profitDisplay.innerText = `${Math.round(avgProfit * months).toLocaleString()} Bs.`;
+    if (athletesDisplay) athletesDisplay.innerText = Math.round(65 * months).toLocaleString();
 
-    document.getElementById('totalIncomeDisplay').innerText = `${Math.round(currentTotal).toLocaleString()} Bs.`;
-    
-    const activeBtn = document.querySelector('.scale-btn.active');
-    const sedes = activeBtn ? parseInt(activeBtn.innerText.split(' ')[0]) : 1;
-    calculateScaling(sedes);
+    document.querySelectorAll('.phase-card').forEach(c => c.classList.remove('active'));
+    let phaseId = 1;
+    if (months > 1) phaseId = 2;
+    if (months > 6) phaseId = 3;
+    const phaseEl = document.getElementById(`phase-${phaseId}`);
+    if (phaseEl) phaseEl.classList.add('active');
 }
 
 function calculateInitialTotal() {
-    const total = financialData.reduce((acc, d) => acc + parseFloat(d['Total Ingresos'].toString().replace(',', '')), 0);
-    document.getElementById('totalIncomeDisplay').innerText = `${Math.round(total).toLocaleString()} Bs.`;
+    if (!financialData || financialData.length === 0) return;
+    const totalInc = financialData.reduce((acc, d) => acc + parseFloat((d['Total Ingresos'] || '0').toString().replace(/[Bs.,\s]/g, '')), 0);
+    const totalExp = financialData.reduce((acc, d) => acc + parseFloat((d['Total Gastos'] || '0').toString().replace(/[Bs.,\s]/g, '')), 0);
+    const avgInc = totalInc / financialData.length;
+    const efficiency = (totalInc > 0) ? (1 - (totalExp / totalInc)) * 100 : 0;
+
+    const mainDisplay = document.getElementById('totalIncomeDisplay');
+    if (mainDisplay) mainDisplay.innerText = `${Math.round(totalInc).toLocaleString()} Bs.`;
+    
+    const indicators = document.querySelectorAll('.indicador-valor');
+    if (indicators.length >= 2) {
+        indicators[0].innerText = `${(avgInc / 1000).toFixed(1)}K`;
+        indicators[1].innerText = `${Math.round(efficiency)}%`;
+    }
+}
+
+// --- FUNCIONES DE UI ---
+
+function setupCharts() {
+    if (!financialData.length) return;
+    
+    const months = financialData.map(d => d.Mes);
+    const incomes = financialData.map(d => parseFloat((d['Total Ingresos'] || '0').toString().replace(/[Bs.,\s]/g, '')));
+    const expenses = financialData.map(d => parseFloat((d['Total Gastos'] || '0').toString().replace(/[Bs.,\s]/g, '')));
+    const accumulated = financialData.map(d => parseFloat((d['Flujo Acumulado'] || '0').toString().replace(/[Bs.,\s]/g, '')));
+
+    // Chart.js global config
+    Chart.defaults.color = BRAND.navy;
+    Chart.defaults.font.family = "'Outfit', sans-serif";
+    Chart.defaults.font.weight = '900';
+
+    const canvas1 = document.getElementById('incomeExpenseChart');
+    if (canvas1) {
+        if (charts.incomeExpense) charts.incomeExpense.destroy();
+        charts.incomeExpense = new Chart(canvas1.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [
+                    { label: 'Ingresos (Bs.)', data: incomes, backgroundColor: BRAND.gold },
+                    { label: 'Gastos (Bs.)', data: expenses, backgroundColor: BRAND.navy }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false }
+        });
+    }
+
+    const canvas2 = document.getElementById('cashFlowChart');
+    if (canvas2) {
+        if (charts.cashFlow) charts.cashFlow.destroy();
+        charts.cashFlow = new Chart(canvas2.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'Capital Acumulado (Bs.)',
+                    data: accumulated,
+                    borderColor: BRAND.red,
+                    backgroundColor: 'rgba(211, 47, 47, 0.05)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false }
+        });
+    }
 }
 
 function setupProfitSimulator() {
-    const slider = document.getElementById('profitPoolSlider');
+    const canvas = document.getElementById('profitDistributionChart');
     const display = document.getElementById('profitPoolValue');
     const legend = document.getElementById('distributionLegend');
-    
-    const ctx = document.getElementById('profitDistributionChart').getContext('2d');
+    if (!canvas || !display || !legend) return;
+
     if (charts.profitPie) charts.profitPie.destroy();
-
-    const chartColors = [
-        '#C5A059', '#002147', '#D32F2F', '#004080', '#5D6D7E', 
-        '#A04000', '#1D8348', '#1A5276', '#F1C40F'
-    ];
-
-    charts.profitPie = new Chart(ctx, {
+    charts.profitPie = new Chart(canvas.getContext('2d'), {
         type: 'doughnut',
-        data: {
-            labels: ROLES_CONFIG.map(r => r.name),
-            datasets: [{
-                data: ROLES_CONFIG.map(r => r.percentage),
-                backgroundColor: chartColors,
-                borderWidth: 5,
-                borderColor: '#FFFFFF'
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            cutout: '78%',
+        data: { labels: [], datasets: [{ data: [], backgroundColor: INCOME_CATEGORIES.map(c => c.color), hoverOffset: 30 }] },
+        options: { 
+            responsive: true, 
+            maintainAspectRatio: false, 
+            cutout: '70%',
             plugins: {
                 legend: { display: false },
                 tooltip: {
-                    backgroundColor: '#002147',
+                    enabled: true,
+                    backgroundColor: BRAND.navy,
+                    titleColor: '#FFF',
+                    bodyColor: '#FFF',
                     padding: 15,
-                    titleFont: { size: 14, weight: 'bold' },
                     callbacks: {
-                        label: function(context) {
-                            const pool = parseFloat(slider.value);
-                            const amount = (pool * context.raw / 100).toFixed(0);
-                            return `${context.label}: ${parseInt(amount).toLocaleString()} Bs. (${context.raw}%)`;
-                        }
+                        label: (ctx) => `${ctx.label}: ${Math.round(ctx.parsed).toLocaleString()} Bs.`
                     }
                 }
             }
         }
     });
 
-    const updateLegend = () => {
-        const pool = parseFloat(slider.value);
+    const updateBreakdown = () => {
+        const totalInc = financialData.reduce((acc, d) => acc + parseFloat((d['Total Ingresos'] || '0').toString().replace(/[Bs.,\s]/g, '')), 0);
+        const avgMonthly = totalInc / financialData.length;
+
+        const categoryData = INCOME_CATEGORIES.map(cat => {
+            const sum = financialData.reduce((acc, d) => {
+                const val = parseFloat((d[cat.field] || '0').toString().replace(/[Bs.,\s]/g, ''));
+                return acc + (val || 0);
+            }, 0);
+            return { ...cat, amount: sum / financialData.length };
+        });
+
+        display.innerHTML = `${Math.round(avgMonthly).toLocaleString()} <span class="text-3xl text-temple-gold">Bs.</span>`;
+        
+        charts.profitPie.data.labels = categoryData.map(c => c.name);
+        charts.profitPie.data.datasets[0].data = categoryData.map(c => c.amount);
+        charts.profitPie.update();
+
         legend.innerHTML = '';
-        ROLES_CONFIG.forEach((role, i) => {
-            const amount = (pool * role.percentage / 100).toFixed(0);
+        categoryData.forEach(cat => {
             const item = document.createElement('div');
-            item.className = 'legend-item flex flex-col items-center text-center';
+            item.className = 'text-center p-4 border-b border-temple-navy/5';
             item.innerHTML = `
-                <div class="w-3 h-3 rounded-full mb-3 shadow-sm" style="background-color: ${chartColors[i]}"></div>
-                <span class="text-[10px] font-black uppercase leading-none mb-1 text-slate-400">${role.name}</span>
-                <span class="text-lg font-black text-temple-navy italic">${parseInt(amount).toLocaleString()} <span class="text-[10px] not-italic opacity-40">Bs.</span></span>
-                <span class="text-[9px] font-bold text-temple-gold">${role.percentage}%</span>
+                <div class="w-3 h-3 mx-auto mb-2 rounded-full" style="background-color: ${cat.color}"></div>
+                <p class="text-[10px] font-black uppercase text-temple-navy mb-1">${cat.name}</p>
+                <p class="text-2xl font-black text-temple-navy italic-sport">${Math.round(cat.amount).toLocaleString()} <span class="text-xs opacity-50">Bs.</span></p>
             `;
             legend.appendChild(item);
         });
     };
 
-    slider.oninput = function() {
-        const val = parseFloat(this.value);
-        display.innerText = `${val.toLocaleString()} Bs.`;
-        updateLegend();
-    };
-
-    updateLegend();
+    window.refreshProfitPool = updateBreakdown;
+    updateBreakdown();
 }
 
-function renderTeamCards() {
-    const grid = document.getElementById('teamGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
-    ROLES_CONFIG.filter(r => r.id !== 'reserve').forEach(role => {
-        const card = document.createElement('div');
-        card.className = 'bg-white p-8 rounded-[2rem] shadow-xl border-b-8 border-slate-100 hover:border-temple-gold transition-all group';
-        card.innerHTML = `
-            <div class="flex justify-between items-start mb-6">
-                <div class="text-4xl group-hover:scale-125 transition-transform">${role.icon}</div>
-                <span class="text-[9px] font-black px-3 py-1 bg-slate-100 text-slate-500 rounded-full uppercase tracking-widest">${role.type}</span>
-            </div>
-            <h5 class="font-black text-xl text-temple-navy italic leading-none mb-2">${role.name}</h5>
-            <p class="text-xs text-slate-400 font-medium mb-6">${role.desc}</p>
-            <div class="pt-4 border-t border-slate-50 flex justify-between items-center">
-                <span class="text-[10px] font-bold text-slate-400 uppercase">Participación / Comisión</span>
-                <span class="text-xl font-black text-temple-red italic">${role.percentage}%</span>
-            </div>
+function setupCorrectionForm() {
+    const form = document.getElementById('correctionForm');
+    if (!form) return;
+    form.innerHTML = '';
+    financialData.forEach((row, i) => {
+        const val = parseFloat((row['Total Ingresos'] || '0').toString().replace(/[Bs.,\s]/g, ''));
+        const div = document.createElement('div');
+        div.className = 'bg-temple-cream/50 p-6 border-l-4 border-temple-gold';
+        div.innerHTML = `
+            <label class="text-[9px] font-black uppercase text-temple-navy/60 mb-2 block">${row.Mes} 2026</label>
+            <input type="number" value="${val}" class="w-full bg-transparent text-temple-navy font-black text-3xl focus:outline-none"
+                   oninput="updateData(${i}, this.value)">
         `;
-        grid.appendChild(card);
+        form.appendChild(div);
     });
 }
 
-function calculateScaling(sedes) {
-    document.querySelectorAll('.scale-btn').forEach(btn => {
-        if (parseInt(btn.innerText.split(' ')[0]) === sedes) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
-    });
-
-    const currentTotalIncome = financialData.reduce((acc, d) => acc + parseFloat(d['Total Ingresos'].toString().replace(',', '')), 0);
-    const avgMonthlyIncome = currentTotalIncome / financialData.length;
-    const avgMonthlyProfit = (currentTotalIncome - (13000 * financialData.length)) / financialData.length;
+function updateData(index, newValue) {
+    financialData[index]['Total Ingresos'] = newValue;
     
-    const scaledIncome = avgMonthlyIncome * sedes * 12; // Annual
-    const scaledProfit = avgMonthlyProfit * sedes * 12; // Annual
-    const scaledAthletes = 65 * sedes;
+    let acc = 0;
+    financialData.forEach((d, i) => {
+        const inc = parseFloat((d['Total Ingresos'] || '0').toString().replace(/[Bs.,\s]/g, ''));
+        const exp = parseFloat((d['Total Gastos'] || '9200').toString().replace(/[Bs.,\s]/g, ''));
+        acc += (inc - exp);
+        d['Flujo Acumulado'] = acc.toString();
+    });
 
-    document.getElementById('scaledIncome').innerText = `${Math.round(scaledIncome).toLocaleString()} Bs.`;
-    document.getElementById('scaledProfit').innerText = `${Math.round(scaledProfit).toLocaleString()} Bs.`;
-    document.getElementById('scaledAthletes').innerText = scaledAthletes.toLocaleString();
+    setupCharts();
+    calculateInitialTotal();
+    if (window.refreshProfitPool) window.refreshProfitPool();
+    calculateScaling(1);
 }
+
+// --- INICIALIZACIÓN ---
+
+function startDashboard() {
+    setupCharts();
+    setupCorrectionForm();
+    calculateInitialTotal();
+    setupProfitSimulator();
+    calculateScaling(1);
+    
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+}
+
+async function init() {
+    try {
+        const res = await fetch('templefit_finanzas_v2.csv');
+        if (!res.ok) throw new Error("CSV not found");
+        const text = await res.text();
+        Papa.parse(text, {
+            header: true,
+            skipEmptyLines: true,
+            complete: (results) => {
+                financialData = results.data.map(row => {
+                    const clean = {};
+                    Object.keys(row).forEach(k => clean[k.trim()] = row[k]);
+                    return clean;
+                });
+                startDashboard();
+            }
+        });
+    } catch (e) {
+        console.warn("Using fallback data", e);
+        financialData = JSON.parse(JSON.stringify(FALLBACK_DATA));
+        startDashboard();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', init);
+
+// Global Phase Update for onclick
+window.updatePhase = (id, img) => {
+    const phaseImage = document.getElementById('phaseImage');
+    if (phaseImage) {
+        phaseImage.style.opacity = '0';
+        setTimeout(() => {
+            phaseImage.src = img;
+            phaseImage.style.opacity = '1';
+        }, 300);
+    }
+    const monthsMap = { 1: 1, 2: 5, 3: 12 };
+    calculateScaling(monthsMap[id]);
+};

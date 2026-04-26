@@ -1,4 +1,4 @@
-/* TEMPLEFIT Victory Dashboard Premium Styles */
+/* TEMPLEFIT Victory Dashboard - Coherent & Dynamic Edition */
 
 :root {
     --temple-navy: #002147;
@@ -7,107 +7,164 @@
     --temple-cream: #F9F6F0;
 }
 
-/* Base Styles */
+/* Base */
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: var(--temple-cream);
+    color: var(--temple-navy);
+    font-family: 'Outfit', sans-serif;
 }
 
-/* Custom Scrollbar */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(0, 33, 71, 0.05);
-    border-radius: 10px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--temple-gold);
-    border-radius: 10px;
+/* Sport Dividers */
+.skew-divider-top {
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+    margin-top: -5vw;
 }
 
-/* Animations */
-@keyframes slideInLeft {
-    from { opacity: 0; transform: translateX(-50px); }
-    to { opacity: 1; transform: translateX(0); }
+.skew-divider-bottom {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+    margin-bottom: -5vw;
 }
 
-@keyframes slideInRight {
-    from { opacity: 0; transform: translateX(50px); }
-    to { opacity: 1; transform: translateX(0); }
+/* Hero & Dynamic Sections */
+.section-dynamic {
+    position: relative;
+    background: var(--temple-navy);
+    color: white;
+    overflow: hidden;
 }
 
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+.dynamic-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url('bg_dynamic.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    mix-blend-mode: luminosity;
+    filter: brightness(1.2) contrast(1.1);
+    transition: transform 10s ease-out;
 }
 
-.animate-slide-in-left { animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.animate-slide-in-right { animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
-
-main section {
-    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+.section-dynamic:hover .dynamic-overlay {
+    transform: scale(1.05);
 }
 
-/* Metric Cards & Interactive Elements */
-.metric-card, .legend-item, #teamGrid > div {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.metric-card:hover, .legend-item:hover, #teamGrid > div:hover {
-    transform: translateY(-10px) skewX(-2deg);
-    box-shadow: 0 25px 50px -12px rgba(0, 33, 71, 0.25);
-    border-color: var(--temple-gold);
-}
-
-/* Glassmorphism Dynamic */
+/* Glass Panels (Home Coherence) */
 .glass-panel {
     background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-/* Pulse Glow for Logo */
-@keyframes logoGlow {
-    0% { filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.3)); }
-    50% { filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.6)); }
-    100% { filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.3)); }
+.glass-panel-dark {
+    background: rgba(0, 33, 71, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-header img {
-    animation: logoGlow 3s infinite ease-in-out;
+/* Sport Buttons (Exact Home Replicant) */
+.skew-btn {
+    background: var(--temple-red);
+    color: white;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 1.25rem 2.5rem;
+    transform: skewX(-12deg);
+    box-shadow: 8px 8px 0px 0px var(--temple-gold);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    cursor: pointer;
 }
 
-/* Scale Buttons */
-.scale-btn {
-    transition: all 0.3s ease;
+.skew-btn > * {
+    transform: skewX(12deg);
 }
 
-.scale-btn:hover {
-    transform: translateY(-3px) skewX(-5deg);
-    box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2);
-}
-
-.scale-btn.active {
-    background-color: var(--temple-gold) !important;
-    color: var(--temple-navy) !important;
-    border-color: var(--temple-navy) !important;
-    transform: scale(1.1) skewX(-5deg) !important;
-    box-shadow: 0 15px 35px rgba(197, 160, 89, 0.4);
+.skew-btn:hover {
+    transform: skewX(-12deg) translateY(-4px);
+    box-shadow: 0px 0px 0px 0px var(--temple-gold);
+    background: white;
+    color: var(--temple-navy);
 }
 
 /* Typography italics for sports feel */
 .italic-sport {
     font-style: italic;
-    transform: skewX(-5deg);
+    transform: skewX(-6deg);
+    display: inline-block;
 }
 
-/* Chart Container Overrides */
-canvas {
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.08));
+/* Service Showcase Cards */
+.service-card {
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 0;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* Dynamic Gradient Backgrounds */
-.bg-vibrant-navy {
-    background: linear-gradient(135deg, #002147 0%, #003366 100%);
+.service-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.1);
+    transition: all 0.8s ease;
+}
+
+.service-card:hover img {
+    filter: grayscale(0) contrast(1);
+    transform: scale(1.1);
+}
+
+.service-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--temple-navy) 0%, transparent 60%);
+    opacity: 0.9;
+}
+
+.service-content {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    right: 2rem;
+    color: white;
+}
+
+/* Metrics Dynamism */
+.metric-card {
+    transition: all 0.4s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-8px) skewX(-2deg);
+    border-color: var(--temple-gold);
+}
+
+/* Charts */
+.chart-container {
+    background: white;
+    padding: 2.5rem;
+    box-shadow: 0 30px 60px -12px rgba(0, 33, 71, 0.15);
+}
+
+/* Range Slider (Tactical/Sport) */
+input[type="range"] {
+    -webkit-appearance: none;
+    background: rgba(0, 33, 71, 0.1);
+    height: 12px;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 30px;
+    height: 30px;
+    background: var(--temple-gold);
+    border: 3px solid white;
+    transform: skewX(-12deg);
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
