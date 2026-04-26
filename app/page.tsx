@@ -16,67 +16,64 @@ const TestimonialIconMap: Record<string, any> = {
 export default function Home() {
   return (
     <div className="animate-fade-in-up">
+      <div className="scanlines"></div>
+      
       {/* Hero Section */}
-      <section className="relative bg-vibrant-navy text-temple-cream overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative bg-temple-navy text-temple-cream overflow-hidden min-h-[95vh] flex items-center pt-20 pb-48 skew-divider-bottom">
+        <div className="dynamic-overlay opacity-30"></div>
         <div className="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center mix-blend-luminosity"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-temple-navy/50 to-temple-navy"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col items-center text-center">
-          <div className="inline-block bg-temple-gold text-temple-navy font-black tracking-[0.3em] uppercase text-xs px-4 py-2 mb-8 -skew-x-12">
+          <div className="inline-block bg-temple-red text-white font-black tracking-[0.4em] uppercase text-xs px-6 py-3 mb-10 -skew-x-12 shadow-2xl border-2 border-white/20">
             {siteConfig.slogan}
           </div>
           
-          <h1 className="font-serif text-6xl md:text-8xl font-black mb-8 leading-none uppercase tracking-tighter">
-            <span className="block italic-sport text-temple-gold drop-shadow-2xl">RETO</span>
-            <span className="block text-white">ÍNTEGROS</span>
-            <span className="text-2xl md:text-4xl block mt-4 tracking-normal font-sans font-light opacity-80">{siteConfig.tagline}</span>
+          <h1 className="font-serif text-6xl md:text-9xl font-black mb-12 leading-none uppercase tracking-tighter text-glow">
+            <span className="block italic-sport text-temple-gold drop-shadow-2xl hover-glitch transition-all duration-300">RETO</span>
+            <span className="block text-white hover-glitch transition-all duration-300">ÍNTEGROS</span>
+            <span className="text-xl md:text-3xl block mt-6 tracking-[0.5em] font-sans font-black opacity-40 italic-sport uppercase">{siteConfig.tagline}</span>
           </h1>
           
-          <p className="max-w-3xl text-xl md:text-2xl mb-12 opacity-90 leading-relaxed font-light">
-            Forja un carácter inquebrantable. Entrenamiento híbrido, nutrición bio-optimizada y una hermandad que no conoce límites.
+          <p className="max-w-3xl text-xl md:text-3xl mb-16 opacity-90 leading-tight font-bold uppercase italic-sport border-l-8 border-temple-gold pl-8 text-left">
+            Forja un carácter inquebrantable. <br/>
+            <span className="text-lg md:text-xl font-medium normal-case italic opacity-60">Entrenamiento híbrido, nutrición bio-optimizada y una hermandad que no conoce límites.</span>
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6">
+          <div className="flex flex-col sm:flex-row gap-8">
             <a 
               href={`https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(siteConfig.contact.message)}`}
               target="_blank" 
               rel="noopener noreferrer"
-              className="group flex items-center justify-center gap-4 bg-temple-red text-white px-10 py-5 font-black text-xl uppercase tracking-widest skew-btn shadow-[8px_8px_0px_0px_#C5A059] hover:shadow-none transition-all"
+              className="group flex items-center justify-center gap-6 bg-temple-red text-white px-12 py-6 font-black text-2xl uppercase tracking-widest skew-btn shadow-[15px_15px_0px_0px_#C5A059] hover:shadow-none transition-all border-2 border-white/20"
             >
               Unirse al Escuadrón
-              <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform" />
+              <ArrowRight className="h-8 w-8 group-hover:translate-x-2 transition-transform" />
             </a>
           </div>
-        </div>
-        
-        {/* Scroll Indicator Overlay */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
-          <div className="w-1 h-12 bg-gradient-to-b from-temple-gold to-transparent rounded-full"></div>
         </div>
       </section>
 
       {/* Metrics / Key Values */}
-      <section className="py-32 bg-temple-cream relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-temple-navy to-transparent opacity-10"></div>
-        
+      <section className="py-32 bg-temple-cream relative overflow-hidden z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-24">
-            <h2 className="font-serif text-4xl md:text-6xl font-black text-temple-navy uppercase italic-sport mb-6">
-              Nuestros <span className="text-temple-red">Pilares</span>
+            <h2 className="font-serif text-6xl md:text-8xl font-black text-temple-navy uppercase italic-sport mb-6 hover-glitch">
+              NUESTROS <span className="text-temple-red">PILARES</span>
             </h2>
-            <div className="w-24 h-2 bg-temple-gold mx-auto -skew-x-12"></div>
+            <div className="w-32 h-3 bg-temple-gold mx-auto -skew-x-12 shadow-[6px_6px_0px_0px_#002147]"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {features.map((feature) => {
               const Icon = IconMap[feature.icon];
               return (
-                <div key={feature.id} className="glass-panel p-10 metric-card group">
-                  <div className={`w-16 h-16 bg-vibrant-navy flex items-center justify-center mb-8 -skew-x-12 group-hover:rotate-6 transition-transform`}>
-                    {Icon && <Icon className="h-8 w-8 text-temple-gold" />}
+                <div key={feature.id} className="brutalist-card p-10 group hover:scale-[1.02] hover:!shadow-[20px_20px_0px_0px_#C5A059] transition-all">
+                  <div className="w-20 h-20 bg-temple-navy flex items-center justify-center mb-8 -skew-x-12 shadow-[6px_6px_0px_0px_#D32F2F]">
+                    {Icon && <Icon className="h-10 w-10 text-temple-gold" />}
                   </div>
                   <h3 className="font-serif text-3xl font-black text-temple-navy mb-4 uppercase italic-sport">{feature.title}</h3>
-                  <p className="text-temple-navy/70 text-lg leading-relaxed">{feature.description}</p>
+                  <p className="text-temple-navy/70 text-lg leading-relaxed font-medium">{feature.description}</p>
                 </div>
               );
             })}
@@ -85,43 +82,48 @@ export default function Home() {
       </section>
 
       {/* Dynamic Stats Row */}
-      <section className="bg-vibrant-navy py-20 border-y-4 border-temple-gold/20">
+      <section className="bg-temple-navy py-20 border-y-8 border-temple-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-            <div>
-              <div className="text-5xl font-black text-temple-gold mb-2 italic-sport">+500</div>
-              <div className="text-white/60 uppercase tracking-widest text-xs font-bold">Atletas</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <div className="space-y-2">
+                <p class="text-[10px] font-black text-temple-gold uppercase tracking-[0.5em]">COMUNIDAD</p>
+                <div className="text-7xl font-black text-white italic-sport text-glow">+500</div>
+                <div className="text-white/40 uppercase tracking-widest text-[9px] font-bold">Atletas de Élite</div>
             </div>
-            <div>
-              <div className="text-5xl font-black text-temple-gold mb-2 italic-sport">21</div>
-              <div className="text-white/60 uppercase tracking-widest text-xs font-bold">Días Clave</div>
+            <div className="space-y-2">
+                <p class="text-[10px] font-black text-temple-gold uppercase tracking-[0.5em]">SISTEMA</p>
+                <div className="text-7xl font-black text-white italic-sport text-glow">21</div>
+                <div className="text-white/40 uppercase tracking-widest text-[9px] font-bold">Días de Forja</div>
             </div>
-            <div>
-              <div className="text-5xl font-black text-temple-gold mb-2 italic-sport">100%</div>
-              <div className="text-white/60 uppercase tracking-widest text-xs font-bold">Compromiso</div>
+            <div className="space-y-2">
+                <p class="text-[10px] font-black text-temple-gold uppercase tracking-[0.5em]">ENFOQUE</p>
+                <div className="text-7xl font-black text-white italic-sport text-glow">100%</div>
+                <div className="text-white/40 uppercase tracking-widest text-[9px] font-bold">Compromiso Radical</div>
             </div>
-            <div>
-              <div className="text-5xl font-black text-temple-gold mb-2 italic-sport">∞</div>
-              <div className="text-white/60 uppercase tracking-widest text-xs font-bold">Propósito</div>
+            <div className="space-y-2">
+                <p class="text-[10px] font-black text-temple-gold uppercase tracking-[0.5em]">LEGADO</p>
+                <div className="text-7xl font-black text-white italic-sport text-glow">∞</div>
+                <div className="text-white/40 uppercase tracking-widest text-[9px] font-bold">Propósito Eterno</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Social Proof with Premium Layout */}
-      <section className="py-32 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-            <div className="max-w-2xl">
-              <h2 className="font-serif text-5xl md:text-7xl font-black text-temple-navy uppercase leading-none mb-6">
-                Testimonios <span className="text-temple-gold block">Inquebrantables</span>
+      <section className="py-32 bg-white relative overflow-hidden">
+        <div className="absolute left-0 top-0 w-1/3 h-full bg-temple-navy/5 -skew-x-12 transform -translate-x-32"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
+            <div className="max-w-3xl">
+              <h2 className="font-serif text-6xl md:text-8xl font-black text-temple-navy uppercase leading-none mb-8 hover-glitch">
+                TESTIMONIOS <br/><span className="text-temple-gold">INQUEBRANTABLES</span>
               </h2>
-              <p className="text-xl text-temple-navy/60">Historias reales de transformación física y espiritual en TempleFit.</p>
+              <p className="text-2xl text-temple-navy/60 font-bold uppercase italic-sport border-l-4 border-temple-red pl-6">Historias reales de transformación física y espiritual.</p>
             </div>
-            <div className="flex gap-4">
-              <div className="w-12 h-1 bg-temple-red -skew-x-12"></div>
-              <div className="w-12 h-1 bg-temple-gold -skew-x-12"></div>
-              <div className="w-12 h-1 bg-temple-navy -skew-x-12"></div>
+            <div className="hidden lg:flex gap-4">
+              <div className="w-16 h-2 bg-temple-red -skew-x-12 shadow-lg"></div>
+              <div className="w-16 h-2 bg-temple-gold -skew-x-12 shadow-lg"></div>
+              <div className="w-16 h-2 bg-temple-navy -skew-x-12 shadow-lg"></div>
             </div>
           </div>
 
@@ -129,23 +131,22 @@ export default function Home() {
             {testimonials.map((t, i) => {
               const Icon = TestimonialIconMap[Object.keys(TestimonialIconMap)[i % 3]];
               return (
-                <div key={i} className="relative group">
-                  <div className="absolute -inset-2 bg-gradient-to-r from-temple-gold to-temple-red opacity-0 group-hover:opacity-10 transition-opacity blur-lg"></div>
-                  <div className="relative bg-temple-cream p-12 border-l-8 border-temple-navy shadow-xl">
-                    <div className="text-temple-gold mb-8">{Icon && <Icon className="h-6 w-6" />}</div>
-                    <p className="text-temple-navy text-xl italic mb-10 leading-relaxed font-medium">
+                <div key={i} className="brutalist-card p-12 !shadow-[15px_15px_0px_0px_#002147] hover:!shadow-[20px_20px_0px_0px_#D32F2F] transition-all group">
+                    <div className="text-temple-gold mb-10 group-hover:scale-110 transition-transform">
+                        {Icon && <Icon className="h-10 w-10" />}
+                    </div>
+                    <p className="text-temple-navy text-2xl italic mb-12 leading-tight font-black uppercase italic-sport">
                       &quot;{t.text}&quot;
                     </p>
-                    <div className="flex items-center gap-5">
-                      <div className="w-14 h-14 bg-vibrant-navy -skew-x-12 flex items-center justify-center text-white font-black text-xl italic">
+                    <div className="flex items-center gap-6 border-t border-temple-navy/10 pt-10">
+                      <div className="w-16 h-16 bg-temple-navy -skew-x-12 flex items-center justify-center text-temple-gold font-black text-2xl italic shadow-[6px_6px_0px_0px_#C5A059]">
                         {t.initial}
                       </div>
                       <div>
-                        <h4 className="font-black text-temple-navy uppercase text-lg tracking-tighter">{t.author}</h4>
-                        <span className="text-temple-red font-bold text-sm uppercase tracking-widest">{t.role}</span>
+                        <h4 className="font-black text-temple-navy uppercase text-xl tracking-tighter">{t.author}</h4>
+                        <span className="text-temple-red font-black text-xs uppercase tracking-widest">{t.role}</span>
                       </div>
                     </div>
-                  </div>
                 </div>
               );
             })}
@@ -154,19 +155,21 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 bg-temple-navy relative overflow-hidden">
+      <section className="py-32 bg-temple-navy relative overflow-hidden border-t-8 border-temple-gold">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-fixed"></div>
-        <div className="relative max-w-5xl mx-auto px-4 text-center">
-          <h2 className="font-serif text-5xl md:text-7xl font-black text-white uppercase italic-sport mb-10 leading-tight">
-            ¿Estás listo para <span className="text-temple-gold">trascender</span>?
+        <div className="relative max-w-5xl mx-auto px-4 text-center space-y-12">
+          <h2 className="font-serif text-6xl md:text-[10rem] font-black text-white uppercase italic-sport leading-none text-glow hover-glitch">
+            ¿LISTO PARA <br/><span className="text-temple-gold">TRASCENDER</span>?
           </h2>
-          <a 
-            href="https://wa.me/59169127691" 
-            target="_blank" 
-            className="inline-block bg-white text-temple-navy px-12 py-6 font-black text-2xl uppercase tracking-widest skew-btn hover:bg-temple-gold transition-colors"
-          >
-            Reservar Mi Cupo Ahora
-          </a>
+          <div className="pt-12">
+            <a 
+              href={`https://wa.me/${siteConfig.contact.whatsapp}`}
+              target="_blank" 
+              className="inline-block bg-white text-temple-navy px-16 py-8 font-black text-3xl uppercase tracking-widest skew-btn shadow-[20px_20px_0px_0px_#D32F2F] hover:shadow-none hover:bg-temple-gold transition-all border-4 border-temple-navy"
+            >
+              Reservar Mi Cupo Ahora
+            </a>
+          </div>
         </div>
       </section>
     </div>

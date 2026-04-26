@@ -44,6 +44,38 @@ body {
   }
 
   .italic-sport {
-    @apply italic -skew-x-6;
+    @apply italic -skew-x-12 inline-block transform;
   }
+
+  .brutalist-card {
+    @apply bg-white border-4 border-temple-navy shadow-[10px_10px_0px_0px_#002147] transition-all duration-300;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 15px rgba(255,255,255,0.4), 0 0 30px rgba(197,160,89,0.2);
+  }
+
+  .skew-divider-bottom {
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  }
+
+  .scanlines {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .dynamic-overlay {
+    @apply absolute inset-0 pointer-events-none mix-blend-overlay;
+    background: radial-gradient(circle at 50% 50%, rgba(197, 160, 89, 0.1), transparent 70%);
+  }
+}
+
+.hover-glitch:hover {
+  text-shadow: 2px 2px #D32F2F, -2px -2px #C5A059;
+  transition: text-shadow 0.1s;
 }
