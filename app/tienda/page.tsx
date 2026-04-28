@@ -11,7 +11,7 @@ export default function TiendaPage() {
   return (
     <div className="animate-fade-in-up bg-temple-cream min-h-screen">
       {/* Header Section */}
-      <section className="bg-vibrant-navy text-temple-cream py-20 relative overflow-hidden">
+      <section className="bg-temple-navy bg-vibrant-navy text-temple-cream py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="inline-block bg-temple-gold text-temple-navy font-black tracking-widest uppercase text-xs px-4 py-2 mb-6 -skew-x-12">

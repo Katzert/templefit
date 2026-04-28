@@ -11,7 +11,7 @@ export default function AlianzasPage() {
   return (
     <div className="animate-fade-in-up bg-temple-cream">
       {/* B2B Hero Section */}
-      <section className="bg-vibrant-navy text-temple-cream py-24 lg:py-40 relative overflow-hidden">
+      <section className="bg-temple-navy bg-vibrant-navy text-temple-cream py-24 lg:py-40 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-2/3 h-full opacity-10 pointer-events-none -skew-x-12 translate-x-1/4">
           <Handshake className="w-full h-full text-temple-gold" />
         </div>

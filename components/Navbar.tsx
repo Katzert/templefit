@@ -13,11 +13,11 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-24">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center gap-4 group">
-              <div className="bg-white p-2 border-4 border-temple-navy shadow-[4px_4px_0px_0px_#C5A059] group-hover:rotate-6 transition-transform">
-                <Dumbbell className="h-10 w-10 text-temple-navy" />
+              <div className="bg-white p-1.5 md:p-2 border-[3px] md:border-4 border-temple-navy shadow-[2px_2px_0px_0px_#C5A059] md:shadow-[4px_4px_0px_0px_#C5A059] group-hover:rotate-6 transition-transform">
+                <Dumbbell className="h-6 w-6 md:h-10 md:w-10 text-temple-navy" />
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-3xl font-black tracking-tighter text-white uppercase italic-sport hover-glitch">Temple<span className="text-temple-gold">fit</span></span>
+                <span className="font-serif text-xl md:text-3xl font-black tracking-tighter text-white uppercase italic-sport hover-glitch">Temple<span className="text-temple-gold">fit</span></span>
                 <span className="text-[7px] font-black tracking-[0.4em] text-temple-gold/60 uppercase">Comando Táctico</span>
               </div>
             </Link>
