@@ -29,10 +29,10 @@ export default function Home() {
             {siteConfig.slogan}
           </div>
           
-          <h1 className="font-serif text-6xl md:text-9xl font-black mb-12 leading-none uppercase tracking-tighter text-glow">
+          <h1 className="font-serif text-5xl sm:text-7xl md:text-9xl font-black mb-12 leading-none uppercase tracking-tighter text-glow">
             <span className="block italic-sport text-temple-gold drop-shadow-2xl hover-glitch transition-all duration-300">RETO</span>
             <span className="block text-white hover-glitch transition-all duration-300">ÍNTEGROS</span>
-            <span className="text-xl md:text-3xl block mt-6 tracking-[0.5em] font-sans font-black opacity-40 italic-sport uppercase">{siteConfig.tagline}</span>
+            <span className="text-lg md:text-3xl block mt-6 tracking-[0.2em] md:tracking-[0.5em] font-sans font-black opacity-40 italic-sport uppercase">{siteConfig.tagline}</span>
           </h1>
           
           <p className="max-w-3xl text-xl md:text-3xl mb-16 opacity-90 leading-tight font-bold uppercase italic-sport border-l-8 border-temple-gold pl-8 text-left">
@@ -45,10 +45,10 @@ export default function Home() {
               href={`https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(siteConfig.contact.message)}`}
               target="_blank" 
               rel="noopener noreferrer"
-              className="group flex items-center justify-center gap-6 bg-temple-red text-white px-12 py-6 font-black text-2xl uppercase tracking-widest skew-btn shadow-[15px_15px_0px_0px_#C5A059] hover:shadow-none transition-all border-2 border-white/20"
+              className="group flex items-center justify-center gap-6 bg-temple-red text-white px-8 md:px-12 py-5 md:py-6 font-black text-xl md:text-2xl uppercase tracking-widest skew-btn shadow-[8px_8px_0px_0px_#C5A059] md:shadow-[15px_15px_0px_0px_#C5A059] hover:shadow-none transition-all border-2 border-white/20"
             >
               Unirse al Escuadrón
-              <ArrowRight className="h-8 w-8 group-hover:translate-x-2 transition-transform" />
+              <ArrowRight className="h-6 md:h-8 w-6 md:w-8 group-hover:translate-x-2 transition-transform" />
             </a>
           </div>
         </div>
@@ -58,10 +58,10 @@ export default function Home() {
       <section className="py-32 bg-temple-cream relative overflow-hidden z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-24">
-            <h2 className="font-serif text-6xl md:text-8xl font-black text-temple-navy uppercase italic-sport mb-6 hover-glitch">
+            <h2 className="font-serif text-4xl sm:text-6xl md:text-8xl font-black text-temple-navy uppercase italic-sport mb-6 hover-glitch">
               NUESTROS <span className="text-temple-red">PILARES</span>
             </h2>
-            <div className="w-32 h-3 bg-temple-gold mx-auto -skew-x-12 shadow-[6px_6px_0px_0px_#002147]"></div>
+            <div className="w-24 md:w-32 h-2 md:h-3 bg-temple-gold mx-auto -skew-x-12 shadow-[4px_4px_0px_0px_#002147] md:shadow-[6px_6px_0px_0px_#002147]"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -101,9 +101,9 @@ export default function Home() {
                 <div className="text-white/40 uppercase tracking-widest text-[9px] font-bold">Compromiso Radical</div>
             </div>
             <div className="space-y-2">
-                <p class="text-[10px] font-black text-temple-gold uppercase tracking-[0.5em]">LEGADO</p>
-                <div className="text-7xl font-black text-white italic-sport text-glow">∞</div>
-                <div className="text-white/40 uppercase tracking-widest text-[9px] font-bold">Propósito Eterno</div>
+                <p class="text-[9px] md:text-[10px] font-black text-temple-gold uppercase tracking-[0.3em] md:tracking-[0.5em]">LEGADO</p>
+                <div className="text-5xl md:text-7xl font-black text-white italic-sport text-glow">∞</div>
+                <div className="text-white/40 uppercase tracking-widest text-[8px] md:text-[9px] font-bold">Propósito Eterno</div>
             </div>
           </div>
         </div>
@@ -158,7 +158,7 @@ export default function Home() {
       <section className="py-32 bg-temple-navy relative overflow-hidden border-t-8 border-temple-gold">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-fixed"></div>
         <div className="relative max-w-5xl mx-auto px-4 text-center space-y-12">
-          <h2 className="font-serif text-6xl md:text-[10rem] font-black text-white uppercase italic-sport leading-none text-glow hover-glitch">
+          <h2 className="font-serif text-5xl md:text-[10rem] font-black text-white uppercase italic-sport leading-none text-glow hover-glitch">
             ¿LISTO PARA <br/><span className="text-temple-gold">TRASCENDER</span>?
           </h2>
           <div className="pt-12">

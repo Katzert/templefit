@@ -4,7 +4,7 @@ import { Dumbbell, Instagram, Facebook, Youtube } from 'lucide-react';
 export default function Footer() {
   return (
     <footer className="py-24 bg-temple-navy border-t-8 border-temple-gold relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('bg_dynamic.png')] bg-fixed pointer-events-none"></div>
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('/templefit/dashboard/bg_dynamic.png')] bg-fixed pointer-events-none"></div>
         
         <div className="container mx-auto px-6 space-y-24 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
