@@ -87,6 +87,14 @@ function setupCharts() {
     Chart.defaults.color = BRAND.navy;
     Chart.defaults.font.family = "'Outfit', sans-serif";
     Chart.defaults.font.weight = '900';
+    
+    // Tooltip global defaults for visibility
+    Chart.defaults.plugins.tooltip.backgroundColor = BRAND.navy;
+    Chart.defaults.plugins.tooltip.titleColor = '#FFF';
+    Chart.defaults.plugins.tooltip.bodyColor = '#FFF';
+    Chart.defaults.plugins.tooltip.padding = 12;
+    Chart.defaults.plugins.tooltip.cornerRadius = 0;
+    Chart.defaults.plugins.tooltip.displayColors = true;
 
     const canvas1 = document.getElementById('incomeExpenseChart');
     if (canvas1) {

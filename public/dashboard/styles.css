@@ -270,7 +270,6 @@ body::before {
 .brutalist-card {
     border: 3px solid var(--temple-navy);
     box-shadow: 6px 6px 0px 0px var(--temple-gold);
-    background: white;
     transition: all 0.2s ease;
 }
 
