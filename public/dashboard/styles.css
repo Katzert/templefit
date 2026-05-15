@@ -1,355 +1,236 @@
-/* TEMPLEFIT Victory Dashboard - Coherent & Dynamic Edition */
+/* TEMPLEFIT Pro Max Dashboard - Premium Bento Tactical Edition */
 
 :root {
     --temple-navy: #002147;
+    --temple-navy-dark: #001630;
     --temple-gold: #C5A059;
+    --temple-gold-bright: #E5C079;
     --temple-red: #D32F2F;
     --temple-cream: #F9F6F0;
+    --glass-bg: rgba(0, 33, 71, 0.7);
+    --glass-border: rgba(197, 160, 89, 0.3);
 }
 
-/* Base */
+/* Base Reset & Core */
 body {
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background: var(--temple-cream);
-    color: var(--temple-navy);
+    background-color: var(--temple-navy-dark);
+    background-image: radial-gradient(circle at 50% -20%, #003366 0%, var(--temple-navy-dark) 70%);
+    color: white;
     font-family: 'Outfit', sans-serif;
-}
-
-/* Sport Dividers */
-.skew-divider-top {
-    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
-    margin-top: -5vw;
-}
-
-.skew-divider-bottom {
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
-    margin-bottom: -5vw;
-}
-
-/* Hero & Dynamic Sections */
-.section-dynamic {
-    position: relative;
-    background: var(--temple-navy);
-    color: white;
-    overflow: hidden;
-}
-
-.dynamic-overlay {
-    position: absolute;
-    inset: 0;
-    background-image: url('bg_dynamic.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.15;
-    mix-blend-mode: luminosity;
-    filter: brightness(1.2) contrast(1.1);
-    transition: transform 10s ease-out;
-}
-
-.section-dynamic:hover .dynamic-overlay {
-    transform: scale(1.05);
-}
-
-/* Glass Panels (Home Coherence) */
-.glass-panel {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
-.glass-panel-dark {
-    background: rgba(0, 33, 71, 0.8);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Sport Buttons (Exact Home Replicant) */
-.skew-btn {
-    background: var(--temple-red);
-    color: white;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 1.25rem 2.5rem;
-    transform: skewX(-12deg);
-    box-shadow: 8px 8px 0px 0px var(--temple-gold);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: none;
-    cursor: pointer;
-}
-
-.skew-btn > * {
-    transform: skewX(12deg);
-}
-
-.skew-btn:hover {
-    transform: skewX(-12deg) translateY(-4px);
-    box-shadow: 0px 0px 0px 0px var(--temple-gold);
-    background: white;
-    color: var(--temple-navy);
-}
-
-/* Typography italics for sports feel */
-.italic-sport {
-    font-style: italic;
-    transform: skewX(-6deg);
-    display: inline-block;
-}
-
-/* Service Showcase Cards */
-.service-card {
-    position: relative;
-    height: 350px;
-    overflow: hidden;
-    border-radius: 0;
-    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-@media (min-width: 768px) {
-    .service-card {
-        height: 450px;
-    }
-}
-
-.service-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(1) contrast(1.1);
-    transition: all 0.8s ease, opacity 0.5s ease-in;
-    opacity: 1;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-img[loading="lazy"] {
-    animation: fadeIn 0.5s ease-in;
-}
-
-.service-card:hover img {
-    filter: grayscale(0) contrast(1);
-    transform: scale(1.1);
-}
-
-.service-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, var(--temple-navy) 0%, transparent 60%);
-    opacity: 0.9;
-}
-
-.service-content {
-    position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    right: 2rem;
-    color: white;
-}
-
-/* Metrics Dynamism */
-.metric-card {
-    transition: all 0.4s ease;
-}
-
-.metric-card:hover {
-    transform: translateY(-8px) skewX(-2deg);
-    border-color: var(--temple-gold);
-}
-
-/* Charts */
-.chart-container {
-    background: white;
-    padding: 2.5rem;
-    box-shadow: 0 30px 60px -12px rgba(0, 33, 71, 0.15);
-}
-
-/* Range Slider (Tactical/Sport) */
-input[type="range"] {
-    -webkit-appearance: none;
-    background: rgba(0, 33, 71, 0.1);
-    height: 12px;
-}
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 30px;
-    height: 30px;
-    background: var(--temple-gold);
-    border: 3px solid white;
-    transform: skewX(-12deg);
-    cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-/* Fase Cards & Roadmap */
-.phase-card {
-    background: white;
-    padding: 2.5rem;
-    border-left: 8px solid transparent;
-    cursor: pointer;
-    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-.phase-card:hover {
-    transform: translateX(10px);
-    background: #fff;
-    box-shadow: 0 20px 40px -10px rgba(0, 33, 71, 0.1);
-}
-
-.phase-card.active {
-    background: var(--temple-navy);
-    border-left-color: var(--temple-gold);
-    transform: translateX(10px) scale(1.02);
-}
-
-@media (min-width: 768px) {
-    .phase-card.active {
-        transform: translateX(20px) scale(1.02);
-    }
-}
-
-.phase-card.active h3 {
-    color: var(--temple-gold);
-}
-
-.phase-card.active p {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-@keyframes float {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(-10px, -20px); }
-    100% { transform: translate(0, 0); }
-}
-
-.animate-float {
-    animation: float 6s ease-in-out infinite;
-    will-change: transform;
-}
-
-/* Tactical & Gritty Enhancements */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.05;
-    z-index: 9999;
-    pointer-events: none;
-    mix-blend-mode: overlay;
-}
-
-.scanlines {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        transparent 50%,
-        rgba(0, 33, 71, 0.02) 50%
-    );
-    background-size: 100% 4px;
-    z-index: 9998;
-    pointer-events: none;
-}
-
-/* Glow & Intensity */
-.text-glow {
-    text-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
-}
-
-.text-glow-red {
-    text-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
-}
-
-/* Aggressive Brutalism */
-.brutalist-card {
-    border: 3px solid var(--temple-navy);
-    box-shadow: 6px 6px 0px 0px var(--temple-gold);
-    transition: all 0.2s ease;
-}
-
-@media (min-width: 768px) {
-    .brutalist-card {
-        border: 4px solid var(--temple-navy);
-        box-shadow: 12px 12px 0px 0px var(--temple-gold);
-    }
-}
-
-.brutalist-card:hover {
-    box-shadow: 16px 16px 0px 0px var(--temple-red);
-}
-
-/* Navigation Vibe */
-.nav-link-vibe {
-    position: relative;
-    padding: 0.5rem 1rem;
-    overflow: hidden;
-}
-
-.nav-link-vibe::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: var(--temple-gold);
-    transition: left 0.3s ease;
-}
-
-.nav-link-vibe:hover::after {
-    left: 0;
-}
-
-/* Glitch Animation for Headers */
-@keyframes glitch {
-    0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0); }
-}
-
-.hover-glitch:hover {
-    animation: glitch 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
-}
-
-/* Enhanced Range Slider */
-input[type="range"] {
-    background: rgba(0, 33, 71, 0.05);
-    height: 20px;
-    border: 2px solid var(--temple-navy);
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    width: 30px;
-    height: 30px;
-    border-radius: 0;
-    background: var(--temple-red);
-    border: 3px solid var(--temple-navy);
-}
-
-@media (min-width: 768px) {
-    input[type="range"]::-webkit-slider-thumb {
-        width: 40px;
-        height: 40px;
-    }
-}
-
-/* Fix for horizontal overflow on mobile */
-.overflow-x-hidden {
     overflow-x: hidden;
 }
 
-@media (max-width: 640px) {
-    .italic-sport {
-        transform: skewX(-4deg);
+/* Modern Bento Grid System */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    .bento-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+    .bento-grid { grid-template-columns: repeat(4, 1fr); }
+    .col-span-2 { grid-column: span 2; }
+    .row-span-2 { grid-row: span 2; }
+}
+
+/* Premium Warm Card (Glass + Rounded) */
+.tactical-card {
+    background: rgba(0, 15, 33, 0.85) !important;
+    backdrop-filter: blur(24px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .tactical-card {
+        padding: 3.5rem;
     }
 }
 
+.tactical-card * {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .bento-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+    }
+}
+
+.elegant-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 900;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+/* Image overlay gradient fix for Ecosystem cards */
+.tactical-card.group > .absolute.inset-0 {
+    background: linear-gradient(to bottom, rgba(0, 15, 33, 0.7) 0%, rgba(0, 15, 33, 0.3) 35%, transparent 70%) !important;
+    z-index: 10;
+}
+
+.tactical-card.group:hover > .absolute.inset-0 {
+    background: linear-gradient(to bottom, rgba(0, 15, 33, 0.8) 0%, rgba(0, 15, 33, 0.4) 40%, rgba(0, 15, 33, 0.1) 80%) !important;
+}
+
+/* Hero Overlay to fix missing Tailwind class */
+.hero-overlay {
+    background: linear-gradient(to right, rgba(0, 15, 33, 0.95) 0%, rgba(0, 15, 33, 0.8) 40%, rgba(0, 0, 0, 0.3) 100%) !important;
+}
+
+/* Roadmap Overlay */
+.roadmap-overlay {
+    background: linear-gradient(to bottom, rgba(0, 15, 33, 0.9) 0%, rgba(0, 15, 33, 0.4) 40%, transparent 100%) !important;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.roadmap-text-container {
+    z-index: 50 !important;
+}
+
+.tactical-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(197, 160, 89, 0.4);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.text-tactical {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.italic-sport {
+    font-style: normal;
+    display: inline-block;
+}
+
+.label-tactical {
+    font-size: 0.65rem;
+    font-weight: 900;
+    color: var(--temple-gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+}
+
+/* Animations Removed */
+
+/* Pulse Operativo */
+.pulse-status {
+    width: 10px;
+    height: 10px;
+    background: var(--temple-red);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--temple-red);
+    animation: pulse-red 2s infinite;
+}
+
+.marquee span::after {
+    content: "CRECIMIENTO ACTIVO // IMPACTO COMUNITARIO // CRECIMIENTO ACTIVO // IMPACTO COMUNITARIO // CRECIMIENTO ACTIVO // IMPACTO COMUNITARIO // ";
+}
+
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(211, 47, 47, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+}
+
+/* Decorators Removed */
+
+.header-glass {
+    background: rgba(0, 11, 24, 0.98);
+    backdrop-filter: blur(25px);
+    border-bottom: 2px solid var(--temple-gold);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.tactical-label-small {
+    font-size: 8px;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-weight: 700;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+    display: inline-block;
+    animation: marquee 30s linear infinite;
+}
+
+/* Custom Scrollbar for Form */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--temple-gold);
+}
+
+/* Mobile Fixes */
+@media (max-width: 640px) {
+    .skew-fix { transform: none !important; }
+    .text-huge { font-size: 2.5rem !important; }
+    .px-mobile { padding-left: 1.5rem; padding-right: 1.5rem; }
+    
+    .floating-projection {
+        position: static !important;
+        transform: none !important;
+        margin-top: 2rem;
+        width: 100% !important;
+    }
+}
+
+/* Chart Customization */
+.chart-container-premium {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+}
+
+/* Background Styles */
+
+/* Header Glass - Resolved duplicate */
+.header-glass {
+    background: rgba(0, 11, 24, 0.95) !important;
+    backdrop-filter: blur(25px) !important;
+    border-bottom: 2px solid var(--temple-gold);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+}
+
+/* Utility fix for horizontal slider */
+.shrink-0 {
+    flex-shrink: 0 !important;
+}
