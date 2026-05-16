@@ -32,6 +32,7 @@ const INCOME_CATEGORIES = [
 ];
 
 let financialData = [];
+let originalFinancialData = []; // Store baseline for scaling
 let charts = {};
 
 // --- CALCULATION LOGIC ---
@@ -43,10 +44,10 @@ function calculateScaling(months) {
     const avgProfit = (totalInc - totalExp) / financialData.length;
     
     const scaledProfitEl = document.getElementById('projectedIncome');
-    if (scaledProfitEl) scaledProfitEl.innerText = `$ ${Math.round(avgProfit * months).toLocaleString()}`;
+    if (scaledProfitEl) scaledProfitEl.innerText = `${Math.round(avgProfit * months).toLocaleString()} Bs.`;
     
     const scaledAthletesEl = document.getElementById('scaledAthletes');
-    if (scaledAthletesEl) scaledAthletesEl.innerText = Math.round(45 * Math.sqrt(months)).toLocaleString();
+    if (scaledAthletesEl) scaledAthletesEl.innerText = Math.round(65 * Math.sqrt(months)).toLocaleString();
 
     document.querySelectorAll('[id^="phase-"]').forEach(c => {
         c.classList.remove('active', 'border-l-temple-gold');
@@ -68,19 +69,53 @@ function calculateScaling(months) {
 
 function calculateInitialTotal() {
     if (!financialData.length) return;
+    const lastMonth = financialData[financialData.length - 1];
     const totalInc = financialData.reduce((acc, d) => acc + parseVal(d['Total Ingresos']), 0);
     const totalExp = financialData.reduce((acc, d) => acc + parseVal(d['Total Gastos']), 0);
-    const avgInc = totalInc / financialData.length;
-    const efficiency = (totalInc > 0) ? (1 - (totalExp / totalInc)) * 100 : 0;
+    const efficiency = (totalInc > 0) ? ((totalInc - totalExp) / totalInc) * 100 : 0;
 
-    const mainDisplay = document.getElementById('totalIncomeDisplay');
-    if (mainDisplay) mainDisplay.innerText = `$ ${Math.round(totalInc).toLocaleString()}`;
+    // Update Hero Stats
+    const heroAthletes = document.getElementById('heroAthletes');
+    const heroIncome = document.getElementById('heroIncome');
+    const heroEff = document.getElementById('heroEfficiency');
     
-    const indicators = document.querySelectorAll('.indicador-valor');
-    if (indicators.length > 0) indicators[0].innerText = `${Math.round(efficiency)}%`;
+    if (heroAthletes) heroAthletes.innerText = "65"; // As specified by user
+    if (heroIncome) heroIncome.innerText = `${Math.round(parseVal(lastMonth['Total Ingresos'])).toLocaleString()} Bs.`;
+    if (heroEff) heroEff.innerText = `+${Math.round(efficiency)}%`;
+
+    // Update Dashboard Displays
+    const mainDisplay = document.getElementById('totalIncomeDisplay');
+    if (mainDisplay) mainDisplay.innerText = `${Math.round(totalInc).toLocaleString()} Bs.`;
+    
+    const marginInd = document.getElementById('marginIndicator');
+    if (marginInd) marginInd.innerText = `${Math.round(efficiency)}%`;
+
+    const efficiencyEl = document.getElementById('efficiencyValue');
+    if (efficiencyEl) efficiencyEl.innerText = `${efficiency.toFixed(1)}%`;
 }
 
-const parseVal = (v) => parseFloat((v || '0').toString().replace(/[Bs.,\s]/g, ''));
+const parseVal = (v) => {
+    if (typeof v === 'number') return v;
+    let s = (v || '0').toString().trim();
+    // Remove currency and spaces
+    s = s.replace(/[Bs\s]/g, '');
+    // If it has both , and . (e.g. 1,500.00 or 1.500,00)
+    if (s.includes(',') && s.includes('.')) {
+        if (s.indexOf('.') < s.indexOf(',')) { // European style 1.500,00
+            s = s.replace(/\./g, '').replace(',', '.');
+        } else { // US style 1,500.00
+            s = s.replace(/,/g, '');
+        }
+    } else if (s.includes(',')) { // Just comma
+        // If comma is used as decimal separator (e.g. 1500,50)
+        if (s.split(',')[1].length <= 2) s = s.replace(',', '.');
+        else s = s.replace(',', ''); // Or thousands
+    } else if (s.includes('.')) { // Just dot
+        // If dot is used as thousands (e.g. 10.500)
+        if (s.split('.')[1].length === 3 && s.split('.')[0].length <= 3) s = s.replace(/\./g, '');
+    }
+    return parseFloat(s) || 0;
+};
 
 // --- CHART CONFIGURATION ---
 
@@ -146,7 +181,14 @@ function setupCharts() {
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                y: { display: false },
+                y: { 
+                    display: true, 
+                    grid: { color: BRAND.grid }, 
+                    ticks: { 
+                        font: { size: 9 },
+                        callback: (v) => v >= 1000 ? (v/1000).toFixed(1) + 'k' : v
+                    } 
+                },
                 x: { grid: { display: false }, ticks: { font: { size: 10 } } }
             },
             plugins: { legend: { display: false } }
@@ -181,21 +223,25 @@ function setupProfitSimulator() {
             return { ...cat, amount: sum / financialData.length };
         });
 
-        display.innerText = `$ ${Math.round(avgMonthly).toLocaleString()}`;
+        display.innerText = `${Math.round(avgMonthly).toLocaleString()} Bs.`;
         charts.profitPie.data.labels = categoryData.map(c => c.name);
         charts.profitPie.data.datasets[0].data = categoryData.map(c => c.amount);
         charts.profitPie.update();
 
         legend.innerHTML = '';
-        categoryData.slice(0, 3).forEach(cat => {
+        categoryData.forEach(cat => {
+            const percentage = ((cat.amount / totalInc) * 100).toFixed(1);
             const div = document.createElement('div');
-            div.className = 'flex items-center justify-between';
+            div.className = 'flex items-center justify-between border-b border-white/5 pb-2';
             div.innerHTML = `
                 <div class="flex items-center space-x-2">
-                    <div class="w-2 h-2" style="background:${cat.color}"></div>
-                    <span class="text-[9px] font-bold uppercase opacity-60">${cat.name}</span>
+                    <div class="w-3 h-3 rounded-sm" style="background:${cat.color}"></div>
+                    <span class="text-[10px] font-bold uppercase text-white/80">${cat.name}</span>
                 </div>
-                <span class="text-xs font-bold">$ ${Math.round(cat.amount).toLocaleString()}</span>
+                <div class="text-right">
+                    <span class="text-[11px] font-black text-white block">${Math.round(cat.amount).toLocaleString()} Bs.</span>
+                    <span class="text-[9px] text-temple-gold font-bold">${percentage}%</span>
+                </div>
             `;
             legend.appendChild(div);
         });
@@ -210,14 +256,14 @@ function setupCorrectionForm() {
     if (!form) return;
     form.innerHTML = '';
     financialData.forEach((row, i) => {
-        const val = parseVal(row['Total Ingresos']);
+        const val = Math.round(parseVal(row['Total Ingresos']));
         const div = document.createElement('div');
         div.className = 'bg-white/5 p-4 border-l-2 border-temple-gold/30 hover:border-temple-gold transition-all';
         div.innerHTML = `
             <label class="text-[10px] uppercase font-bold text-temple-gold mb-1 block opacity-60">${row.Mes} 2026</label>
             <div class="flex items-center border-b border-white/10 pb-1">
-                <span class="text-white/40 text-xs mr-2 font-bold">$</span>
-                <input type="number" value="${val}" class="bg-transparent text-white font-bold text-xl w-full focus:outline-none"
+                <span class="text-white/40 text-xs mr-2 font-bold">Bs.</span>
+                <input type="number" id="input-month-${i}" value="${val}" class="bg-transparent text-white font-bold text-xl w-full focus:outline-none"
                        oninput="updateData(${i}, this.value)">
             </div>
         `;
@@ -225,22 +271,73 @@ function setupCorrectionForm() {
     });
 }
 
+let currentAthleteFactor = 1;
+
+function updateAthleteSimulation(newCount) {
+    const baseCount = 65;
+    currentAthleteFactor = newCount / baseCount;
+    
+    // Sync all athlete labels
+    const athleteVal = document.getElementById('athleteValue');
+    if (athleteVal) athleteVal.innerText = newCount;
+    
+    const scaledAthletes = document.getElementById('scaledAthletes');
+    if (scaledAthletes) scaledAthletes.innerText = newCount;
+
+    const heroAthletes = document.getElementById('heroAthletes');
+    if (heroAthletes) heroAthletes.innerText = newCount;
+
+    refreshCalculations();
+}
+
 function updateData(index, newValue) {
-    financialData[index]['Total Ingresos'] = newValue;
-    let acc = 0;
-    financialData.forEach(d => {
-        acc += (parseVal(d['Total Ingresos']) - parseVal(d['Total Gastos'] || '9500'));
-        d['Flujo Acumulado'] = acc;
+    // If the user inputs a value while scaled, we treat it as the new baseline for that scale
+    const rawValue = parseVal(newValue);
+    originalFinancialData[index]['Total Ingresos'] = rawValue / currentAthleteFactor;
+    
+    refreshCalculations();
+}
+
+function refreshCalculations() {
+    let accumulator = 0;
+    // Scale everything based on current factor
+    financialData = originalFinancialData.map(row => {
+        const newRow = { ...row };
+        INCOME_CATEGORIES.forEach(cat => {
+            const originalVal = parseVal(row[cat.field]);
+            newRow[cat.field] = originalVal * currentAthleteFactor;
+        });
+        
+        const total = INCOME_CATEGORIES.reduce((acc, cat) => acc + (newRow[cat.field] || 0), 0);
+        newRow['Total Ingresos'] = total;
+
+        // Recalculate Cash Flow (Accumulated)
+        const monthlyProfit = total - parseVal(row['Total Gastos'] || '9200');
+        accumulator += monthlyProfit;
+        newRow['Flujo Acumulado'] = accumulator;
+
+        return newRow;
     });
 
+    // Update charts and metrics
     setupCharts();
     calculateInitialTotal();
+    
+    // Update input values without re-rendering the form to maintain focus
+    financialData.forEach((row, i) => {
+        const input = document.getElementById(`input-month-${i}`);
+        if (input && document.activeElement !== input) {
+            input.value = Math.round(row['Total Ingresos']);
+        }
+    });
+
     if (window.refreshProfitPool) window.refreshProfitPool();
-    calculateScaling(1);
 
     const mainDisplay = document.getElementById('totalIncomeDisplay');
-    mainDisplay.style.opacity = '0.5';
-    setTimeout(() => mainDisplay.style.opacity = '1', 300);
+    if (mainDisplay) {
+        mainDisplay.style.opacity = '0.5';
+        setTimeout(() => mainDisplay.style.opacity = '1', 150);
+    }
 }
 
 // --- INITIALIZATION ---
@@ -259,6 +356,7 @@ async function init() {
                     Object.keys(row).forEach(k => clean[k.trim()] = row[k]);
                     return clean;
                 });
+                originalFinancialData = JSON.parse(JSON.stringify(financialData));
                 start();
             }
         });
