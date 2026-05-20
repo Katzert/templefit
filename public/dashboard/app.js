@@ -362,6 +362,7 @@ async function init() {
         });
     } catch (e) {
         financialData = JSON.parse(JSON.stringify(FALLBACK_DATA));
+        originalFinancialData = JSON.parse(JSON.stringify(FALLBACK_DATA)); // FIX: must also set baseline
         start();
     }
 }
@@ -376,7 +377,8 @@ function start() {
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
             e.preventDefault();
-            document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
     });
 }

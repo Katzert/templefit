@@ -1,4 +1,4 @@
-/* TEMPLEFIT Pro Max Dashboard - Premium Bento Tactical Edition */
+/* TEMPLEFIT Pro Max Dashboard — Clean Edition v8 */
 
 :root {
     --temple-navy: #002147;
@@ -12,8 +12,14 @@
 }
 
 /* Base Reset & Core */
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
 body {
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     background-color: var(--temple-navy-dark);
     background-image: radial-gradient(circle at 50% -20%, #003366 0%, var(--temple-navy-dark) 70%);
     color: white;
@@ -21,113 +27,48 @@ body {
     overflow-x: hidden;
 }
 
-/* Modern Bento Grid System */
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 2.5rem;
-}
-
-@media (min-width: 768px) {
-    .bento-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 1024px) {
-    .bento-grid { grid-template-columns: repeat(4, 1fr); }
-    .col-span-2 { grid-column: span 2; }
-    .row-span-2 { grid-row: span 2; }
-}
-
-/* Premium Warm Card (Glass + Rounded) */
+/* ===========================
+   CARD BASE
+   =========================== */
 .tactical-card {
-    background: rgba(0, 15, 33, 0.85) !important;
-    backdrop-filter: blur(24px) !important;
+    background: rgba(0, 15, 33, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 24px;
+    border-radius: 20px;
     position: relative;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-    padding: 1.5rem;
+    padding: 1.25rem;
 }
 
 @media (min-width: 768px) {
     .tactical-card {
-        padding: 3.5rem;
+        padding: 2rem;
     }
 }
 
-.tactical-card * {
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+.tactical-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(197, 160, 89, 0.35);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-}
-
-@media (min-width: 768px) {
-    .bento-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 2rem;
-    }
-}
-
-.elegant-title {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-weight: 900;
-}
-
+/* Utility: remove card padding for image-fill cards */
 .no-padding {
     padding: 0 !important;
 }
 
-/* Image overlay gradient fix for Ecosystem cards */
-.tactical-card.group > .absolute.inset-0 {
-    background: linear-gradient(to bottom, rgba(0, 15, 33, 0.7) 0%, rgba(0, 15, 33, 0.3) 35%, transparent 70%) !important;
-    z-index: 10;
-}
-
-.tactical-card.group:hover > .absolute.inset-0 {
-    background: linear-gradient(to bottom, rgba(0, 15, 33, 0.8) 0%, rgba(0, 15, 33, 0.4) 40%, rgba(0, 15, 33, 0.1) 80%) !important;
-}
-
-/* Hero Overlay to fix missing Tailwind class */
-.hero-overlay {
-    background: linear-gradient(to right, rgba(0, 15, 33, 0.95) 0%, rgba(0, 15, 33, 0.8) 40%, rgba(0, 0, 0, 0.3) 100%) !important;
-}
-
-/* Roadmap Overlay */
-.roadmap-overlay {
-    background: linear-gradient(to bottom, rgba(0, 15, 33, 0.9) 0%, rgba(0, 15, 33, 0.4) 40%, transparent 100%) !important;
-    z-index: 10;
-    pointer-events: none;
-}
-
-.roadmap-text-container {
-    z-index: 50 !important;
-}
-
-.tactical-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(197, 160, 89, 0.4);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-}
-
-.text-tactical {
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
-.italic-sport {
-    font-style: normal;
-    display: inline-block;
+/* ===========================
+   TYPOGRAPHY
+   =========================== */
+.elegant-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 900;
 }
 
 .label-tactical {
@@ -138,99 +79,109 @@ body {
     text-transform: uppercase;
 }
 
-/* Animations Removed */
+/* ===========================
+   HERO OVERLAY
+   =========================== */
+.hero-overlay {
+    background: linear-gradient(
+        to right,
+        rgba(0, 15, 33, 0.97) 0%,
+        rgba(0, 15, 33, 0.82) 45%,
+        rgba(0, 0, 0, 0.25) 100%
+    );
+}
 
-/* Pulse Operativo */
+@media (max-width: 640px) {
+    .hero-overlay {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 15, 33, 0.55) 0%,
+            rgba(0, 15, 33, 0.92) 65%,
+            rgba(0, 15, 33, 0.99) 100%
+        );
+    }
+}
+
+/* ===========================
+   HEADER
+   =========================== */
+.header-glass {
+    background: rgba(0, 11, 24, 0.97) !important;
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    border-bottom: 2px solid var(--temple-gold);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+}
+
+/* ===========================
+   MOBILE NAV
+   =========================== */
+#mobileNav {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 11, 24, 0.99);
+    border-top: 1px solid rgba(197, 160, 89, 0.2);
+    padding: 0.75rem 0;
+}
+
+#mobileNav.open {
+    display: flex;
+}
+
+#mobileNav a {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s;
+}
+
+#mobileNav a:hover {
+    color: var(--temple-gold);
+    background: rgba(197, 160, 89, 0.08);
+}
+
+/* ===========================
+   PULSE STATUS
+   =========================== */
 .pulse-status {
     width: 10px;
     height: 10px;
     background: var(--temple-red);
     border-radius: 50%;
-    box-shadow: 0 0 15px var(--temple-red);
     animation: pulse-red 2s infinite;
-}
-
-.marquee span::after {
-    content: "CRECIMIENTO ACTIVO // IMPACTO COMUNITARIO // CRECIMIENTO ACTIVO // IMPACTO COMUNITARIO // CRECIMIENTO ACTIVO // IMPACTO COMUNITARIO // ";
+    will-change: box-shadow;
 }
 
 @keyframes pulse-red {
-    0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(211, 47, 47, 0); }
+    0%   { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
+    70%  { box-shadow: 0 0 0 10px rgba(211, 47, 47, 0); }
     100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
 }
 
-/* Decorators Removed */
+/* ===========================
+   SCROLLBAR
+   =========================== */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); border-radius: 2px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: var(--temple-gold); border-radius: 2px; }
 
-.header-glass {
-    background: rgba(0, 11, 24, 0.98);
-    backdrop-filter: blur(25px);
-    border-bottom: 2px solid var(--temple-gold);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+/* ===========================
+   ECOSYSTEM CARDS
+   Note: gradient overlays are applied inline on each card
+   =========================== */
+.tactical-card.group img {
+    display: block;
 }
 
-.tactical-label-small {
-    font-size: 8px;
-    color: rgba(255, 255, 255, 0.3);
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    font-weight: 700;
-}
-
-/* Marquee Animation */
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-    display: inline-block;
-    animation: marquee 30s linear infinite;
-}
-
-/* Custom Scrollbar for Form */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 4px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--temple-gold);
-}
-
-/* Mobile Fixes */
-@media (max-width: 640px) {
-    .skew-fix { transform: none !important; }
-    .text-huge { font-size: 2.5rem !important; }
-    .px-mobile { padding-left: 1.5rem; padding-right: 1.5rem; }
-    
-    .floating-projection {
-        position: static !important;
-        transform: none !important;
-        margin-top: 2rem;
-        width: 100% !important;
-    }
-}
-
-/* Chart Customization */
-.chart-container-premium {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 1.5rem;
-}
-
-/* Background Styles */
-
-/* Header Glass - Resolved duplicate */
-.header-glass {
-    background: rgba(0, 11, 24, 0.95) !important;
-    backdrop-filter: blur(25px) !important;
-    border-bottom: 2px solid var(--temple-gold);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
-}
-
-/* Utility fix for horizontal slider */
-.shrink-0 {
-    flex-shrink: 0 !important;
+/* ===========================
+   PHASE CARDS (Roadmap)
+   =========================== */
+.phase-card-active {
+    border-color: var(--temple-gold) !important;
+    box-shadow: 0 0 30px rgba(197, 160, 89, 0.25) !important;
 }
