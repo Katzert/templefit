@@ -1,65 +1,59 @@
 'use client';
 
 import Link from 'next/link';
-import { Dumbbell, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-temple-navy/95 backdrop-blur-xl text-white sticky top-0 z-[100] border-b-4 border-temple-gold">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-24">
-          <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="flex items-center gap-4 group">
-              <div className="bg-white p-1.5 md:p-2 border-[3px] md:border-4 border-temple-navy shadow-[2px_2px_0px_0px_#C5A059] md:shadow-[4px_4px_0px_0px_#C5A059] group-hover:rotate-6 transition-transform">
-                <Dumbbell className="h-6 w-6 md:h-10 md:w-10 text-temple-navy" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-serif text-xl md:text-3xl font-black tracking-tighter text-white uppercase italic-sport hover-glitch">Temple<span className="text-temple-gold">fit</span></span>
-                <span className="text-[7px] font-black tracking-[0.4em] text-temple-gold/60 uppercase">Comando Táctico</span>
-              </div>
-            </Link>
+    <nav className="header-glass fixed top-0 w-full z-[100]">
+      <div className="container mx-auto px-4 py-2 md:px-6 md:py-4 flex items-center justify-between">
+        <div className="flex items-center space-x-3 md:space-x-4">
+          <Link href="/" className="flex items-center gap-3 md:gap-4 group">
+            <div className="w-8 h-8 md:w-12 md:h-12 bg-white border-2 border-temple-gold flex items-center justify-center shrink-0 rounded transition-transform group-hover:scale-105">
+              {/* Replace with actual logo image later, using placeholder text for now */}
+              <span className="font-bold text-temple-navy">TF</span>
+            </div>
+            <div>
+              <h1 className="text-xl md:text-2xl font-black tracking-tighter text-white uppercase elegant-title not-italic">TEMPLE<span className="text-temple-gold">FIT</span></h1>
+              <p className="hidden sm:block label-tactical text-[8px] mt-0.5">Centro de Impacto y Transformación</p>
+            </div>
+          </Link>
+        </div>
+        
+        <div className="flex items-center space-x-4 md:space-x-12">
+          <div className="hidden md:flex space-x-8 text-[11px] font-black uppercase tracking-widest text-white">
+            <Link href="/" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1">Inicio</Link>
+            <Link href="/alianzas" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1">Franquicias</Link>
+            <Link href="/tienda" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1">Tienda</Link>
+            <Link href="/dashboard" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1 text-white/50">Dashboard</Link>
           </div>
           
-          <div className="hidden md:flex items-center space-x-12 text-[10px] font-black uppercase tracking-widest">
-            <Link href="/" className="hover:text-temple-gold transition-all hover:scale-110 active:scale-95">Inicio</Link>
-            <Link href="/alianzas" className="hover:text-temple-gold transition-all hover:scale-110 active:scale-95">Franquicias</Link>
-            <Link href="/tienda" className="hover:text-temple-gold transition-all hover:scale-110 active:scale-95">Tienda</Link>
-            <Link href="/dashboard" className="hover:text-temple-gold transition-all opacity-40 hover:opacity-100">Panel Inversión</Link>
-            <a 
-              href="https://wa.me/59169127691" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="bg-temple-red text-white px-8 py-3 -skew-x-12 shadow-[6px_6px_0px_0px_#C5A059] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all border-2 border-white/10"
-            >
-              MODO OPERATIVO
-            </a>
+          <div className="md:hidden flex items-center bg-temple-gold/20 px-3 py-1.5 border border-temple-gold/30 rounded-full cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X className="w-4 h-4 text-temple-gold mr-1" /> : <Menu className="w-4 h-4 text-temple-gold mr-1" />}
+            <span className="text-[10px] font-bold text-temple-gold">MENU</span>
           </div>
-
-          <div className="md:hidden flex items-center">
-            <button 
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-temple-gold p-2"
-            >
-              {isOpen ? <X className="h-10 w-10" /> : <Menu className="h-10 w-10" />}
-            </button>
+          
+          <div className="hidden lg:flex items-center bg-temple-red/20 px-4 py-2 border border-temple-red/30 rounded-full cursor-pointer hover:bg-temple-red/30 transition-colors">
+            <span className="w-2 h-2 bg-temple-red rounded-full mr-3 animate-pulse"></span>
+            <span className="text-[10px] font-bold tracking-widest text-white uppercase">UNIRSE AL RETO</span>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-temple-navy border-t-4 border-temple-gold p-8 space-y-8 animate-fade-in-up">
-          <Link href="/" onClick={() => setIsOpen(false)} className="block text-2xl font-black italic-sport text-white hover:text-temple-gold">Inicio</Link>
-          <Link href="/alianzas" onClick={() => setIsOpen(false)} className="block text-2xl font-black italic-sport text-white hover:text-temple-gold">Franquicias</Link>
-          <Link href="/tienda" onClick={() => setIsOpen(false)} className="block text-2xl font-black italic-sport text-white hover:text-temple-gold">Tienda</Link>
-          <Link href="/dashboard" onClick={() => setIsOpen(false)} className="block text-lg font-black text-white/40 italic-sport">Panel Inversión</Link>
+        <div className="md:hidden bg-temple-navy-dark/95 backdrop-blur-md border-t border-temple-gold/30 p-6 space-y-6">
+          <Link href="/" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-white hover:text-temple-gold">Inicio</Link>
+          <Link href="/alianzas" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-white hover:text-temple-gold">Franquicias</Link>
+          <Link href="/tienda" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-white hover:text-temple-gold">Tienda</Link>
+          <Link href="/dashboard" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-white/50 hover:text-temple-gold">Dashboard</Link>
           <a 
             href="https://wa.me/59169127691" 
             target="_blank" 
-            className="block bg-temple-red text-center text-white py-6 font-black text-xl uppercase tracking-widest -skew-x-12 shadow-[10px_10px_0px_0px_#C5A059]"
+            className="block text-center bg-temple-red/20 border border-temple-red/30 text-white py-3 rounded-full font-bold text-xs uppercase tracking-widest"
           >
             Únete al Reto
           </a>

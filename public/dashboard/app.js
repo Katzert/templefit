@@ -37,7 +37,10 @@ let charts = {};
 
 // --- CALCULATION LOGIC ---
 
+let currentScalingMonths = 1;
+
 function calculateScaling(months) {
+    currentScalingMonths = months;
     if (!financialData.length) return;
     const totalInc = financialData.reduce((acc, d) => acc + parseVal(d['Total Ingresos']), 0);
     const totalExp = financialData.reduce((acc, d) => acc + parseVal(d['Total Gastos']), 0);
@@ -322,6 +325,7 @@ function refreshCalculations() {
     // Update charts and metrics
     setupCharts();
     calculateInitialTotal();
+    calculateScaling(currentScalingMonths); // Automatic recalculation of projected income
     
     // Update input values without re-rendering the form to maintain focus
     financialData.forEach((row, i) => {

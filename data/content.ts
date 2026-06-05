@@ -1,54 +1,61 @@
 export const siteConfig = {
   name: "TempleFit",
   slogan: "Centro de Transformación Integral",
-  tagline: "Cuerpo, Mente y Espíritu",
+  tagline: "Valores Eternos",
   contact: {
     whatsapp: "59169127691",
-    message: "Quiero unirme al Reto ÍNTEGROS"
+    message: "Quiero más información sobre TempleFit y el Reto de 21 Días."
   }
 };
 
 export const features = [
   {
-    id: "fuerza",
-    title: "Fuerza Vital",
-    description: "Boxeo, Calistenia y HIIT fusionados para maximizar tu capacidad metabólica y física.",
+    id: "reto21",
+    title: "Reto 21 Días",
+    description: "Programa intensivo de transformación. Hábitos, nutrición y comunidad para reiniciar tu metabolismo y tu mente.",
+    icon: "Target",
+    color: "temple-gold"
+  },
+  {
+    id: "entrenamiento",
+    title: "TempleFit Base",
+    description: "Entrenamiento funcional diario diseñado para forjar disciplina, fuerza real y resistencia inquebrantable.",
     icon: "Flame",
-    color: "temple-gold"
-  },
-  {
-    id: "nutricion",
-    title: "Blindaje Keto",
-    description: "Protocolos nutricionales anti-inflamatorios diseñados para una claridad mental absoluta.",
-    icon: "Shield",
-    color: "temple-gold"
-  },
-  {
-    id: "comunidad",
-    title: "Escuadrón",
-    description: "No entrenas solo. Te rodeas de hombres y mujeres de valores, disciplina y honor.",
-    icon: "Users",
     color: "temple-red"
+  },
+  {
+    id: "neuro",
+    title: "Neuro Espiritual",
+    description: "Mentoría enfocada en inteligencia emocional, ventas y liderazgo bajo principios eternos.",
+    icon: "Brain",
+    color: "temple-gold"
+  },
+  {
+    id: "sabado",
+    title: "Sábado CristoFit",
+    description: "Nuestra reunión semanal cumbre. Integración, entrenamiento al aire libre y crecimiento espiritual comunitario.",
+    icon: "Users",
+    color: "temple-navy"
   }
 ];
 
 export const testimonials = [
   {
-    text: "El reto de 21 días no solo cambió mi físico, sino mi forma de afrontar la vida. La comunidad y los valores cristianos detrás de Templefit me dieron el propósito que me faltaba.",
+    text: "No es solo sudar, es entrenar con propósito. Las unidades de impacto me ayudaron a transformar no solo mi cuerpo sino mi visión de los negocios.",
     author: "Marcos V.",
-    role: "Escuadrón Alpha",
+    role: "Reto 21 Días",
     initial: "M"
   },
   {
-    text: "Increíble ver cómo la nutrición y el ejercicio funcional se complementan. Me siento con más energía y claridad espiritual que nunca.",
+    text: "La hermandad que se forma aquí es real. Sábado CristoFit se ha convertido en el mejor momento de mi semana.",
     author: "Elena R.",
-    role: "Escuadrón Beta",
+    role: "Atleta TempleFit",
     initial: "E"
   },
   {
-    text: "Templefit es más que un gimnasio, es una familia. Los entrenamientos son intensos pero el apoyo de la comunidad es lo que te hace volver.",
+    text: "Integrar mi fe con mis objetivos de salud y liderazgo empresarial me dio la claridad mental que buscaba.",
     author: "Carlos D.",
-    role: "Escuadrón Gamma",
+    role: "Neuro Espiritual",
     initial: "C"
   }
 ];
@@ -56,42 +63,42 @@ export const testimonials = [
 export const products = [
   {
     id: "plan-keto",
-    name: "Plan Keto Pro",
+    name: "Plan Nutricional Integral",
     price: 250,
     category: "Suscripción",
-    description: "5 Comidas Diarias. Optimización metabólica garantizada para el Reto 21 Días.",
+    description: "Acompañamiento nutricional optimizado para el Reto 21 Días.",
     image: "https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=2070&auto=format&fit=crop"
   },
   {
     id: "camiseta-alpha",
-    name: "Camiseta Alpha",
+    name: "Camiseta Oficial TempleFit",
     price: 35,
     category: "Textil",
-    description: "Algodón premium con diseño vintage del escuadrón."
+    description: "Algodón premium con diseño exclusivo de Comando Táctico."
   },
   {
     id: "proteina",
-    name: "Proteína Isolatada",
+    name: "Suplementación Base",
     price: 60,
     category: "Suplemento",
-    description: "Gluten-Free, sabor vainilla francesa."
+    description: "Proteínas e insumos de alta pureza para recuperación."
   }
 ];
 
 export const alliances = [
   {
-    title: "Retención +40%",
-    description: "El sentido de 'Escuadrón' y los valores compartidos crean una adherencia superior.",
-    icon: "TrendingUp"
+    title: "Comunidad Activa",
+    description: "Generamos retención al forjar relaciones genuinas y valores compartidos.",
+    icon: "Users"
   },
   {
-    title: "Venta Cruzada",
-    description: "Incrementamos el LTV a través de nutrición y merchandising premium.",
+    title: "Sistema Integral",
+    description: "4 unidades de impacto que aseguran crecimiento en todas las áreas del usuario.",
     icon: "Target"
   },
   {
-    title: "Llave en Mano",
-    description: "Gestionamos instructores y logística completa en tus instalaciones.",
-    icon: "BarChart3"
+    title: "Crecimiento Sostenible",
+    description: "Un modelo escalable basado en resultados reales y testimonios de transformación.",
+    icon: "TrendingUp"
   }
 ];

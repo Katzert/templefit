@@ -9,68 +9,70 @@ const IconMap: Record<string, any> = {
 
 export default function TiendaPage() {
   return (
-    <div className="animate-fade-in-up bg-temple-cream min-h-screen">
+    <div className="animate-fade-in-up min-h-screen">
       {/* Header Section */}
-      <section className="bg-temple-navy bg-vibrant-navy text-temple-cream py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="inline-block bg-temple-gold text-temple-navy font-black tracking-widest uppercase text-xs px-4 py-2 mb-6 -skew-x-12">
-            Equipamiento & Nutrición de Élite
+      <section className="relative min-h-[50vh] flex items-center pt-32 pb-24 overflow-hidden border-b border-temple-gold/20">
+        <div className="absolute inset-0 bg-temple-navy-dark"></div>
+        <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop')] bg-cover mix-blend-luminosity"></div>
+        <div className="absolute inset-0 hero-overlay"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
+          <div className="inline-block px-4 py-1.5 border border-temple-gold/30 bg-temple-gold/10 backdrop-blur-md rounded-full mb-6">
+            <span className="label-tactical text-temple-gold">EQUIPAMIENTO & NUTRICIÓN DE ÉLITE</span>
           </div>
-          <h1 className="font-serif text-5xl md:text-7xl font-black text-white uppercase italic-sport mb-6 tracking-tighter">
-            La <span className="text-temple-gold">Armería</span>
+          <h1 className="text-5xl md:text-8xl font-black text-white uppercase elegant-title not-italic tracking-tighter mb-6">
+            LA <span className="text-temple-gold">ARMERÍA</span>
           </h1>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto font-light leading-relaxed">
-            Potencia tu transformación con protocolos de Batch Cooking y porta la armadura oficial del Escuadrón con orgullo.
+          <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto font-medium leading-relaxed">
+            Potencia tu transformación con protocolos nutricionales avanzados y porta la armadura oficial del Escuadrón con honor.
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
         
         {/* Nutrición Section */}
         <div className="mb-32">
-          <div className="flex items-center justify-between mb-12 border-b-4 border-temple-navy pb-6">
+          <div className="flex items-center justify-between mb-12 border-b border-temple-gold/20 pb-6">
             <div className="flex items-center gap-4">
-              <div className="bg-temple-red p-3 -skew-x-12">
-                <Utensils className="w-8 h-8 text-white" />
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 text-temple-red">
+                <Utensils className="w-6 h-6" />
               </div>
-              <h2 className="font-serif text-3xl md:text-5xl font-black text-temple-navy uppercase italic-sport">Combustible <span className="text-temple-red">Keto</span></h2>
-            </div>
-            <div className="hidden md:flex gap-2">
-              {[1, 2, 3].map(i => <div key={i} className="w-8 h-1 bg-temple-gold -skew-x-12"></div>)}
+              <h2 className="text-3xl md:text-4xl font-black text-white uppercase elegant-title not-italic">COMBUSTIBLE <span className="text-temple-red">KETO</span></h2>
             </div>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {products.filter(p => p.category === 'Suscripción').map((product) => (
-              <div key={product.id} className="relative group overflow-hidden">
-                <div className="absolute -inset-1 bg-gradient-to-r from-temple-gold to-temple-red opacity-20 group-hover:opacity-40 transition-opacity blur"></div>
-                <div className="relative flex flex-col md:flex-row bg-white border-l-8 border-temple-navy shadow-2xl">
-                  <div className="md:w-2/5 bg-vibrant-navy relative min-h-[250px] overflow-hidden">
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:scale-110 transition-transform duration-700"
-                      style={{ backgroundImage: `url(${product.image})` }}
-                    ></div>
-                    <div className="absolute top-4 left-4 bg-temple-gold text-temple-navy font-black text-xs px-3 py-1 -skew-x-12">RECOMENDADO</div>
+              <div key={product.id} className="tactical-card group no-padding flex flex-col md:flex-row">
+                <div className="md:w-2/5 relative min-h-[250px] overflow-hidden">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:scale-110 transition-transform duration-700"
+                    style={{ backgroundImage: `url(${product.image})` }}
+                  ></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-temple-navy-dark/90"></div>
+                  <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-md border border-white/20 text-temple-gold font-bold text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
+                    RECOMENDADO
                   </div>
-                  <div className="p-10 md:w-3/5 flex flex-col justify-between">
-                    <div>
-                      <h3 className="font-serif text-3xl font-black text-temple-navy mb-4 uppercase italic-sport">{product.name}</h3>
-                      <p className="text-temple-navy/60 text-lg leading-relaxed mb-6 italic">{product.description}</p>
-                      <ul className="space-y-2 mb-8">
-                        <li className="flex items-center gap-2 text-sm font-bold uppercase tracking-tighter text-temple-navy/80">
-                          <ShieldCheck className="w-4 h-4 text-temple-red" /> Sin Gluten / Sin Azúcar
-                        </li>
-                        <li className="flex items-center gap-2 text-sm font-bold uppercase tracking-tighter text-temple-navy/80">
-                          <ShieldCheck className="w-4 h-4 text-temple-red" /> Entrega Diaria 6:00 AM
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="font-serif font-black text-3xl text-temple-navy italic-sport">${product.price}<span className="text-sm uppercase opacity-50 ml-1">/mes</span></span>
-                      <button className="bg-temple-red text-white px-8 py-3 font-black uppercase tracking-widest skew-btn shadow-lg">Suscribirse</button>
-                    </div>
+                </div>
+                <div className="p-8 md:w-3/5 flex flex-col justify-between relative z-10">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-3">{product.name}</h3>
+                    <p className="text-white/60 text-sm leading-relaxed mb-6 font-medium">{product.description}</p>
+                    <ul className="space-y-3 mb-8">
+                      <li className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-white/80">
+                        <ShieldCheck className="w-4 h-4 text-temple-red" /> Sin Gluten / Sin Azúcar
+                      </li>
+                      <li className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-white/80">
+                        <ShieldCheck className="w-4 h-4 text-temple-red" /> Entrega Diaria 6:00 AM
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="flex items-center justify-between border-t border-white/10 pt-6 mt-auto">
+                    <span className="font-black text-3xl text-temple-gold elegant-title">${product.price}<span className="text-xs text-white/40 uppercase font-sans tracking-widest ml-2">/mes</span></span>
+                    <button className="bg-temple-red/20 border border-temple-red/30 text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-temple-red/40 transition-colors">
+                      Suscribirse
+                    </button>
                   </div>
                 </div>
               </div>
@@ -80,35 +82,38 @@ export default function TiendaPage() {
 
         {/* Merch Section */}
         <div>
-          <div className="flex items-center justify-between mb-12 border-b-4 border-temple-gold pb-6">
+          <div className="flex items-center justify-between mb-12 border-b border-temple-gold/20 pb-6">
             <div className="flex items-center gap-4">
-              <div className="bg-temple-navy p-3 -skew-x-12">
-                <Shirt className="w-8 h-8 text-temple-gold" />
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 text-temple-gold">
+                <Shirt className="w-6 h-6" />
               </div>
-              <h2 className="font-serif text-3xl md:text-5xl font-black text-temple-navy uppercase italic-sport">Armadura <span className="text-temple-gold">TempleFit</span></h2>
+              <h2 className="text-3xl md:text-4xl font-black text-white uppercase elegant-title not-italic">ARMADURA <span className="text-temple-gold">TEMPLEFIT</span></h2>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="bento-grid">
             {products.filter(p => p.category !== 'Suscripción').map((item, i) => {
               const Icon = IconMap[item.icon || 'Star'];
               return (
-                <div key={item.id} className="glass-panel p-6 metric-card group border-b-4 border-temple-navy/10 hover:border-temple-gold transition-all">
-                  <div className="bg-vibrant-navy aspect-square mb-8 flex items-center justify-center -skew-x-2 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-tr from-temple-navy to-transparent opacity-50"></div>
-                    <div className="text-temple-gold group-hover:scale-125 transition-transform duration-500">
-                      {Icon && <Icon className="w-12 h-12" />}
+                <div key={item.id} className="tactical-card group">
+                  <div className="aspect-square mb-6 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 relative overflow-hidden group-hover:border-temple-gold/40 transition-colors">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-temple-navy-dark to-transparent opacity-50"></div>
+                    <div className="text-temple-gold/40 group-hover:text-temple-gold group-hover:scale-110 transition-all duration-500">
+                      {Icon && <Icon className="w-16 h-16" />}
                     </div>
-                    <div className="absolute bottom-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white border border-white/20">
+                    <div className="absolute top-3 left-3 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest text-white border border-white/20">
                       {item.category}
                     </div>
                   </div>
-                  <h3 className="font-serif text-2xl font-black text-temple-navy mb-2 uppercase italic-sport">{item.name}</h3>
-                  <div className="flex justify-between items-center mt-6">
-                    <span className="font-serif font-black text-2xl text-temple-navy italic-sport">${item.price.toFixed(2)}</span>
-                    <button className="flex items-center gap-2 bg-temple-navy text-white px-6 py-2 font-black uppercase tracking-tighter skew-btn hover:bg-temple-red transition-colors">
-                      <ShoppingBag className="w-4 h-4" /> COMPRAR
-                    </button>
+                  
+                  <div className="mt-auto">
+                    <h3 className="text-xl font-bold text-white mb-2 tracking-tight">{item.name}</h3>
+                    <div className="flex justify-between items-center mt-6 pt-4 border-t border-white/10">
+                      <span className="font-black text-2xl text-temple-gold elegant-title">${item.price.toFixed(2)}</span>
+                      <button className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white hover:bg-temple-gold hover:text-temple-navy-dark hover:border-temple-gold transition-all">
+                        <ShoppingBag className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               );
@@ -119,11 +124,17 @@ export default function TiendaPage() {
       </div>
 
       {/* Trust Banner */}
-      <section className="bg-vibrant-navy py-12 border-y-4 border-temple-gold/20">
-        <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-12 items-center opacity-50">
-          <div className="font-black text-2xl text-white italic-sport">ENVÍOS NACIONALES</div>
-          <div className="font-black text-2xl text-white italic-sport">PAGO SEGURO</div>
-          <div className="font-black text-2xl text-white italic-sport">CALIDAD ÉLITE</div>
+      <section className="bg-black/50 py-12 border-y border-temple-gold/10 backdrop-blur-md">
+        <div className="container mx-auto px-4 flex flex-wrap justify-center gap-12 md:gap-24 items-center">
+          <div className="font-bold text-xs md:text-sm text-white/40 tracking-[0.3em] uppercase flex items-center gap-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-temple-gold"></span> ENVÍOS NACIONALES
+          </div>
+          <div className="font-bold text-xs md:text-sm text-white/40 tracking-[0.3em] uppercase flex items-center gap-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-temple-gold"></span> PAGO SEGURO
+          </div>
+          <div className="font-bold text-xs md:text-sm text-white/40 tracking-[0.3em] uppercase flex items-center gap-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-temple-gold"></span> CALIDAD ÉLITE
+          </div>
         </div>
       </section>
     </div>
