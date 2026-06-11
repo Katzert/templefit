@@ -28,7 +28,7 @@ export default function Navbar() {
             <Link href="/" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1">Inicio</Link>
             <Link href="/alianzas" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1">Franquicias</Link>
             <Link href="/tienda" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1">Tienda</Link>
-            <Link href="/dashboard" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1 text-white/50">Dashboard</Link>
+            <a href="/templefit/dashboard/index.html" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1 text-white/50">Dashboard</a>
           </div>
           
           <div className="md:hidden flex items-center bg-temple-gold/20 px-3 py-1.5 border border-temple-gold/30 rounded-full cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
@@ -49,7 +49,7 @@ export default function Navbar() {
           <Link href="/" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-white hover:text-temple-gold">Inicio</Link>
           <Link href="/alianzas" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-white hover:text-temple-gold">Franquicias</Link>
           <Link href="/tienda" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-white hover:text-temple-gold">Tienda</Link>
-          <Link href="/dashboard" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-white/50 hover:text-temple-gold">Dashboard</Link>
+          <a href="/templefit/dashboard/index.html" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-white/50 hover:text-temple-gold">Dashboard</a>
           <a 
             href="https://wa.me/59169127691" 
             target="_blank" 

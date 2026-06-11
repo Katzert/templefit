@@ -13,7 +13,7 @@ export default function AlianzasPage() {
       {/* B2B Hero Section */}
       <section className="relative min-h-[70vh] flex items-center pt-32 pb-24 overflow-hidden border-b border-temple-gold/20">
         <div className="absolute inset-0 bg-temple-navy-dark"></div>
-        <div className="absolute inset-0 opacity-20 bg-[url('/dashboard/bg_dynamic.png')] bg-cover mix-blend-luminosity"></div>
+        <div className="absolute inset-0 opacity-20 bg-[url('/templefit/dashboard/bg_dynamic.png')] bg-cover mix-blend-luminosity"></div>
         <div className="absolute inset-0 hero-overlay"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -28,7 +28,7 @@ export default function AlianzasPage() {
             </h1>
             
             <p className="max-w-2xl text-xl md:text-2xl text-white/70 font-medium leading-relaxed border-l-2 border-temple-gold pl-6">
-              Integramos nuestra operación de alto rendimiento en tu club o franquicia. Elevamos la retención y el ticket promedio con el "Efecto Escuadrón".
+              Integramos nuestra operación de alto rendimiento en tu club o franquicia. Elevamos la retención y el ticket promedio con el &quot;Efecto Escuadrón&quot;.
             </p>
             
             <div className="pt-8">
@@ -86,7 +86,7 @@ export default function AlianzasPage() {
 
       {/* Case Study Snippet */}
       <section className="py-32 relative overflow-hidden border-t border-temple-gold/10">
-        <div className="absolute inset-0 bg-[url('/dashboard/bg_dynamic.png')] opacity-5 bg-cover pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[url('/templefit/dashboard/bg_dynamic.png')] opacity-5 bg-cover pointer-events-none"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="space-y-10">
@@ -98,7 +98,7 @@ export default function AlianzasPage() {
                   <div className="shrink-0 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-temple-gold">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
-                  <p className="text-lg text-white/70 font-medium leading-relaxed">"TempleFit transformó nuestra área de fitness en un centro de comunidad vibrante en solo 3 meses."</p>
+                  <p className="text-lg text-white/70 font-medium leading-relaxed">&quot;TempleFit transformó nuestra área de fitness en un centro de comunidad vibrante en solo 3 meses.&quot;</p>
                 </div>
                 <div className="flex gap-6 items-start">
                   <div className="shrink-0 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-temple-gold">

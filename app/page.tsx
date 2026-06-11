@@ -22,7 +22,7 @@ export default function Home() {
       
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center pt-20 pb-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/dashboard/hero_mission.png')] bg-cover bg-center mix-blend-luminosity opacity-40"></div>
+        <div className="absolute inset-0 bg-[url('/templefit/dashboard/hero_mission.png')] bg-cover bg-center mix-blend-luminosity opacity-40"></div>
         <div className="absolute inset-0 hero-overlay"></div>
         
         <div className="relative z-10 container mx-auto px-4 md:px-6 flex flex-col justify-center min-h-[70vh]">
@@ -122,7 +122,7 @@ export default function Home() {
 
       {/* Social Proof (Bento Grid) */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/dashboard/bg_dynamic.png')] bg-cover opacity-5 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[url('/templefit/dashboard/bg_dynamic.png')] bg-cover opacity-5 pointer-events-none"></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="mb-16 max-w-2xl">
             <span className="label-tactical mb-2 block text-temple-red">TESTIMONIOS</span>
@@ -140,7 +140,7 @@ export default function Home() {
                         {Icon && <Icon className="w-5 h-5" />}
                     </div>
                     <p className="text-white/80 text-lg mb-8 leading-relaxed font-medium">
-                      "{t.text}"
+                      &quot;{t.text}&quot;
                     </p>
                     <div className="mt-auto flex items-center gap-4 pt-6 border-t border-white/10">
                       <div className="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center text-temple-gold font-bold text-sm elegant-title">
