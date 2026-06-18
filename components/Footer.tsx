@@ -31,6 +31,7 @@ export default function Footer() {
                         <li><Link href="/" className="hover:text-temple-gold transition-colors flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-temple-red opacity-50"></span>Inicio</Link></li>
                         <li><Link href="/alianzas" className="hover:text-temple-gold transition-colors flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-temple-red opacity-50"></span>Franquicias</Link></li>
                         <li><Link href="/tienda" className="hover:text-temple-gold transition-colors flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-temple-red opacity-50"></span>Tienda</Link></li>
+                        <li><Link href="/recetas" className="hover:text-temple-gold transition-colors flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-temple-red opacity-50"></span>Recetas</Link></li>
                         <li><a href="/templefit/dashboard/index.html" className="hover:text-temple-gold transition-colors text-white/40 flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-temple-red opacity-50"></span>Dashboard Financiero</a></li>
                     </ul>
                 </div>
