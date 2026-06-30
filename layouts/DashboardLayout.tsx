@@ -40,6 +40,8 @@ export function DashboardLayout({ children, activeTab, setActiveTab, onBackToWeb
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user, logout, hasRole, students, selectedStudent, setSelectedStudent } = useAuth();
   const [expandedGroup, setExpandedGroup] = useState<string | null>(null);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [unreadNotifications, setUnreadNotifications] = useState(true);
 
   const filteredNav = NAV_ITEMS.filter(item => !item.minRole || hasRole(item.minRole));
 
@@ -224,15 +226,71 @@ export function DashboardLayout({ children, activeTab, setActiveTab, onBackToWeb
               Área de Usuario
             </h2>
           </div>
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 relative">
             <div className="hidden md:flex items-center gap-2 text-[10px] font-bold text-temple-gold bg-temple-gold/10 px-3 py-1.5 rounded-full border border-temple-gold/20">
               <span className="w-2 h-2 rounded-full bg-temple-gold animate-pulse"></span>
               <span>SISTEMA ACTIVO</span>
             </div>
-            <button className="relative text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/5 transition">
-              <Bell size={18} />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-temple-red rounded-full"></span>
-            </button>
+            <div className="relative">
+              <button 
+                onClick={() => {
+                  setShowNotifications(!showNotifications);
+                  setUnreadNotifications(false);
+                }}
+                className="relative text-gray-400 hover:text-white p-2 rounded-full hover:bg-white/5 transition"
+              >
+                <Bell size={18} />
+                {unreadNotifications && (
+                  <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-temple-red rounded-full"></span>
+                )}
+              </button>
+
+              <AnimatePresence>
+                {showNotifications && (
+                  <>
+                    <div 
+                      className="fixed inset-0 z-40" 
+                      onClick={() => setShowNotifications(false)}
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute right-0 mt-2 w-80 bg-temple-navy-dark/95 border border-temple-gold/20 backdrop-blur-xl rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] p-4 z-50 space-y-3"
+                    >
+                      <div className="flex items-center justify-between border-b border-white/5 pb-2">
+                        <span className="text-xs font-bold uppercase tracking-widest text-temple-gold">Notificaciones</span>
+                        <button 
+                          onClick={() => {
+                            setUnreadNotifications(false);
+                            setShowNotifications(false);
+                          }}
+                          className="text-[9px] font-bold uppercase tracking-wider text-gray-500 hover:text-white transition"
+                        >
+                          Marcar como leídas
+                        </button>
+                      </div>
+                      <div className="space-y-2 max-h-60 overflow-y-auto">
+                        {[
+                          { id: 1, title: 'Ficha Técnica Actualizada', text: 'David Torres actualizó tu rutina de calistenia.', time: 'Hace 10 min' },
+                          { id: 2, title: 'Consistencia de Hábitos', text: '¡Llevas 5 días seguidos marcando victorias!', time: 'Hace 2 horas' },
+                          { id: 3, title: 'Alerta de Auditoría', text: 'Recuerda auditar tus métricas semanales.', time: 'Hace 1 día' }
+                        ].map(notif => (
+                          <div key={notif.id} className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] transition space-y-1 text-left">
+                            <div className="flex items-center justify-between">
+                              <span className="text-[10px] font-bold text-white uppercase">{notif.title}</span>
+                              <span className="text-[8px] text-gray-500">{notif.time}</span>
+                            </div>
+                            <p className="text-[11px] text-gray-400 leading-relaxed">{notif.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </header>
 
