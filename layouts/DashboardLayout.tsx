@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Bell, LogOut, ChevronDown, Globe, Activity, Share2, Briefcase } from 'lucide-react';
-import { Home, User, ClipboardList, CalendarDays, Microscope, Target, UtensilsCrossed, ShoppingBag, BarChart3, Brain, FileText, Settings } from 'lucide-react';
+import { Home, User, ClipboardList, CalendarDays, Microscope, Target, UtensilsCrossed, ShoppingBag, BarChart3, Brain, FileText, Settings, HelpCircle } from 'lucide-react';
 import { useAuth, type UserRole } from '../context/AuthContext';
 import type { ReactNode } from 'react';
 
@@ -27,6 +27,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: 'financial', icon: <BarChart3 size={18} />, label: 'Dashboard Financiero', minRole: 'admin' },
   { id: 'changelog', icon: <FileText size={18} />, label: 'Registro de Cambios', minRole: 'instructor' },
   { id: 'settings', icon: <Settings size={18} />, label: 'Configuración', minRole: 'admin' },
+  { id: 'help', icon: <HelpCircle size={18} />, label: 'Ayuda y Tutorial' },
 ];
 
 interface DashboardLayoutProps {

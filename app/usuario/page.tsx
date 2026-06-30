@@ -17,6 +17,7 @@ import { Module8TeamOperations } from '@/life-system-pages/Module8TeamOperations
 import { FinancialDashboard } from '@/life-system-pages/FinancialDashboard';
 import { AuditLogPage } from '@/life-system-pages/AuditLogPage';
 import { SettingsPage } from '@/life-system-pages/SettingsPage';
+import { HelpPage } from '@/life-system-pages/HelpPage';
 import { RoleGuard } from '@/components/RoleGuard';
 import { useRouter } from 'next/navigation';
 
@@ -65,6 +66,7 @@ export default function UsuarioPage() {
           <SettingsPage />
         </RoleGuard>
       );
+      case 'help': return <HelpPage />;
       default: return <HomePage />;
     }
   };
