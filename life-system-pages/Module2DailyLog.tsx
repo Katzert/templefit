@@ -22,7 +22,7 @@ export function Module2DailyLog() {
 
   const [failures, setFailures] = useState<string[]>([]);
   const [newFailure, setNewFailure] = useState('');
-  const [hours, setHours] = useState<Record<number, boolean>>({});
+  const [blocks, setBlocks] = useState({ morning: false, afternoon: false, evening: false });
   const [sleep, setSleep] = useState<number>(7.5);
   const [water, setWater] = useState<number>(2.5);
   const [workout, setWorkout] = useState<boolean>(false);
@@ -40,7 +40,7 @@ export function Module2DailyLog() {
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        setHours(parsed.hours || {});
+        setBlocks(parsed.blocks || { morning: false, afternoon: false, evening: false });
         setFailures(parsed.failures || []);
         setSleep(parsed.sleep !== undefined ? parsed.sleep : 7.5);
         setWater(parsed.water !== undefined ? parsed.water : 2.5);
@@ -56,7 +56,7 @@ export function Module2DailyLog() {
   }, [selectedStudent, dailyKey]);
 
   const resetToDefaults = () => {
-    setHours({});
+    setBlocks({ morning: false, afternoon: false, evening: false });
     setFailures(['No leer 10 pág.', 'Comer azúcar']);
     setSleep(7.5);
     setWater(2.5);
@@ -65,7 +65,9 @@ export function Module2DailyLog() {
     setSpiritChecks([false, false, false]);
   };
 
-  const toggleHour = (h: number) => setHours(prev => ({ ...prev, [h]: !prev[h] }));
+  const toggleBlock = (b: 'morning' | 'afternoon' | 'evening') => {
+    setBlocks(prev => ({ ...prev, [b]: !prev[b] }));
+  };
 
   const addFailure = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && newFailure.trim() !== '') {
@@ -91,7 +93,7 @@ export function Module2DailyLog() {
   const handleSave = () => {
     if (!selectedStudent) return;
     const data = {
-      hours,
+      blocks,
       failures,
       sleep,
       water,
@@ -119,6 +121,8 @@ export function Module2DailyLog() {
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
   };
+
+  const totalProductiveHours = (blocks.morning ? 6 : 0) + (blocks.afternoon ? 6 : 0) + (blocks.evening ? 6 : 0);
 
   return (
     <motion.div variants={container} initial="hidden" animate="show" className="space-y-6 md:space-y-8 pb-12 relative">
@@ -162,36 +166,52 @@ export function Module2DailyLog() {
                 <div className="flex items-center justify-between">
                   <CardTitle className="flex items-center gap-2">
                     <Activity className="text-temple-gold" />
-                    Matriz 24 Horas
+                    Bloques de Alto Rendimiento
                   </CardTitle>
                   <div className="text-xs font-bold text-gray-400 uppercase tracking-wider bg-black/30 px-3 py-1 rounded-full">
-                    {Object.values(hours).filter(Boolean).length} / 24 HRS PRODUCTIVAS
+                    {totalProductiveHours} / 18 HRS OBJETIVO
                   </div>
                 </div>
               </CardHeader>
               <CardContent>
                 <FieldLabel
-                  label="Horas Productivas"
-                  tooltip="Haz clic en cada hora que fue productiva hoy. El objetivo es maximizar tus horas de alto rendimiento en entrenamiento, trabajo y desarrollo personal."
+                  label="Productividad por Bloques"
+                  tooltip="Marca cada bloque del día en el que te mantuviste enfocado y productivo en tus metas (trabajo, entrenamiento, desarrollo personal)."
                 />
-                <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3 md:gap-4 mt-2">
-                  {Array.from({ length: 24 }).map((_, i) => (
-                    <motion.div
-                      key={i}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => toggleHour(i)}
-                      className={`
-                        relative cursor-pointer aspect-square rounded-xl border flex flex-col items-center justify-center transition-all duration-300
-                        ${hours[i]
-                          ? 'bg-temple-gold border-temple-gold text-black shadow-[0_0_15px_rgba(197,160,89,0.5)]'
-                          : 'bg-black/40 border-white/10 text-gray-500 hover:border-temple-gold/50 hover:text-white'}
-                      `}
-                    >
-                      <span className="text-lg md:text-xl font-black">{i.toString().padStart(2, '0')}</span>
-                      <span className="text-[9px] uppercase tracking-widest opacity-80 mt-1">HRS</span>
-                    </motion.div>
-                  ))}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                  {[
+                    { id: 'morning', label: 'Bloque Mañana', time: '06:00 - 12:00', desc: 'Enfoque & Rutina Matutina', icon: '🌅' },
+                    { id: 'afternoon', label: 'Bloque Tarde', time: '12:00 - 18:00', desc: 'Productividad & Fuerza', icon: '☀️' },
+                    { id: 'evening', label: 'Bloque Noche', time: '18:00 - 00:00', desc: 'Desconexión & Reflexión', icon: '🌙' }
+                  ].map((block) => {
+                    const isChecked = blocks[block.id as keyof typeof blocks] || false;
+                    return (
+                      <motion.div
+                        key={block.id}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => toggleBlock(block.id as any)}
+                        className={`
+                          relative cursor-pointer p-5 rounded-2xl border flex items-center gap-4 transition-all duration-300
+                          ${isChecked
+                            ? 'bg-temple-gold/10 border-temple-gold text-white shadow-[0_0_15px_rgba(197,160,89,0.25)]'
+                            : 'bg-black/40 border-white/10 text-gray-500 hover:border-temple-gold/50 hover:text-white'}
+                        `}
+                      >
+                        <div className="text-3xl shrink-0">{block.icon}</div>
+                        <div className="min-w-0 flex-1">
+                          <h4 className="font-bold text-sm text-white">{block.label}</h4>
+                          <span className="text-[10px] font-mono block text-temple-gold mt-0.5">{block.time}</span>
+                          <span className="text-[11px] text-gray-400 block truncate mt-1">{block.desc}</span>
+                        </div>
+                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                          isChecked ? 'border-temple-gold bg-temple-gold' : 'border-white/20'
+                        }`}>
+                          {isChecked && <span className="text-[10px] text-black font-black">✓</span>}
+                        </div>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </CardContent>
             </Card>

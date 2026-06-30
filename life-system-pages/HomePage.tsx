@@ -27,13 +27,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
     if (dailyRaw) {
       try {
         const daily = JSON.parse(dailyRaw);
-        // Sum non-sleep hours as productive (from the 24h matrix sliders)
-        const sleep = daily.sleep || 0;
-        const training = daily.training || 0;
-        const work = daily.work || 0;
-        const study = daily.study || 0;
-        const spiritual = daily.spiritual || 0;
-        productiveHours = training + work + study + spiritual;
+        // Calculate productive hours from blocks or fallback to legacy hours matrix
+        if (daily.blocks) {
+          productiveHours = (daily.blocks.morning ? 6 : 0) + (daily.blocks.afternoon ? 6 : 0) + (daily.blocks.evening ? 6 : 0);
+        } else if (daily.hours) {
+          productiveHours = Object.values(daily.hours).filter(Boolean).length;
+        } else {
+          productiveHours = 0;
+        }
         // Streak: count consecutive days with daily logs saved
         streak = daily.streak || (productiveHours > 0 ? 1 : 0);
       } catch { /* use defaults */ }

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { cn } from './card';
+import { Pencil } from 'lucide-react';
 
 interface InlineEditProps {
   value: string;
@@ -7,9 +8,10 @@ interface InlineEditProps {
   multiline?: boolean;
   className?: string;
   placeholder?: string;
+  disabled?: boolean;
 }
 
-export function InlineEdit({ value, onSave, multiline = false, className, placeholder }: InlineEditProps) {
+export function InlineEdit({ value, onSave, multiline = false, className, placeholder, disabled = false }: InlineEditProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [tempValue, setTempValue] = useState(value);
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
@@ -41,7 +43,7 @@ export function InlineEdit({ value, onSave, multiline = false, className, placeh
     }
   };
 
-  if (isEditing) {
+  if (isEditing && !disabled) {
     if (multiline) {
       return (
         <textarea
@@ -78,14 +80,21 @@ export function InlineEdit({ value, onSave, multiline = false, className, placeh
 
   return (
     <div
-      onClick={() => setIsEditing(true)}
+      onClick={() => { if (!disabled) setIsEditing(true); }}
       className={cn(
-        "cursor-text hover:bg-white/5 rounded-lg p-2 transition-colors border border-transparent hover:border-white/10 min-h-[40px] whitespace-pre-wrap",
+        "group/edit relative rounded-lg p-2 transition-colors border border-transparent min-h-[40px] whitespace-pre-wrap flex justify-between items-start gap-2",
+        !disabled ? "cursor-text hover:bg-white/5 hover:border-white/10" : "cursor-default",
         !value && "text-gray-500 italic",
         className
       )}
     >
-      {value || placeholder || "Haz clic para editar..."}
+      <span className="flex-1">{value || placeholder || "Haz clic para editar..."}</span>
+      {!disabled && (
+        <Pencil 
+          size={14} 
+          className="text-gray-500 opacity-60 md:opacity-0 group-hover/edit:opacity-100 transition-opacity shrink-0 mt-1" 
+        />
+      )}
     </div>
   );
 }
