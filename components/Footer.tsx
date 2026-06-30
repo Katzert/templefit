@@ -4,7 +4,7 @@ import { Instagram, Facebook, Youtube } from 'lucide-react';
 export default function Footer() {
   return (
     <footer className="py-24 bg-black border-t-8 border-temple-gold relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('/templefit/dashboard/bg_dynamic.png')] bg-fixed pointer-events-none"></div>
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('/templefit/dashboard/bg_dynamic.png')] bg-scroll md:bg-fixed pointer-events-none"></div>
         
         <div className="container mx-auto px-6 space-y-24 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
@@ -32,7 +32,7 @@ export default function Footer() {
                         <li><Link href="/alianzas" className="hover:text-temple-gold transition-colors flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-temple-red opacity-50"></span>Franquicias</Link></li>
                         <li><Link href="/tienda" className="hover:text-temple-gold transition-colors flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-temple-red opacity-50"></span>Tienda</Link></li>
                         <li><Link href="/recetas" className="hover:text-temple-gold transition-colors flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-temple-red opacity-50"></span>Recetas</Link></li>
-                        <li><a href="/templefit/dashboard/index.html" className="hover:text-temple-gold transition-colors text-white/40 flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-temple-red opacity-50"></span>Dashboard Financiero</a></li>
+                        <li><Link href="/usuario" className="hover:text-temple-gold transition-colors text-white/40 flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-temple-red opacity-50"></span>Área de Usuario</Link></li>
                     </ul>
                 </div>
 

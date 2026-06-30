@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { Providers } from "./providers";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -20,11 +19,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${outfit.variable} ${playfair.variable} font-sans min-h-screen flex flex-col custom-scrollbar`}>
-        <Navbar />
-        <main className="flex-grow">
+        <Providers>
           {children}
-        </main>
-        <Footer />
+        </Providers>
       </body>
     </html>
   );
