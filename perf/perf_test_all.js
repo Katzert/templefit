@@ -2,7 +2,7 @@ const http = require('http');
 const { performance } = require('perf_hooks');
 
 const BASE_URL = 'http://localhost:3000/templefit';
-const ROUTES = ['/', '/alianzas/', '/tienda/', '/dashboard/index.html'];
+const ROUTES = ['/', '/alianzas/', '/tienda/', '/recetas/', '/franquicias/', '/neuro-ventas/', '/usuario/'];
 const ITERATIONS_PER_ROUTE = 5;
 
 async function measureRequest(url) {

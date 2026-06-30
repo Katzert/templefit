@@ -100,6 +100,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (entry && entry.password === password) {
       setUser(entry.user);
       localStorage.setItem('templefit_user', JSON.stringify(entry.user));
+      localStorage.setItem(`templefit_last_access_${entry.user.email}`, new Date().toLocaleString('es-ES'));
 
       if (entry.user.role === 'alumno') {
         const selfStudent = DEMO_STUDENTS.find(s => s.email === entry.user.email) || {

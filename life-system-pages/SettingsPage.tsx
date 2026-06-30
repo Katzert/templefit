@@ -33,6 +33,28 @@ const ROLE_COLORS = {
 export function SettingsPage() {
   const [users, setUsers] = useState(INITIAL_USERS);
 
+  useEffect(() => {
+    // Seed some last access times if they are completely missing
+    const seedAccess = {
+      'alumno@templefit.com': '30/06/2026, 18:45:12',
+      'juan@templefit.com': '29/06/2026, 10:30:45',
+      'maria@templefit.com': '28/06/2026, 15:40:22',
+      'instructor@templefit.com': '30/06/2026, 19:10:04',
+      'admin@templefit.com': '30/06/2026, 19:25:50',
+    };
+    Object.entries(seedAccess).forEach(([email, time]) => {
+      const key = `templefit_last_access_${email}`;
+      if (!localStorage.getItem(key)) {
+        localStorage.setItem(key, time);
+      }
+    });
+  }, []);
+
+  const getLastAccess = (email: string) => {
+    if (typeof window === 'undefined') return 'Nunca';
+    return localStorage.getItem(`templefit_last_access_${email}`) || 'Nunca';
+  };
+
   const cycleRole = (id: number) => {
     const order: SystemUser['role'][] = ['alumno', 'instructor', 'admin'];
     setUsers(prev => prev.map(u => {
@@ -96,6 +118,7 @@ export function SettingsPage() {
                     <th className="text-left py-3 px-4 text-[10px] font-bold uppercase tracking-widest text-gray-500">Email</th>
                     <th className="text-left py-3 px-4 text-[10px] font-bold uppercase tracking-widest text-gray-500">Rol</th>
                     <th className="text-left py-3 px-4 text-[10px] font-bold uppercase tracking-widest text-gray-500">Estado</th>
+                    <th className="text-left py-3 px-4 text-[10px] font-bold uppercase tracking-widest text-gray-500">Último Acceso</th>
                     <th className="text-left py-3 px-4 text-[10px] font-bold uppercase tracking-widest text-gray-500">Registro</th>
                     <th className="text-right py-3 px-4 text-[10px] font-bold uppercase tracking-widest text-gray-500">Acciones</th>
                   </tr>
@@ -134,6 +157,7 @@ export function SettingsPage() {
                           {u.status}
                         </button>
                       </td>
+                      <td className="py-4 px-4 text-xs font-medium text-gray-300">{getLastAccess(u.email)}</td>
                       <td className="py-4 px-4 text-xs text-gray-500">{u.joined}</td>
                       <td className="py-4 px-4 text-right">
                         <button className="p-2 text-gray-600 hover:text-temple-red transition">
