@@ -3,11 +3,9 @@
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, isAuthenticated } = useAuth();
 
   return (
     <nav className="header-glass fixed top-0 w-full z-[100]">
@@ -32,12 +30,8 @@ export default function Navbar() {
             <Link href="/recetas" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1">Recetas</Link>
             <Link href="/neuro-ventas" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1">Neuro Ventas</Link>
             
-            {user?.role === 'admin' && (
-              <Link href="/original" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1 text-temple-gold font-bold">Sitio Original</Link>
-            )}
-
-            <Link href="/usuario" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1 text-white/50">
-              {isAuthenticated ? 'Mi Cuenta' : 'Usuario'}
+            <Link href="https://admin.templefit.com" className="hover:text-temple-gold transition-colors border-b-2 border-transparent hover:border-temple-gold pb-1 text-white/50">
+              Usuario
             </Link>
           </div>
           
@@ -46,7 +40,7 @@ export default function Navbar() {
             <span className="text-[10px] font-bold text-temple-gold">MENU</span>
           </div>
           
-          <Link href="/usuario" className="hidden lg:flex items-center bg-temple-red/20 px-4 py-2 border border-temple-red/30 rounded-full cursor-pointer hover:bg-temple-red/30 transition-colors">
+          <Link href="https://admin.templefit.com" className="hidden lg:flex items-center bg-temple-red/20 px-4 py-2 border border-temple-red/30 rounded-full cursor-pointer hover:bg-temple-red/30 transition-colors">
             <span className="w-2 h-2 bg-temple-red rounded-full mr-3 animate-pulse"></span>
             <span className="text-[10px] font-bold tracking-widest text-white uppercase">UNIRSE AL RETO</span>
           </Link>
@@ -62,15 +56,11 @@ export default function Navbar() {
           <Link href="/recetas" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-white hover:text-temple-gold">Recetas</Link>
           <Link href="/neuro-ventas" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-white hover:text-temple-gold">Neuro Ventas</Link>
           
-          {user?.role === 'admin' && (
-            <Link href="/original" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-temple-gold hover:text-temple-gold">Sitio Original</Link>
-          )}
-
-          <Link href="/usuario" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-white/50 hover:text-temple-gold">
-            {isAuthenticated ? 'Mi Cuenta' : 'Usuario'}
+          <Link href="https://admin.templefit.com" onClick={() => setIsOpen(false)} className="block text-sm tracking-widest font-bold uppercase text-white/50 hover:text-temple-gold">
+            Usuario
           </Link>
           <Link 
-            href="/usuario" 
+            href="https://admin.templefit.com" 
             onClick={() => setIsOpen(false)}
             className="block text-center bg-temple-red/20 border border-temple-red/30 text-white py-3 rounded-full font-bold text-xs uppercase tracking-widest"
           >

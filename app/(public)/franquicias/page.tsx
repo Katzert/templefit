@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useAuth } from '@/context/AuthContext';
 import { InlineEdit } from '@/components/ui/inline-edit';
 import { Eye, Edit2 } from 'lucide-react';
 
@@ -12,7 +11,6 @@ const DEFAULT_CONTENT = {
 };
 
 export default function FranquiciasPage() {
-  const { user } = useAuth();
   const [isEditMode, setIsEditMode] = useState(false);
   const [content, setContent] = useState(DEFAULT_CONTENT);
 
@@ -42,7 +40,7 @@ export default function FranquiciasPage() {
   };
 
   const renderEditableText = (key: keyof typeof DEFAULT_CONTENT, className?: string, multiline = false) => {
-    if (isEditMode && user?.role === 'admin') {
+    if (isEditMode) {
       return (
         <InlineEdit
           value={content[key]}
@@ -112,25 +110,7 @@ export default function FranquiciasPage() {
         </div>
       </section>
 
-      {/* Admin Floating Control Bar */}
-      {user?.role === 'admin' && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black/90 border border-temple-gold/40 rounded-2xl py-3.5 px-6 shadow-2xl backdrop-blur-xl flex items-center gap-6">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-temple-gold animate-pulse" />
-            <span className="text-[10px] font-bold uppercase tracking-widest text-gray-300">ADMIN CONTROL PANEL</span>
-          </div>
-          <div className="h-5 w-px bg-white/10" />
-          <button
-            onClick={() => setIsEditMode(!isEditMode)}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider border transition-all ${
-              isEditMode ? 'bg-temple-gold text-black border-temple-gold' : 'bg-white/5 text-white border-white/10 hover:border-temple-gold/50'
-            }`}
-          >
-            {isEditMode ? <Eye size={12} /> : <Edit2 size={12} />}
-            {isEditMode ? 'Ver Sitio Real' : 'Editar Sitio'}
-          </button>
-        </div>
-      )}
+      {/* Admin Floating Control Bar removed for decoupling CRM */}
     </div>
   );
 }
