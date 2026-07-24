@@ -121,25 +121,25 @@ export default function NeuroVentasPage() {
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-8">
-              <span className="inline-block bg-temple-red/20 border border-temple-red/40 text-temple-red px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] rounded-full shadow-lg">
-                Programa Especializado
+              <span className="inline-block bg-temple-gold/20 border border-temple-gold/40 text-temple-gold px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] rounded-full shadow-lg">
+                Respaldo Técnico & Capacitaciones
               </span>
               <h1 className="text-4xl sm:text-6xl md:text-[5.5rem] font-serif font-black uppercase text-white leading-[1.05] tracking-tight">
-                NEURO ENTRENAMIENTO DE <span className="elegant-title text-temple-gold block mt-2">IMPACTO EN VENTAS</span>
+                CAPACITACIÓN & <span className="elegant-title text-temple-gold block mt-2">CERTIFICACIONES</span>
               </h1>
               
               <div className="border-l-4 border-temple-gold pl-6 space-y-4">
                 <p className="text-xl md:text-2xl text-white font-medium italic leading-relaxed">
-                  "El precio se olvida, pero la calidad permanece."
+                  "El servicio de excelencia y la disciplina no son casualidad: se forman con preparación real."
                 </p>
                 <p className="text-xs md:text-sm text-temple-gold uppercase tracking-[0.2em] font-bold">
-                  Autor & Capacitador: Paulo Alberto Gil Cuéllar
+                  Fundador & Lead Coach: Paulo Alberto Gil Cuéllar
                 </p>
               </div>
 
               <div className="pt-4 flex flex-wrap gap-4 items-center">
                 <a 
-                  href="https://wa.me/59169127691?text=Hola,%20quiero%20más%20información%20sobre%20el%20programa%20de%20Neuroventas." 
+                  href="https://wa.me/59169127691?text=Hola,%20quiero%20más%20información%20sobre%20las%20capacitaciones." 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20BA5A] text-white font-black text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_6px_24px_rgba(37,211,102,0.3)] hover:scale-[1.03] transition-all"

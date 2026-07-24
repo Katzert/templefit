@@ -62,8 +62,7 @@ export default function Footer() {
               <li><Link href="/franquicias" className="hover:text-temple-gold transition">Franquicias</Link></li>
               <li><Link href="/alianzas" className="hover:text-temple-gold transition">Alianzas Estratégicas</Link></li>
               <li><Link href="/tienda" className="hover:text-temple-gold transition">Tienda</Link></li>
-              <li><Link href="/recetas" className="hover:text-temple-gold transition">Recetas Bio-optimizadas</Link></li>
-              <li><Link href="/neuro-ventas" className="hover:text-temple-gold transition">Neuro Ventas</Link></li>
+              <li><Link href="/recetas" className="hover:text-temple-gold transition">Recetas & Nutrición</Link></li>
               <li><a href={ADMIN_URL} className="text-temple-gold hover:text-white transition">Portal CRM Instructores ↗</a></li>
             </ul>
           </div>

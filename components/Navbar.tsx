@@ -32,7 +32,6 @@ export default function Navbar() {
             <Link href="/alianzas" className="hover:text-temple-gold transition-colors pb-1">Alianzas</Link>
             <Link href="/tienda" className="hover:text-temple-gold transition-colors pb-1">Tienda</Link>
             <Link href="/recetas" className="hover:text-temple-gold transition-colors pb-1">Recetas</Link>
-            <Link href="/neuro-ventas" className="hover:text-temple-gold transition-colors pb-1">Neuro Ventas</Link>
             
             <a 
               href={ADMIN_URL}
@@ -68,7 +67,6 @@ export default function Navbar() {
           <Link href="/alianzas" onClick={() => setIsOpen(false)} className="block text-xs font-extrabold tracking-widest uppercase text-white hover:text-temple-gold">Alianzas</Link>
           <Link href="/tienda" onClick={() => setIsOpen(false)} className="block text-xs font-extrabold tracking-widest uppercase text-white hover:text-temple-gold">Tienda</Link>
           <Link href="/recetas" onClick={() => setIsOpen(false)} className="block text-xs font-extrabold tracking-widest uppercase text-white hover:text-temple-gold">Recetas</Link>
-          <Link href="/neuro-ventas" onClick={() => setIsOpen(false)} className="block text-xs font-extrabold tracking-widest uppercase text-white hover:text-temple-gold">Neuro Ventas</Link>
           
           <a 
             href={ADMIN_URL}
