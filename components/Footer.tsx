@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Instagram, Facebook, MessageCircle } from 'lucide-react';
 
 const ADMIN_URL = 'https://katzert.github.io/templefit-admin/';
-const WHATSAPP_URL = 'https://wa.me/59170000000?text=Hola%20Paulo!%20Quiero%20mas%20informacion';
+const WHATSAPP_URL = 'https://wa.me/59169127691?text=Hola%20Paulo!%20Quiero%20mas%20informacion';
 
 export default function Footer() {
   return (

@@ -68,7 +68,7 @@ export default function Home() {
 
           <motion.div variants={item} className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <a
-              href="https://wa.me/59170000000?text=Hola%20Paulo!%20Quiero%20unirme%20al%20Reto%2021%20D%C3%ADas%20%C3%8Dntegros"
+              href="https://wa.me/59169127691?text=Hola%20Paulo!%20Quiero%20unirme%20al%20Reto%2021%20D%C3%ADas%20%C3%8Dntegros"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-temple-gold to-amber-500 text-black font-extrabold uppercase tracking-wider text-xs rounded-xl shadow-lg hover:shadow-temple-gold/20 hover:scale-[1.02] transition duration-200 flex items-center justify-center gap-2"

@@ -73,9 +73,14 @@ export default function AlianzasPage() {
                   <div className="mt-auto z-20">
                     <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">{alliance.title}</h3>
                     <p className="text-sm text-white/60 leading-relaxed font-medium mb-6">{alliance.description}</p>
-                    <div className="flex items-center gap-2 text-temple-gold font-bold uppercase tracking-widest text-xs cursor-pointer group-hover:gap-4 transition-all">
+                    <a 
+                      href={`https://wa.me/59169127691?text=${encodeURIComponent(`Hola Paulo, quisiera saber más sobre la unidad de alianzas: ${alliance.title}`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-temple-gold font-bold uppercase tracking-widest text-xs hover:text-white group-hover:gap-4 transition-all"
+                    >
                       Saber Más <ArrowUpRight className="w-4 h-4" />
-                    </div>
+                    </a>
                   </div>
                 </div>
               );
