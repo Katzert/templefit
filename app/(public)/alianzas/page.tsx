@@ -114,9 +114,14 @@ export default function AlianzasPage() {
                 <div className="text-6xl font-black text-temple-gold mb-2 elegant-title">+400%</div>
                 <div className="label-tactical text-white mb-6">ROI Estimado</div>
                 <p className="text-white/60 text-sm font-medium mb-10 leading-relaxed">Basado en la integración de servicios de nutrición y merchandising en gimnasios tradicionales de clase A.</p>
-                <button className="w-full bg-white text-temple-navy py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-temple-gold transition-colors shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                <a 
+                  href="https://wa.me/59169127691?text=Hola%20Paulo,%20quisiera%20solicitar%20el%20Dossier%20Oficial%20de%20TempleFit" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="block w-full text-center bg-white text-temple-navy py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-temple-gold transition-colors shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                >
                   Solicitar Dossier
-                </button>
+                </a>
               </div>
             </div>
           </div>
