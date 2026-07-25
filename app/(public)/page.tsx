@@ -68,13 +68,16 @@ export default function Home() {
 
           <motion.div variants={item} className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <a
-              href="https://wa.me/59169127691?text=Hola%20Paulo!%20Quiero%20unirme%20al%20Reto%2021%20D%C3%ADas%20%C3%8Dntegros"
+              href="https://wa.me/59169127691?text=Hola%20Paulo!%20Quiero%20reclamar%20mi%20Semana%20de%20Prueba%20Gratis%20y%20el%2020%25%20de%20descuento%20en%20Snack%20Bar!"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-temple-gold to-amber-500 text-black font-extrabold uppercase tracking-wider text-xs rounded-xl shadow-lg hover:shadow-temple-gold/20 hover:scale-[1.02] transition duration-200 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-temple-gold to-amber-500 text-black font-extrabold uppercase tracking-wider text-xs rounded-xl shadow-lg hover:shadow-temple-gold/20 hover:scale-[1.02] transition duration-200 flex flex-col items-center justify-center gap-1"
             >
-              <span>Unirme al Reto 21 Días</span>
-              <ArrowRight size={18} />
+              <div className="flex items-center gap-2">
+                <span>1 Semana de Prueba Gratuita</span>
+                <ArrowRight size={18} />
+              </div>
+              <span className="text-[9px] opacity-80">+ 20% Dcto. en Snack Bar (Cupos Limitados)</span>
             </a>
 
             <a
@@ -115,28 +118,28 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {[
             {
-              icon: <Target size={32} className="text-temple-gold" />,
-              title: "1. Reto 21 Días Íntegros",
-              tag: "Transformación acelerada",
-              desc: "Programa intensivo con plan nutricional preventivo adaptado, guía de suplementación limpia y hackeo de rutina diaria."
+              icon: <Dumbbell size={32} className="text-temple-gold" />,
+              title: "1. Centro de Entrenamiento",
+              tag: "Cuerpo, Mente y Espíritu",
+              desc: "El núcleo de la transformación. Programas intensivos, CristoFit Camp los sábados y comunidad en Escuadrones."
             },
             {
-              icon: <Dumbbell size={32} className="text-amber-400" />,
-              title: "2. Entrenamiento TempleFit",
-              tag: "Fuerza real e inquebrantable",
-              desc: "Sesiones híbridas diseñadas para construir densidad muscular, corregir postura y acelerar el metabolismo de forma segura."
+              icon: <Target size={32} className="text-amber-400" />,
+              title: "2. Barra Nutricional Integrada",
+              tag: "Snack Bar & Suplementos",
+              desc: "Alimentación pre y post entreno de alta calidad. Productos anti-inflamatorios diseñados para acelerar tus resultados físicos."
             },
             {
-              icon: <Brain size={32} className="text-temple-gold-bright" />,
-              title: "3. Mentoría Neuro-Espiritual",
-              tag: "Mente en paz y liderazgo",
-              desc: "Enfoque en inteligencia emocional, renovación de creencias y liderazgo bajo principios bíblicos y morales eternos."
+              icon: <Award size={32} className="text-temple-gold-bright" />,
+              title: "3. Apparel (Marca de Ropa)",
+              tag: "Identidad inquebrantable",
+              desc: "Colecciones exclusivas que representan tu compromiso con los valores eternos. Vístete con el carácter que forjas a diario."
             },
             {
-              icon: <Users size={32} className="text-emerald-400" />,
-              title: "4. Sábado CristoFit Camp",
-              tag: "Comunidad y hermandad",
-              desc: "Entrenamiento funcional grupal al aire libre en Santa Cruz, seguido de tiempo de palabra, conexión comunitaria y recarga de energía."
+              icon: <Heart size={32} className="text-emerald-400" />,
+              title: "4. Medicina Preventiva",
+              tag: "Bio-optimización",
+              desc: "Monitoreo clínico, rehabilitación y alianzas de salud para asegurar que tu transformación física sea sostenible de por vida."
             }
           ].map((unit, i) => (
             <motion.div key={i} variants={item} className="p-8 rounded-3xl bg-black/40 border border-white/10 hover:border-temple-gold/40 transition-all duration-300 group flex flex-col justify-between">
