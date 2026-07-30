@@ -73,15 +73,15 @@ export default function Home() {
     const plan = getRecommendedPlan();
     const message = `Hola Paulo! Hice la Evaluación Diagnóstica en la web de TempleFit:
 
-📋 *FICHA DEL ALUMNO*
-👤 *Nombre:* ${formData.fullName || 'No especificado'}
-🎂 *Edad:* ${formData.age || 'No especificada'}
-🎯 *Objetivo Principal:* ${goal.toUpperCase()}
-💪 *Nivel Actual:* ${formData.activityLevel}
-📅 *Disponibilidad:* ${formData.daysAvailable}
-📝 *Meta / Inconveniente:* ${formData.specificGoal || 'Ninguno'}
+*FICHA DE DIAGNÓSTICO*
+• *Nombre:* ${formData.fullName || 'No especificado'}
+• *Edad:* ${formData.age || 'No especificada'}
+• *Objetivo Principal:* ${goal.toUpperCase()}
+• *Nivel Actual:* ${formData.activityLevel}
+• *Disponibilidad:* ${formData.daysAvailable}
+• *Meta / Inconveniente:* ${formData.specificGoal || 'Ninguno'}
 
-⭐ *PLAN RECOMENDADO:* ${plan.title}
+*PLAN RECOMENDADO:* ${plan.title}
 
 Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
 
