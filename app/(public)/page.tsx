@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Flame, Shield, Users, ArrowRight, Brain, Target, CheckCircle, Sparkles, ChevronRight, Award, Dumbbell, Heart, BookOpen, ExternalLink, Star, User, Calendar, Activity, Check, Send, RotateCcw } from 'lucide-react';
+import { Flame, Shield, Users, ArrowRight, Brain, Target, CheckCircle, Sparkles, ChevronRight, Award, Dumbbell, Heart, BookOpen, ExternalLink, Star, User, Calendar, Activity, Check, Send, RotateCcw, X, Phone, Scale, Ruler, AlertTriangle, Clock } from 'lucide-react';
 import { db } from '../../lib/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import Link from 'next/link';
@@ -11,16 +11,87 @@ const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { st
 const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
 
 export default function Home() {
+  // Pillar Modal State
+  const [activePillarModal, setActivePillarModal] = useState<number | null>(null);
+
   // Stepper State for Evaluation Widget
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [goal, setGoal] = useState<'fuerza' | 'habitos' | 'liderazgo'>('fuerza');
   const [formData, setFormData] = useState({
     fullName: '',
+    phone: '',
     age: '',
+    weight: '',
+    height: '',
+    injuries: 'Ninguna',
+    preferredSchedule: 'Turno 06:00 AM (Reto 21 Días)',
     activityLevel: 'Principiante (1-2 días/sem)',
     daysAvailable: '3-4 días por semana',
     specificGoal: ''
   });
+
+  const pillarDetails = [
+    {
+      id: 1,
+      title: "1. Centro de Entrenamiento",
+      tag: "Tu espacio de entrenamiento",
+      icon: <Dumbbell size={36} className="text-temple-gold" />,
+      subtitle: "Fuerza Real, Hipertrofia y Comunidad en Escuadrones",
+      description: "Programas de entrenamiento funcional de alta intensidad diseñados para forjar resistencia mental y muscular.",
+      features: [
+        "Evaluación inicial física y seguimiento biométrico",
+        "Rutinas diarias adaptadas a tu nivel (Principiante a Avanzado)",
+        "Entrenamientos grupales Sábado CristoFit Camp al aire libre",
+        "Comunidad activa en Escuadrones para rendición de cuentas"
+      ],
+      whatsappAction: "Hola Paulo! Quiero consultar información e inscripciones para el Centro de Entrenamiento TempleFit."
+    },
+    {
+      id: 2,
+      title: "2. Barra Nutricional Integrada",
+      tag: "Snack Bar & Suplementos",
+      icon: <Target size={36} className="text-amber-400" />,
+      subtitle: "Nutrición Funcional Pre y Post Entrenamiento",
+      description: "Alimentación anti-inflamatoria y suplementación de alta pureza sin azúcares ni ultraprocesados.",
+      features: [
+        "Batidos de proteína whey aislada y recetas funcionales",
+        "Planes nutricionales adaptados al Reto 21 Días",
+        "Suplementos de recuperación muscular y energía natural",
+        "Descuentos del 20% en Snack Bar para atletas del Reto"
+      ],
+      whatsappAction: "Hola Paulo! Quiero consultar sobre los planes de la Barra Nutricional y Suplementos TempleFit."
+    },
+    {
+      id: 3,
+      title: "3. Apparel (Marca de Ropa)",
+      tag: "Carácter y disciplina",
+      icon: <Award size={36} className="text-temple-gold-bright" />,
+      subtitle: "Indumentaria Oficial de Comando Táctico",
+      description: "Colecciones textiles de alta resistencia con acabados premium diseñadas para resistir el entrenamiento duro.",
+      features: [
+        "Poleras de algodón pesado y lycras técnicas respirables",
+        "Hoodies y cortavientos de entrenamiento al aire libre",
+        "Gorras y accesorios oficiales con la marca TempleFit",
+        "Representa los valores de fuerza, fe y carácter"
+      ],
+      whatsappAction: "Hola Paulo! Quisiera ver el catálogo y precios del Apparel oficial de TempleFit."
+    },
+    {
+      id: 4,
+      title: "4. Medicina Preventiva",
+      tag: "Salud preventiva",
+      icon: <Heart size={36} className="text-emerald-400" />,
+      subtitle: "Salud Integral, Rehabilitación y Longevidad",
+      description: "Monitoreo fisiológico y prevención de lesiones para mantener la consistencia en tu entrenamiento a largo plazo.",
+      features: [
+        "Evaluación postural y de movilidad articular",
+        "Descarga muscular y protocolos de recuperación",
+        "Alianzas con laboratorios y especialistas de salud en Santa Cruz",
+        "Prevención activa para entrenar con seguridad toda tu vida"
+      ],
+      whatsappAction: "Hola Paulo! Quisiera información sobre las evaluaciones de Medicina Preventiva y Terapia de Recuperación."
+    }
+  ];
 
   const getRecommendedPlan = () => {
     if (goal === 'fuerza') {
@@ -47,12 +118,16 @@ export default function Home() {
 
     const plan = getRecommendedPlan();
 
-    // Optionally save lead to Firebase
     try {
       if (db) {
         await addDoc(collection(db, 'leads'), {
           fullName: formData.fullName,
+          phone: formData.phone,
           age: formData.age,
+          weight: formData.weight,
+          height: formData.height,
+          injuries: formData.injuries,
+          preferredSchedule: formData.preferredSchedule,
           goal: goal,
           activityLevel: formData.activityLevel,
           daysAvailable: formData.daysAvailable,
@@ -73,12 +148,16 @@ export default function Home() {
     const plan = getRecommendedPlan();
     const message = `Hola Paulo! Hice la Evaluación Diagnóstica en la web de TempleFit:
 
-*FICHA DE DIAGNÓSTICO*
+*FICHA DE DIAGNÓSTICO DEL ALUMNO*
 • *Nombre:* ${formData.fullName || 'No especificado'}
-• *Edad:* ${formData.age || 'No especificada'}
+• *Teléfono:* ${formData.phone || 'No especificado'}
+• *Edad:* ${formData.age ? formData.age + ' años' : 'No especificada'}
+• *Peso:* ${formData.weight ? formData.weight + ' kg' : 'No especificado'} | *Estatura:* ${formData.height ? formData.height + ' cm' : 'No especificada'}
 • *Objetivo Principal:* ${goal.toUpperCase()}
 • *Nivel Actual:* ${formData.activityLevel}
 • *Disponibilidad:* ${formData.daysAvailable}
+• *Horario Preferido:* ${formData.preferredSchedule}
+• *Lesiones / Salud:* ${formData.injuries}
 • *Meta / Inconveniente:* ${formData.specificGoal || 'Ninguno'}
 
 *PLAN RECOMENDADO:* ${plan.title}
@@ -86,6 +165,10 @@ export default function Home() {
 Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
 
     window.open(`https://wa.me/59169127691?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
+  const openPillarWhatsApp = (text: string) => {
+    window.open(`https://wa.me/59169127691?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
@@ -149,44 +232,24 @@ Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
         </div>
       </section>
 
-      {/* The Method Section */}
+      {/* The Method Section - 4 Pillars */}
       <section id="metodo" className="max-w-7xl mx-auto px-4">
         <div className="text-center space-y-3 mb-16">
           <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-temple-gold">EL MÉTODO TEMPLEFIT</p>
           <h2 className="text-3xl md:text-5xl font-serif font-black uppercase text-white">
             Nuestros 4 <span className="italic text-temple-gold">Pilares</span>
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto text-sm font-normal">Desarrolladas para potenciar las 3 dimensiones de tu ser.</p>
+          <p className="text-gray-400 max-w-xl mx-auto text-sm font-normal">Haz clic en cualquiera de las 4 unidades para ver sus detalles completos.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[
-            {
-              icon: <Dumbbell size={32} className="text-temple-gold" />,
-              title: "1. Centro de Entrenamiento",
-              tag: "Tu espacio de entrenamiento",
-              desc: "Programas intensivos, CristoFit Camp los sábados y hermandad en Escuadrones."
-            },
-            {
-              icon: <Target size={32} className="text-amber-400" />,
-              title: "2. Barra Nutricional Integrada",
-              tag: "Snack Bar & Suplementos",
-              desc: "Alimentación pre y post entreno de alta calidad. Productos anti-inflamatorios diseñados para acelerar tus resultados físicos."
-            },
-            {
-              icon: <Award size={32} className="text-temple-gold-bright" />,
-              title: "3. Apparel (Marca de Ropa)",
-              tag: "Carácter y disciplina",
-              desc: "Colecciones exclusivas que representan tu compromiso con los valores eternos. Vístete con el carácter que forjas a diario."
-            },
-            {
-              icon: <Heart size={32} className="text-emerald-400" />,
-              title: "4. Medicina Preventiva",
-              tag: "Salud preventiva",
-              desc: "Monitoreo clínico, rehabilitación y alianzas de salud para que puedas entrenar duro toda tu vida."
-            }
-          ].map((unit, i) => (
-            <motion.div key={i} variants={item} className="p-8 rounded-3xl bg-black/40 border border-white/10 hover:border-temple-gold/40 transition-all duration-300 group h-full">
+          {pillarDetails.map((unit, i) => (
+            <motion.div 
+              key={i} 
+              variants={item} 
+              onClick={() => setActivePillarModal(i)}
+              className="p-8 rounded-3xl bg-black/40 border border-white/10 hover:border-temple-gold/50 transition-all duration-300 group cursor-pointer flex flex-col justify-between hover:shadow-xl hover:shadow-temple-gold/5"
+            >
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <div className="p-4 rounded-2xl bg-white/5 border border-white/10 group-hover:scale-110 transition duration-300">
@@ -197,12 +260,88 @@ Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
                   </span>
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-temple-gold transition">{unit.title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed font-normal">{unit.desc}</p>
+                <p className="text-sm text-gray-400 leading-relaxed font-normal mb-6">{unit.description}</p>
+              </div>
+
+              <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-bold text-temple-gold group-hover:translate-x-1 transition">
+                <span>Ver Información Completa e Inscripciones</span>
+                <ChevronRight size={18} />
               </div>
             </motion.div>
           ))}
         </div>
       </section>
+
+      {/* Pillar Detail Modal */}
+      <AnimatePresence>
+        {activePillarModal !== null && (
+          <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }} 
+              animate={{ opacity: 1, scale: 1 }} 
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="bg-[#0F1420] border border-temple-gold/30 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar p-6 md:p-8 relative space-y-6 shadow-2xl"
+            >
+              <button
+                onClick={() => setActivePillarModal(null)}
+                className="absolute top-4 right-4 p-2.5 bg-white/10 hover:bg-white/20 rounded-full text-white transition"
+              >
+                <X size={18} />
+              </button>
+
+              <div className="flex items-center gap-4">
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                  {pillarDetails[activePillarModal].icon}
+                </div>
+                <div>
+                  <span className="text-[10px] uppercase font-extrabold tracking-widest px-3 py-1 bg-temple-gold/10 border border-temple-gold/30 rounded-full text-temple-gold">
+                    {pillarDetails[activePillarModal].tag}
+                  </span>
+                  <h3 className="text-2xl font-black text-white mt-2">{pillarDetails[activePillarModal].title}</h3>
+                </div>
+              </div>
+
+              <div className="space-y-2 border-b border-white/10 pb-4">
+                <h4 className="text-sm font-bold text-temple-gold uppercase tracking-wider">{pillarDetails[activePillarModal].subtitle}</h4>
+                <p className="text-sm text-gray-300 leading-relaxed font-light">{pillarDetails[activePillarModal].description}</p>
+              </div>
+
+              <div className="space-y-3">
+                <h5 className="text-xs font-bold text-white uppercase tracking-wider">¿Qué incluye esta unidad?</h5>
+                <ul className="space-y-2.5">
+                  {pillarDetails[activePillarModal].features.map((feat, idx) => (
+                    <li key={idx} className="flex items-start gap-3 bg-white/[0.02] p-3 rounded-xl border border-white/5 text-xs text-gray-300">
+                      <CheckCircle size={16} className="text-temple-gold shrink-0 mt-0.5" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-4 flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={() => {
+                    const actionText = pillarDetails[activePillarModal].whatsappAction;
+                    setActivePillarModal(null);
+                    openPillarWhatsApp(actionText);
+                  }}
+                  className="flex-1 py-4 bg-gradient-to-r from-temple-gold to-amber-500 text-black font-black uppercase tracking-widest text-xs rounded-xl hover:bg-amber-400 transition flex items-center justify-center gap-2 shadow-lg"
+                >
+                  <Send size={16} />
+                  <span>Consultar por este Pilar a Paulo</span>
+                </button>
+
+                <button
+                  onClick={() => setActivePillarModal(null)}
+                  className="py-4 px-6 bg-white/5 border border-white/10 text-gray-300 font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-white/10 transition"
+                >
+                  Cerrar
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* Interactive Multi-Step Assessment Widget */}
       <section id="evaluacion" className="max-w-4xl mx-auto px-4 scroll-mt-24">
@@ -215,11 +354,11 @@ Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
               <span>Paso {step} de 3 • Evaluación Gratuita</span>
             </div>
             <h3 className="text-2xl md:text-3xl font-serif font-black uppercase text-white">
-              Evaluación <span className="italic text-temple-gold">Diagnóstica</span>
+              Evaluación <span className="italic text-temple-gold">Diagnóstica Profunda</span>
             </h3>
             <p className="text-sm text-gray-400 max-w-lg mx-auto">
               {step === 1 && "Paso 1: Selecciona la dimensión principal que deseas transformar."}
-              {step === 2 && "Paso 2: Completa tus datos para personalizar tu diagnóstico."}
+              {step === 2 && "Paso 2: Completa tu información física y biométrica para el diagnóstico."}
               {step === 3 && "Paso 3: Diagnóstico generado con éxito."}
             </p>
           </div>
@@ -264,13 +403,12 @@ Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
                   onClick={() => setStep(2)}
                   className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-temple-gold to-amber-500 text-black font-extrabold uppercase tracking-widest text-xs rounded-xl hover:bg-amber-400 transition shadow-lg flex items-center justify-center gap-2 mx-auto"
                 >
-                  <span>Siguiente: Ingresar Mis Datos</span>
-                  <ArrowRight size={16} />
+                  <span>Siguiente: Rellenar Mi Información →</span>
                 </button>
               </motion.div>
             )}
 
-            {/* STEP 2: Fill Personal & Diagnostic Data */}
+            {/* STEP 2: Fill Detailed Personal & Biometric Data */}
             {step === 2 && (
               <motion.div
                 key="step2"
@@ -280,6 +418,8 @@ Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
                 className="max-w-2xl mx-auto text-left"
               >
                 <form onSubmit={handleSendAssessment} className="space-y-4">
+                  
+                  {/* Basic Contact */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-xs text-gray-300 font-bold uppercase tracking-wider mb-1 block">Tu Nombre Completo *</label>
@@ -294,7 +434,21 @@ Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
                     </div>
 
                     <div>
-                      <label className="text-xs text-gray-300 font-bold uppercase tracking-wider mb-1 block">Tu Edad</label>
+                      <label className="text-xs text-gray-300 font-bold uppercase tracking-wider mb-1 block">Teléfono / WhatsApp</label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="Ej. 70000000"
+                        className="w-full bg-black/60 border border-white/15 rounded-xl p-3 text-sm text-white focus:border-temple-gold outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Biometrics: Age, Weight, Height */}
+                  <div className="grid grid-cols-3 gap-3">
+                    <div>
+                      <label className="text-xs text-gray-300 font-bold uppercase tracking-wider mb-1 block">Edad</label>
                       <input
                         type="number"
                         value={formData.age}
@@ -303,8 +457,31 @@ Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
                         className="w-full bg-black/60 border border-white/15 rounded-xl p-3 text-sm text-white focus:border-temple-gold outline-none"
                       />
                     </div>
+
+                    <div>
+                      <label className="text-xs text-gray-300 font-bold uppercase tracking-wider mb-1 block">Peso (kg)</label>
+                      <input
+                        type="number"
+                        value={formData.weight}
+                        onChange={(e) => setFormData({ ...formData, weight: e.target.value })}
+                        placeholder="Ej. 82"
+                        className="w-full bg-black/60 border border-white/15 rounded-xl p-3 text-sm text-white focus:border-temple-gold outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs text-gray-300 font-bold uppercase tracking-wider mb-1 block">Estatura (cm)</label>
+                      <input
+                        type="number"
+                        value={formData.height}
+                        onChange={(e) => setFormData({ ...formData, height: e.target.value })}
+                        placeholder="Ej. 175"
+                        className="w-full bg-black/60 border border-white/15 rounded-xl p-3 text-sm text-white focus:border-temple-gold outline-none"
+                      />
+                    </div>
                   </div>
 
+                  {/* Activity level & Schedule */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-xs text-gray-300 font-bold uppercase tracking-wider mb-1 block">Nivel de Actividad Actual</label>
@@ -321,26 +498,44 @@ Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
                     </div>
 
                     <div>
-                      <label className="text-xs text-gray-300 font-bold uppercase tracking-wider mb-1 block">Días Disponibles</label>
+                      <label className="text-xs text-gray-300 font-bold uppercase tracking-wider mb-1 block">Horario Preferido</label>
                       <select
-                        value={formData.daysAvailable}
-                        onChange={(e) => setFormData({ ...formData, daysAvailable: e.target.value })}
+                        value={formData.preferredSchedule}
+                        onChange={(e) => setFormData({ ...formData, preferredSchedule: e.target.value })}
                         className="w-full bg-black/60 border border-white/15 rounded-xl p-3 text-sm text-white focus:border-temple-gold outline-none"
                       >
-                        <option value="2-3 días por semana">2-3 días por semana</option>
-                        <option value="4-5 días por semana">4-5 días por semana</option>
-                        <option value="Todos los días">Todos los días</option>
+                        <option value="Turno 06:00 AM (Reto 21 Días)">Turno 06:00 AM (Reto 21 Días)</option>
+                        <option value="Turno Mañana (08:00 - 11:00)">Turno Mañana (08:00 - 11:00)</option>
+                        <option value="Turno Tarde (15:00 - 18:00)">Turno Tarde (15:00 - 18:00)</option>
+                        <option value="Turno Noche (19:00 - 21:00)">Turno Noche (19:00 - 21:00)</option>
                       </select>
                     </div>
                   </div>
 
+                  {/* Injuries / Health condition */}
                   <div>
-                    <label className="text-xs text-gray-300 font-bold uppercase tracking-wider mb-1 block">Meta Principal o Inconveniente a Resolver</label>
+                    <label className="text-xs text-gray-300 font-bold uppercase tracking-wider mb-1 block">Lesiones o Condición de Salud</label>
+                    <select
+                      value={formData.injuries}
+                      onChange={(e) => setFormData({ ...formData, injuries: e.target.value })}
+                      className="w-full bg-black/60 border border-white/15 rounded-xl p-3 text-sm text-white focus:border-temple-gold outline-none"
+                    >
+                      <option value="Ninguna (100% Sano)">Ninguna (100% Sano)</option>
+                      <option value="Molestia en Espalda / Zona Lumbar">Molestia en Espalda / Zona Lumbar</option>
+                      <option value="Molestia en Rodillas / Articulaciones">Molestia en Rodillas / Articulaciones</option>
+                      <option value="Molestia en Hombros">Molestia en Hombros</option>
+                      <option value="Otra condición médica">Otra condición médica</option>
+                    </select>
+                  </div>
+
+                  {/* Specific Goal */}
+                  <div>
+                    <label className="text-xs text-gray-300 font-bold uppercase tracking-wider mb-1 block">Meta Específica o Comentario Adicional</label>
                     <textarea
                       rows={2}
                       value={formData.specificGoal}
                       onChange={(e) => setFormData({ ...formData, specificGoal: e.target.value })}
-                      placeholder="Ej. Quiero bajar 8kg de grasa y eliminar la fatiga constante..."
+                      placeholder="Ej. Bajar 8kg de grasa, forjar hábito 06:00 AM y ganar energía..."
                       className="w-full bg-black/60 border border-white/15 rounded-xl p-3 text-sm text-white focus:border-temple-gold outline-none resize-none"
                     />
                   </div>
@@ -382,7 +577,7 @@ Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
                     </div>
                     <div>
                       <h4 className="font-bold text-white text-base">¡Diagnóstico Completado para {formData.fullName}!</h4>
-                      <p className="text-xs text-gray-400">Generado según tu perfil físico e historial.</p>
+                      <p className="text-xs text-gray-400">Ficha biométrica y logística generada.</p>
                     </div>
                   </div>
 
@@ -392,10 +587,14 @@ Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
                     <p className="text-xs text-gray-300 leading-relaxed font-light">{getRecommendedPlan().desc}</p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-black/60 border border-white/10 text-xs text-gray-400 space-y-1 font-mono">
-                    <p><span className="text-temple-gold font-bold">Nivel:</span> {formData.activityLevel}</p>
-                    <p><span className="text-temple-gold font-bold">Disponibilidad:</span> {formData.daysAvailable}</p>
-                    {formData.specificGoal && <p><span className="text-temple-gold font-bold">Meta:</span> {formData.specificGoal}</p>}
+                  <div className="p-4 rounded-xl bg-black/60 border border-white/10 text-xs text-gray-300 space-y-1.5 font-mono">
+                    <p><span className="text-temple-gold font-bold">• Nombre:</span> {formData.fullName}</p>
+                    {formData.phone && <p><span className="text-temple-gold font-bold">• Teléfono:</span> {formData.phone}</p>}
+                    <p><span className="text-temple-gold font-bold">• Biometría:</span> {formData.age ? formData.age + ' años' : 'N/A'} | {formData.weight ? formData.weight + 'kg' : 'N/A'} | {formData.height ? formData.height + 'cm' : 'N/A'}</p>
+                    <p><span className="text-temple-gold font-bold">• Nivel:</span> {formData.activityLevel}</p>
+                    <p><span className="text-temple-gold font-bold">• Horario:</span> {formData.preferredSchedule}</p>
+                    <p><span className="text-temple-gold font-bold">• Salud:</span> {formData.injuries}</p>
+                    {formData.specificGoal && <p><span className="text-temple-gold font-bold">• Meta:</span> {formData.specificGoal}</p>}
                   </div>
                 </div>
 
@@ -411,7 +610,12 @@ Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
                   <button
                     onClick={() => {
                       setStep(1);
-                      setFormData({ fullName: '', age: '', activityLevel: 'Principiante (1-2 días/sem)', daysAvailable: '3-4 días por semana', specificGoal: '' });
+                      setFormData({
+                        fullName: '', phone: '', age: '', weight: '', height: '',
+                        injuries: 'Ninguna', preferredSchedule: 'Turno 06:00 AM (Reto 21 Días)',
+                        activityLevel: 'Principiante (1-2 días/sem)', daysAvailable: '3-4 días por semana',
+                        specificGoal: ''
+                      });
                     }}
                     className="w-full sm:w-auto px-6 py-4 bg-white/5 border border-white/10 text-gray-300 font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-white/10 transition flex items-center justify-center gap-2"
                   >
