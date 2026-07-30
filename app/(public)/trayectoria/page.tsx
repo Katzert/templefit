@@ -139,13 +139,19 @@ export default function NeuroVentasPage() {
 
               <div className="pt-4 flex flex-wrap gap-4 items-center">
                 <a 
-                  href="https://wa.me/59169127691?text=Hola,%20quiero%20más%20información%20sobre%20las%20capacitaciones." 
+                  href={`https://wa.me/59169127691?text=${encodeURIComponent(`Hola Paulo! Vi la sección de Capacitación & Certificaciones en la web de TempleFit:
+
+*SOLICITUD DE INFORMACIÓN & MENTORÍA*
+• Me interesa recibir información sobre los programas de capacitación y certificaciones.
+• Quisiera conocer requisitos, temario técnico y disponibilidad de fechas.
+
+¿Me podrías compartir los detalles para coordinar?`)}`} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20BA5A] text-white font-black text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_6px_24px_rgba(37,211,102,0.3)] hover:scale-[1.03] transition-all"
                 >
                   <span className="text-base">💬</span>
-                  <span>Iniciar Entrenamiento</span>
+                  <span>Consultar por Capacitaciones</span>
                 </a>
               </div>
             </div>
@@ -430,13 +436,19 @@ export default function NeuroVentasPage() {
                 Evita experiencias de servicio carente de calidad. Nuestro entrenamiento garantiza disciplina, cordialidad y protocolo de ventas desde el primer día.
               </p>
               <a 
-                href="https://wa.me/59169127691?text=Hola,%20solicito%20detalles%20de%20horarios%20para%20el%20entrenamiento%20de%20Neuroventas." 
+                href={`https://wa.me/59169127691?text=${encodeURIComponent(`Hola Paulo! Me interesa el Programa de Capacitación en Neuroventas & Liderazgo de Equipos:
+
+*SOLICITUD DE ENTRENAMIENTO DE VENTAS*
+• *Programa:* Capacitación en Neuroventas & Psicología Comercial
+• *Interés:* Información de horarios, modalidad y preparación de equipos
+
+¿Me podrías brindar más detalles sobre la disponibilidad de turnos?`)}`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20BA5A] text-white font-black text-xs uppercase tracking-widest py-4 rounded-xl shadow-lg transition-all"
               >
                 <span>💬</span>
-                <span>Contactar por WhatsApp · +591 691 27691</span>
+                <span>Solicitar Horarios de Capacitación</span>
               </a>
               <a 
                 href="mailto:templefitbolivia@gmail.com" 
