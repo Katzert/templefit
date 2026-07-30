@@ -69,7 +69,7 @@ export default function EscuadronesPage() {
           <motion.div variants={item} className="relative">
             <div className="absolute -inset-4 bg-gradient-to-tr from-temple-gold/20 to-transparent blur-3xl opacity-50 rounded-full" />
             <img 
-              src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=2069&auto=format&fit=crop" 
+              src="/images/squad_training.png" 
               alt="Escuadrón Entrenando"
               className="relative w-full h-[600px] object-cover rounded-3xl border border-white/10 shadow-2xl"
             />
