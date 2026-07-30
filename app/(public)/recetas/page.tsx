@@ -91,29 +91,29 @@ export default function RecetasPage() {
               key={recipe.id}
               variants={item}
               onClick={() => setSelectedRecipeId(recipe.id)}
-              className="group rounded-3xl overflow-hidden bg-black/40 border border-white/10 hover:border-temple-gold/40 transition-all duration-300 cursor-pointer shadow-xl flex flex-col justify-between"
+              className="group rounded-3xl overflow-hidden bg-gradient-to-br from-[#0B0F19] to-black border border-white/10 hover:border-temple-gold/40 transition-all duration-500 cursor-pointer shadow-xl hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2 flex flex-col justify-between"
             >
               {/* Recipe Image Header */}
-              <div className="relative h-56 overflow-hidden bg-white/5">
+              <div className="relative h-56 overflow-hidden bg-black/40">
                 {recipe.image ? (
                   <img
                     src={recipe.image}
                     alt={recipe.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-700">
-                    <ChefHat size={32} />
+                  <div className="w-full h-full flex items-center justify-center text-gray-700 bg-gradient-to-t from-black to-gray-900">
+                    <ChefHat size={32} className="opacity-50" />
                   </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-90" />
 
-                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-temple-gold text-[10px] font-bold uppercase tracking-widest">
+                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-temple-gold text-[10px] font-bold uppercase tracking-widest shadow-lg">
                   {recipe.category}
                 </div>
 
                 <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-temple-gold transition">{recipe.name}</h3>
+                  <h3 className="text-xl font-bold text-white group-hover:text-temple-gold transition-colors duration-300 drop-shadow-md">{recipe.name}</h3>
                 </div>
               </div>
 
@@ -122,23 +122,23 @@ export default function RecetasPage() {
                 <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">{recipe.description}</p>
 
                 {/* Macros Preview */}
-                <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-white/[0.03] border border-white/5 text-center text-xs">
+                <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-white/[0.03] border border-white/5 text-center text-xs group-hover:bg-white/[0.05] transition-colors">
                   <div>
-                    <span className="text-[9px] uppercase text-gray-500 block">Calorías</span>
-                    <span className="font-bold text-white">{recipe.macros?.calories || 0}</span>
+                    <span className="text-[9px] uppercase text-gray-500 block mb-0.5">Calorías</span>
+                    <span className="font-black text-white drop-shadow-sm">{recipe.macros?.calories || 0}</span>
                   </div>
                   <div>
-                    <span className="text-[9px] uppercase text-gray-500 block">Proteína</span>
-                    <span className="font-bold text-temple-gold">{recipe.macros?.protein || 0}g</span>
+                    <span className="text-[9px] uppercase text-gray-500 block mb-0.5">Proteína</span>
+                    <span className="font-black text-temple-gold drop-shadow-sm">{recipe.macros?.protein || 0}g</span>
                   </div>
                   <div>
-                    <span className="text-[9px] uppercase text-gray-500 block">Tiempo</span>
-                    <span className="font-bold text-gray-300">{recipe.time || 0}m</span>
+                    <span className="text-[9px] uppercase text-gray-500 block mb-0.5">Tiempo</span>
+                    <span className="font-black text-gray-300 drop-shadow-sm">{recipe.time || 0}m</span>
                   </div>
                 </div>
 
-                <div className="pt-2 flex items-center justify-between text-xs font-bold text-temple-gold group-hover:translate-x-1 transition">
-                  <span>Ver Receta Completa</span>
+                <div className="pt-2 flex items-center justify-between text-xs font-black text-temple-gold group-hover:translate-x-1 transition-transform duration-300">
+                  <span className="tracking-widest uppercase">Ver Detalles</span>
                   <ChevronRight size={16} />
                 </div>
               </div>

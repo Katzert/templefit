@@ -29,7 +29,8 @@ const defaultProducts = [
     price: 180,
     category: 'Apparel',
     icon: 'Shirt',
-    features: ['100% Algodón Premium', 'Estampado de alta densidad', 'Corte Oversize Drop-Shoulder']
+    features: ['100% Algodón Premium', 'Estampado de alta densidad', 'Corte Oversize Drop-Shoulder'],
+    image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=800&auto=format&fit=crop'
   }
 ];
 
@@ -102,34 +103,35 @@ export default function TiendaPage() {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {storeProducts.filter(p => p.category === 'Suscripción').map((product) => (
-              <div key={product.id} className="p-8 rounded-3xl bg-[#0B0F19] border border-white/10 flex flex-col md:flex-row gap-6 hover:border-temple-gold/40 transition group">
-                <div className="md:w-2/5 relative min-h-[220px] rounded-2xl overflow-hidden">
+              <div key={product.id} className="p-8 rounded-3xl bg-gradient-to-br from-[#0B0F19] to-black border border-white/10 flex flex-col md:flex-row gap-6 hover:border-temple-gold/40 transition-all duration-500 group shadow-2xl hover:shadow-[0_0_40px_rgba(212,175,55,0.15)] hover:-translate-y-2">
+                <div className="md:w-2/5 relative min-h-[220px] rounded-2xl overflow-hidden shadow-inner">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
-                  <div className="absolute top-3 left-3 bg-temple-gold text-black font-extrabold text-[9px] uppercase tracking-widest px-2.5 py-1 rounded-full">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+                  <div className="absolute top-3 left-3 bg-temple-gold text-black font-extrabold text-[9px] uppercase tracking-widest px-2.5 py-1 rounded-full shadow-[0_0_10px_rgba(212,175,55,0.5)]">
                     RECOMENDADO
                   </div>
                 </div>
                 <div className="md:w-3/5 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-2xl font-bold text-white mb-2">{product.name}</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-temple-gold transition-colors duration-300">{product.name}</h3>
                     <p className="text-gray-400 text-xs leading-relaxed mb-4">{product.description}</p>
                     <ul className="space-y-2 mb-6">
                       <li className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-300">
-                        <ShieldCheck className="w-4 h-4 text-emerald-400" /> Sin Gluten / Sin Azúcar Añadida
+                        <ShieldCheck className="w-4 h-4 text-emerald-400 drop-shadow-[0_0_5px_rgba(52,211,153,0.5)]" /> Sin Gluten / Sin Azúcar Añadida
                       </li>
                       <li className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-300">
-                        <ShieldCheck className="w-4 h-4 text-emerald-400" /> Entrega Diaria 06:00 AM
+                        <ShieldCheck className="w-4 h-4 text-emerald-400 drop-shadow-[0_0_5px_rgba(52,211,153,0.5)]" /> Entrega Diaria 06:00 AM
                       </li>
                     </ul>
                   </div>
                   <div className="flex items-center justify-between border-t border-white/10 pt-4 mt-auto">
                     <div>
-                      <span className="font-black text-3xl text-temple-gold">${product.price}</span>
+                      <span className="font-black text-3xl text-temple-gold drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]">${product.price}</span>
                       <span className="text-[10px] text-gray-400 uppercase tracking-widest ml-1">/mes</span>
                     </div>
                     <button 
                       onClick={() => handleOrder(product.name, product.price)}
-                      className="bg-temple-gold text-black px-6 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-widest hover:bg-amber-400 transition shadow-md"
+                      className="bg-gradient-to-r from-temple-gold to-amber-600 text-black px-6 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-widest hover:scale-105 transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.4)]"
                     >
                       Pedir Plan ↗
                     </button>
@@ -156,20 +158,22 @@ export default function TiendaPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {storeProducts.filter(p => p.category !== 'Suscripción').map((item) => (
-              <div key={item.id} className="p-6 rounded-3xl bg-[#0B0F19] border border-white/10 flex flex-col justify-between hover:border-temple-gold/40 transition group">
+              <div key={item.id} className="p-6 rounded-3xl bg-gradient-to-br from-[#0B0F19] to-black border border-white/10 flex flex-col justify-between hover:border-temple-gold/40 transition-all duration-500 group shadow-2xl hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2">
                 <div>
                   <div className="aspect-square mb-6 rounded-2xl overflow-hidden bg-black/40 relative">
-                    <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-black text-temple-gold">
+                    <img src={item.image || 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=800&auto=format&fit=crop'} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
+                    <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-black text-temple-gold shadow-lg border border-white/10">
                       ${item.price}
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{item.name}</h3>
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-temple-gold transition-colors duration-300">{item.name}</h3>
                   <p className="text-xs text-gray-400 leading-relaxed mb-6">{item.description}</p>
                 </div>
 
                 <button 
                   onClick={() => handleOrder(item.name, item.price)}
-                  className="w-full bg-white/10 hover:bg-temple-gold hover:text-black border border-white/20 text-white font-extrabold text-xs uppercase tracking-widest py-3 rounded-xl transition"
+                  className="w-full bg-white/5 hover:bg-gradient-to-r hover:from-temple-gold hover:to-amber-600 hover:text-black border border-white/10 hover:border-transparent text-white font-extrabold text-xs uppercase tracking-widest py-3 rounded-xl transition-all duration-300 shadow-lg"
                 >
                   Adquirir Armadura ↗
                 </button>
