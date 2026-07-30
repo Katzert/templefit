@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Menu, X, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 
-const ADMIN_URL = 'https://katzert.github.io/templefit-admin/';
+
 const WHATSAPP_URL = 'https://wa.me/59169127691?text=Hola%20Paulo!%20Quiero%20unirme%20al%20Reto%2021%20D%C3%ADas';
 
 export default function Navbar() {
@@ -28,18 +28,11 @@ export default function Navbar() {
         <div className="flex items-center space-x-4 md:space-x-8">
           <div className="hidden md:flex space-x-6 text-[11px] font-extrabold uppercase tracking-widest text-white items-center">
             <Link href="/" className="hover:text-temple-gold transition-colors pb-1">Inicio</Link>
-            <Link href="/franquicias" className="hover:text-temple-gold transition-colors pb-1">Franquicias</Link>
-            <Link href="/alianzas" className="hover:text-temple-gold transition-colors pb-1">Alianzas</Link>
+            <Link href="/trayectoria" className="hover:text-temple-gold transition-colors pb-1">Trayectoria</Link>
             <Link href="/tienda" className="hover:text-temple-gold transition-colors pb-1">Tienda</Link>
             <Link href="/recetas" className="hover:text-temple-gold transition-colors pb-1">Recetas</Link>
             
-            <a 
-              href={ADMIN_URL}
-              className="text-temple-gold hover:text-white transition-colors flex items-center gap-1 font-bold"
-            >
-              <span>CRM Instructores</span>
-              <ExternalLink size={12} />
-            </a>
+
           </div>
           
           <div className="md:hidden flex items-center bg-temple-gold/20 px-3 py-1.5 border border-temple-gold/30 rounded-full cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
@@ -63,18 +56,11 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 p-6 space-y-4">
           <Link href="/" onClick={() => setIsOpen(false)} className="block text-xs font-extrabold tracking-widest uppercase text-white hover:text-temple-gold">Inicio</Link>
-          <Link href="/franquicias" onClick={() => setIsOpen(false)} className="block text-xs font-extrabold tracking-widest uppercase text-white hover:text-temple-gold">Franquicias</Link>
-          <Link href="/alianzas" onClick={() => setIsOpen(false)} className="block text-xs font-extrabold tracking-widest uppercase text-white hover:text-temple-gold">Alianzas</Link>
+          <Link href="/trayectoria" onClick={() => setIsOpen(false)} className="block text-xs font-extrabold tracking-widest uppercase text-white hover:text-temple-gold">Trayectoria</Link>
           <Link href="/tienda" onClick={() => setIsOpen(false)} className="block text-xs font-extrabold tracking-widest uppercase text-white hover:text-temple-gold">Tienda</Link>
           <Link href="/recetas" onClick={() => setIsOpen(false)} className="block text-xs font-extrabold tracking-widest uppercase text-white hover:text-temple-gold">Recetas</Link>
           
-          <a 
-            href={ADMIN_URL}
-            onClick={() => setIsOpen(false)}
-            className="block text-xs font-extrabold tracking-widest uppercase text-temple-gold"
-          >
-            Portal CRM Instructores ↗
-          </a>
+
           <a 
             href={WHATSAPP_URL}
             target="_blank"

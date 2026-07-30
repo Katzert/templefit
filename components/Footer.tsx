@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Instagram, Facebook, MessageCircle } from 'lucide-react';
 
-const ADMIN_URL = 'https://katzert.github.io/templefit-admin/';
+
 const WHATSAPP_URL = 'https://wa.me/59169127691?text=Hola%20Paulo!%20Quiero%20mas%20informacion';
 
 export default function Footer() {
@@ -59,11 +59,10 @@ export default function Footer() {
             <h3 className="text-xs font-extrabold text-temple-gold uppercase tracking-[0.25em]">Navegación</h3>
             <ul className="space-y-2.5 text-xs font-bold uppercase tracking-wider text-gray-300">
               <li><Link href="/" className="hover:text-temple-gold transition">Inicio</Link></li>
-              <li><Link href="/franquicias" className="hover:text-temple-gold transition">Franquicias</Link></li>
-              <li><Link href="/alianzas" className="hover:text-temple-gold transition">Alianzas Estratégicas</Link></li>
+              <li><Link href="/trayectoria" className="hover:text-temple-gold transition">Trayectoria y Credenciales</Link></li>
               <li><Link href="/tienda" className="hover:text-temple-gold transition">Tienda</Link></li>
               <li><Link href="/recetas" className="hover:text-temple-gold transition">Recetas & Nutrición</Link></li>
-              <li><a href={ADMIN_URL} className="text-temple-gold hover:text-white transition">Portal CRM Instructores ↗</a></li>
+
             </ul>
           </div>
 

@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ShoppingBag, Utensils, Shirt, Zap, Star, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import { products } from '@/data/content';
+import { db } from '../../../lib/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 const IconMap: Record<string, any> = {
   Shirt,
@@ -10,8 +11,49 @@ const IconMap: Record<string, any> = {
   Star
 };
 
+// Simulate default products from fallback data if Firebase is not connected yet
+const defaultProducts = [
+  {
+    id: 'prod-1',
+    name: 'Whey Protein Isolate - 2lbs',
+    description: 'Proteína aislada de rápida absorción, ideal para recuperación post-entreno.',
+    price: 450,
+    category: 'Suplementos',
+    icon: 'Zap',
+    features: ['25g Proteína por scoop', '0g Azúcar añadida', 'Sabor Vainilla Francesa']
+  },
+  {
+    id: 'prod-2',
+    name: 'Polera Oficial Oversize Black',
+    description: 'Corte oversize diseñado para máxima movilidad y confort durante el entrenamiento pesado.',
+    price: 180,
+    category: 'Apparel',
+    icon: 'Shirt',
+    features: ['100% Algodón Premium', 'Estampado de alta densidad', 'Corte Oversize Drop-Shoulder']
+  }
+];
+
 export default function TiendaPage() {
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+  const [storeProducts, setStoreProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchInventory = async () => {
+      try {
+        const docRef = doc(db, 'workspaces', 'templefit-main');
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists() && docSnap.data().inventory) {
+          setStoreProducts(docSnap.data().inventory);
+        } else {
+          setStoreProducts(defaultProducts);
+        }
+      } catch (err) {
+        console.warn("Firebase no configurado, usando data local", err);
+        setStoreProducts(defaultProducts);
+      }
+    };
+    fetchInventory();
+  }, []);
 
   const handleOrder = (productName: string, price: number) => {
     const text = encodeURIComponent(`Hola Paulo! Quisiera adquirir de la Armería TempleFit: ${productName} ($${price}). ¿Cómo realizo el pago/coordinación?`);
@@ -37,7 +79,7 @@ export default function TiendaPage() {
             LA <span className="text-temple-gold italic">ARMERÍA</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
-            Potencia tu transformación con suplementación bio-optimizada y porta la armadura oficial del Escuadrón con honor.
+            Equipamiento oficial y nutrición para tu entrenamiento.
           </p>
         </div>
       </section>
@@ -52,14 +94,14 @@ export default function TiendaPage() {
                 <Utensils className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-temple-gold">Nutrición Preventiva</span>
-                <h2 className="text-3xl md:text-4xl font-serif font-black text-white uppercase">COMBUSTIBLE <span className="text-temple-gold italic">BIO-OPTIMIZADO</span></h2>
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-temple-gold">Nutrición y Suplementos</span>
+                <h2 className="text-3xl md:text-4xl font-serif font-black text-white uppercase">NUTRICIÓN Y <span className="text-temple-gold italic">SUPLEMENTOS</span></h2>
               </div>
             </div>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {products.filter(p => p.category === 'Suscripción').map((product) => (
+            {storeProducts.filter(p => p.category === 'Suscripción').map((product) => (
               <div key={product.id} className="p-8 rounded-3xl bg-[#0B0F19] border border-white/10 flex flex-col md:flex-row gap-6 hover:border-temple-gold/40 transition group">
                 <div className="md:w-2/5 relative min-h-[220px] rounded-2xl overflow-hidden">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
@@ -113,11 +155,10 @@ export default function TiendaPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {products.filter(p => p.category !== 'Suscripción').map((item) => (
+            {storeProducts.filter(p => p.category !== 'Suscripción').map((item) => (
               <div key={item.id} className="p-6 rounded-3xl bg-[#0B0F19] border border-white/10 flex flex-col justify-between hover:border-temple-gold/40 transition group">
                 <div>
                   <div className="aspect-square mb-6 rounded-2xl overflow-hidden bg-black/40 relative">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                     <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-black text-temple-gold">
                       ${item.price}
                     </div>

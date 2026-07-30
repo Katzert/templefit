@@ -235,7 +235,7 @@ export default function NeuroVentasPage() {
               { num: '03', emoji: '⚡', title: 'Control del Estrés', desc: 'Origen del control de la frustración del vendedor. Estrategias de expansión mental y protocolo anti-bloqueo.' },
               { num: '04', emoji: '🎯', title: 'Protocolo de Ventas', desc: 'Técnicas y protocolos estandarizados para elevar ventas con precisión. Sistema disciplinario para ventas efectivas.' },
               { num: '05', emoji: '💎', title: 'Imagen & Presentación', desc: 'Alimentación, imagen corporal y salud personal. Estándar de calidad en la presentación profesional para elevar la percepción.' },
-              { num: '06', emoji: '🏆', title: 'Servicio al Cliente', desc: 'Atención en base a metas medibles reales. Cordialidad y disciplina con garantía de sistema. Marca la diferencia en el mercado.' }
+              { num: '06', emoji: '', title: 'Servicio al Cliente', desc: 'Atención en base a metas medibles reales. Cordialidad y disciplina con garantía de sistema. Marca la diferencia en el mercado.' }
             ].map((mod, i) => (
               <div 
                 key={i} 
