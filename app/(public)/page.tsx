@@ -446,7 +446,7 @@ Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
                   </div>
 
                   {/* Biometrics: Age, Weight, Height */}
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div>
                       <label className="text-xs text-gray-300 font-bold uppercase tracking-wider mb-1 block">Edad</label>
                       <input
