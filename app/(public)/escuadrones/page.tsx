@@ -69,7 +69,7 @@ export default function EscuadronesPage() {
           <motion.div variants={item} className="relative">
             <div className="absolute -inset-4 bg-gradient-to-tr from-temple-gold/20 to-transparent blur-3xl opacity-50 rounded-full" />
             <img 
-              src="/images/squad_training.png" 
+              src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=2069&auto=format&fit=crop" 
               alt="Escuadrón Entrenando"
               className="relative w-full h-[600px] object-cover rounded-3xl border border-white/10 shadow-2xl"
             />
@@ -107,7 +107,7 @@ export default function EscuadronesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { img: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=2069&auto=format&fit=crop", title: "Entrenamiento Funcional Extremo" },
-              { img: "https://images.unsplash.com/photo-1526506114620-302a981a3d00?q=80&w=2070&auto=format&fit=crop", title: "Retos de Escuadrón" },
+              { img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop", title: "Retos de Escuadrón" },
               { img: "https://images.unsplash.com/photo-1522898467493-49726bf28798?q=80&w=2070&auto=format&fit=crop", title: "Comunión y Snack Bar" }
             ].map((camp, i) => (
               <motion.div key={i} variants={item} className="group relative h-96 rounded-3xl overflow-hidden cursor-pointer">
