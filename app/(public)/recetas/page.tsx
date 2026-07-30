@@ -181,7 +181,7 @@ export default function RecetasPage() {
                 <ul className="space-y-2 text-xs text-gray-300">
                   {(openRecipe.ingredientsText || openRecipe.ingredients || []).map((ing: string, i: number) => {
                     // Fallback para ingredientes que vengan como objeto del CRM antiguo si aplica
-                    const text = typeof ing === 'string' ? ing : 'Ingrediente';
+                    const text = typeof ing === 'string' ? ing : (ing as any).name || (ing as any).item || 'Ingrediente';
                     return (
                       <li key={i} className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-temple-gold" />

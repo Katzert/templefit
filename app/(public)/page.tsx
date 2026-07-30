@@ -44,7 +44,7 @@ export default function Home() {
         "Entrenamientos grupales Sábado CristoFit Camp al aire libre",
         "Comunidad activa en Escuadrones para rendición de cuentas"
       ],
-      whatsappAction: "Hola Paulo! Quiero consultar información e inscripciones para el Centro de Entrenamiento TempleFit."
+      whatsappAction: "Hola TempleFit! Quiero consultar información e inscripciones para el Centro de Entrenamiento Físico."
     },
     {
       id: 2,
@@ -59,7 +59,7 @@ export default function Home() {
         "Suplementos de recuperación muscular y energía natural",
         "Descuentos del 20% en Snack Bar para atletas del Reto"
       ],
-      whatsappAction: "Hola Paulo! Quiero consultar sobre los planes de la Barra Nutricional y Suplementos TempleFit."
+      whatsappAction: "Hola TempleFit! Quiero consultar sobre los planes de la Barra Nutricional y Suplementos."
     },
     {
       id: 3,
@@ -74,7 +74,7 @@ export default function Home() {
         "Gorras y accesorios oficiales con la marca TempleFit",
         "Representa los valores de fuerza, fe y carácter"
       ],
-      whatsappAction: "Hola Paulo! Quisiera ver el catálogo y precios del Apparel oficial de TempleFit."
+      whatsappAction: "Hola TempleFit! Quisiera ver el catálogo y precios del Merchandising oficial."
     },
     {
       id: 4,
@@ -89,7 +89,7 @@ export default function Home() {
         "Alianzas con laboratorios y especialistas de salud en Santa Cruz",
         "Prevención activa para entrenar con seguridad toda tu vida"
       ],
-      whatsappAction: "Hola Paulo! Quisiera información sobre las evaluaciones de Medicina Preventiva y Terapia de Recuperación."
+      whatsappAction: "Hola TempleFit! Quisiera información sobre las evaluaciones de Medicina Preventiva y Centro de Entrenamiento Espiritual."
     }
   ];
 
@@ -146,7 +146,7 @@ export default function Home() {
 
   const openWhatsAppWithLead = () => {
     const plan = getRecommendedPlan();
-    const message = `Hola Paulo! Hice la Evaluación Diagnóstica en la web de TempleFit:
+    const message = `Hola TempleFit! Hice la Evaluación Diagnóstica en la web:
 
 *FICHA DE DIAGNÓSTICO DEL ALUMNO*
 • *Nombre:* ${formData.fullName || 'No especificado'}
@@ -209,7 +209,7 @@ Quiero coordinar mi Semana de Prueba Gratuita y comenzar.`;
 
           <motion.div variants={item} className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <a
-              href="https://wa.me/59169127691?text=Hola%20Paulo!%20Quiero%20reclamar%20mi%20Semana%20de%20Prueba%20Gratis%20y%20el%2020%25%20de%20descuento%20en%20Snack%20Bar!"
+              href="https://wa.me/59169127691?text=Hola%20TempleFit!%20Quiero%20reclamar%20mi%20Semana%20de%20Prueba%20Gratis%20y%20el%2020%25%20de%20descuento%20en%20Snack%20Bar!"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-temple-gold to-amber-500 text-black font-extrabold uppercase tracking-wider text-xs rounded-xl shadow-lg hover:shadow-temple-gold/20 hover:scale-[1.02] transition duration-200 flex flex-col items-center justify-center gap-1"

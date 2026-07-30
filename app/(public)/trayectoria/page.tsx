@@ -139,7 +139,7 @@ export default function NeuroVentasPage() {
 
               <div className="pt-4 flex flex-wrap gap-4 items-center">
                 <a 
-                  href={`https://wa.me/59169127691?text=${encodeURIComponent(`Hola Paulo! Vi la sección de Capacitación & Certificaciones en la web de TempleFit:
+                  href={`https://wa.me/59169127691?text=${encodeURIComponent(`Hola TempleFit! Vi la sección de Capacitación & Certificaciones en la web de TempleFit:
 
 *SOLICITUD DE INFORMACIÓN & MENTORÍA*
 • Me interesa recibir información sobre los programas de capacitación y certificaciones.
@@ -436,7 +436,7 @@ export default function NeuroVentasPage() {
                 Evita experiencias de servicio carente de calidad. Nuestro entrenamiento garantiza disciplina, cordialidad y protocolo de ventas desde el primer día.
               </p>
               <a 
-                href={`https://wa.me/59169127691?text=${encodeURIComponent(`Hola Paulo! Me interesa el Programa de Capacitación en Neuroventas & Liderazgo de Equipos:
+                href={`https://wa.me/59169127691?text=${encodeURIComponent(`Hola TempleFit! Me interesa el Programa de Capacitación en Neuroventas & Liderazgo de Equipos:
 
 *SOLICITUD DE ENTRENAMIENTO DE VENTAS*
 • *Programa:* Capacitación en Neuroventas & Psicología Comercial

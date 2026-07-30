@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Instagram, Facebook, MessageCircle } from 'lucide-react';
 
 
-const WHATSAPP_URL = 'https://wa.me/59169127691?text=Hola%20Paulo!%20Quiero%20mas%20informacion';
+const WHATSAPP_URL = 'https://wa.me/59169127691?text=Hola%20TempleFit!%20Quiero%20mas%20informacion';
 
 export default function Footer() {
   return (

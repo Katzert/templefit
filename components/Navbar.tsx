@@ -5,7 +5,7 @@ import { Menu, X, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 
 
-const WHATSAPP_URL = 'https://wa.me/59169127691?text=Hola%20Paulo!%20Quiero%20unirme%20al%20Reto%2021%20D%C3%ADas';
+const WHATSAPP_URL = 'https://wa.me/59169127691?text=Hola%20TempleFit!%20Quiero%20unirme%20al%20Reto%2021%20D%C3%ADas';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

@@ -56,7 +56,7 @@ export default function TiendaPage() {
   }, []);
 
   const handleOrder = (productName: string, price: number) => {
-    const text = encodeURIComponent(`Hola Paulo! Quisiera adquirir de la Armería TempleFit: ${productName} ($${price}). ¿Cómo realizo el pago/coordinación?`);
+    const text = encodeURIComponent(`Hola TempleFit! Quisiera adquirir de la Armería TempleFit: ${productName} ($${price}). ¿Cómo realizo el pago/coordinación?`);
     window.open(`https://wa.me/59169127691?text=${text}`, '_blank');
   };
 
