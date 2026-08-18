@@ -1,186 +1,129 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ShoppingBag, Utensils, Shirt, Zap, Star, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import { db } from '../../../lib/firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { useState } from 'react';
+import { ShoppingBag, Utensils, Shirt, Zap, Star, ShieldCheck, CheckCircle2, Send, ArrowRight, X } from 'lucide-react';
+import { products as officialProducts } from '@/data/content';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const IconMap: Record<string, any> = {
-  Shirt,
-  Zap,
-  Star
-};
-
-// Simulate default products from fallback data if Firebase is not connected yet
-const defaultProducts = [
-  {
-    id: 'prod-1',
-    name: 'Whey Protein Isolate - 2lbs',
-    description: 'Proteína aislada de rápida absorción, ideal para recuperación post-entreno.',
-    price: 450,
-    category: 'Suplementos',
-    icon: 'Zap',
-    features: ['25g Proteína por scoop', '0g Azúcar añadida', 'Sabor Vainilla Francesa']
-  },
-  {
-    id: 'prod-2',
-    name: 'Polera Oficial Oversize Black',
-    description: 'Corte oversize diseñado para máxima movilidad y confort durante el entrenamiento pesado.',
-    price: 180,
-    category: 'Apparel',
-    icon: 'Shirt',
-    features: ['100% Algodón Premium', 'Estampado de alta densidad', 'Corte Oversize Drop-Shoulder'],
-    image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=800&auto=format&fit=crop'
-  }
-];
+const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.08 } } };
+const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
 
 export default function TiendaPage() {
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
-  const [storeProducts, setStoreProducts] = useState<any[]>([]);
+  const [activeCategory, setActiveCategory] = useState<string>('all');
 
-  useEffect(() => {
-    const fetchInventory = async () => {
-      try {
-        const docRef = doc(db, 'workspaces', 'templefit-main');
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists() && docSnap.data().inventory) {
-          setStoreProducts(docSnap.data().inventory);
-        } else {
-          setStoreProducts(defaultProducts);
-        }
-      } catch (err) {
-        console.warn("Firebase no configurado, usando data local", err);
-        setStoreProducts(defaultProducts);
-      }
-    };
-    fetchInventory();
-  }, []);
+  const categories = [
+    { id: 'all', label: 'Todo el Catálogo' },
+    { id: 'Textil', label: 'Indumentaria Táctica' },
+    { id: 'Suplemento', label: 'Botica & Suplementos' },
+    { id: 'Membresía', label: 'Membresías' },
+    { id: 'Nutrición', label: 'Catering & Snack Bar' }
+  ];
 
-  const handleOrder = (productName: string, price: number) => {
-    const text = encodeURIComponent(`Hola TempleFit! Quisiera adquirir de la Armería TempleFit: ${productName} ($${price}). ¿Cómo realizo el pago/coordinación?`);
+  const filteredProducts = activeCategory === 'all'
+    ? officialProducts
+    : officialProducts.filter(p => p.category === activeCategory);
+
+  const handleOrder = (product: any) => {
+    const text = encodeURIComponent(
+      `¡Hola Paulo! 👋 Quisiera encargar de la Armería TempleFit: *${product.name}* (${product.price} Bs.). ¿Cómo realizo el 50% de seña para recogerlo este sábado en el CristoFit Camp?`
+    );
     window.open(`https://wa.me/59169127691?text=${text}`, '_blank');
   };
 
   return (
-    <div className="animate-fade-in-up min-h-screen font-sans">
+    <div className="min-h-screen font-sans pb-24">
       {/* Header Section */}
-      <section className="relative min-h-[50vh] flex items-center pt-32 pb-24 overflow-hidden border-b border-temple-gold/20">
-        <div className="absolute inset-0 bg-temple-navy-dark"></div>
+      <section className="relative min-h-[50vh] flex items-center pt-28 pb-20 overflow-hidden border-b border-temple-gold/20">
         <div 
-          className="absolute inset-0 opacity-30 bg-cover bg-center mix-blend-luminosity"
+          className="absolute inset-0 opacity-30 bg-cover bg-center mix-blend-luminosity filter brightness-75"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1600&q=80')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-[#0B0F19]/90 to-[#0B0F19]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#07090E]/90 via-[#07090E]/80 to-[#07090E]" />
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
-          <div className="inline-block px-4 py-1.5 border border-temple-gold/30 bg-temple-gold/10 backdrop-blur-md rounded-full mb-6">
-            <span className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-temple-gold">EQUIPAMIENTO & NUTRICIÓN DE ÉLITE</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-temple-gold/30 bg-temple-gold/10 backdrop-blur-md rounded-full">
+            <ShoppingBag size={14} className="text-temple-gold" />
+            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-temple-gold">
+              Armería Oficial & Suplementación
+            </span>
           </div>
-          <h1 className="text-5xl md:text-8xl font-serif font-black text-white uppercase tracking-tight mb-6">
-            LA <span className="text-temple-gold italic">ARMERÍA</span>
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-black text-white uppercase tracking-tight">
+            LA <span className="text-temple-gold italic">ARMERÍA</span> TEMPLEFIT
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
-            Equipamiento oficial y nutrición para tu entrenamiento.
+          <p className="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
+            Indumentaria de comando táctico, botica de suplementos cerebrales y nutrición funcional anti-inflamatoria en Santa Cruz.
           </p>
+          <div className="text-xs text-temple-gold font-bold uppercase tracking-widest bg-black/40 py-2 px-4 rounded-xl max-w-md mx-auto border border-white/10">
+            📦 Regla de Pedido: 50% de seña previa (Viernes) ➔ Entrega Sábado en Camp
+          </div>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-10">
         
-        {/* Nutrición Section */}
-        <div className="mb-24">
-          <div className="flex items-center justify-between mb-12 border-b border-white/10 pb-6">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-white/5 border border-white/10 text-temple-gold">
-                <Utensils className="w-6 h-6" />
-              </div>
-              <div>
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-temple-gold">Nutrición y Suplementos</span>
-                <h2 className="text-3xl md:text-4xl font-serif font-black text-white uppercase">NUTRICIÓN Y <span className="text-temple-gold italic">SUPLEMENTOS</span></h2>
-              </div>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {storeProducts.filter(p => p.category === 'Suscripción').map((product) => (
-              <div key={product.id} className="p-8 rounded-3xl bg-gradient-to-br from-[#0B0F19] to-black border border-white/10 flex flex-col md:flex-row gap-6 hover:border-temple-gold/40 transition-all duration-500 group shadow-2xl hover:shadow-[0_0_40px_rgba(212,175,55,0.15)] hover:-translate-y-2">
-                <div className="md:w-2/5 relative min-h-[220px] rounded-2xl overflow-hidden shadow-inner">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
-                  <div className="absolute top-3 left-3 bg-temple-gold text-black font-extrabold text-[9px] uppercase tracking-widest px-2.5 py-1 rounded-full shadow-[0_0_10px_rgba(212,175,55,0.5)]">
-                    RECOMENDADO
-                  </div>
-                </div>
-                <div className="md:w-3/5 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-temple-gold transition-colors duration-300">{product.name}</h3>
-                    <p className="text-gray-400 text-xs leading-relaxed mb-4">{product.description}</p>
-                    <ul className="space-y-2 mb-6">
-                      <li className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-300">
-                        <ShieldCheck className="w-4 h-4 text-emerald-400 drop-shadow-[0_0_5px_rgba(52,211,153,0.5)]" /> Sin Gluten / Sin Azúcar Añadida
-                      </li>
-                      <li className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-300">
-                        <ShieldCheck className="w-4 h-4 text-emerald-400 drop-shadow-[0_0_5px_rgba(52,211,153,0.5)]" /> Entrega Diaria 06:00 AM
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="flex items-center justify-between border-t border-white/10 pt-4 mt-auto">
-                    <div>
-                      <span className="font-black text-3xl text-temple-gold drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]">${product.price}</span>
-                      <span className="text-[10px] text-gray-400 uppercase tracking-widest ml-1">/mes</span>
-                    </div>
-                    <button 
-                      onClick={() => handleOrder(product.name, product.price)}
-                      className="bg-gradient-to-r from-temple-gold to-amber-600 text-black px-6 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-widest hover:scale-105 transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.4)]"
-                    >
-                      Pedir Plan ↗
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Category Filters */}
+        <div className="flex flex-wrap justify-center gap-2">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 border ${
+                activeCategory === cat.id
+                  ? 'bg-temple-gold text-black border-temple-gold shadow-lg shadow-temple-gold/20 font-black'
+                  : 'bg-white/5 text-gray-400 border-white/10 hover:bg-white/10 hover:text-white'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
         </div>
 
-        {/* Merch Section */}
-        <div>
-          <div className="flex items-center justify-between mb-12 border-b border-white/10 pb-6">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-white/5 border border-white/10 text-temple-gold">
-                <Shirt className="w-6 h-6" />
-              </div>
+        {/* Products Grid */}
+        <motion.div variants={container} initial="hidden" animate="show" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProducts.map((prod) => (
+            <motion.div
+              key={prod.id}
+              variants={item}
+              className="bg-[#0E1424]/90 border border-white/10 rounded-3xl overflow-hidden hover:border-temple-gold/40 transition-all duration-300 flex flex-col justify-between group shadow-xl hover:-translate-y-1"
+            >
               <div>
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-temple-gold">Indumentaria Táctica</span>
-                <h2 className="text-3xl md:text-4xl font-serif font-black text-white uppercase">ARMADURA <span className="text-temple-gold italic">TEMPLEFIT</span></h2>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {storeProducts.filter(p => p.category !== 'Suscripción').map((item) => (
-              <div key={item.id} className="p-6 rounded-3xl bg-gradient-to-br from-[#0B0F19] to-black border border-white/10 flex flex-col justify-between hover:border-temple-gold/40 transition-all duration-500 group shadow-2xl hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2">
-                <div>
-                  <div className="aspect-square mb-6 rounded-2xl overflow-hidden bg-black/40 relative">
-                    <img src={item.image || 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=800&auto=format&fit=crop'} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
-                    <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-black text-temple-gold shadow-lg border border-white/10">
-                      ${item.price}
-                    </div>
+                <div className="relative h-60 overflow-hidden bg-black/40">
+                  <img 
+                    src={prod.image} 
+                    alt={prod.name} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                  />
+                  <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-[10px] font-black uppercase text-temple-gold tracking-widest">
+                    {prod.category}
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-temple-gold transition-colors duration-300">{item.name}</h3>
-                  <p className="text-xs text-gray-400 leading-relaxed mb-6">{item.description}</p>
                 </div>
 
-                <button 
-                  onClick={() => handleOrder(item.name, item.price)}
-                  className="w-full bg-white/5 hover:bg-gradient-to-r hover:from-temple-gold hover:to-amber-600 hover:text-black border border-white/10 hover:border-transparent text-white font-extrabold text-xs uppercase tracking-widest py-3 rounded-xl transition-all duration-300 shadow-lg"
+                <div className="p-6 space-y-3">
+                  <div className="flex items-start justify-between gap-2">
+                    <h3 className="text-lg font-bold text-white group-hover:text-temple-gold transition">{prod.name}</h3>
+                  </div>
+                  <p className="text-xs text-gray-400 font-light leading-relaxed line-clamp-2">{prod.description}</p>
+                </div>
+              </div>
+
+              <div className="p-6 pt-0 border-t border-white/5 flex items-center justify-between mt-4">
+                <div>
+                  <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold block">Inversión</span>
+                  <span className="text-2xl font-black text-white">{prod.price} <span className="text-sm font-bold text-temple-gold">Bs.</span></span>
+                </div>
+
+                <button
+                  onClick={() => handleOrder(prod)}
+                  className="px-5 py-2.5 bg-gradient-to-r from-temple-gold to-amber-500 text-black font-black uppercase tracking-wider text-xs rounded-xl hover:bg-amber-400 transition flex items-center gap-1.5 shadow-lg shadow-temple-gold/10"
                 >
-                  Adquirir Armadura ↗
+                  <Send size={13} />
+                  <span>Pedir</span>
                 </button>
               </div>
-            ))}
-          </div>
-        </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
       </div>
     </div>
