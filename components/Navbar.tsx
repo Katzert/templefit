@@ -26,14 +26,20 @@ export default function Navbar() {
         </div>
         
         <div className="flex items-center space-x-4 md:space-x-8">
-          <div className="hidden lg:flex space-x-8 text-[11px] font-bold uppercase tracking-widest text-gray-300 items-center">
+          <div className="hidden lg:flex space-x-6 text-[11px] font-bold uppercase tracking-widest text-gray-300 items-center">
             <Link href="/" className="hover:text-temple-gold transition-colors pb-1 border-b border-transparent hover:border-temple-gold">Inicio</Link>
-            <Link href="/trayectoria" className="hover:text-temple-gold transition-colors pb-1 border-b border-transparent hover:border-temple-gold">Trayectoria</Link>
-            <Link href="/tienda" className="hover:text-temple-gold transition-colors pb-1 border-b border-transparent hover:border-temple-gold">Tienda</Link>
-            <Link href="/recetas" className="hover:text-temple-gold transition-colors pb-1 border-b border-transparent hover:border-temple-gold">Recetas</Link>
-            <Link href="/escuadrones" className="flex items-center gap-1 hover:text-temple-gold transition-colors pb-1 border-b border-transparent hover:border-temple-gold text-white font-extrabold">
+            <Link href="/escuadrones" className="hover:text-temple-gold transition-colors pb-1 border-b border-transparent hover:border-temple-gold text-white font-extrabold">
               Escuadrones
             </Link>
+            <Link href="/recetas" className="hover:text-temple-gold transition-colors pb-1 border-b border-transparent hover:border-temple-gold">Recetas</Link>
+            <Link href="/tienda" className="hover:text-temple-gold transition-colors pb-1 border-b border-transparent hover:border-temple-gold">Tienda</Link>
+            <Link href="/trayectoria" className="hover:text-temple-gold transition-colors pb-1 border-b border-transparent hover:border-temple-gold">Trayectoria</Link>
+            <a href="https://katzert.github.io/templefit-wiki/" target="_blank" rel="noopener noreferrer" className="hover:text-temple-gold transition-colors text-gray-400 hover:text-white">
+              Wiki
+            </a>
+            <a href="https://katzert.github.io/templefit-admin/" target="_blank" rel="noopener noreferrer" className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 hover:border-temple-gold/40 text-temple-gold hover:text-white transition-all text-[10px] font-extrabold">
+              CRM Portal
+            </a>
           </div>
           
           <div className="lg:hidden flex items-center bg-white/5 px-4 py-2 border border-white/10 rounded-full cursor-pointer hover:bg-white/10 transition-colors" onClick={() => setIsOpen(!isOpen)}>
@@ -71,6 +77,12 @@ export default function Navbar() {
               <Link href="/escuadrones" onClick={() => setIsOpen(false)} className="block text-xs font-black tracking-[0.2em] uppercase text-white hover:text-temple-gold transition-colors bg-white/5 p-3 rounded-lg border border-white/5">
                 Escuadrones & Camp
               </Link>
+              <a href="https://katzert.github.io/templefit-wiki/" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} className="block text-xs font-bold tracking-[0.2em] uppercase text-gray-400 hover:text-white transition-colors">
+                TempleFit Wiki
+              </a>
+              <a href="https://katzert.github.io/templefit-admin/" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} className="block text-xs font-bold tracking-[0.2em] uppercase text-temple-gold hover:text-white transition-colors">
+                Acceso CRM (Coaches)
+              </a>
               
               <a 
                 href={WHATSAPP_URL}

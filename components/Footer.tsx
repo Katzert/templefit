@@ -59,10 +59,12 @@ export default function Footer() {
             <h3 className="text-xs font-extrabold text-temple-gold uppercase tracking-[0.25em]">Navegación</h3>
             <ul className="space-y-2.5 text-xs font-bold uppercase tracking-wider text-gray-300">
               <li><Link href="/" className="hover:text-temple-gold transition">Inicio</Link></li>
-              <li><Link href="/trayectoria" className="hover:text-temple-gold transition">Trayectoria y Credenciales</Link></li>
-              <li><Link href="/tienda" className="hover:text-temple-gold transition">Tienda</Link></li>
+              <li><Link href="/escuadrones" className="hover:text-temple-gold transition text-white">Escuadrones & Camp</Link></li>
               <li><Link href="/recetas" className="hover:text-temple-gold transition">Recetas & Nutrición</Link></li>
-
+              <li><Link href="/tienda" className="hover:text-temple-gold transition">Tienda</Link></li>
+              <li><Link href="/trayectoria" className="hover:text-temple-gold transition">Trayectoria</Link></li>
+              <li><a href="https://katzert.github.io/templefit-wiki/" target="_blank" rel="noopener noreferrer" className="hover:text-temple-gold transition text-gray-400">TempleFit Wiki</a></li>
+              <li><a href="https://katzert.github.io/templefit-admin/" target="_blank" rel="noopener noreferrer" className="hover:text-temple-gold transition text-temple-gold">Portal CRM (Coaches)</a></li>
             </ul>
           </div>
 
