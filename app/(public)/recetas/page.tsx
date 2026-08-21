@@ -13,14 +13,14 @@ const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transiti
 export default function RecetasPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedRecipeId, setSelectedRecipeId] = useState<string | null>(null);
-  const [liveRecipes, setLiveRecipes] = useState<any[]>([]);
+  const [liveRecipes, setLiveRecipes] = useState<any[]>(defaultRecipes);
 
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
         const docRef = doc(db, 'workspaces', 'templefit-main');
         const docSnap = await getDoc(docRef);
-        if (docSnap.exists() && docSnap.data().recipes) {
+        if (docSnap.exists() && docSnap.data().recipes && docSnap.data().recipes.length > 0) {
           setLiveRecipes(docSnap.data().recipes);
         } else {
           setLiveRecipes(defaultRecipes);
@@ -35,7 +35,11 @@ export default function RecetasPage() {
 
   const filteredRecipes = activeCategory === 'all'
     ? liveRecipes
-    : liveRecipes.filter(r => r.category === activeCategory);
+    : liveRecipes.filter(r => {
+        const cat = (r.category || '').toLowerCase();
+        const active = activeCategory.toLowerCase();
+        return cat === active || cat.includes(active) || active.includes(cat);
+      });
 
   const openRecipe = liveRecipes.find(r => r.id === selectedRecipeId);
 
