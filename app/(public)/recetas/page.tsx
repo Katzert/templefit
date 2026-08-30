@@ -19,6 +19,9 @@ function mergeRecipes(custom: any[], defaults: any[]): any[] {
   return Array.from(map.values());
 }
 
+const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.08 } } };
+const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
+
 export default function RecetasPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedRecipeId, setSelectedRecipeId] = useState<string | null>(null);
@@ -210,16 +213,15 @@ export default function RecetasPage() {
                 <h4 className="text-sm font-bold text-temple-gold uppercase tracking-wider mb-3">Ingredientes</h4>
                 <ul className="space-y-2 text-xs text-slate-700 dark:text-gray-300">
                   {(openRecipe.ingredientsText || openRecipe.ingredients || []).map((ing: string, i: number) => {
-                    // Fallback para ingredientes que vengan como objeto del CRM antiguo si aplica
                     const text = typeof ing === 'string' ? ing : (ing as any).name || (ing as any).item || 'Ingrediente';
                     return (
                       <li key={i} className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-temple-gold" />
                         <span>{text}</span>
                       </li>
-                    ))}
-                  </ol>
-                </div>
+                    );
+                  })}
+                </ul>
               </div>
 
               <div>
@@ -237,6 +239,6 @@ export default function RecetasPage() {
           </motion.div>
         </div>
       )}
-    </motion.div>
+    </div>
   );
 }

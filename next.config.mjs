@@ -14,20 +14,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  ...(!isProd ? {
-    async rewrites() {
-      return [
-        {
-          source: '/templefit',
-          destination: '/',
-        },
-        {
-          source: '/templefit/:path*',
-          destination: '/:path*',
-        },
-      ];
-    },
-  } : {}),
 };
 
 export default nextConfig;
