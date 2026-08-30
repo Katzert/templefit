@@ -243,7 +243,7 @@ export default function NeuroVentasPage() {
             ].map((mod, i) => (
               <div 
                 key={i} 
-                className="p-8 bg-white dark:bg-temple-navy/40 border border-black/5 dark:border-white/5 border-l-4 border-l-white/10 hover:border-l-temple-gold hover:bg-white dark:bg-black/5 dark:bg-white/5 transition-all duration-300 flex flex-col justify-between rounded-r-2xl"
+                className="p-8 bg-white dark:bg-temple-navy/40 border border-black/5 dark:border-white/5 border-l-4 border-l-white/10 hover:border-l-temple-gold hover:bg-white dark:bg-white/5 transition-all duration-300 flex flex-col justify-between rounded-r-2xl"
               >
                 <div>
                   <div className="flex justify-between items-start mb-6">
@@ -363,7 +363,7 @@ export default function NeuroVentasPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
             {/* Intensivo */}
-            <div className="p-8 bg-white dark:bg-temple-navy/40 border border-black/5 dark:border-white/5 rounded-2xl text-center flex flex-col justify-between hover:bg-white dark:bg-black/5 dark:bg-white/5 hover:border-temple-gold/30 transition-all duration-300">
+            <div className="p-8 bg-white dark:bg-temple-navy/40 border border-black/5 dark:border-white/5 rounded-2xl text-center flex flex-col justify-between hover:bg-white dark:bg-white/5 hover:border-temple-gold/30 transition-all duration-300">
               <div className="space-y-4">
                 <span className="text-[10px] text-white/40 uppercase tracking-widest font-bold">Básico</span>
                 <h4 className="text-2xl font-serif font-black text-temple-navy dark:text-white uppercase">INTENSIVO</h4>
@@ -375,7 +375,7 @@ export default function NeuroVentasPage() {
             </div>
             
             {/* Estándar */}
-            <div className="relative p-8 bg-white dark:bg-black/5 dark:bg-white/5 border-2 border-temple-gold rounded-2xl text-center flex flex-col justify-between shadow-2xl shadow-temple-gold/10 transform md:-translate-y-4">
+            <div className="relative p-8 bg-white dark:bg-white/5 border-2 border-temple-gold rounded-2xl text-center flex flex-col justify-between shadow-2xl shadow-temple-gold/10 transform md:-translate-y-4">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-temple-gold text-black text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest shadow-md">
                 Más Solicitado
               </div>
@@ -390,7 +390,7 @@ export default function NeuroVentasPage() {
             </div>
             
             {/* Completo */}
-            <div className="p-8 bg-white dark:bg-temple-navy/40 border border-black/5 dark:border-white/5 rounded-2xl text-center flex flex-col justify-between hover:bg-white dark:bg-black/5 dark:bg-white/5 hover:border-temple-gold/30 transition-all duration-300 relative overflow-hidden">
+            <div className="p-8 bg-white dark:bg-temple-navy/40 border border-black/5 dark:border-white/5 rounded-2xl text-center flex flex-col justify-between hover:bg-white dark:bg-white/5 hover:border-temple-gold/30 transition-all duration-300 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-b from-temple-red/10 to-transparent pointer-events-none" />
               <div className="space-y-4 relative z-10">
                 <span className="text-[10px] text-white/40 uppercase tracking-widest font-bold">Premium / Recomendado</span>
@@ -408,7 +408,7 @@ export default function NeuroVentasPage() {
 
           {/* Horarios & Form */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="p-8 bg-slate-50 dark:bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl space-y-6">
+            <div className="p-8 bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl space-y-6">
               <h4 className="text-lg font-bold text-temple-gold uppercase tracking-wider">Horarios y Días Disponibles</h4>
               <p className="text-slate-800 dark:text-white font-bold text-xs uppercase">
                 Mar · Mié · Jue <span className="text-white/40 font-normal ml-2">a elección</span>
@@ -550,7 +550,7 @@ export default function NeuroVentasPage() {
 
           {/* Technical Certifications lists */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white dark:bg-black/5 dark:bg-white/5 p-8 rounded-2xl border border-black/10 dark:border-white/10 space-y-4">
+            <div className="bg-white dark:bg-white/5 p-8 rounded-2xl border border-black/10 dark:border-white/10 space-y-4">
               <h4 className="text-temple-gold font-bold uppercase tracking-wider text-sm">Titulaciones Técnicas (IBTA)</h4>
               <ul className="space-y-4 text-xs text-slate-700 dark:text-gray-300">
                 <li className="flex items-start">
@@ -564,7 +564,7 @@ export default function NeuroVentasPage() {
               </ul>
             </div>
 
-            <div className="bg-white dark:bg-black/5 dark:bg-white/5 p-8 rounded-2xl border border-black/10 dark:border-white/10 space-y-4">
+            <div className="bg-white dark:bg-white/5 p-8 rounded-2xl border border-black/10 dark:border-white/10 space-y-4">
               <h4 className="text-temple-gold font-bold uppercase tracking-wider text-sm">Especializaciones</h4>
               <ul className="space-y-4 text-xs text-slate-700 dark:text-gray-300">
                 <li className="flex items-start">

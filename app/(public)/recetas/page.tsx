@@ -121,7 +121,7 @@ export default function RecetasPage() {
               className="group rounded-3xl overflow-hidden bg-white dark:bg-gradient-to-br dark:from-[#0B0F19] dark:to-black border border-black/10 dark:border-white/10 hover:border-temple-gold/40 transition-all duration-500 cursor-pointer shadow-xl hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2 flex flex-col justify-between"
             >
               {/* Recipe Image Header */}
-              <div className="relative h-56 overflow-hidden bg-slate-50 dark:bg-white dark:bg-black/40">
+              <div className="relative h-56 overflow-hidden bg-black/[0.03] dark:bg-black/40">
                 {recipe.image ? (
                   <img
                     src={recipe.image}

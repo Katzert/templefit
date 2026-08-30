@@ -138,7 +138,7 @@ export default function EcosystemSection() {
                 </div>
               </div>
 
-              <div className="space-y-3 bg-white dark:bg-black/5 dark:bg-white/5 p-6 rounded-2xl border border-black/5 dark:border-white/5">
+              <div className="space-y-3 bg-white dark:bg-white/5 p-6 rounded-2xl border border-black/5 dark:border-white/5">
                 <h4 className="text-sm font-black text-amber-800 dark:text-temple-gold uppercase tracking-widest">{triEcosystemUnits[activeUnitModal].subtitle}</h4>
                 <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed font-light">{triEcosystemUnits[activeUnitModal].description}</p>
               </div>

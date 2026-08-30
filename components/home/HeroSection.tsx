@@ -13,7 +13,7 @@ export default function HeroSection() {
         className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity filter brightness-75 scale-105 transform animate-float"
         style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80)' }}
       />
-      <div className="absolute inset-0 bg-temple-cream/90 dark:bg-white dark:bg-black/5 dark:bg-black/60 z-10"></div>
+      <div className="absolute inset-0 bg-temple-cream/90 dark:bg-black/40/5 dark:bg-black/60 z-10"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-temple-cream via-transparent to-temple-cream/80 dark:from-[#05070B] dark:via-transparent dark:to-[#05070B]/80 z-10"></div>
       
       {/* Dynamic light accent */}

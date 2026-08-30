@@ -74,7 +74,7 @@ export default function TiendaPage() {
           <p className="text-sm sm:text-base text-slate-700 dark:text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
             Ropa deportiva y suplementos en Santa Cruz.
           </p>
-          <div className="text-xs text-temple-gold font-bold uppercase tracking-widest bg-slate-50 dark:bg-white dark:bg-black/40 py-2 px-4 rounded-xl max-w-md mx-auto border border-black/10 dark:border-white/10">
+          <div className="text-xs text-temple-gold font-bold uppercase tracking-widest bg-black/[0.03] dark:bg-black/40 py-2 px-4 rounded-xl max-w-md mx-auto border border-black/10 dark:border-white/10">
             📦 Regla de Pedido: 50% de seña previa (Viernes) ➔ Entrega Sábado en Camp
           </div>
         </div>
@@ -108,7 +108,7 @@ export default function TiendaPage() {
               className="bg-white dark:bg-[#0E1424]/90 border border-black/10 dark:border-white/10 rounded-3xl overflow-hidden hover:border-temple-gold/40 transition-all duration-300 flex flex-col justify-between group shadow-xl hover:-translate-y-1"
             >
               <div>
-                <div className="relative h-60 overflow-hidden bg-slate-50 dark:bg-white dark:bg-black/40">
+                <div className="relative h-60 overflow-hidden bg-black/[0.03] dark:bg-black/40">
                   <img 
                     src={prod.image} 
                     alt={prod.name} 
