@@ -29,14 +29,14 @@ export default function HeroSection() {
         </motion.div>
 
         {/* Master Slogan Headline */}
-        <motion.h1 variants={item} className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black uppercase text-temple-navy dark:text-white tracking-tight leading-[1.08] text-balance">
+        <motion.h1 variants={item} className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white tracking-tight leading-[1.08] text-balance">
           El Cuerpo es el <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-temple-gold to-yellow-500">Templo.</span><br />
           La Mente Crea y <span className="italic font-normal text-slate-700 dark:text-slate-200">Edifica Vidas.</span>
         </motion.h1>
 
         {/* Subtitle */}
         <motion.p variants={item} className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed text-pretty">
-          Entrena tu cuerpo, mejora tu alimentación y fortalece tu fe a través del <strong className="text-temple-navy dark:text-white font-bold">Reto de 21 Días</strong> y los <strong className="text-amber-600 dark:text-temple-gold font-bold">Escuadrones de 12 Atletas</strong>.
+          Entrena tu cuerpo, mejora tu alimentación y fortalece tu fe a través del <strong className="text-temple-navy dark:text-temple-navy dark:text-white font-bold">Reto de 21 Días</strong> y los <strong className="text-amber-600 dark:text-temple-gold font-bold">Escuadrones de 12 Atletas</strong>.
         </motion.p>
 
         {/* CTAs */}
@@ -53,7 +53,7 @@ export default function HeroSection() {
 
           <a
             href="#ecosystem"
-            className="px-8 py-4 bg-black/5 dark:bg-white/5 text-temple-navy dark:text-white font-bold text-sm md:text-base uppercase tracking-[0.1em] rounded-2xl border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 group"
+            className="px-8 py-4 bg-black/5 dark:bg-white/5 text-temple-navy dark:text-temple-navy dark:text-white font-bold text-sm md:text-base uppercase tracking-[0.1em] rounded-2xl border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 group"
           >
             <Activity size={18} className="text-amber-600 dark:text-temple-gold group-hover:scale-110 transition-transform" />
             <span>Test Diagnóstico</span>
@@ -67,7 +67,7 @@ export default function HeroSection() {
             <p className="text-[10px] md:text-xs uppercase font-bold text-slate-500 dark:text-gray-400 tracking-[0.2em]">Días de Reto</p>
           </div>
           <div className="space-y-1 border-x border-black/10 dark:border-white/10">
-            <p className="text-3xl md:text-4xl font-black text-temple-navy dark:text-white">12</p>
+            <p className="text-3xl md:text-4xl font-black text-temple-navy dark:text-temple-navy dark:text-white">12</p>
             <p className="text-[10px] md:text-xs uppercase font-bold text-slate-500 dark:text-gray-400 tracking-[0.2em]">Por Escuadrón</p>
           </div>
           <div className="space-y-1">

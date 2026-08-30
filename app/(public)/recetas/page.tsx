@@ -73,10 +73,10 @@ export default function RecetasPage() {
       {/* Hero Section */}
       <section className="relative min-h-[45vh] flex items-center justify-center overflow-hidden px-4">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-25"
+          className="absolute inset-0 bg-cover bg-center opacity-35 dark:opacity-25"
           style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1600&auto=format&fit=crop)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/80 via-[#FBF9F5]/90 to-[#FBF9F5] dark:from-black/80 dark:via-[#0A0A0A]/90 dark:to-[#0A0A0A]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/75 via-[#FBF9F5]/85 to-[#FBF9F5] dark:from-[#05070B]/80 dark:via-[#05070B]/90 dark:to-[#05070B]" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-temple-gold/10 border border-temple-gold/30">
@@ -84,7 +84,7 @@ export default function RecetasPage() {
             <span className="text-[11px] font-extrabold uppercase tracking-[0.25em] text-temple-gold">Nutrición Funcional & Botica</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black uppercase text-white tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white tracking-tight">
             COMIDAS Y <span className="text-temple-gold italic">RECETAS</span>
           </h1>
 
@@ -152,7 +152,7 @@ export default function RecetasPage() {
                 <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-white dark:bg-black/[0.03] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 text-center text-xs group-hover:bg-white/[0.05] transition-colors">
                   <div>
                     <span className="text-[9px] uppercase text-slate-500 dark:text-gray-500 block mb-0.5">Calorías</span>
-                    <span className="font-black text-temple-navy dark:text-white drop-shadow-sm">{recipe.macros?.calories || 0}</span>
+                    <span className="font-black text-temple-navy dark:text-temple-navy dark:text-white drop-shadow-sm">{recipe.macros?.calories || 0}</span>
                   </div>
                   <div>
                     <span className="text-[9px] uppercase text-slate-500 dark:text-gray-500 block mb-0.5">Proteína</span>
@@ -205,7 +205,7 @@ export default function RecetasPage() {
                 {openRecipe.category} • {openRecipe.time} minutos
               </span>
 
-            <h2 className="text-2xl font-bold text-temple-navy dark:text-white mt-3 mb-2">{openRecipe.name}</h2>
+            <h2 className="text-2xl font-bold text-temple-navy dark:text-temple-navy dark:text-white mt-3 mb-2">{openRecipe.name}</h2>
             <p className="text-sm text-slate-700 dark:text-gray-300 mb-6">{openRecipe.description}</p>
 
             <div className="space-y-6 border-t border-black/10 dark:border-white/10 pt-6">

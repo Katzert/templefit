@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${outfit.variable} ${playfair.variable}`} suppressHydrationWarning>
-      <body className="font-sans min-h-screen flex flex-col custom-scrollbar bg-temple-cream dark:bg-temple-navy-dark text-temple-navy-dark dark:text-white transition-colors duration-300 antialiased">
+      <body className="font-sans min-h-screen flex flex-col custom-scrollbar bg-temple-cream dark:bg-temple-navy-dark text-temple-navy-dark dark:text-temple-navy dark:text-white transition-colors duration-300 antialiased">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
         </ThemeProvider>

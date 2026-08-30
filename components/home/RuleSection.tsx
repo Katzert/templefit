@@ -17,7 +17,7 @@ export default function RuleSection() {
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-800 dark:text-temple-gold-bright bg-temple-gold/15 dark:bg-temple-gold/10 px-4 py-2 rounded-full border border-temple-gold/30 dark:border-temple-gold/20 inline-block">
                 La Regla de las 3 Horas Diarias
               </span>
-              <h2 className="text-4xl md:text-5xl font-serif font-black uppercase text-slate-900 dark:text-white tracking-tight leading-tight text-balance">
+              <h2 className="text-4xl md:text-5xl font-serif font-black uppercase text-slate-900 dark:text-temple-navy dark:text-white tracking-tight leading-tight text-balance">
                 El Reto de <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-temple-gold dark:from-temple-gold-bright dark:to-temple-gold">21 Días = ÍNTEGROS</span>
               </h2>
               <p className="text-sm text-slate-600 dark:text-gray-400 leading-relaxed font-light text-pretty">
@@ -29,7 +29,7 @@ export default function RuleSection() {
               <div className="p-5 rounded-2xl bg-white dark:bg-black/[0.03] dark:bg-white/[0.02] hover:bg-black/[0.05] dark:hover:bg-white/[0.04] border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10 transition-colors flex items-center gap-5">
                 <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center font-black text-lg border border-blue-500/20 shadow-sm">1h</div>
                 <div>
-                  <p className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider mb-1">Cuerpo: Entrenamiento</p>
+                  <p className="text-sm font-black text-slate-900 dark:text-temple-navy dark:text-white uppercase tracking-wider mb-1">Cuerpo: Entrenamiento</p>
                   <p className="text-xs text-slate-600 dark:text-gray-400 font-light leading-relaxed text-pretty">Calistenia, crossfit, fuerza y 3 litros de agua diarios.</p>
                 </div>
               </div>
@@ -37,7 +37,7 @@ export default function RuleSection() {
               <div className="p-5 rounded-2xl bg-white dark:bg-black/[0.03] dark:bg-white/[0.02] hover:bg-black/[0.05] dark:hover:bg-white/[0.04] border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10 transition-colors flex items-center gap-5">
                 <div className="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-400 flex items-center justify-center font-black text-lg border border-amber-500/20 shadow-sm">1h</div>
                 <div>
-                  <p className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider mb-1">Mente: Nutrición y Enfoque</p>
+                  <p className="text-sm font-black text-slate-900 dark:text-temple-navy dark:text-white uppercase tracking-wider mb-1">Mente: Nutrición y Enfoque</p>
                   <p className="text-xs text-slate-600 dark:text-gray-400 font-light leading-relaxed text-pretty">Respiración Buteyko, suplementación y entrenamiento en ventas.</p>
                 </div>
               </div>
@@ -45,7 +45,7 @@ export default function RuleSection() {
               <div className="p-5 rounded-2xl bg-white dark:bg-black/[0.03] dark:bg-white/[0.02] hover:bg-black/[0.05] dark:hover:bg-white/[0.04] border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10 transition-colors flex items-center gap-5">
                 <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center font-black text-lg border border-emerald-500/20 shadow-sm">1h</div>
                 <div>
-                  <p className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider mb-1">Espíritu: Devocional</p>
+                  <p className="text-sm font-black text-slate-900 dark:text-temple-navy dark:text-white uppercase tracking-wider mb-1">Espíritu: Devocional</p>
                   <p className="text-xs text-slate-600 dark:text-gray-400 font-light leading-relaxed text-pretty">Lectura bíblica diaria, tiempo de quietud y enfoque familiar.</p>
                 </div>
               </div>
@@ -62,7 +62,7 @@ export default function RuleSection() {
                 <div className="p-3 bg-amber-500/15 dark:bg-temple-gold/20 rounded-xl text-amber-700 dark:text-temple-gold-bright border border-amber-500/30 dark:border-temple-gold/30 shadow-sm">
                   <Sun size={28} />
                 </div>
-                <h3 className="text-xl font-black uppercase text-slate-900 dark:text-white tracking-widest leading-tight">Sábados:<br/>CristoFit Camp (06:00 AM)</h3>
+                <h3 className="text-xl font-black uppercase text-slate-900 dark:text-temple-navy dark:text-white tracking-widest leading-tight">Sábados:<br/>CristoFit Camp (06:00 AM)</h3>
               </div>
               
               <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed font-light relative z-10 text-pretty">

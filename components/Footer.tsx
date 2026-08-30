@@ -8,7 +8,7 @@ const WHATSAPP_URL = 'https://wa.me/59169127691?text=Hola%20TempleFit!%20Quiero%
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#FBF9F5] dark:bg-[#05070B] text-temple-navy dark:text-white pt-20 pb-10 border-t border-[#E8E2D5] dark:border-white/5 overflow-hidden font-sans">
+    <footer className="relative bg-[#FBF9F5] dark:bg-[#05070B] text-temple-navy dark:text-temple-navy dark:text-white pt-20 pb-10 border-t border-[#E8E2D5] dark:border-white/5 overflow-hidden font-sans">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-temple-gold/30 to-transparent" />
       <div className="max-w-7xl mx-auto px-6 space-y-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -67,7 +67,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className="lg:col-span-3 space-y-4">
-            <h3 className="text-xs font-black text-temple-navy dark:text-white uppercase tracking-[0.25em]">Navegación</h3>
+            <h3 className="text-xs font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-[0.25em]">Navegación</h3>
             <ul className="space-y-3 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-400">
               <li><Link href="/escuadrones" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">CristoFit Camp</Link></li>
               <li><Link href="/recetas" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Nutrición & Salud</Link></li>
@@ -80,7 +80,7 @@ export default function Footer() {
 
           {/* Core Rule */}
           <div className="lg:col-span-4 space-y-4">
-            <h3 className="text-xs font-black text-temple-navy dark:text-white uppercase tracking-[0.25em]">Nuestra Regla</h3>
+            <h3 className="text-xs font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-[0.25em]">Nuestra Regla</h3>
             <div className="p-6 rounded-2xl bg-white/80 dark:bg-white/[0.02] border border-[#E8E2D5] dark:border-white/5 hover:border-temple-gold/40 transition-colors shadow-sm">
               <p className="text-base text-slate-800 dark:text-gray-300 font-serif italic leading-relaxed">
                 &quot;Todo lo que hagan, háganlo de corazón, como para el Señor.&quot;

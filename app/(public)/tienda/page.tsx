@@ -56,10 +56,10 @@ export default function TiendaPage() {
       {/* Header Section */}
       <section className="relative min-h-[45vh] flex items-center pt-24 pb-16 overflow-hidden border-b border-white/5">
         <div 
-          className="absolute inset-0 opacity-25 bg-cover bg-center mix-blend-luminosity filter brightness-75"
+          className="absolute inset-0 opacity-35 dark:opacity-25 bg-cover bg-center object-cover"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1600&q=80')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/90 via-[#FBF9F5]/80 to-[#FBF9F5] dark:from-[#07090E]/90 dark:via-[#07090E]/80 dark:to-[#07090E]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/75 via-[#FBF9F5]/85 to-[#FBF9F5] dark:from-[#05070B]/80 dark:via-[#05070B]/90 dark:to-[#05070B]" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center space-y-5">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-temple-gold/30 bg-temple-gold/10 backdrop-blur-md rounded-full">
@@ -68,7 +68,7 @@ export default function TiendaPage() {
               Tienda Oficial & Suplementación
             </span>
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-black text-temple-navy dark:text-white uppercase tracking-tight">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-tight">
             LA <span className="text-temple-gold italic">TIENDA</span> TEMPLEFIT
           </h1>
           <p className="text-sm sm:text-base text-slate-700 dark:text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
@@ -130,7 +130,7 @@ export default function TiendaPage() {
               <div className="p-6 pt-0 border-t border-black/5 dark:border-white/5 flex items-center justify-between mt-4">
                 <div>
                   <span className="text-[10px] text-slate-500 dark:text-gray-500 uppercase tracking-widest font-bold block">Inversión</span>
-                  <span className="text-2xl font-black text-temple-navy dark:text-white">{prod.price} <span className="text-sm font-bold text-temple-gold">Bs.</span></span>
+                  <span className="text-2xl font-black text-temple-navy dark:text-temple-navy dark:text-white">{prod.price} <span className="text-sm font-bold text-temple-gold">Bs.</span></span>
                 </div>
 
                 <button

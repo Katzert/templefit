@@ -30,7 +30,7 @@ export default function Navbar() {
               />
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-serif font-black tracking-widest text-temple-navy dark:text-white uppercase group-hover:text-temple-gold transition-colors duration-300">TEMPLE<span className="text-temple-gold">FIT</span></h1>
+              <h1 className="text-xl md:text-2xl font-serif font-black tracking-widest text-temple-navy dark:text-temple-navy dark:text-white uppercase group-hover:text-temple-gold transition-colors duration-300">TEMPLE<span className="text-temple-gold">FIT</span></h1>
             </div>
           </Link>
         </div>
@@ -38,7 +38,7 @@ export default function Navbar() {
         <div className="flex items-center space-x-4 md:space-x-8">
           <div className="hidden lg:flex space-x-6 text-[11px] font-bold uppercase tracking-widest text-slate-700 dark:text-gray-300 items-center">
             <Link href="/" className="hover:text-temple-gold transition-colors pb-1 border-b border-transparent hover:border-temple-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold rounded-sm">Inicio</Link>
-            <Link href="/escuadrones" className="hover:text-temple-gold transition-colors pb-1 border-b border-transparent hover:border-temple-gold text-temple-navy dark:text-white font-extrabold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold rounded-sm">
+            <Link href="/escuadrones" className="hover:text-temple-gold transition-colors pb-1 border-b border-transparent hover:border-temple-gold text-temple-navy dark:text-temple-navy dark:text-white font-extrabold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold rounded-sm">
               Escuadrones
             </Link>
             <Link href="/recetas" className="hover:text-temple-gold transition-colors pb-1 border-b border-transparent hover:border-temple-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold rounded-sm">Recetas</Link>
@@ -94,7 +94,7 @@ export default function Navbar() {
               <Link href="/trayectoria" onClick={() => setIsOpen(false)} className="block text-xs font-bold tracking-[0.2em] uppercase text-slate-700 dark:text-gray-300 hover:text-temple-gold transition-colors">Trayectoria</Link>
               <Link href="/tienda" onClick={() => setIsOpen(false)} className="block text-xs font-bold tracking-[0.2em] uppercase text-slate-700 dark:text-gray-300 hover:text-temple-gold transition-colors">Tienda</Link>
               <Link href="/recetas" onClick={() => setIsOpen(false)} className="block text-xs font-bold tracking-[0.2em] uppercase text-slate-700 dark:text-gray-300 hover:text-temple-gold transition-colors">Recetas</Link>
-              <Link href="/escuadrones" onClick={() => setIsOpen(false)} className="block text-xs font-black tracking-[0.2em] uppercase text-temple-navy dark:text-white hover:text-temple-gold transition-colors bg-black/5 dark:bg-white/5 p-3 rounded-lg border border-black/5 dark:border-white/5">
+              <Link href="/escuadrones" onClick={() => setIsOpen(false)} className="block text-xs font-black tracking-[0.2em] uppercase text-temple-navy dark:text-temple-navy dark:text-white hover:text-temple-gold transition-colors bg-black/5 dark:bg-white/5 p-3 rounded-lg border border-black/5 dark:border-white/5">
                 Escuadrones & Camp
               </Link>
               

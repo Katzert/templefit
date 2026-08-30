@@ -69,7 +69,7 @@ export default function EcosystemSection() {
         <motion.div variants={item} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-temple-gold/15 dark:bg-temple-gold/10 border border-temple-gold/30 dark:border-temple-gold/20 text-temple-gold-dark dark:text-temple-gold-bright text-[10px] font-black uppercase tracking-[0.3em]">
           EL TRI-ECOSISTEMA TEMPLEFIT
         </motion.div>
-        <motion.h2 variants={item} className="text-4xl md:text-6xl font-serif font-black uppercase text-slate-900 dark:text-white tracking-tight text-balance">
+        <motion.h2 variants={item} className="text-4xl md:text-6xl font-serif font-black uppercase text-slate-900 dark:text-temple-navy dark:text-white tracking-tight text-balance">
           Tres Ejes de <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-temple-gold dark:from-temple-gold-bright dark:to-temple-gold">Transformación</span>
         </motion.h2>
         <motion.p variants={item} className="text-slate-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed text-pretty">
@@ -95,7 +95,7 @@ export default function EcosystemSection() {
                   {unit.tag}
                 </span>
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-temple-gold transition-colors duration-300">{unit.title}</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-temple-navy dark:text-white mb-3 group-hover:text-temple-gold transition-colors duration-300">{unit.title}</h3>
               <p className="text-sm text-slate-600 dark:text-gray-400 leading-relaxed font-light mb-8 group-hover:text-slate-800 dark:group-hover:text-gray-300 transition-colors">{unit.description}</p>
             </div>
 
@@ -134,7 +134,7 @@ export default function EcosystemSection() {
                   <span className="text-[10px] uppercase font-black tracking-widest px-3 py-1 bg-temple-gold/15 dark:bg-temple-gold/10 border border-temple-gold/30 rounded-full text-amber-800 dark:text-temple-gold mb-3 inline-block">
                     {triEcosystemUnits[activeUnitModal].tag}
                   </span>
-                  <h3 className="text-3xl font-black text-slate-900 dark:text-white">{triEcosystemUnits[activeUnitModal].title}</h3>
+                  <h3 className="text-3xl font-black text-slate-900 dark:text-temple-navy dark:text-white">{triEcosystemUnits[activeUnitModal].title}</h3>
                 </div>
               </div>
 
@@ -144,7 +144,7 @@ export default function EcosystemSection() {
               </div>
 
               <div className="space-y-4">
-                <h5 className="text-xs font-black text-slate-500 dark:text-white/50 uppercase tracking-widest pl-1">¿Qué incluye este pilar?</h5>
+                <h5 className="text-xs font-black text-slate-500 dark:text-temple-navy dark:text-white/50 uppercase tracking-widest pl-1">¿Qué incluye este pilar?</h5>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {triEcosystemUnits[activeUnitModal].features.map((feat, idx) => (
                     <li key={idx} className="flex items-start gap-3 bg-black/[0.03] dark:bg-black/30 p-4 rounded-xl border border-black/5 dark:border-white/5 text-sm text-slate-700 dark:text-gray-300 hover:border-temple-gold/30 transition-colors">

@@ -81,7 +81,7 @@ export default function DiagnosticWidget() {
             <span className="opacity-30" aria-hidden="true">•</span>
             <span className={step >= 3 ? "text-amber-800 dark:text-temple-gold-bright" : ""} aria-current={step === 3 ? "step" : undefined}>3. Plan</span>
           </div>
-          <h3 className="text-3xl md:text-5xl font-serif font-black uppercase text-slate-900 dark:text-white tracking-tight text-balance">
+          <h3 className="text-3xl md:text-5xl font-serif font-black uppercase text-slate-900 dark:text-temple-navy dark:text-white tracking-tight text-balance">
             Test de Diagnóstico <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-temple-gold dark:from-temple-gold-bright dark:to-temple-gold">del Atleta</span>
           </h3>
           <p className="text-sm text-slate-600 dark:text-gray-400 max-w-xl mx-auto font-light leading-relaxed text-pretty">
@@ -139,53 +139,53 @@ export default function DiagnosticWidget() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="space-y-1.5">
                     <label htmlFor="fullName" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Tu Nombre Completo *</label>
-                    <input id="fullName" type="text" required value={formData.fullName} onChange={(e) => setFormData({ ...formData, fullName: e.target.value })} placeholder="Ej. Andrés Morales" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
+                    <input id="fullName" type="text" required value={formData.fullName} onChange={(e) => setFormData({ ...formData, fullName: e.target.value })} placeholder="Ej. Andrés Morales" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
                   </div>
                   <div className="space-y-1.5">
                     <label htmlFor="phone" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Celular / WhatsApp *</label>
-                    <input id="phone" type="tel" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder="+591 70012345" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
+                    <input id="phone" type="tel" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder="+591 70012345" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-3 gap-5">
                   <div className="space-y-1.5">
                     <label htmlFor="age" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Edad</label>
-                    <input id="age" type="number" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })} placeholder="Ej. 28" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
+                    <input id="age" type="number" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })} placeholder="Ej. 28" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
                   </div>
                   <div className="space-y-1.5">
                     <label htmlFor="weight" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Peso (kg)</label>
-                    <input id="weight" type="number" value={formData.weight} onChange={(e) => setFormData({ ...formData, weight: e.target.value })} placeholder="Ej. 75" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
+                    <input id="weight" type="number" value={formData.weight} onChange={(e) => setFormData({ ...formData, weight: e.target.value })} placeholder="Ej. 75" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
                   </div>
                   <div className="space-y-1.5">
                     <label htmlFor="height" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Estatura (cm)</label>
-                    <input id="height" type="number" value={formData.height} onChange={(e) => setFormData({ ...formData, height: e.target.value })} placeholder="Ej. 174" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
+                    <input id="height" type="number" value={formData.height} onChange={(e) => setFormData({ ...formData, height: e.target.value })} placeholder="Ej. 174" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="space-y-1.5">
                     <label htmlFor="activityLevel" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Nivel Actual</label>
-                    <select id="activityLevel" value={formData.activityLevel} onChange={(e) => setFormData({ ...formData, activityLevel: e.target.value })} className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all font-light appearance-none cursor-pointer">
-                      <option className="bg-white dark:bg-black text-slate-900 dark:text-white" value="Sedentario">Sedentario (Sin ejercicio)</option>
-                      <option className="bg-white dark:bg-black text-slate-900 dark:text-white" value="Principiante (1-2 días/sem)">Principiante (1-2 días/sem)</option>
-                      <option className="bg-white dark:bg-black text-slate-900 dark:text-white" value="Intermedio (3-4 días/sem)">Intermedio (3-4 días/sem)</option>
-                      <option className="bg-white dark:bg-black text-slate-900 dark:text-white" value="Avanzado">Avanzado (Constante)</option>
+                    <select id="activityLevel" value={formData.activityLevel} onChange={(e) => setFormData({ ...formData, activityLevel: e.target.value })} className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all font-light appearance-none cursor-pointer">
+                      <option className="bg-white dark:bg-black text-slate-900 dark:text-temple-navy dark:text-white" value="Sedentario">Sedentario (Sin ejercicio)</option>
+                      <option className="bg-white dark:bg-black text-slate-900 dark:text-temple-navy dark:text-white" value="Principiante (1-2 días/sem)">Principiante (1-2 días/sem)</option>
+                      <option className="bg-white dark:bg-black text-slate-900 dark:text-temple-navy dark:text-white" value="Intermedio (3-4 días/sem)">Intermedio (3-4 días/sem)</option>
+                      <option className="bg-white dark:bg-black text-slate-900 dark:text-temple-navy dark:text-white" value="Avanzado">Avanzado (Constante)</option>
                     </select>
                   </div>
                   <div className="space-y-1.5">
                     <label htmlFor="preferredSchedule" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Horario Preferido</label>
-                    <select id="preferredSchedule" value={formData.preferredSchedule} onChange={(e) => setFormData({ ...formData, preferredSchedule: e.target.value })} className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all font-light appearance-none cursor-pointer">
-                      <option className="bg-white dark:bg-black text-slate-900 dark:text-white" value="Turno 06:00 AM (Reto 21 Días)">Turno 06:00 AM (Reto 21 Días)</option>
-                      <option className="bg-white dark:bg-black text-slate-900 dark:text-white" value="Turno Mañana (08:00 - 11:00)">Turno Mañana (08:00 - 11:00)</option>
-                      <option className="bg-white dark:bg-black text-slate-900 dark:text-white" value="Turno Tarde (15:00 - 18:00)">Turno Tarde (15:00 - 18:00)</option>
-                      <option className="bg-white dark:bg-black text-slate-900 dark:text-white" value="Turno Noche (19:00 - 21:00)">Turno Noche (19:00 - 21:00)</option>
+                    <select id="preferredSchedule" value={formData.preferredSchedule} onChange={(e) => setFormData({ ...formData, preferredSchedule: e.target.value })} className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all font-light appearance-none cursor-pointer">
+                      <option className="bg-white dark:bg-black text-slate-900 dark:text-temple-navy dark:text-white" value="Turno 06:00 AM (Reto 21 Días)">Turno 06:00 AM (Reto 21 Días)</option>
+                      <option className="bg-white dark:bg-black text-slate-900 dark:text-temple-navy dark:text-white" value="Turno Mañana (08:00 - 11:00)">Turno Mañana (08:00 - 11:00)</option>
+                      <option className="bg-white dark:bg-black text-slate-900 dark:text-temple-navy dark:text-white" value="Turno Tarde (15:00 - 18:00)">Turno Tarde (15:00 - 18:00)</option>
+                      <option className="bg-white dark:bg-black text-slate-900 dark:text-temple-navy dark:text-white" value="Turno Noche (19:00 - 21:00)">Turno Noche (19:00 - 21:00)</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
                   <label htmlFor="specificGoal" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Objetivo Concreto (Opcional)</label>
-                  <textarea id="specificGoal" rows={2} value={formData.specificGoal} onChange={(e) => setFormData({ ...formData, specificGoal: e.target.value })} placeholder="Ej. Bajar 6kg de grasa, ganar fuerza y vencer el estrés matutino..." className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light resize-none" />
+                  <textarea id="specificGoal" rows={2} value={formData.specificGoal} onChange={(e) => setFormData({ ...formData, specificGoal: e.target.value })} placeholder="Ej. Bajar 6kg de grasa, ganar fuerza y vencer el estrés matutino..." className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light resize-none" />
                 </div>
 
                 <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 pt-6">
@@ -212,14 +212,14 @@ export default function DiagnosticWidget() {
                     <CheckCircle size={32} />
                   </div>
                   <div>
-                    <h4 className="font-black text-slate-900 dark:text-white text-xl text-balance">¡Diagnóstico Generado!</h4>
+                    <h4 className="font-black text-slate-900 dark:text-temple-navy dark:text-white text-xl text-balance">¡Diagnóstico Generado!</h4>
                     <p className="text-xs text-slate-600 dark:text-gray-400 font-light mt-1 text-pretty">Ficha procesada exitosamente para {formData.fullName}.</p>
                   </div>
                 </div>
 
                 <div className="space-y-3 bg-white dark:bg-black/[0.03] dark:bg-black/30 p-6 rounded-2xl border border-black/5 dark:border-white/5">
                   <span className="text-[10px] font-black uppercase tracking-widest text-amber-900 dark:text-temple-gold-bright bg-amber-500/10 dark:bg-temple-gold/10 px-3 py-1 rounded-full">Plan Recomendado</span>
-                  <h5 className="text-lg font-black text-slate-900 dark:text-white leading-tight text-balance">{getRecommendedPlan().title}</h5>
+                  <h5 className="text-lg font-black text-slate-900 dark:text-temple-navy dark:text-white leading-tight text-balance">{getRecommendedPlan().title}</h5>
                   <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed font-light text-pretty">{getRecommendedPlan().desc}</p>
                 </div>
 

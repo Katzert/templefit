@@ -23,10 +23,10 @@ export default function EscuadronesPage() {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden px-4">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-30 scale-105 transform hover:scale-100 transition-transform duration-1000"
+          className="absolute inset-0 bg-cover bg-center opacity-40 dark:opacity-30 scale-105 transform hover:scale-100 transition-transform duration-1000"
           style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/90 via-[#FBF9F5]/80 to-[#FBF9F5] dark:from-[#07090E]/90 dark:via-[#07090E]/80 dark:to-[#07090E]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/75 via-[#FBF9F5]/85 to-[#FBF9F5] dark:from-[#05070B]/80 dark:via-[#05070B]/90 dark:to-[#05070B]" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
           <motion.div variants={item} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-temple-gold/10 border border-temple-gold/30 backdrop-blur-sm">
@@ -34,12 +34,12 @@ export default function EscuadronesPage() {
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-temple-gold">Comunidad y Liderazgo</span>
           </motion.div>
 
-          <motion.h1 variants={item} className="text-4xl sm:text-6xl md:text-7xl font-serif font-black uppercase text-white tracking-tight leading-tight">
+          <motion.h1 variants={item} className="text-4xl sm:text-6xl md:text-7xl font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white tracking-tight leading-tight">
             LOS 25 ESCUADRONES <span className="text-temple-gold block">& CRISTOFIT CAMP</span>
           </motion.h1>
 
           <motion.p variants={item} className="text-sm md:text-lg text-slate-700 dark:text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
-            Nadie entrena aislado. En TempleFit aplicamos la <strong className="text-white font-bold">Regla de los 12</strong>: 
+            Nadie entrena aislado. En TempleFit aplicamos la <strong className="text-temple-navy dark:text-temple-navy dark:text-white font-bold">Regla de los 12</strong>: 
             grupos de máximo 12 atletas para garantizar compañerismo y progreso.
           </motion.p>
         </div>
@@ -53,12 +53,12 @@ export default function EscuadronesPage() {
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-temple-gold bg-temple-gold/10 px-3 py-1 rounded-full border border-temple-gold/20">
                 Estructura Bíblica & Disciplina
               </span>
-              <h2 className="text-3xl md:text-5xl font-serif font-black uppercase text-temple-navy dark:text-white tracking-tight mt-3 mb-4">
+              <h2 className="text-3xl md:text-5xl font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white tracking-tight mt-3 mb-4">
                 La Regla de los <span className="text-temple-gold">12 Atletas</span>
               </h2>
               <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-light text-sm md:text-base">
                 Inspirados en el modelo de Jesús con sus 12 discípulos, organizamos a nuestra comunidad en 
-                <strong className="text-white font-bold"> 25 Escuadrones de 12 personas</strong> (Meta anual de 300 atletas certificados). 
+                <strong className="text-temple-navy dark:text-temple-navy dark:text-white font-bold"> 25 Escuadrones de 12 personas</strong> (Meta anual de 300 atletas certificados). 
                 Tu escuadrón es tu círculo de rendición de cuentas: celebran tus victorias y te respaldan si flaqueas.
               </p>
             </div>
@@ -74,7 +74,7 @@ export default function EscuadronesPage() {
                   <div className="w-10 h-10 bg-temple-gold/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <feature.icon className="text-temple-gold" size={20} />
                   </div>
-                  <h3 className="text-temple-navy dark:text-white font-bold text-sm uppercase tracking-wider mb-2">{feature.title}</h3>
+                  <h3 className="text-temple-navy dark:text-temple-navy dark:text-white font-bold text-sm uppercase tracking-wider mb-2">{feature.title}</h3>
                   <p className="text-xs text-slate-600 dark:text-gray-400 font-light leading-relaxed">{feature.desc}</p>
                 </div>
               ))}
@@ -94,7 +94,7 @@ export default function EscuadronesPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[10px] font-bold text-temple-gold uppercase tracking-widest mb-1">Capacidad Máxima por Grupo</p>
-                  <p className="text-2xl font-black text-slate-800 dark:text-white">12 Atletas por Escuadrón</p>
+                  <p className="text-2xl font-black text-slate-800 dark:text-temple-navy dark:text-white">12 Atletas por Escuadrón</p>
                 </div>
                 <div className="w-12 h-12 rounded-full border-2 border-temple-gold border-dashed flex items-center justify-center bg-temple-gold/10">
                   <span className="text-temple-gold font-black text-lg">12</span>
@@ -111,7 +111,7 @@ export default function EscuadronesPage() {
           <span className="text-[10px] font-black uppercase tracking-[0.3em] text-temple-gold bg-temple-gold/10 px-3 py-1 rounded-full border border-temple-gold/20">
             METODOLOGÍA
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif font-black uppercase text-temple-navy dark:text-white">
+          <h2 className="text-3xl md:text-5xl font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white">
             Las 3 Fases del <span className="italic text-temple-gold">Atleta TempleFit</span>
           </h2>
           <p className="text-slate-600 dark:text-gray-400 max-w-xl mx-auto text-sm font-light">
@@ -124,14 +124,14 @@ export default function EscuadronesPage() {
           <motion.div variants={item} className="p-8 rounded-3xl bg-white dark:bg-[#0E1424]/90 border border-blue-500/30 space-y-5 shadow-2xl relative overflow-hidden flex flex-col justify-between">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-white/10 text-white border border-white/20">
+                <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-white/10 text-temple-navy dark:text-white border border-white/20">
                   Fase 1 (Meses 1-3)
                 </span>
                 <span className="text-[10px] font-black uppercase text-[#CD7F32] bg-[#CD7F32]/10 px-2.5 py-1 rounded-md border border-[#CD7F32]/30">
                   Corona Bronce
                 </span>
               </div>
-              <h3 className="text-2xl font-black text-temple-navy dark:text-white uppercase">Escuadrón de Paz</h3>
+              <h3 className="text-2xl font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase">Escuadrón de Paz</h3>
               <p className="text-xs text-slate-700 dark:text-gray-300 font-light leading-relaxed">
                 Iniciación y acondicionamiento. Diagnóstico postural y biométrico, adaptación neuromuscular a la calistenia y nutrición anti-inflamatoria.
               </p>
@@ -147,14 +147,14 @@ export default function EscuadronesPage() {
           <motion.div variants={item} className="p-8 rounded-3xl bg-white dark:bg-gradient-to-b dark:from-[#0E1424] dark:to-[#141B2D] border-2 border-temple-gold space-y-5 shadow-2xl relative overflow-hidden flex flex-col justify-between">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-[#002147] text-white border border-[#C0C8D0]/30">
+                <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-[#002147] text-temple-navy dark:text-white border border-[#C0C8D0]/30">
                   Fase 2 (Meses 4-8)
                 </span>
                 <span className="text-[10px] font-black uppercase text-[#C0C8D0] bg-[#C0C8D0]/10 px-2.5 py-1 rounded-md border border-[#C0C8D0]/30">
                   Corona Plata
                 </span>
               </div>
-              <h3 className="text-2xl font-black text-temple-navy dark:text-white uppercase">Escuadrón de Gedeón</h3>
+              <h3 className="text-2xl font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase">Escuadrón de Gedeón</h3>
               <p className="text-xs text-slate-700 dark:text-gray-300 font-light leading-relaxed">
                 El <strong className="text-temple-gold font-bold">Reto 21 Días = ÍNTEGROS</strong>. 3 horas de disciplina diaria (1h Cuerpo + 1h Mente + 1h Espíritu) y asistencia a CristoFit Camp.
               </p>
@@ -177,7 +177,7 @@ export default function EscuadronesPage() {
                   Corona de Oro
                 </span>
               </div>
-              <h3 className="text-2xl font-black text-temple-navy dark:text-white uppercase">Escuadrón de Cristo</h3>
+              <h3 className="text-2xl font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase">Escuadrón de Cristo</h3>
               <p className="text-xs text-slate-700 dark:text-gray-300 font-light leading-relaxed">
                 E.A.G.E. (Escuela de Atletas y Guías Evangelísticos). Formación de capitanes, mentoría a nuevos miembros y servicio social activo.
               </p>
@@ -199,7 +199,7 @@ export default function EscuadronesPage() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-temple-gold/10 text-temple-gold text-[10px] font-black uppercase tracking-[0.3em]">
               SÁBADOS 06:00 AM • AL AIRE LIBRE
             </div>
-            <h2 className="text-4xl md:text-6xl font-serif font-black uppercase text-temple-navy dark:text-white tracking-tight">
+            <h2 className="text-4xl md:text-6xl font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white tracking-tight">
               CristoFit <span className="text-temple-gold">Camp</span>
             </h2>
             <p className="text-slate-700 dark:text-gray-300 text-sm md:text-base font-light leading-relaxed">
@@ -230,7 +230,7 @@ export default function EscuadronesPage() {
                 <img src={camp.img} alt={camp.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/60 to-transparent dark:from-[#07090E] dark:via-[#07090E]/60 dark:to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-left space-y-1">
-                  <h3 className="text-lg font-black text-temple-navy dark:text-white uppercase tracking-wider">{camp.title}</h3>
+                  <h3 className="text-lg font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-wider">{camp.title}</h3>
                   <p className="text-xs text-slate-700 dark:text-gray-300 font-light">{camp.desc}</p>
                 </div>
               </motion.div>

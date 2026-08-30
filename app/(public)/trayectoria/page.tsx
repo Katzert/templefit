@@ -102,13 +102,13 @@ export default function NeuroVentasPage() {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
 
   return (
-    <div className="bg-[#FBF9F5] dark:bg-[#FBF9F5] dark:bg-white dark:bg-temple-navy-dark text-temple-navy dark:text-white overflow-x-hidden min-h-screen">
+    <div className="bg-[#FBF9F5] dark:bg-[#05070B] text-temple-navy dark:text-temple-navy dark:text-white overflow-x-hidden min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 md:pt-44 md:pb-36 border-b border-temple-gold/25 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="/templefit/dashboard/team_spirit.png" 
-            className="w-full h-full object-cover opacity-20 mix-blend-luminosity" 
+            className="w-full h-full object-cover opacity-30 dark:opacity-20 " 
             alt="Entrenamiento en ventas - TEMPLEFIT" 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/90 to-transparent dark:from-temple-navy-dark dark:via-temple-navy-dark/90 dark:to-transparent" />
@@ -122,12 +122,12 @@ export default function NeuroVentasPage() {
               <span className="inline-block bg-temple-gold/20 border border-temple-gold/40 text-temple-gold px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] rounded-full shadow-lg">
                 Respaldo Técnico & Capacitaciones
               </span>
-              <h1 className="text-4xl sm:text-6xl md:text-[5.5rem] font-serif font-black uppercase text-temple-navy dark:text-white leading-[1.05] tracking-tight">
+              <h1 className="text-4xl sm:text-6xl md:text-[5.5rem] font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white leading-[1.05] tracking-tight">
                 CAPACITACIÓN & <span className="elegant-title text-temple-gold block mt-2">CERTIFICACIONES</span>
               </h1>
               
               <div className="border-l-4 border-temple-gold pl-6 space-y-4">
-                <p className="text-xl md:text-2xl text-slate-800 dark:text-white font-medium italic leading-relaxed">
+                <p className="text-xl md:text-2xl text-slate-800 dark:text-temple-navy dark:text-white font-medium italic leading-relaxed">
                   "El servicio de excelencia y la disciplina no son casualidad: se forman con preparación real."
                 </p>
                 <p className="text-xs md:text-sm text-temple-gold uppercase tracking-[0.2em] font-bold">
@@ -188,7 +188,7 @@ export default function NeuroVentasPage() {
         <div className="container mx-auto px-6 max-w-6xl text-center space-y-16">
           <div className="space-y-3">
             <p className="text-temple-gold font-bold tracking-[0.25em] text-xs uppercase">Fundamentos de Neuroventas</p>
-            <h2 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-white uppercase tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-tight">
               LOS 3 CEREBROS <span className="text-temple-red ml-2">DEL VENDEDOR</span>
             </h2>
           </div>
@@ -213,8 +213,8 @@ export default function NeuroVentasPage() {
                 className={`p-8 bg-white dark:bg-temple-navy/40 border border-black/5 dark:border-white/5 border-t-4 ${brain.border} rounded-2xl flex flex-col text-left group hover:bg-black/5 dark:bg-white/5 transition-all duration-300`}
               >
                 <div className="text-4xl mb-4">{brain.emoji}</div>
-                <span className="text-[10px] text-white/40 uppercase tracking-widest mb-1 font-bold">{brain.tag}</span>
-                <h4 className="text-xl font-bold text-temple-navy dark:text-white uppercase mb-4 tracking-tight">{brain.title}</h4>
+                <span className="text-[10px] text-temple-navy dark:text-white/40 uppercase tracking-widest mb-1 font-bold">{brain.tag}</span>
+                <h4 className="text-xl font-bold text-temple-navy dark:text-temple-navy dark:text-white uppercase mb-4 tracking-tight">{brain.title}</h4>
                 <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed">{brain.desc}</p>
               </div>
             ))}
@@ -223,11 +223,11 @@ export default function NeuroVentasPage() {
       </section>
 
       {/* Módulos de Entrenamiento */}
-      <section className="py-20 md:py-28 bg-[#FBF9F5] dark:bg-white dark:bg-temple-navy-dark relative border-b border-black/5 dark:border-white/5">
+      <section className="py-20 md:py-28 bg-[#FBF9F5] dark:bg-[#0E1424] dark:bg-temple-navy-dark relative border-b border-black/5 dark:border-white/5">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="mb-16">
             <p className="text-temple-gold font-bold mb-3 tracking-[0.25em] text-xs uppercase">Contenido del Programa</p>
-            <h2 className="text-3xl md:text-6xl font-serif font-black text-temple-navy dark:text-white uppercase leading-tight tracking-tight">
+            <h2 className="text-3xl md:text-6xl font-serif font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase leading-tight tracking-tight">
               MÓDULOS DE <span className="elegant-title text-temple-gold block md:inline-block md:ml-3 mt-2 md:mt-0">ENTRENAMIENTO</span>
             </h2>
           </div>
@@ -247,10 +247,10 @@ export default function NeuroVentasPage() {
               >
                 <div>
                   <div className="flex justify-between items-start mb-6">
-                    <span className="text-3xl font-serif font-black text-temple-navy dark:text-white/15">{mod.num}</span>
+                    <span className="text-3xl font-serif font-black text-temple-navy dark:text-temple-navy dark:text-white/15">{mod.num}</span>
                     <span className="text-2xl">{mod.emoji}</span>
                   </div>
-                  <h4 className="text-lg font-bold text-temple-navy dark:text-white uppercase mb-3 tracking-tight">{mod.title}</h4>
+                  <h4 className="text-lg font-bold text-temple-navy dark:text-temple-navy dark:text-white uppercase mb-3 tracking-tight">{mod.title}</h4>
                   <p className="text-slate-600 dark:text-gray-400 text-xs leading-relaxed">{mod.desc}</p>
                 </div>
               </div>
@@ -266,7 +266,7 @@ export default function NeuroVentasPage() {
             
             {/* Metodología */}
             <div className="space-y-8">
-              <h3 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-white uppercase tracking-tight">
+              <h3 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-tight">
                 METODOLOGÍA DE <span className="text-temple-gold">TRABAJO</span>
               </h3>
               <p className="text-slate-700 dark:text-gray-300 text-sm leading-relaxed border-l-2 border-temple-gold pl-4">
@@ -306,7 +306,7 @@ export default function NeuroVentasPage() {
 
             {/* Qué Lograrás */}
             <div className="space-y-8">
-              <h3 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-white uppercase tracking-tight">
+              <h3 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-tight">
                 ¿QUÉ <span className="text-temple-red">LOGRARÁS?</span>
               </h3>
               <p className="text-temple-gold font-bold uppercase text-[10px] tracking-widest">
@@ -320,7 +320,7 @@ export default function NeuroVentasPage() {
                   { num: '03', title: 'Excelencia Profesional', desc: 'Mantener una presentación profesional impecable y un servicio de atención que marque la diferencia en el mercado.' }
                 ].map((obj, i) => (
                   <div key={i} className="p-6 bg-white dark:bg-temple-navy/40 border border-black/5 dark:border-white/5 border-l-4 border-l-temple-red rounded-r-2xl">
-                    <h5 className="text-temple-navy dark:text-white font-bold uppercase mb-2 flex items-center gap-2">
+                    <h5 className="text-temple-navy dark:text-temple-navy dark:text-white font-bold uppercase mb-2 flex items-center gap-2">
                       <span className="text-temple-red font-mono font-black text-sm">{obj.num}</span>
                       <span>{obj.title}</span>
                     </h5>
@@ -333,7 +333,7 @@ export default function NeuroVentasPage() {
               <div className="p-8 bg-temple-gold/5 border border-temple-gold/20 rounded-2xl space-y-4">
                 <div className="flex items-center gap-3">
                   <span className="text-temple-gold text-xl">✦</span>
-                  <h5 className="text-temple-navy dark:text-white font-black uppercase text-lg tracking-wider">GARANTÍA ROI</h5>
+                  <h5 className="text-temple-navy dark:text-temple-navy dark:text-white font-black uppercase text-lg tracking-wider">GARANTÍA ROI</h5>
                 </div>
                 <p className="text-[10px] text-temple-gold font-bold uppercase tracking-widest">
                   Retorno de Inversión = VENTAJA
@@ -349,14 +349,14 @@ export default function NeuroVentasPage() {
       </section>
 
       {/* Modalidades y Precios */}
-      <section className="py-20 md:py-28 bg-[#FBF9F5] dark:bg-white dark:bg-temple-navy-dark relative border-b border-black/5 dark:border-white/5">
+      <section className="py-20 md:py-28 bg-[#FBF9F5] dark:bg-[#0E1424] dark:bg-temple-navy-dark relative border-b border-black/5 dark:border-white/5">
         <div className="container mx-auto px-6 max-w-6xl space-y-16">
           <div className="text-center space-y-4">
             <p className="text-temple-gold font-bold tracking-[0.25em] text-xs uppercase">Inversión en tu equipo</p>
-            <h2 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-white uppercase tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-tight">
               MODALIDADES DEL <span className="elegant-title text-temple-gold ml-1">PROGRAMA</span>
             </h2>
-            <p className="text-slate-800 dark:text-white/40 text-xs uppercase tracking-widest font-black">
+            <p className="text-slate-800 dark:text-temple-navy dark:text-white/40 text-xs uppercase tracking-widest font-black">
               "EL PRECIO SE OLVIDA · Y LA CALIDAD PERMANECE"
             </p>
           </div>
@@ -365,12 +365,12 @@ export default function NeuroVentasPage() {
             {/* Intensivo */}
             <div className="p-8 bg-white dark:bg-temple-navy/40 border border-black/5 dark:border-white/5 rounded-2xl text-center flex flex-col justify-between hover:bg-white dark:bg-white/5 hover:border-temple-gold/30 transition-all duration-300">
               <div className="space-y-4">
-                <span className="text-[10px] text-white/40 uppercase tracking-widest font-bold">Básico</span>
-                <h4 className="text-2xl font-serif font-black text-temple-navy dark:text-white uppercase">INTENSIVO</h4>
+                <span className="text-[10px] text-temple-navy dark:text-white/40 uppercase tracking-widest font-bold">Básico</span>
+                <h4 className="text-2xl font-serif font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase">INTENSIVO</h4>
                 <p className="text-temple-gold font-bold text-xs uppercase">3 hrs · 1 día</p>
               </div>
               <div className="py-8">
-                <span className="text-4xl font-black text-temple-navy dark:text-white">200 Bs.</span>
+                <span className="text-4xl font-black text-temple-navy dark:text-temple-navy dark:text-white">200 Bs.</span>
               </div>
             </div>
             
@@ -380,12 +380,12 @@ export default function NeuroVentasPage() {
                 Más Solicitado
               </div>
               <div className="space-y-4 mt-2">
-                <span className="text-[10px] text-white/40 uppercase tracking-widest font-bold">Intermedio</span>
-                <h4 className="text-2xl font-serif font-black text-temple-navy dark:text-white uppercase">ESTÁNDAR</h4>
+                <span className="text-[10px] text-temple-navy dark:text-white/40 uppercase tracking-widest font-bold">Intermedio</span>
+                <h4 className="text-2xl font-serif font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase">ESTÁNDAR</h4>
                 <p className="text-temple-gold font-bold text-xs uppercase">10 hrs · 5 días</p>
               </div>
               <div className="py-8">
-                <span className="text-4xl font-black text-temple-navy dark:text-white">500 Bs.</span>
+                <span className="text-4xl font-black text-temple-navy dark:text-temple-navy dark:text-white">500 Bs.</span>
               </div>
             </div>
             
@@ -393,12 +393,12 @@ export default function NeuroVentasPage() {
             <div className="p-8 bg-white dark:bg-temple-navy/40 border border-black/5 dark:border-white/5 rounded-2xl text-center flex flex-col justify-between hover:bg-white dark:bg-white/5 hover:border-temple-gold/30 transition-all duration-300 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-b from-temple-red/10 to-transparent pointer-events-none" />
               <div className="space-y-4 relative z-10">
-                <span className="text-[10px] text-white/40 uppercase tracking-widest font-bold">Premium / Recomendado</span>
-                <h4 className="text-2xl font-serif font-black text-temple-navy dark:text-white uppercase">COMPLETO</h4>
+                <span className="text-[10px] text-temple-navy dark:text-white/40 uppercase tracking-widest font-bold">Premium / Recomendado</span>
+                <h4 className="text-2xl font-serif font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase">COMPLETO</h4>
                 <p className="text-temple-gold font-bold text-xs uppercase">210 hrs · 21 días</p>
               </div>
               <div className="py-6 relative z-10">
-                <span className="text-4xl font-black text-temple-navy dark:text-white">1200 Bs.</span>
+                <span className="text-4xl font-black text-temple-navy dark:text-temple-navy dark:text-white">1200 Bs.</span>
               </div>
               <p className="text-[9px] text-slate-600 dark:text-gray-400 relative z-10 leading-relaxed px-2">
                 12 días de Teoría + 9 días de Práctica In Situ. El camino completo hacia la excelencia profesional.
@@ -410,7 +410,7 @@ export default function NeuroVentasPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div className="p-8 bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl space-y-6">
               <h4 className="text-lg font-bold text-temple-gold uppercase tracking-wider">Horarios y Días Disponibles</h4>
-              <p className="text-slate-800 dark:text-white font-bold text-xs uppercase">
+              <p className="text-slate-800 dark:text-temple-navy dark:text-white font-bold text-xs uppercase">
                 Mar · Mié · Jue <span className="text-white/40 font-normal ml-2">a elección</span>
               </p>
               <ul className="space-y-3">
@@ -429,7 +429,7 @@ export default function NeuroVentasPage() {
             </div>
             
             <div className="p-8 bg-[#25D366]/5 border border-[#25D366]/20 rounded-2xl flex flex-col justify-center space-y-4">
-              <h4 className="text-lg font-bold text-temple-navy dark:text-white uppercase tracking-wider">No improvises tu equipo.</h4>
+              <h4 className="text-lg font-bold text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-wider">No improvises tu equipo.</h4>
               <p className="text-slate-600 dark:text-gray-400 text-xs leading-relaxed">
                 Evita experiencias de servicio carente de calidad. Nuestro entrenamiento garantiza disciplina, cordialidad y protocolo de ventas desde el primer día.
               </p>
@@ -450,7 +450,7 @@ export default function NeuroVentasPage() {
               </a>
               <a 
                 href="mailto:templefitbolivia@gmail.com" 
-                className="text-center text-white/50 hover:text-temple-gold transition-colors text-xs font-bold"
+                className="text-center text-temple-navy dark:text-white/50 hover:text-temple-gold transition-colors text-xs font-bold"
               >
                 ✉️ templefitbolivia@gmail.com
               </a>
@@ -475,20 +475,20 @@ export default function NeuroVentasPage() {
           </div>
 
           <div className="text-center space-y-6 max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-white uppercase tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-tight">
               CERTIFICACIÓN OFICIAL TEMPLEFIT
             </h2>
             <p className="text-temple-red font-bold uppercase text-xs tracking-[0.25em]">
               Neuroentrenamiento de Impacto en Ventas
             </p>
-            <p className="text-slate-800 dark:text-white/60 text-[10px] uppercase tracking-widest">
+            <p className="text-slate-800 dark:text-temple-navy dark:text-white/60 text-[10px] uppercase tracking-widest">
               ✦ Certificación con Resultados 210 horas · 21 días · Garantía medible ROI
             </p>
             <div className="h-px w-20 bg-white/20 mx-auto" />
             <p className="text-temple-gold font-bold uppercase text-xs tracking-widest">
               Paulo Alberto Gil Cuéllar · Capacitador Certificado
             </p>
-            <p className="text-slate-800 dark:text-white/80 italic font-medium text-lg border-l-4 border-r-4 border-temple-red px-6 py-2 inline-block">
+            <p className="text-slate-800 dark:text-temple-navy dark:text-white/80 italic font-medium text-lg border-l-4 border-r-4 border-temple-red px-6 py-2 inline-block">
               "Te llevaremos a la excelencia profesional mediante resultados, no por diplomas."
             </p>
           </div>
@@ -499,7 +499,7 @@ export default function NeuroVentasPage() {
               <p className="text-temple-gold font-bold uppercase text-xs tracking-widest border-b border-black/10 dark:border-white/10 pb-2">
                 Experiencia Práctica In Situ
               </p>
-              <h3 className="text-2xl font-bold text-temple-navy dark:text-white uppercase tracking-tight">
+              <h3 className="text-2xl font-bold text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-tight">
                 Servicio Protocolar y Dirección de Garzones
               </h3>
               <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed">
@@ -535,7 +535,7 @@ export default function NeuroVentasPage() {
                 alt="Capacitación Gastronómica y Servicio"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
-              <p className="text-center text-[9px] text-slate-800 dark:text-white/50 uppercase tracking-widest font-bold">Capacitación Gastronómica</p>
+              <p className="text-center text-[9px] text-slate-800 dark:text-temple-navy dark:text-white/50 uppercase tracking-widest font-bold">Capacitación Gastronómica</p>
             </div>
             <div className="space-y-3">
               <img 
@@ -544,7 +544,7 @@ export default function NeuroVentasPage() {
                 alt="Dirección de Garzones en Buffet"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
-              <p className="text-center text-[9px] text-slate-800 dark:text-white/50 uppercase tracking-widest font-bold">Titulación IBTA en Acción</p>
+              <p className="text-center text-[9px] text-slate-800 dark:text-temple-navy dark:text-white/50 uppercase tracking-widest font-bold">Titulación IBTA en Acción</p>
             </div>
           </div>
 
@@ -587,8 +587,8 @@ export default function NeuroVentasPage() {
           <div className="pt-20 border-t border-black/10 dark:border-white/10 space-y-16">
             <div className="text-center space-y-4">
               <p className="text-temple-gold font-bold uppercase text-[10px] tracking-[0.3em]">Certificaciones Oficiales</p>
-              <h3 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-white uppercase">PORTAFOLIO DE CERTIFICADOS VERIFICADOS</h3>
-              <p className="text-slate-800 dark:text-white/40 text-xs uppercase tracking-widest max-w-2xl mx-auto">
+              <h3 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase">PORTAFOLIO DE CERTIFICADOS VERIFICADOS</h3>
+              <p className="text-slate-800 dark:text-temple-navy dark:text-white/40 text-xs uppercase tracking-widest max-w-2xl mx-auto">
                 Haz clic en cualquier certificado para ampliarlo y revisar su validez y sellos oficiales en alta resolución.
               </p>
             </div>
@@ -615,15 +615,15 @@ export default function NeuroVentasPage() {
                   <div className="p-6 space-y-4 flex-grow flex flex-col justify-between">
                     <div className="space-y-2">
                       <p className="text-[9px] text-temple-gold font-bold uppercase tracking-wider">{cert.category}</p>
-                      <h4 className="text-base font-bold text-temple-navy dark:text-white uppercase leading-snug group-hover:text-temple-gold transition-colors">{cert.title}</h4>
-                      <p className="text-slate-800 dark:text-white/60 text-[10px] leading-relaxed">{cert.issuer}</p>
+                      <h4 className="text-base font-bold text-temple-navy dark:text-temple-navy dark:text-white uppercase leading-snug group-hover:text-temple-gold transition-colors">{cert.title}</h4>
+                      <p className="text-slate-800 dark:text-temple-navy dark:text-white/60 text-[10px] leading-relaxed">{cert.issuer}</p>
                     </div>
                     
                     <div className="space-y-4 pt-4 border-t border-black/5 dark:border-white/5">
                       <span className="inline-block bg-temple-red/20 border border-temple-red/40 text-white text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                         {cert.hours}
                       </span>
-                      <div className="flex justify-between items-center text-[9px] text-white/30 font-mono">
+                      <div className="flex justify-between items-center text-[9px] text-temple-navy dark:text-white/30 font-mono">
                         <span>{cert.meta}</span>
                         <span>{cert.date}</span>
                       </div>
@@ -673,7 +673,7 @@ export default function NeuroVentasPage() {
               <div className="md:w-1/2 p-8 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
                   <span className="text-[10px] text-temple-gold font-bold uppercase tracking-wider">{selectedCert.category}</span>
-                  <h3 className="text-2xl font-serif font-black uppercase text-temple-navy dark:text-white leading-tight">{selectedCert.title}</h3>
+                  <h3 className="text-2xl font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white leading-tight">{selectedCert.title}</h3>
                   <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">{selectedCert.issuer}</p>
                 </div>
                 
@@ -683,7 +683,7 @@ export default function NeuroVentasPage() {
                       {selectedCert.hours}
                     </span>
                   </div>
-                  <div className="space-y-1 font-mono text-xs text-white/40">
+                  <div className="space-y-1 font-mono text-xs text-temple-navy dark:text-white/40">
                     <p>{selectedCert.meta}</p>
                     <p>FECHA: {selectedCert.date}</p>
                   </div>
