@@ -19,9 +19,9 @@ export default function HeroSection() {
               target.src = '/templefit/media/hero_premium.png';
             }
           }}
-          className="w-full h-full object-cover object-center opacity-15 dark:opacity-25 filter grayscale contrast-125 dark:brightness-90 scale-105"
+          className="w-full h-full object-cover object-center opacity-45 dark:opacity-50 filter contrast-110 scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/85 via-[#FBF9F5]/75 to-[#FBF9F5] dark:from-[#05070B]/85 dark:via-[#05070B]/75 dark:to-[#05070B]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/50 via-[#FBF9F5]/40 to-[#FBF9F5] dark:from-[#05070B]/60 dark:via-[#05070B]/50 dark:to-[#05070B]" />
       </div>
 
       {/* Background ambient lighting */}

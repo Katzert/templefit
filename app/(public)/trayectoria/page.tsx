@@ -117,10 +117,10 @@ export default function NeuroVentasPage() {
           <img 
             src="dashboard/team_spirit.png" 
             onError={(e) => handleImgFallback(e, 'dashboard/team_spirit.png')}
-            className="w-full h-full object-cover opacity-15 dark:opacity-25 filter grayscale contrast-125 scale-105" 
+            className="w-full h-full object-cover opacity-50 dark:opacity-45 filter contrast-115 scale-105" 
             alt="Entrenamiento en ventas - TEMPLEFIT" 
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/90 to-transparent dark:from-[#05070B] dark:via-[#05070B]/90 dark:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#FBF9F5]/60 via-[#FBF9F5]/50 to-[#FBF9F5]/30 dark:from-[#05070B]/70 dark:via-[#05070B]/60 dark:to-[#05070B]/40" />
         </div>
 
         <div className="container mx-auto px-6 md:px-12 relative z-10">

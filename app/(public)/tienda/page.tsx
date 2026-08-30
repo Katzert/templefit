@@ -56,10 +56,10 @@ export default function TiendaPage() {
       {/* Header Section */}
       <section className="relative min-h-[45vh] flex items-center pt-24 pb-16 overflow-hidden border-b border-white/5">
         <div 
-          className="absolute inset-0 opacity-35 dark:opacity-25 bg-cover bg-center object-cover"
+          className="absolute inset-0 opacity-60 dark:opacity-50 bg-cover bg-center object-cover"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1600&q=80')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/75 via-[#FBF9F5]/85 to-[#FBF9F5] dark:from-[#05070B]/80 dark:via-[#05070B]/90 dark:to-[#05070B]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/50 via-[#FBF9F5]/60 to-[#FBF9F5] dark:from-[#05070B]/60 dark:via-[#05070B]/70 dark:to-[#05070B]" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center space-y-5">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-temple-gold/30 bg-temple-gold/10 backdrop-blur-md rounded-full">

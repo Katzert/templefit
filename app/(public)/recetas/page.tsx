@@ -73,10 +73,10 @@ export default function RecetasPage() {
       {/* Hero Section */}
       <section className="relative min-h-[45vh] flex items-center justify-center overflow-hidden px-4">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-35 dark:opacity-25"
+          className="absolute inset-0 bg-cover bg-center opacity-60 dark:opacity-50"
           style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1600&auto=format&fit=crop)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/75 via-[#FBF9F5]/85 to-[#FBF9F5] dark:from-[#05070B]/80 dark:via-[#05070B]/90 dark:to-[#05070B]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/50 via-[#FBF9F5]/60 to-[#FBF9F5] dark:from-[#05070B]/60 dark:via-[#05070B]/70 dark:to-[#05070B]" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-temple-gold/10 border border-temple-gold/30">
