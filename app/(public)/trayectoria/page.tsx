@@ -247,7 +247,7 @@ export default function NeuroVentasPage() {
               >
                 <div>
                   <div className="flex justify-between items-start mb-6">
-                    <span className="text-3xl font-serif font-black text-white/15">{mod.num}</span>
+                    <span className="text-3xl font-serif font-black text-temple-navy dark:text-white/15">{mod.num}</span>
                     <span className="text-2xl">{mod.emoji}</span>
                   </div>
                   <h4 className="text-lg font-bold text-temple-navy dark:text-white uppercase mb-3 tracking-tight">{mod.title}</h4>
@@ -275,7 +275,7 @@ export default function NeuroVentasPage() {
               
               <div className="bg-white dark:bg-temple-navy/55 border border-black/10 dark:border-white/10 p-6 rounded-2xl">
                 <p className="text-temple-gold font-bold uppercase text-[9px] tracking-widest mb-2">Nuestra Visión</p>
-                <p className="text-slate-800 dark:text-white text-sm font-medium italic">
+                <p className="text-slate-800 dark:text-temple-navy dark:text-white text-sm font-medium italic">
                   "Informar, entrenar y crear equipos de trabajo sostenibles que valoren la importancia de su labor sirviendo a clientes, capaces de lograr metas medibles y reales."
                 </p>
               </div>
@@ -370,7 +370,7 @@ export default function NeuroVentasPage() {
                 <p className="text-temple-gold font-bold text-xs uppercase">3 hrs · 1 día</p>
               </div>
               <div className="py-8">
-                <span className="text-4xl font-black text-white">200 Bs.</span>
+                <span className="text-4xl font-black text-temple-navy dark:text-white">200 Bs.</span>
               </div>
             </div>
             
@@ -385,7 +385,7 @@ export default function NeuroVentasPage() {
                 <p className="text-temple-gold font-bold text-xs uppercase">10 hrs · 5 días</p>
               </div>
               <div className="py-8">
-                <span className="text-4xl font-black text-white">500 Bs.</span>
+                <span className="text-4xl font-black text-temple-navy dark:text-white">500 Bs.</span>
               </div>
             </div>
             
@@ -398,7 +398,7 @@ export default function NeuroVentasPage() {
                 <p className="text-temple-gold font-bold text-xs uppercase">210 hrs · 21 días</p>
               </div>
               <div className="py-6 relative z-10">
-                <span className="text-4xl font-black text-white">1200 Bs.</span>
+                <span className="text-4xl font-black text-temple-navy dark:text-white">1200 Bs.</span>
               </div>
               <p className="text-[9px] text-slate-600 dark:text-gray-400 relative z-10 leading-relaxed px-2">
                 12 días de Teoría + 9 días de Práctica In Situ. El camino completo hacia la excelencia profesional.

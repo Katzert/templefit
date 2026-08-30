@@ -61,7 +61,7 @@ export default function Footer() {
               <li><Link href="/recetas" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Nutrición & Salud</Link></li>
               <li><Link href="/tienda" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Tienda</Link></li>
               <li><Link href="/trayectoria" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Trayectoria</Link></li>
-              <li><a href="https://katzert.github.io/templefit-wiki/" target="_blank" rel="noopener noreferrer" className="hover:text-temple-navy dark:hover:text-white transition-colors text-slate-500 dark:text-gray-500">TempleFit Wiki</a></li>
+              <li><a href="https://katzert.github.io/templefit-wiki/" target="_blank" rel="noopener noreferrer" className="hover:text-temple-navy dark:hover:text-temple-gold dark:hover:text-white transition-colors text-slate-500 dark:text-gray-500">TempleFit Wiki</a></li>
               <li><a href="https://katzert.github.io/templefit-admin/" target="_blank" rel="noopener noreferrer" className="hover:text-temple-gold transition-colors text-temple-gold font-black">Portal CRM</a></li>
             </ul>
           </div>

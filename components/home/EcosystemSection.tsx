@@ -120,7 +120,7 @@ export default function EcosystemSection() {
             >
               <button
                 onClick={() => setActiveUnitModal(null)}
-                className="absolute top-6 right-6 min-w-[44px] min-h-[44px] p-2.5 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 rounded-full text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-all duration-300 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
+                className="absolute top-6 right-6 min-w-[44px] min-h-[44px] p-2.5 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 rounded-full text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-temple-gold dark:hover:text-white transition-all duration-300 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
                 aria-label="Cerrar detalle del ecosistema"
               >
                 <X size={20} aria-hidden="true" />

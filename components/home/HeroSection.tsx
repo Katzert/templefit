@@ -64,7 +64,7 @@ export default function HeroSection() {
             <p className="text-[10px] md:text-xs uppercase font-bold text-gray-400 tracking-[0.2em]">Días de Reto</p>
           </div>
           <div className="space-y-1 border-x border-white/5">
-            <p className="text-3xl md:text-4xl font-black text-white drop-shadow-lg">12</p>
+            <p className="text-3xl md:text-4xl font-black text-temple-navy dark:text-white drop-shadow-lg">12</p>
             <p className="text-[10px] md:text-xs uppercase font-bold text-gray-400 tracking-[0.2em]">Por Escuadrón</p>
           </div>
           <div className="space-y-1">

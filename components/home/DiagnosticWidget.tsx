@@ -189,7 +189,7 @@ export default function DiagnosticWidget() {
                 </div>
 
                 <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 pt-6">
-                  <button type="button" onClick={() => setStep(1)} className="w-full sm:w-auto px-8 py-4 bg-transparent border border-black/10 dark:border-white/10 text-slate-600 dark:text-gray-400 font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-black/5 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold">
+                  <button type="button" onClick={() => setStep(1)} className="w-full sm:w-auto px-8 py-4 bg-transparent border border-black/10 dark:border-white/10 text-slate-600 dark:text-gray-400 font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-black/5 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-temple-gold dark:hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold">
                     ← Volver
                   </button>
                   <button type="submit" disabled={isSubmitting} className="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-temple-gold to-amber-600 hover:from-temple-gold-bright hover:to-amber-500 text-black font-black uppercase tracking-widest text-xs rounded-xl shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-3 group disabled:opacity-50 disabled:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-temple-gold">
@@ -236,7 +236,7 @@ export default function DiagnosticWidget() {
                   <span>Enviar a WhatsApp Oficial</span>
                 </button>
 
-                <button onClick={() => { setStep(1); setFormData({ fullName: '', phone: '', age: '', weight: '', height: '', injuries: 'Ninguna (100% Sano)', preferredSchedule: 'Turno 06:00 AM (Reto 21 Días)', activityLevel: 'Principiante (1-2 días/sem)', daysAvailable: 'Lunes a Viernes', specificGoal: '' }); }} className="w-full sm:w-auto px-6 py-5 bg-transparent border border-black/10 dark:border-white/10 text-slate-600 dark:text-gray-400 font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-black/5 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white transition-colors flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold">
+                <button onClick={() => { setStep(1); setFormData({ fullName: '', phone: '', age: '', weight: '', height: '', injuries: 'Ninguna (100% Sano)', preferredSchedule: 'Turno 06:00 AM (Reto 21 Días)', activityLevel: 'Principiante (1-2 días/sem)', daysAvailable: 'Lunes a Viernes', specificGoal: '' }); }} className="w-full sm:w-auto px-6 py-5 bg-transparent border border-black/10 dark:border-white/10 text-slate-600 dark:text-gray-400 font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-black/5 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-temple-gold dark:hover:text-white transition-colors flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold">
                   <RotateCcw size={16} />
                   <span>Reiniciar Test</span>
                 </button>

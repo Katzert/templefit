@@ -54,7 +54,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="hidden lg:flex items-center bg-gradient-to-r from-temple-gold to-amber-600 text-black px-5 py-2.5 rounded-xl cursor-pointer hover:scale-105 transition-all shadow-md shadow-temple-gold/20 hover:shadow-temple-gold/40 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-temple-gold"
           >
-            <span className="w-1.5 h-1.5 bg-black rounded-full animate-pulse" />
+            <span className="w-1.5 h-1.5 bg-temple-gold rounded-full animate-pulse" />
             <span>Unirse al Reto</span>
           </a>
 

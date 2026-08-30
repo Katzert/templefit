@@ -91,7 +91,7 @@ export default function TiendaPage() {
               className={`px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all duration-200 border ${
                 activeCategory === cat.id
                   ? 'bg-temple-gold text-black border-temple-gold shadow-lg shadow-temple-gold/20 font-black'
-                  : 'bg-black/5 dark:bg-white/5 text-slate-600 dark:text-gray-400 border-black/10 dark:border-white/10 hover:bg-black/10 dark:bg-white/10 hover:text-white'
+                  : 'bg-black/5 dark:bg-white/5 text-slate-600 dark:text-gray-400 border-black/10 dark:border-white/10 hover:bg-black/10 dark:bg-white/10 hover:text-temple-gold dark:hover:text-white'
               }`}
             >
               {cat.label}
@@ -121,7 +121,7 @@ export default function TiendaPage() {
 
                 <div className="p-6 space-y-3">
                   <div className="flex items-start justify-between gap-2">
-                    <h3 className="text-lg font-bold text-temple-navy dark:text-white group-hover:text-temple-gold transition">{prod.name}</h3>
+                    <h3 className="text-lg font-bold text-temple-navy dark:text-temple-navy dark:text-white group-hover:text-temple-gold transition">{prod.name}</h3>
                   </div>
                   <p className="text-xs text-slate-600 dark:text-gray-400 font-light leading-relaxed line-clamp-2">{prod.description}</p>
                 </div>
@@ -130,7 +130,7 @@ export default function TiendaPage() {
               <div className="p-6 pt-0 border-t border-black/5 dark:border-white/5 flex items-center justify-between mt-4">
                 <div>
                   <span className="text-[10px] text-slate-500 dark:text-gray-500 uppercase tracking-widest font-bold block">Inversión</span>
-                  <span className="text-2xl font-black text-white">{prod.price} <span className="text-sm font-bold text-temple-gold">Bs.</span></span>
+                  <span className="text-2xl font-black text-temple-navy dark:text-white">{prod.price} <span className="text-sm font-bold text-temple-gold">Bs.</span></span>
                 </div>
 
                 <button

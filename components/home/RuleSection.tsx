@@ -72,7 +72,7 @@ export default function RuleSection() {
               <div className="pt-4 relative z-10">
                 <Link
                   href="/escuadrones"
-                  className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-amber-500/10 dark:bg-white/5 hover:bg-temple-gold hover:text-black dark:hover:bg-white/10 border border-amber-500/30 dark:border-white/10 text-xs font-black text-amber-900 dark:text-temple-gold-bright hover:text-black dark:hover:text-white uppercase tracking-widest rounded-xl transition-all duration-300 gap-3 group/btn focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-temple-gold"
+                  className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-amber-500/10 dark:bg-white/5 hover:bg-temple-gold hover:text-black dark:hover:bg-white/10 border border-amber-500/30 dark:border-white/10 text-xs font-black text-amber-900 dark:text-temple-gold-bright hover:text-black dark:hover:text-temple-gold dark:hover:text-white uppercase tracking-widest rounded-xl transition-all duration-300 gap-3 group/btn focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-temple-gold"
                 >
                   <span>Conocer los 25 Escuadrones</span>
                   <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
