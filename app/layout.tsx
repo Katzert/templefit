@@ -22,15 +22,19 @@ export const metadata: Metadata = {
   description: "Entrenamiento funcional, nutrición preventiva y desarrollo espiritual.",
 };
 
+import { ThemeProvider } from "../components/ThemeProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${outfit.variable} ${playfair.variable}`}>
-      <body className="font-sans min-h-screen flex flex-col custom-scrollbar bg-temple-navy-dark text-white antialiased">
-        {children}
+    <html lang="es" className={`${outfit.variable} ${playfair.variable}`} suppressHydrationWarning>
+      <body className="font-sans min-h-screen flex flex-col custom-scrollbar bg-temple-cream dark:bg-temple-navy-dark text-temple-navy-dark dark:text-white transition-colors duration-300 antialiased">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
