@@ -25,7 +25,7 @@ export default function HeroSection() {
       </div>
 
       {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-temple-gold/15 via-amber-500/10 to-temple-gold/15 rounded-full blur-[140px] pointer-events-none z-[1]" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] max-w-[95vw] h-[350px] bg-gradient-to-r from-temple-gold/15 via-amber-500/10 to-temple-gold/15 rounded-full blur-[140px] pointer-events-none z-[1]" />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
         

@@ -63,13 +63,13 @@ export default function EcosystemSection() {
 
   return (
     <section id="ecosistema" className="max-w-7xl mx-auto px-4 py-24 relative">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-temple-gold/5 dark:bg-temple-navy-dark/40 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] max-w-full h-[500px] bg-temple-gold/5 dark:bg-white/5 rounded-full blur-[100px] pointer-events-none" />
       
       <div className="text-center space-y-4 mb-20 relative z-10">
         <motion.div variants={item} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-temple-gold/15 dark:bg-temple-gold/10 border border-temple-gold/30 dark:border-temple-gold/20 text-temple-gold-dark dark:text-temple-gold-bright text-[10px] font-black uppercase tracking-[0.3em]">
           EL TRI-ECOSISTEMA TEMPLEFIT
         </motion.div>
-        <motion.h2 variants={item} className="text-4xl md:text-6xl font-serif font-black uppercase text-slate-900 dark:text-temple-navy dark:text-white tracking-tight text-balance">
+        <motion.h2 variants={item} className="text-4xl md:text-6xl font-serif font-black uppercase text-temple-navy dark:text-white tracking-tight text-balance">
           Tres Ejes de <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-temple-gold dark:from-temple-gold-bright dark:to-temple-gold">Transformación</span>
         </motion.h2>
         <motion.p variants={item} className="text-slate-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed text-pretty">
