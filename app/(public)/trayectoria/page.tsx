@@ -2,136 +2,122 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Brain, Heart, Lightbulb, Target, Award, Clock, ArrowRight, ShieldCheck, CheckCircle2, X, ZoomIn, FileCheck, Check, Sparkles } from 'lucide-react';
+import { Brain, Heart, Lightbulb, Target, Award, Clock, ArrowRight, ShieldCheck, CheckCircle2, X, ZoomIn } from 'lucide-react';
 
 interface Certificate {
   id: string;
+  img: string;
   category: string;
   title: string;
   issuer: string;
   hours: string;
   meta: string;
   date: string;
-  institution: string;
-  type: string;
 }
 
 const CERTIFICATES: Certificate[] = [
   {
     id: 'cert1',
+    img: 'dashboard/media/media__1779149990472.jpg',
     category: 'Instructor Fitness & Imagen Personal',
     title: 'Técnicas en Instrucción Corporal y de Relajamiento',
     issuer: 'Centro de Capacitación Técnica Privada IBTA (R.M. 0259/2019 del Ministerio de Educación de Bolivia)',
     hours: '150 Horas Académicas',
     meta: 'REGISTRO: Libro Nº 5, Foja 36',
-    date: '05/AGO/2024',
-    institution: 'IBTA BOLIVIA',
-    type: 'TITULACIÓN TÉCNICA'
+    date: '05/AGO/2024'
   },
   {
     id: 'cert2',
+    img: 'dashboard/media/media__1779149990428.jpg',
     category: 'Gestión de Servicio & Catering de Élite',
     title: 'Organización de Restaurantes, Eventos y Garzones',
     issuer: 'Centro de Capacitación Técnica Privada IBTA (R.M. 0259/2019 del Ministerio de Educación de Bolivia)',
     hours: '240 Horas Académicas',
     meta: 'REGISTRO: Libro Nº 13, Foja 075',
-    date: '05/AGO/2024',
-    institution: 'IBTA BOLIVIA',
-    type: 'TITULACIÓN TÉCNICA'
+    date: '05/AGO/2024'
   },
   {
     id: 'cert3',
+    img: 'dashboard/media/media__1779149990274.jpg',
     category: 'Liderazgo & Discipulado de Gobierno',
     title: 'Principios y Modelos para Reformar Naciones',
     issuer: 'CGN Institute - Concilio Global de Naciones & Instituto Universitario Antonio Caso (IUAC)',
     hours: '120 Horas Académicas',
     meta: 'MODALIDAD: Virtual Internacional',
-    date: '30/ENE/2025',
-    institution: 'CGN INSTITUTE & IUAC',
-    type: 'DIPLOMADO INTERNACIONAL'
+    date: '30/ENE/2025'
   },
   {
     id: 'cert4',
+    img: 'dashboard/media/media__1779225988764.jpg',
     category: 'Terapia de Resultados',
     title: 'Minicurso Terapeuta de Resultados',
     issuer: 'IBFT - Instituto Brasileiro de Formação de Terapeutas (Brasil)',
     hours: '16 Horas de Carga',
     meta: 'FIRMA: Dr. Jair Soares dos Santos',
-    date: '15/MAR/2026',
-    institution: 'IBFT BRASIL',
-    type: 'ESPECIALIZACIÓN CLÍNICA'
+    date: '15/MAR/2026'
   },
   {
     id: 'cert5',
+    img: 'dashboard/media/media__1779225546898.jpg',
     category: 'Entrenamiento Funcional Avanzado',
     title: 'Aplicación Práctica del Entrenamiento Funcional',
     issuer: 'VirtuallCorp Consultora, dpp & Upllearn Global Free Education (Tarija - Bolivia)',
     hours: '40 Horas Académicas',
     meta: 'REGISTRO OFICIAL: 066478',
-    date: '20/MAR/2026',
-    institution: 'VIRTUALLCORP & UPLLEARN',
-    type: 'CERTIFICACIÓN AVANZADA'
+    date: '20/MAR/2026'
   },
   {
     id: 'cert6',
+    img: 'dashboard/media/media__1779225546905.jpg',
     category: 'Biomecánica Deportiva',
     title: 'Biomecánica y Movimiento Corporal',
     issuer: 'VirtuallCorp Consultora, dpp & Upllearn Global Free Education (Tarija - Bolivia)',
     hours: '40 Horas Académicas',
     meta: 'REGISTRO OFICIAL: 066478',
-    date: '20/MAR/2026',
-    institution: 'VIRTUALLCORP & UPLLEARN',
-    type: 'CERTIFICACIÓN AVANZADA'
+    date: '20/MAR/2026'
   },
   {
     id: 'cert7',
+    img: 'dashboard/media/media__1779225546923.jpg',
     category: 'Acondicionamiento Físico',
     title: 'Capacidades Físicas y el Entrenamiento Funcional',
     issuer: 'VirtuallCorp Consultora, dpp & Upllearn Global Free Education (Tarija - Bolivia)',
     hours: '40 Horas Académicas',
     meta: 'REGISTRO OFICIAL: 066478',
-    date: '20/MAR/2026',
-    institution: 'VIRTUALLCORP & UPLLEARN',
-    type: 'CERTIFICACIÓN AVANZADA'
+    date: '20/MAR/2026'
   },
   {
     id: 'cert8',
+    img: 'dashboard/media/media__1779225546929.jpg',
     category: 'Fisioterapia & Kinesiología',
     title: 'Ejercicios Funcionales Terapéuticos y Rehabilitación Física',
     issuer: 'VirtuallCorp Consultora, dpp & Upllearn Global Free Education (Tarija - Bolivia)',
     hours: '40 Horas Académicas',
     meta: 'REGISTRO OFICIAL: 066478',
-    date: '20/MAR/2026',
-    institution: 'VIRTUALLCORP & UPLLEARN',
-    type: 'CERTIFICACIÓN AVANZADA'
+    date: '20/MAR/2026'
   }
-];
-
-const ACTION_GALLERY = [
-  { src: 'media/hero_premium.png', fallback: '/templefit/media/hero_premium.png', alt: 'Coach Paulo Gil en Acción' },
-  { src: 'media/carlos.png', fallback: '/templefit/media/carlos.png', alt: 'Entrenamiento de Fuerza' },
-  { src: 'media/diego.png', fallback: '/templefit/media/diego.png', alt: 'Acondicionamiento Funcional' },
-  { src: 'media/mariana.png', fallback: '/templefit/media/mariana.png', alt: 'Nutrición y Disciplina' },
-  { src: 'images/squad_training.png', fallback: '/templefit/images/squad_training.png', alt: 'Escuadrones TempleFit' }
 ];
 
 export default function NeuroVentasPage() {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
+
+  const handleImgFallback = (e: React.SyntheticEvent<HTMLImageElement, Event>, relativePath: string) => {
+    const target = e.currentTarget;
+    if (!target.src.includes('templefit/')) {
+      target.src = '/templefit/' + relativePath;
+    }
+  };
 
   return (
     <div className="bg-[#FBF9F5] dark:bg-[#05070B] text-temple-navy dark:text-white overflow-x-hidden min-h-screen font-sans">
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 md:pt-44 md:pb-36 border-b border-temple-gold/25 overflow-hidden">
-        {/* Ambient background */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 z-0">
           <img 
-            src="media/hero_premium.png" 
-            onError={(e) => {
-              const target = e.currentTarget;
-              if (!target.src.includes('templefit')) target.src = '/templefit/media/hero_premium.png';
-            }}
-            className="w-full h-full object-cover opacity-15 dark:opacity-20 filter grayscale contrast-125 scale-105" 
+            src="dashboard/team_spirit.png" 
+            onError={(e) => handleImgFallback(e, 'dashboard/team_spirit.png')}
+            className="w-full h-full object-cover opacity-15 dark:opacity-25 filter grayscale contrast-125 scale-105" 
             alt="Entrenamiento en ventas - TEMPLEFIT" 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/90 to-transparent dark:from-[#05070B] dark:via-[#05070B]/90 dark:to-transparent" />
@@ -175,29 +161,27 @@ export default function NeuroVentasPage() {
               </div>
             </div>
 
-            {/* High-Resolution Action Gallery Cards */}
+            {/* Grid of author images in action */}
             <div className="lg:col-span-5 flex items-end justify-center pr-4">
               <div className="flex -space-x-8 md:-space-x-12 overflow-hidden py-4">
-                {ACTION_GALLERY.map((item, i) => (
+                {[
+                  'dashboard/media/media__1779142481129.jpg',
+                  'dashboard/media/media__1779142481197.jpg',
+                  'dashboard/media/media__1779142481265.jpg',
+                  'dashboard/media/media__1779142481269.jpg',
+                  'dashboard/media/media__1779142481315.jpg'
+                ].map((src, i) => (
                   <motion.div 
                     key={i} 
                     className="relative group w-20 md:w-28 h-36 md:h-52 overflow-hidden rounded-2xl border-2 border-temple-gold/40 dark:border-white/20 hover:border-temple-gold shadow-2xl transition-all duration-300 bg-[#0E1424]"
                     whileHover={{ y: -10, zIndex: 20, scale: 1.08 }}
                   >
                     <img 
-                      src={item.src} 
+                      src={src} 
+                      onError={(e) => handleImgFallback(e, src)}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      alt={item.alt}
-                      onError={(e) => {
-                        const target = e.currentTarget;
-                        if (!target.src.includes('templefit')) {
-                          target.src = item.fallback;
-                        }
-                      }}
+                      alt={`Paulo Gil en Acción ${i+1}`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2">
-                      <span className="text-[8px] font-bold text-temple-gold uppercase tracking-wider line-clamp-1">{item.alt}</span>
-                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -312,73 +296,186 @@ export default function NeuroVentasPage() {
         </div>
       </section>
 
-      {/* Portafolio de Certificados Verificados */}
+      {/* Certificaciones y Credenciales */}
       <section className="py-20 md:py-28 bg-[#FBF9F5] dark:bg-[#07090E] relative border-t-8 border-temple-gold">
-        <div className="container mx-auto px-6 max-w-6xl space-y-16">
+        <div className="container mx-auto px-6 max-w-6xl space-y-20">
           
-          <div className="text-center space-y-4">
-            <span className="inline-flex items-center gap-2 bg-temple-gold/10 border border-temple-gold/30 text-temple-gold px-4 py-1.5 text-xs font-bold uppercase tracking-widest rounded-full">
-              <Award size={14} />
-              Acreditación Institucional
-            </span>
-            <h2 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-white uppercase tracking-tight">
-              PORTAFOLIO DE CERTIFICADOS OFICIALES
-            </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-xs uppercase tracking-widest max-w-2xl mx-auto">
-              Haz clic en cualquier credencial para inspeccionar su registro ministerial y resolución legal en alta resolución.
-            </p>
+          {/* Author Featured Cert Image */}
+          <div className="flex justify-center relative">
+            <div className="absolute inset-0 bg-temple-gold/15 blur-[90px] rounded-full max-w-md mx-auto h-full pointer-events-none" />
+            <img 
+              src="dashboard/media/media__1779142594726.jpg" 
+              onError={(e) => handleImgFallback(e, 'dashboard/media/media__1779142594726.jpg')}
+              className="w-full max-w-[280px] md:max-w-[340px] h-auto object-contain relative z-10 rounded-2xl shadow-2xl border-2 border-temple-gold/50 hover:scale-105 transition-transform duration-300" 
+              alt="Certificación Oficial Paulo Gil Cuéllar - TEMPLEFIT"
+            />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {CERTIFICATES.map((cert) => (
-              <div 
-                key={cert.id} 
-                onClick={() => setSelectedCert(cert)}
-                className="bg-white dark:bg-[#0C101A] border border-black/10 dark:border-white/10 hover:border-temple-gold/60 transition-all duration-300 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between group shadow-lg hover:shadow-2xl hover:-translate-y-1"
-              >
-                {/* Visual Diploma Header */}
-                <div className="p-6 bg-gradient-to-br from-amber-500/10 via-temple-gold/5 to-transparent border-b border-black/5 dark:border-white/5 relative overflow-hidden">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-temple-gold/15 text-temple-gold text-[9px] font-black uppercase tracking-wider border border-temple-gold/30">
-                      <ShieldCheck size={12} />
-                      {cert.type}
-                    </span>
-                    <span className="text-[10px] font-mono font-bold text-slate-500 dark:text-gray-400">{cert.date}</span>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-black font-black text-xs shadow-md">
-                      <Award size={20} />
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-bold text-temple-gold uppercase tracking-wider block">{cert.institution}</span>
-                      <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">{cert.meta}</span>
-                    </div>
-                  </div>
+          <div className="text-center space-y-6 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-white uppercase tracking-tight">
+              CERTIFICACIÓN OFICIAL TEMPLEFIT
+            </h2>
+            <p className="text-temple-gold font-bold uppercase text-xs tracking-[0.25em]">
+              Neuroentrenamiento de Impacto en Ventas & Servicio
+            </p>
+            <p className="text-slate-600 dark:text-slate-400 text-xs uppercase tracking-widest">
+              ✦ Certificación con Resultados · 240 horas técnicas · Respaldo Ministerial R.M. 0259/2019
+            </p>
+            <div className="h-px w-20 bg-temple-gold/40 mx-auto" />
+            <p className="text-temple-navy dark:text-white font-bold uppercase text-sm tracking-widest">
+              Paulo Alberto Gil Cuéllar · Fundador & Lead Coach
+            </p>
+            <p className="text-slate-800 dark:text-slate-200 italic font-medium text-lg border-l-4 border-r-4 border-temple-gold px-6 py-2 inline-block">
+              "Te llevaremos a la excelencia profesional mediante resultados, no por diplomas."
+            </p>
+          </div>
+          
+          {/* Experience Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-8 border-t border-black/10 dark:border-white/10">
+            <div className="space-y-6">
+              <p className="text-temple-gold font-bold uppercase text-xs tracking-widest border-b border-black/10 dark:border-white/10 pb-2">
+                Experiencia Práctica In Situ
+              </p>
+              <h3 className="text-2xl font-bold text-temple-navy dark:text-white uppercase tracking-tight">
+                Servicio Protocolar y Dirección de Garzones
+              </h3>
+              <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                Paulo Alberto Gil Cuéllar es un profesional titulado directamente vinculado a la excelencia en el servicio protocolar de atención, dirección de garzones y organización de catering. Su entrenamiento no es solo teoría, sino disciplina forjada en la exigencia real del servicio al cliente de alto nivel.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                'dashboard/media/media__1779142594729.jpg',
+                'dashboard/media/media__1779142594777.jpg',
+                'dashboard/media/media__1779142594814.jpg',
+                'dashboard/media/media__1779142594821.jpg'
+              ].map((src, i) => (
+                <div key={i} className="aspect-[4/3] rounded-xl overflow-hidden border border-black/10 dark:border-white/10 hover:border-temple-gold shadow-lg transition-all duration-300 bg-[#0E1424]">
+                  <img 
+                    src={src} 
+                    onError={(e) => handleImgFallback(e, src)}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                    alt={`Experiencia Paulo Gil ${i+1}`}
+                  />
                 </div>
-                
-                {/* Content */}
-                <div className="p-6 space-y-4 flex-grow flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <p className="text-[10px] text-temple-gold font-bold uppercase tracking-wider">{cert.category}</p>
-                    <h4 className="text-base font-bold text-temple-navy dark:text-white uppercase leading-snug group-hover:text-temple-gold transition-colors">{cert.title}</h4>
-                    <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">{cert.issuer}</p>
+              ))}
+            </div>
+          </div>
+
+          {/* Action feature images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
+            <div className="space-y-3">
+              <div className="h-64 md:h-80 rounded-2xl overflow-hidden border-2 border-temple-gold/40 hover:border-temple-gold transition-colors shadow-2xl bg-[#0E1424]">
+                <img 
+                  src="dashboard/media/media__1779142694557.jpg" 
+                  onError={(e) => handleImgFallback(e, 'dashboard/media/media__1779142694557.jpg')}
+                  className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" 
+                  alt="Capacitación Gastronómica y Servicio"
+                />
+              </div>
+              <p className="text-center text-[10px] text-slate-800 dark:text-slate-300 uppercase tracking-widest font-bold">Capacitación Gastronómica</p>
+            </div>
+            <div className="space-y-3">
+              <div className="h-64 md:h-80 rounded-2xl overflow-hidden border-2 border-temple-gold/40 hover:border-temple-gold transition-colors shadow-2xl bg-[#0E1424]">
+                <img 
+                  src="dashboard/media/media__1779142694661.jpg" 
+                  onError={(e) => handleImgFallback(e, 'dashboard/media/media__1779142694661.jpg')}
+                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300" 
+                  alt="Dirección de Garzones en Buffet"
+                />
+              </div>
+              <p className="text-center text-[10px] text-slate-800 dark:text-slate-300 uppercase tracking-widest font-bold">Titulación IBTA en Acción</p>
+            </div>
+          </div>
+
+          {/* Technical Certifications lists */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white dark:bg-[#0C101A] p-8 rounded-2xl border border-black/10 dark:border-white/10 space-y-4 shadow-lg">
+              <h4 className="text-temple-gold font-bold uppercase tracking-wider text-sm">Titulaciones Técnicas (IBTA)</h4>
+              <ul className="space-y-4 text-xs text-slate-700 dark:text-gray-300">
+                <li className="flex items-start">
+                  <span className="text-amber-500 mr-2 mt-0.5 font-bold">✦</span>
+                  <span><strong>Técnicas en Instrucción Corporal y de Relajamiento.</strong> Imagen personal - Instructor Fitness (Régimen de Estudio 4 meses y 150 horas Académicas).</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-amber-500 mr-2 mt-0.5 font-bold">✦</span>
+                  <span><strong>Organización de Catering, eventos y Garzones.</strong> Régimen de Estudios de 6 meses y una carga horaria 240 horas Académicas (2024).</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white dark:bg-[#0C101A] p-8 rounded-2xl border border-black/10 dark:border-white/10 space-y-4 shadow-lg">
+              <h4 className="text-temple-gold font-bold uppercase tracking-wider text-sm">Especializaciones & Diplomados</h4>
+              <ul className="space-y-4 text-xs text-slate-700 dark:text-gray-300">
+                <li className="flex items-start">
+                  <span className="text-amber-500 mr-2 mt-0.5 font-bold">✦</span>
+                  <span><strong>Diplomado en Principios bíblicos de Gobierno</strong> por Mgr. María Irene Squilliaci. Instituto Universitario Antonio Caso (120 horas Académicas, 30/Ene/2025).</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-amber-500 mr-2 mt-0.5 font-bold">✦</span>
+                  <span><strong>Terapeuta de Resultados.</strong> Mini curso de 16 horas Académicas dictado por el Dr. Jair Soares dos Santos (15/Mar/2026).</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-amber-500 mr-2 mt-0.5 font-bold">✦</span>
+                  <span><strong>Capacitación Gastronómica</strong> por el Cheff Cristian Martinez Terán (IBTA).</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Portafolio de Certificados Verificados */}
+          <div className="pt-20 border-t border-black/10 dark:border-white/10 space-y-16">
+            <div className="text-center space-y-4">
+              <span className="inline-flex items-center gap-2 bg-temple-gold/10 border border-temple-gold/30 text-temple-gold px-4 py-1.5 text-xs font-bold uppercase tracking-widest rounded-full">
+                <Award size={14} />
+                Galería de Títulos y Diplomas Oficiales
+              </span>
+              <h3 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-white uppercase">PORTAFOLIO DE CERTIFICADOS VERIFICADOS</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-xs uppercase tracking-widest max-w-2xl mx-auto">
+                Haz clic en cualquier certificado para ampliarlo en alta definición y revisar sus sellos oficiales.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {CERTIFICATES.map((cert) => (
+                <div 
+                  key={cert.id} 
+                  onClick={() => setSelectedCert(cert)}
+                  className="bg-white dark:bg-[#0C101A] border border-black/10 dark:border-white/10 hover:border-temple-gold transition-all duration-300 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between group shadow-lg hover:shadow-2xl hover:-translate-y-1"
+                >
+                  <div className="aspect-[3/4] relative overflow-hidden bg-slate-100 dark:bg-black/60">
+                    <img 
+                      src={cert.img} 
+                      onError={(e) => handleImgFallback(e, cert.img)}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                      alt={cert.title}
+                    />
+                    <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-md border border-white/20 w-9 h-9 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-xl">
+                      <ZoomIn size={16} className="text-temple-gold" />
+                    </div>
                   </div>
                   
-                  <div className="space-y-4 pt-4 border-t border-black/5 dark:border-white/5">
-                    <div className="flex items-center justify-between">
-                      <span className="inline-block bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                  <div className="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <p className="text-[10px] text-temple-gold font-bold uppercase tracking-wider">{cert.category}</p>
+                      <h4 className="text-base font-bold text-temple-navy dark:text-white uppercase leading-snug group-hover:text-temple-gold transition-colors">{cert.title}</h4>
+                      <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">{cert.issuer}</p>
+                    </div>
+                    
+                    <div className="space-y-4 pt-4 border-t border-black/5 dark:border-white/5">
+                      <span className="inline-block bg-temple-gold/15 border border-temple-gold/30 text-temple-gold text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                         {cert.hours}
                       </span>
-                      <span className="inline-flex items-center gap-1 text-[11px] font-bold text-temple-gold group-hover:translate-x-0.5 transition-transform">
-                        <span>Inspeccionar</span>
-                        <ZoomIn size={14} />
-                      </span>
+                      <div className="flex justify-between items-center text-[10px] text-slate-500 dark:text-white/40 font-mono">
+                        <span>{cert.meta}</span>
+                        <span>{cert.date}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
         </div>
@@ -391,63 +488,58 @@ export default function NeuroVentasPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[1000] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 z-[1000] bg-black/90 backdrop-blur-lg flex items-center justify-center p-4 md:p-8"
             onClick={() => setSelectedCert(null)}
           >
+            <button 
+              className="absolute top-6 right-6 text-white hover:text-temple-gold transition-colors z-50 bg-white/10 hover:bg-white/20 p-2.5 rounded-full"
+              onClick={() => setSelectedCert(null)}
+            >
+              <X size={24} />
+            </button>
+            
             <motion.div 
               initial={{ scale: 0.95, y: 15 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 15 }}
               transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-              className="relative max-w-2xl w-full bg-white dark:bg-[#0E1424] border-2 border-temple-gold rounded-3xl overflow-hidden shadow-2xl p-8 space-y-8"
+              className="relative max-w-4xl w-full max-h-[88vh] bg-white dark:bg-[#0E1424] border-2 border-temple-gold rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-center justify-between border-b border-black/10 dark:border-white/10 pb-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-black shadow-lg">
-                    <Award size={24} />
-                  </div>
+              <div className="md:w-1/2 bg-black flex items-center justify-center overflow-hidden max-h-[45vh] md:max-h-full p-2">
+                <img 
+                  src={selectedCert.img} 
+                  onError={(e) => handleImgFallback(e, selectedCert.img)}
+                  className="w-full h-full object-contain rounded-xl" 
+                  alt={selectedCert.title} 
+                />
+              </div>
+              <div className="md:w-1/2 p-8 flex flex-col justify-between space-y-6">
+                <div className="space-y-4">
+                  <span className="text-xs text-temple-gold font-bold uppercase tracking-wider">{selectedCert.category}</span>
+                  <h3 className="text-2xl font-serif font-black uppercase text-temple-navy dark:text-white leading-tight">{selectedCert.title}</h3>
+                  <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed bg-black/5 dark:bg-white/5 p-4 rounded-xl border border-black/5 dark:border-white/5">
+                    {selectedCert.issuer}
+                  </p>
+                </div>
+                
+                <div className="space-y-4 pt-6 border-t border-black/10 dark:border-white/10">
                   <div>
-                    <span className="text-[10px] font-black text-temple-gold uppercase tracking-[0.2em]">{selectedCert.type}</span>
-                    <h4 className="text-sm font-bold text-temple-navy dark:text-white uppercase">{selectedCert.institution}</h4>
+                    <span className="inline-block bg-temple-gold text-black font-black text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">
+                      {selectedCert.hours}
+                    </span>
+                  </div>
+                  <div className="space-y-1 font-mono text-xs text-slate-600 dark:text-slate-400">
+                    <p>{selectedCert.meta}</p>
+                    <p>FECHA: {selectedCert.date}</p>
                   </div>
                 </div>
+                
                 <button 
-                  className="text-slate-400 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors"
+                  className="w-full py-3.5 bg-gradient-to-r from-temple-gold to-amber-600 text-black font-black uppercase tracking-widest text-xs rounded-xl shadow-lg hover:brightness-110 transition-all"
                   onClick={() => setSelectedCert(null)}
                 >
-                  <X size={22} />
-                </button>
-              </div>
-
-              <div className="space-y-4">
-                <span className="text-xs text-temple-gold font-bold uppercase tracking-wider">{selectedCert.category}</span>
-                <h3 className="text-2xl font-serif font-black uppercase text-temple-navy dark:text-white leading-tight">{selectedCert.title}</h3>
-                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed bg-black/5 dark:bg-white/5 p-4 rounded-xl border border-black/5 dark:border-white/5">
-                  {selectedCert.issuer}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 p-4 rounded-2xl bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 text-xs">
-                <div>
-                  <span className="text-[10px] text-slate-500 uppercase font-bold block">Carga Horaria</span>
-                  <span className="text-temple-gold font-bold">{selectedCert.hours}</span>
-                </div>
-                <div>
-                  <span className="text-[10px] text-slate-500 uppercase font-bold block">Fecha de Emisión</span>
-                  <span className="text-temple-navy dark:text-white font-bold">{selectedCert.date}</span>
-                </div>
-                <div className="col-span-2 pt-2 border-t border-black/5 dark:border-white/5 font-mono text-[11px] text-slate-600 dark:text-slate-400">
-                  {selectedCert.meta}
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <button 
-                  className="flex-1 py-3.5 bg-gradient-to-r from-temple-gold to-amber-600 text-black font-black uppercase tracking-wider text-xs rounded-xl shadow-lg hover:brightness-110 transition-all"
-                  onClick={() => setSelectedCert(null)}
-                >
-                  Cerrar Credencial
+                  Cerrar Vista
                 </button>
               </div>
             </motion.div>
