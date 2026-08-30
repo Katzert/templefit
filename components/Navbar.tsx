@@ -17,7 +17,17 @@ export default function Navbar() {
         <div className="flex items-center space-x-3 md:space-x-4">
           <Link href="/" className="flex items-center gap-3 md:gap-4 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold rounded-lg p-1">
             <div className="w-8 h-8 md:w-10 md:h-10 bg-transparent flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-105">
-              <img src="/assets/img/logo-tf-abreviado.png" alt="TF" className="w-full h-full object-contain" />
+              <img 
+                src="assets/img/logo-tf-abreviado.png" 
+                alt="TF" 
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.includes('templefit')) {
+                    target.src = '/templefit/assets/img/logo-tf-abreviado.png';
+                  }
+                }}
+                className="w-full h-full object-contain" 
+              />
             </div>
             <div>
               <h1 className="text-xl md:text-2xl font-serif font-black tracking-widest text-temple-navy dark:text-white uppercase group-hover:text-temple-gold transition-colors duration-300">TEMPLE<span className="text-temple-gold">FIT</span></h1>

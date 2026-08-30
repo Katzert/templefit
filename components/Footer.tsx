@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Instagram, Facebook, MessageCircle } from 'lucide-react';
 
@@ -14,7 +16,17 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-5 space-y-6">
             <div className="flex flex-col space-y-4">
-              <img src="/assets/img/logo-tf-gestion.png" alt="TempleFit Logo Completo" className="h-16 md:h-20 object-contain drop-shadow-[0_2px_10px_rgba(0,33,71,0.1)] dark:drop-shadow-[0_0_15px_rgba(212,175,55,0.2)]" />
+              <img 
+                src="assets/img/logo-tf-gestion.png" 
+                alt="TempleFit Logo Completo" 
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.includes('templefit')) {
+                    target.src = '/templefit/assets/img/logo-tf-gestion.png';
+                  }
+                }}
+                className="h-16 md:h-20 object-contain drop-shadow-[0_2px_10px_rgba(0,33,71,0.1)] dark:drop-shadow-[0_0_15px_rgba(212,175,55,0.2)]" 
+              />
             </div>
             <p className="text-xs md:text-sm text-slate-700 dark:text-gray-300 max-w-sm mb-6 leading-relaxed font-medium">
               El Cuerpo es el Templo. La Mente Crea y Edifica Vidas.
