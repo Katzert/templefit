@@ -8,8 +8,24 @@ const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transiti
 export default function HeroSection() {
   return (
     <section className="relative min-h-[92dvh] flex items-center justify-center overflow-hidden px-4 pt-24 pb-16 bg-[#FBF9F5] dark:bg-[#05070B]">
+      {/* Background visual atmosphere */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <img 
+          src="media/hero_premium.png" 
+          alt="TempleFit Athletic" 
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (!target.src.includes('templefit')) {
+              target.src = '/templefit/media/hero_premium.png';
+            }
+          }}
+          className="w-full h-full object-cover object-center opacity-15 dark:opacity-25 filter grayscale contrast-125 dark:brightness-90 scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/85 via-[#FBF9F5]/75 to-[#FBF9F5] dark:from-[#05070B]/85 dark:via-[#05070B]/75 dark:to-[#05070B]" />
+      </div>
+
       {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-temple-gold/15 via-amber-500/10 to-temple-gold/15 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-temple-gold/15 via-amber-500/10 to-temple-gold/15 rounded-full blur-[140px] pointer-events-none z-[1]" />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
         
