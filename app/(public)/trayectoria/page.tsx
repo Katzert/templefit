@@ -490,10 +490,14 @@ export default function NeuroVentasPage() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[1000] bg-black/90 backdrop-blur-lg flex items-center justify-center p-4 md:p-8"
             onClick={() => setSelectedCert(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cert-modal-title"
           >
             <button 
-              className="absolute top-6 right-6 text-white hover:text-temple-gold transition-colors z-50 bg-white/10 hover:bg-white/20 p-2.5 rounded-full"
+              className="absolute top-6 right-6 text-white hover:text-temple-gold transition-colors z-50 bg-white/10 hover:bg-white/20 p-2.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
               onClick={() => setSelectedCert(null)}
+              aria-label="Cerrar visor de diploma"
             >
               <X size={24} />
             </button>
@@ -511,13 +515,13 @@ export default function NeuroVentasPage() {
                   src={selectedCert.img} 
                   onError={(e) => handleImgFallback(e, selectedCert.img)}
                   className="w-full h-full object-contain rounded-xl" 
-                  alt={selectedCert.title} 
+                  alt={`Diploma oficial: ${selectedCert.title}`} 
                 />
               </div>
               <div className="md:w-1/2 p-5 sm:p-8 flex flex-col justify-between space-y-4 sm:space-y-6">
                 <div className="space-y-4">
-                  <span className="text-xs text-temple-gold font-bold uppercase tracking-wider">{selectedCert.category}</span>
-                  <h3 className="text-2xl font-serif font-black uppercase text-temple-navy dark:text-white leading-tight">{selectedCert.title}</h3>
+                  <span className="text-xs text-amber-700 dark:text-temple-gold font-bold uppercase tracking-wider">{selectedCert.category}</span>
+                  <h3 id="cert-modal-title" className="text-2xl font-serif font-black uppercase text-temple-navy dark:text-white leading-tight">{selectedCert.title}</h3>
                   <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed bg-black/5 dark:bg-white/5 p-4 rounded-xl border border-black/5 dark:border-white/5">
                     {selectedCert.issuer}
                   </p>

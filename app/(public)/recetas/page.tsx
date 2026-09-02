@@ -182,12 +182,23 @@ export default function RecetasPage() {
 
       {/* Recipe Detail Modal */}
       {openRecipe && (
-        <div className="fixed inset-0 z-50 bg-black/50 dark:bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-white dark:bg-[#0F1420] border border-black/10 dark:border-white/10 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar p-5 sm:p-8 relative">
+        <div 
+          className="fixed inset-0 z-50 bg-black/50 dark:bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="recipe-modal-title"
+          onClick={() => setSelectedRecipeId(null)}
+        >
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }} 
+            animate={{ opacity: 1, scale: 1 }} 
+            className="bg-white dark:bg-[#0F1420] border border-black/10 dark:border-white/10 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar p-5 sm:p-8 relative"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               onClick={() => setSelectedRecipeId(null)}
               className="absolute top-4 right-4 p-2 bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 rounded-full text-slate-800 dark:text-white transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
-              aria-label="Cerrar receta"
+              aria-label="Cerrar detalle de receta"
             >
               <X size={18} />
             </button>
@@ -195,7 +206,7 @@ export default function RecetasPage() {
               <div className="aspect-[16/9] relative rounded-xl overflow-hidden mb-6 bg-slate-100 dark:bg-black">
                 <img 
                   src={openRecipe.image || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop'} 
-                  alt={openRecipe.name} 
+                  alt={`Fotografía de plato preparado: ${openRecipe.name}`} 
                   onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop'; }}
                   className="w-full h-full object-cover" 
                 />
@@ -206,7 +217,7 @@ export default function RecetasPage() {
                 {openRecipe.category} • {openRecipe.time} minutos
               </span>
 
-            <h2 className="text-2xl font-bold text-temple-navy dark:text-white mt-3 mb-2">{openRecipe.name}</h2>
+            <h2 id="recipe-modal-title" className="text-2xl font-bold text-temple-navy dark:text-white mt-3 mb-2">{openRecipe.name}</h2>
             <p className="text-sm text-slate-700 dark:text-gray-300 mb-6">{openRecipe.description}</p>
 
             <div className="space-y-6 border-t border-black/10 dark:border-white/10 pt-6">

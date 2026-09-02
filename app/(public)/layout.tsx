@@ -8,8 +8,14 @@ export default function PublicLayout({
 }>) {
   return (
     <>
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[999] focus:bg-temple-gold focus:text-black focus:px-4 focus:py-2.5 focus:rounded-xl focus:font-black focus:text-xs focus:uppercase focus:tracking-wider focus:shadow-2xl focus:outline-none focus:ring-4 focus:ring-amber-500"
+      >
+        Saltar al contenido principal
+      </a>
       <Navbar />
-      <main className="flex-grow">
+      <main id="main-content" className="flex-grow focus:outline-none" tabIndex={-1}>
         {children}
       </main>
       <Footer />

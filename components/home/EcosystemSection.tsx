@@ -110,7 +110,12 @@ export default function EcosystemSection() {
       {/* Unit Detail Modal */}
       <AnimatePresence>
         {activeUnitModal !== null && (
-          <div className="fixed inset-0 z-[110] bg-slate-950/60 dark:bg-[#05070B]/90 backdrop-blur-xl flex items-center justify-center p-4">
+          <div 
+            className="fixed inset-0 z-[110] bg-slate-950/60 dark:bg-[#05070B]/90 backdrop-blur-xl flex items-center justify-center p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="unit-modal-title"
+          >
             <motion.div 
               initial={{ opacity: 0, y: 20, scale: 0.95 }} 
               animate={{ opacity: 1, y: 0, scale: 1 }} 
@@ -127,14 +132,14 @@ export default function EcosystemSection() {
               </button>
 
               <div className="flex items-start md:items-center gap-5 flex-col md:flex-row">
-                <div className="p-5 rounded-2xl bg-white dark:bg-black/5 dark:bg-black/50 border border-black/10 dark:border-white/10 shadow-inner">
+                <div className="p-5 rounded-2xl bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 shadow-inner">
                   {triEcosystemUnits[activeUnitModal].icon}
                 </div>
                 <div>
                   <span className="text-[10px] uppercase font-black tracking-widest px-3 py-1 bg-temple-gold/15 dark:bg-temple-gold/10 border border-temple-gold/30 rounded-full text-amber-800 dark:text-temple-gold mb-3 inline-block">
                     {triEcosystemUnits[activeUnitModal].tag}
                   </span>
-                  <h3 className="text-3xl font-black text-slate-900 dark:text-temple-navy dark:text-white">{triEcosystemUnits[activeUnitModal].title}</h3>
+                  <h3 id="unit-modal-title" className="text-3xl font-black text-slate-900 dark:text-white">{triEcosystemUnits[activeUnitModal].title}</h3>
                 </div>
               </div>
 
