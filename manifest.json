@@ -1,0 +1,25 @@
+{
+  "name": "TEMPLEFIT - Centro de Transformación",
+  "short_name": "TEMPLEFIT",
+  "description": "Entrenamiento funcional, nutrición preventiva y desarrollo espiritual.",
+  "start_url": "/templefit/",
+  "scope": "/templefit/",
+  "display": "standalone",
+  "background_color": "#05070B",
+  "theme_color": "#D4AF37",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/img/logo-tf-corona.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/img/logo-tf-corona.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

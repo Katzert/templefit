@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://katzert.github.io/templefit/sitemap.xml
