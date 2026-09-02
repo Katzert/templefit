@@ -221,7 +221,7 @@ export default function NeuroVentasPage() {
               >
                 <div className="text-4xl mb-4">{brain.emoji}</div>
                 <span className="text-[10px] text-temple-navy/60 dark:text-white/40 uppercase tracking-widest mb-1 font-bold">{brain.tag}</span>
-                <h4 className="text-xl font-bold text-temple-navy dark:text-white uppercase mb-4 tracking-tight">{brain.title}</h4>
+                <h3 className="text-xl font-bold text-temple-navy dark:text-white uppercase mb-4 tracking-tight">{brain.title}</h3>
                 <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed">{brain.desc}</p>
               </div>
             ))}

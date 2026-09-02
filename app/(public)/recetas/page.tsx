@@ -113,6 +113,7 @@ export default function RecetasPage() {
 
       {/* Recipes Grid */}
       <section className="max-w-7xl mx-auto px-4">
+        <h2 className="sr-only">Catálogo de Recetas y Alimentos Funcionales</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredRecipes.map((recipe) => (
             <div
