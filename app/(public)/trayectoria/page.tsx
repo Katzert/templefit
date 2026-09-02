@@ -344,7 +344,7 @@ export default function NeuroVentasPage() {
               </p>
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {[
                 'dashboard/media/media__1779142594729.jpg',
                 'dashboard/media/media__1779142594777.jpg',
@@ -503,10 +503,10 @@ export default function NeuroVentasPage() {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 15 }}
               transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-              className="relative max-w-4xl w-full max-h-[88vh] bg-white dark:bg-[#0E1424] border-2 border-temple-gold rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row"
+              className="relative max-w-4xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar bg-white dark:bg-[#0E1424] border-2 border-temple-gold rounded-3xl shadow-2xl flex flex-col md:flex-row"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="md:w-1/2 bg-black flex items-center justify-center overflow-hidden max-h-[45vh] md:max-h-full p-2">
+              <div className="md:w-1/2 bg-black flex items-center justify-center overflow-hidden max-h-[40vh] md:max-h-full p-2">
                 <img 
                   src={selectedCert.img} 
                   onError={(e) => handleImgFallback(e, selectedCert.img)}
@@ -514,7 +514,7 @@ export default function NeuroVentasPage() {
                   alt={selectedCert.title} 
                 />
               </div>
-              <div className="md:w-1/2 p-8 flex flex-col justify-between space-y-6">
+              <div className="md:w-1/2 p-5 sm:p-8 flex flex-col justify-between space-y-4 sm:space-y-6">
                 <div className="space-y-4">
                   <span className="text-xs text-temple-gold font-bold uppercase tracking-wider">{selectedCert.category}</span>
                   <h3 className="text-2xl font-serif font-black uppercase text-temple-navy dark:text-white leading-tight">{selectedCert.title}</h3>

@@ -56,20 +56,21 @@ export default function HeroSection() {
         </motion.p>
 
         {/* CTAs */}
-        <motion.div variants={item} className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+        {/* CTAs */}
+        <motion.div variants={item} className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-4 sm:pt-6 w-full max-w-md sm:max-w-none mx-auto">
           <a
             href="https://wa.me/59169127691?text=¡Hola%20Paulo!%20Quiero%20reclamar%20mi%20Semana%20de%20Prueba%20Gratuita%20en%20TempleFit%20y%20conocer%20los%20Escuadrones."
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative px-8 py-4 bg-gradient-to-r from-temple-gold via-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-black text-sm md:text-base uppercase tracking-[0.15em] rounded-2xl shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-3"
+            className="group relative min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-temple-gold via-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-black text-xs sm:text-sm md:text-base uppercase tracking-[0.15em] rounded-2xl shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2.5"
           >
             <span>Semana de Prueba Gratis</span>
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </a>
 
           <a
-            href="#ecosystem"
-            className="px-8 py-4 bg-black/5 dark:bg-white/5 text-temple-navy dark:text-temple-navy dark:text-white font-bold text-sm md:text-base uppercase tracking-[0.1em] rounded-2xl border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 group"
+            href="#ecosistema"
+            className="min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 bg-black/5 dark:bg-white/5 text-temple-navy dark:text-white font-bold text-xs sm:text-sm md:text-base uppercase tracking-[0.1em] rounded-2xl border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2.5 group"
           >
             <Activity size={18} className="text-amber-600 dark:text-temple-gold group-hover:scale-110 transition-transform" />
             <span>Test Diagnóstico</span>
@@ -77,18 +78,18 @@ export default function HeroSection() {
         </motion.div>
 
         {/* Social Proof Counters */}
-        <motion.div variants={item} className="grid grid-cols-3 max-w-2xl mx-auto pt-10 mt-6 border-t border-black/10 dark:border-white/10">
-          <div className="space-y-1">
-            <p className="text-3xl md:text-4xl font-black text-amber-600 dark:text-temple-gold">21</p>
-            <p className="text-[10px] md:text-xs uppercase font-bold text-slate-500 dark:text-gray-400 tracking-[0.2em]">Días de Reto</p>
+        <motion.div variants={item} className="grid grid-cols-3 gap-1 sm:gap-4 max-w-2xl mx-auto pt-8 sm:pt-10 mt-6 border-t border-black/10 dark:border-white/10">
+          <div className="space-y-0.5 sm:space-y-1 px-1">
+            <p className="text-2xl sm:text-3xl md:text-4xl font-black text-amber-600 dark:text-temple-gold">21</p>
+            <p className="text-[9px] sm:text-[10px] md:text-xs uppercase font-bold text-slate-600 dark:text-gray-400 tracking-[0.15em] sm:tracking-[0.2em]">Días de Reto</p>
           </div>
-          <div className="space-y-1 border-x border-black/10 dark:border-white/10">
-            <p className="text-3xl md:text-4xl font-black text-temple-navy dark:text-temple-navy dark:text-white">12</p>
-            <p className="text-[10px] md:text-xs uppercase font-bold text-slate-500 dark:text-gray-400 tracking-[0.2em]">Por Escuadrón</p>
+          <div className="space-y-0.5 sm:space-y-1 px-1 border-x border-black/10 dark:border-white/10">
+            <p className="text-2xl sm:text-3xl md:text-4xl font-black text-temple-navy dark:text-white">12</p>
+            <p className="text-[9px] sm:text-[10px] md:text-xs uppercase font-bold text-slate-600 dark:text-gray-400 tracking-[0.15em] sm:tracking-[0.2em]">Por Escuadrón</p>
           </div>
-          <div className="space-y-1">
-            <p className="text-3xl md:text-4xl font-black text-emerald-600 dark:text-emerald-400">06:00</p>
-            <p className="text-[10px] md:text-xs uppercase font-bold text-slate-500 dark:text-gray-400 tracking-[0.2em]">CristoFit Camp</p>
+          <div className="space-y-0.5 sm:space-y-1 px-1">
+            <p className="text-2xl sm:text-3xl md:text-4xl font-black text-emerald-600 dark:text-emerald-400">06:00</p>
+            <p className="text-[9px] sm:text-[10px] md:text-xs uppercase font-bold text-slate-600 dark:text-gray-400 tracking-[0.15em] sm:tracking-[0.2em]">CristoFit Camp</p>
           </div>
         </motion.div>
 

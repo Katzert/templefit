@@ -139,37 +139,37 @@ export default function DiagnosticWidget() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="space-y-1.5">
                     <label htmlFor="fullName" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Tu Nombre Completo *</label>
-                    <input id="fullName" type="text" required value={formData.fullName} onChange={(e) => setFormData({ ...formData, fullName: e.target.value })} placeholder="Ej. Andrés Morales" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
+                    <input id="fullName" type="text" required value={formData.fullName} onChange={(e) => setFormData({ ...formData, fullName: e.target.value })} placeholder="Ej. Andrés Morales" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-3.5 sm:p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
                   </div>
                   <div className="space-y-1.5">
                     <label htmlFor="phone" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Celular / WhatsApp *</label>
-                    <input id="phone" type="tel" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder="+591 70012345" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
+                    <input id="phone" type="tel" required value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder="+591 70012345" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-3.5 sm:p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
                   <div className="space-y-1.5">
                     <label htmlFor="age" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Edad</label>
-                    <input id="age" type="number" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })} placeholder="Ej. 28" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
+                    <input id="age" type="number" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })} placeholder="Ej. 28" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-3.5 sm:p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
                   </div>
                   <div className="space-y-1.5">
                     <label htmlFor="weight" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Peso (kg)</label>
-                    <input id="weight" type="number" value={formData.weight} onChange={(e) => setFormData({ ...formData, weight: e.target.value })} placeholder="Ej. 75" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
+                    <input id="weight" type="number" value={formData.weight} onChange={(e) => setFormData({ ...formData, weight: e.target.value })} placeholder="Ej. 75" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-3.5 sm:p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
                   </div>
                   <div className="space-y-1.5">
                     <label htmlFor="height" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Estatura (cm)</label>
-                    <input id="height" type="number" value={formData.height} onChange={(e) => setFormData({ ...formData, height: e.target.value })} placeholder="Ej. 174" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
+                    <input id="height" type="number" value={formData.height} onChange={(e) => setFormData({ ...formData, height: e.target.value })} placeholder="Ej. 174" className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-3.5 sm:p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-gray-600 font-light" />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5">
                   <div className="space-y-1.5">
                     <label htmlFor="activityLevel" className="text-[10px] text-slate-600 dark:text-gray-400 font-black uppercase tracking-widest pl-1">Nivel Actual</label>
-                    <select id="activityLevel" value={formData.activityLevel} onChange={(e) => setFormData({ ...formData, activityLevel: e.target.value })} className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-4 text-sm text-slate-900 dark:text-temple-navy dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all font-light appearance-none cursor-pointer">
-                      <option className="bg-white dark:bg-black text-slate-900 dark:text-temple-navy dark:text-white" value="Sedentario">Sedentario (Sin ejercicio)</option>
-                      <option className="bg-white dark:bg-black text-slate-900 dark:text-temple-navy dark:text-white" value="Principiante (1-2 días/sem)">Principiante (1-2 días/sem)</option>
-                      <option className="bg-white dark:bg-black text-slate-900 dark:text-temple-navy dark:text-white" value="Intermedio (3-4 días/sem)">Intermedio (3-4 días/sem)</option>
-                      <option className="bg-white dark:bg-black text-slate-900 dark:text-temple-navy dark:text-white" value="Avanzado">Avanzado (Constante)</option>
+                    <select id="activityLevel" value={formData.activityLevel} onChange={(e) => setFormData({ ...formData, activityLevel: e.target.value })} className="w-full bg-black/[0.03] dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-xl p-3.5 sm:p-4 text-sm text-slate-900 dark:text-white focus:border-temple-gold focus:ring-2 focus:ring-temple-gold/40 outline-none transition-all font-light appearance-none cursor-pointer">
+                      <option className="bg-white dark:bg-black text-slate-900 dark:text-white" value="Sedentario">Sedentario (Sin ejercicio)</option>
+                      <option className="bg-white dark:bg-black text-slate-900 dark:text-white" value="Principiante (1-2 días/sem)">Principiante (1-2 días/sem)</option>
+                      <option className="bg-white dark:bg-black text-slate-900 dark:text-white" value="Intermedio (3-4 días/sem)">Intermedio (3-4 días/sem)</option>
+                      <option className="bg-white dark:bg-black text-slate-900 dark:text-white" value="Avanzado">Avanzado (Constante)</option>
                     </select>
                   </div>
                   <div className="space-y-1.5">

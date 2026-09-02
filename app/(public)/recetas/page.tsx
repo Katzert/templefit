@@ -140,7 +140,7 @@ export default function RecetasPage() {
                 </div>
 
                 <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-xl font-bold text-temple-navy dark:text-temple-navy dark:text-white group-hover:text-temple-gold transition-colors duration-300 drop-shadow-md">{recipe.name}</h3>
+                  <h3 className="text-xl font-bold text-white group-hover:text-temple-gold transition-colors duration-300 drop-shadow-md">{recipe.name}</h3>
                 </div>
               </div>
 
@@ -149,10 +149,10 @@ export default function RecetasPage() {
                 <p className="text-xs text-slate-600 dark:text-gray-400 line-clamp-2 leading-relaxed">{recipe.description}</p>
 
                 {/* Macros Preview */}
-                <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-white dark:bg-black/[0.03] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 text-center text-xs group-hover:bg-white/[0.05] transition-colors">
+                <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 text-center text-xs group-hover:bg-black/[0.04] dark:group-hover:bg-white/[0.05] transition-colors">
                   <div>
                     <span className="text-[9px] uppercase text-slate-500 dark:text-gray-500 block mb-0.5">Calorías</span>
-                    <span className="font-black text-temple-navy dark:text-temple-navy dark:text-white drop-shadow-sm">{recipe.macros?.calories || 0}</span>
+                    <span className="font-black text-temple-navy dark:text-white drop-shadow-sm">{recipe.macros?.calories || 0}</span>
                   </div>
                   <div>
                     <span className="text-[9px] uppercase text-slate-500 dark:text-gray-500 block mb-0.5">Proteína</span>
@@ -182,11 +182,12 @@ export default function RecetasPage() {
 
       {/* Recipe Detail Modal */}
       {openRecipe && (
-        <div className="fixed inset-0 z-50 bg-white dark:bg-black/8 dark:bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-white dark:bg-[#0F1420] border border-black/10 dark:border-white/10 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar p-6 md:p-8 relative">
+        <div className="fixed inset-0 z-50 bg-black/50 dark:bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-white dark:bg-[#0F1420] border border-black/10 dark:border-white/10 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar p-5 sm:p-8 relative">
             <button
               onClick={() => setSelectedRecipeId(null)}
-              className="absolute top-4 right-4 p-2 bg-black/10 dark:bg-white/10 hover:bg-white/20 rounded-full text-white transition"
+              className="absolute top-4 right-4 p-2 bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 rounded-full text-slate-800 dark:text-white transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
+              aria-label="Cerrar receta"
             >
               <X size={18} />
             </button>
@@ -205,7 +206,7 @@ export default function RecetasPage() {
                 {openRecipe.category} • {openRecipe.time} minutos
               </span>
 
-            <h2 className="text-2xl font-bold text-temple-navy dark:text-temple-navy dark:text-white mt-3 mb-2">{openRecipe.name}</h2>
+            <h2 className="text-2xl font-bold text-temple-navy dark:text-white mt-3 mb-2">{openRecipe.name}</h2>
             <p className="text-sm text-slate-700 dark:text-gray-300 mb-6">{openRecipe.description}</p>
 
             <div className="space-y-6 border-t border-black/10 dark:border-white/10 pt-6">
