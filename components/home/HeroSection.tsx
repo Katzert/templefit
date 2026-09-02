@@ -13,6 +13,8 @@ export default function HeroSection() {
         <img 
           src="media/hero_premium.png" 
           alt="TempleFit Athletic" 
+          fetchPriority="high"
+          decoding="async"
           onError={(e) => {
             const target = e.currentTarget;
             if (!target.src.includes('templefit')) {
@@ -34,6 +36,8 @@ export default function HeroSection() {
           <img 
             src="assets/img/logo-tf-corona.png" 
             alt="TempleFit" 
+            fetchPriority="high"
+            decoding="async"
             onError={(e) => {
               const target = e.currentTarget;
               if (!target.src.includes('templefit')) {
