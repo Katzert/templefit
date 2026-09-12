@@ -8,6 +8,9 @@ const nextConfig = {
     unoptimized: true,
   },
   basePath: isProdGithub ? '/templefit' : '',
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isProdGithub ? '/templefit' : '',
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, Activity } from 'lucide-react';
+import { getAssetPath } from '../../lib/utils';
 
 const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } };
 
@@ -11,16 +12,10 @@ export default function HeroSection() {
       {/* Background visual atmosphere */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <img 
-          src="media/hero_premium.png" 
+          src={getAssetPath('/media/hero_premium.png')} 
           alt="TempleFit Athletic" 
           fetchPriority="high"
           decoding="async"
-          onError={(e) => {
-            const target = e.currentTarget;
-            if (!target.src.includes('templefit')) {
-              target.src = '/templefit/media/hero_premium.png';
-            }
-          }}
           className="w-full h-full object-cover object-center opacity-45 dark:opacity-50 filter contrast-110 scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/50 via-[#FBF9F5]/40 to-[#FBF9F5] dark:from-[#05070B]/60 dark:via-[#05070B]/50 dark:to-[#05070B]" />
@@ -34,29 +29,23 @@ export default function HeroSection() {
         {/* Master Logo */}
         <motion.div variants={item} className="flex justify-center mb-2">
           <img 
-            src="assets/img/logo-tf-corona.png" 
+            src={getAssetPath('/assets/img/logo-tf-corona.png')} 
             alt="TempleFit" 
             fetchPriority="high"
             decoding="async"
-            onError={(e) => {
-              const target = e.currentTarget;
-              if (!target.src.includes('templefit')) {
-                target.src = '/templefit/assets/img/logo-tf-corona.png';
-              }
-            }}
             className="h-32 sm:h-44 md:h-56 lg:h-64 object-contain drop-shadow-[0_4px_25px_rgba(179,134,40,0.25)] dark:drop-shadow-[0_0_35px_rgba(212,175,55,0.4)]" 
           />
         </motion.div>
 
         {/* Master Slogan Headline */}
-        <motion.h1 variants={item} className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white tracking-tight leading-[1.08] text-balance">
+        <motion.h1 variants={item} className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black uppercase text-temple-navy dark:text-white tracking-tight leading-[1.08] text-balance">
           El Cuerpo es el <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-temple-gold to-yellow-500">Templo.</span><br />
           La Mente Crea y <span className="italic font-normal text-slate-700 dark:text-slate-200">Edifica Vidas.</span>
         </motion.h1>
 
         {/* Subtitle */}
         <motion.p variants={item} className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed text-pretty">
-          Entrena tu cuerpo, mejora tu alimentación y fortalece tu fe a través del <strong className="text-temple-navy dark:text-temple-navy dark:text-white font-bold">Reto de 21 Días</strong> y los <strong className="text-amber-600 dark:text-temple-gold font-bold">Escuadrones de 12 Atletas</strong>.
+          Entrena tu cuerpo, mejora tu alimentación y fortalece tu fe a través del <strong className="text-temple-navy dark:text-white font-bold">Reto de 21 Días</strong> y los <strong className="text-amber-600 dark:text-temple-gold font-bold">Escuadrones de 12 Atletas</strong>.
         </motion.p>
 
         {/* CTAs */}

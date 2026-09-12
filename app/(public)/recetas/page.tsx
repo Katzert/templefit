@@ -84,7 +84,7 @@ export default function RecetasPage() {
             <span className="text-[11px] font-extrabold uppercase tracking-[0.25em] text-temple-gold">Nutrición Funcional & Botica</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black uppercase text-temple-navy dark:text-white tracking-tight">
             COMIDAS Y <span className="text-temple-gold italic">RECETAS</span>
           </h1>
 
@@ -136,7 +136,7 @@ export default function RecetasPage() {
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/40 to-transparent dark:from-[#0A0A0A] dark:via-[#0A0A0A]/40 dark:to-transparent opacity-90" />
 
-                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white dark:bg-black/5 dark:bg-black/60 backdrop-blur-md border border-black/10 dark:border-white/10 text-temple-gold text-[10px] font-bold uppercase tracking-widest shadow-lg">
+                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white dark:bg-black/60 backdrop-blur-md border border-black/10 dark:border-white/10 text-temple-gold text-[10px] font-bold uppercase tracking-widest shadow-lg">
                   {recipe.category}
                 </div>
 

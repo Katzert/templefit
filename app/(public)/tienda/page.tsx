@@ -68,7 +68,7 @@ export default function TiendaPage() {
               Tienda Oficial & Suplementación
             </span>
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-tight">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-black text-temple-navy dark:text-white uppercase tracking-tight">
             LA <span className="text-temple-gold italic">TIENDA</span> TEMPLEFIT
           </h1>
           <p className="text-sm sm:text-base text-slate-700 dark:text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
@@ -121,7 +121,7 @@ export default function TiendaPage() {
 
                 <div className="p-6 space-y-3">
                   <div className="flex items-start justify-between gap-2">
-                    <h3 className="text-lg font-bold text-temple-navy dark:text-temple-navy dark:text-white group-hover:text-temple-gold transition">{prod.name}</h3>
+                    <h3 className="text-lg font-bold text-temple-navy dark:text-white group-hover:text-temple-gold transition">{prod.name}</h3>
                   </div>
                   <p className="text-xs text-slate-600 dark:text-gray-400 font-light leading-relaxed line-clamp-2">{prod.description}</p>
                 </div>
@@ -130,7 +130,7 @@ export default function TiendaPage() {
               <div className="p-6 pt-0 border-t border-black/5 dark:border-white/5 flex items-center justify-between mt-4">
                 <div>
                   <span className="text-[10px] text-slate-500 dark:text-gray-500 uppercase tracking-widest font-bold block">Inversión</span>
-                  <span className="text-2xl font-black text-temple-navy dark:text-temple-navy dark:text-white">{prod.price} <span className="text-sm font-bold text-temple-gold">Bs.</span></span>
+                  <span className="text-2xl font-black text-temple-navy dark:text-white">{prod.price} <span className="text-sm font-bold text-temple-gold">Bs.</span></span>
                 </div>
 
                 <button

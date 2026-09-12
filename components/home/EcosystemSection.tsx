@@ -95,7 +95,7 @@ export default function EcosystemSection() {
                   {unit.tag}
                 </span>
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-temple-navy dark:text-white mb-3 group-hover:text-temple-gold transition-colors duration-300">{unit.title}</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-temple-gold transition-colors duration-300">{unit.title}</h3>
               <p className="text-sm text-slate-600 dark:text-gray-400 leading-relaxed font-light mb-8 group-hover:text-slate-800 dark:group-hover:text-gray-300 transition-colors">{unit.description}</p>
             </div>
 
@@ -149,7 +149,7 @@ export default function EcosystemSection() {
               </div>
 
               <div className="space-y-4">
-                <h5 className="text-xs font-black text-slate-500 dark:text-temple-navy dark:text-white/50 uppercase tracking-widest pl-1">¿Qué incluye este pilar?</h5>
+                <h5 className="text-xs font-black text-slate-500 dark:text-white/50 uppercase tracking-widest pl-1">¿Qué incluye este pilar?</h5>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {triEcosystemUnits[activeUnitModal].features.map((feat, idx) => (
                     <li key={idx} className="flex items-start gap-3 bg-black/[0.03] dark:bg-black/30 p-4 rounded-xl border border-black/5 dark:border-white/5 text-sm text-slate-700 dark:text-gray-300 hover:border-temple-gold/30 transition-colors">

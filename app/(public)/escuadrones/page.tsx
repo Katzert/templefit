@@ -34,12 +34,12 @@ export default function EscuadronesPage() {
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-temple-gold">Comunidad y Liderazgo</span>
           </motion.div>
 
-          <motion.h1 variants={item} className="text-4xl sm:text-6xl md:text-7xl font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white tracking-tight leading-tight">
+          <motion.h1 variants={item} className="text-4xl sm:text-6xl md:text-7xl font-serif font-black uppercase text-temple-navy dark:text-white tracking-tight leading-tight">
             LOS 25 ESCUADRONES <span className="text-temple-gold block">& CRISTOFIT CAMP</span>
           </motion.h1>
 
           <motion.p variants={item} className="text-sm md:text-lg text-slate-700 dark:text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
-            Nadie entrena aislado. En TempleFit aplicamos la <strong className="text-temple-navy dark:text-temple-navy dark:text-white font-bold">Regla de los 12</strong>: 
+            Nadie entrena aislado. En TempleFit aplicamos la <strong className="text-temple-navy dark:text-white font-bold">Regla de los 12</strong>: 
             grupos de máximo 12 atletas para garantizar compañerismo y progreso.
           </motion.p>
         </div>
@@ -53,12 +53,12 @@ export default function EscuadronesPage() {
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-temple-gold bg-temple-gold/10 px-3 py-1 rounded-full border border-temple-gold/20">
                 Estructura Bíblica & Disciplina
               </span>
-              <h2 className="text-3xl md:text-5xl font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white tracking-tight mt-3 mb-4">
+              <h2 className="text-3xl md:text-5xl font-serif font-black uppercase text-temple-navy dark:text-white tracking-tight mt-3 mb-4">
                 La Regla de los <span className="text-temple-gold">12 Atletas</span>
               </h2>
               <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-light text-sm md:text-base">
                 Inspirados en el modelo de Jesús con sus 12 discípulos, organizamos a nuestra comunidad en 
-                <strong className="text-temple-navy dark:text-temple-navy dark:text-white font-bold"> 25 Escuadrones de 12 personas</strong> (Meta anual de 300 atletas certificados). 
+                <strong className="text-temple-navy dark:text-white font-bold"> 25 Escuadrones de 12 personas</strong> (Meta anual de 300 atletas certificados). 
                 Tu escuadrón es tu círculo de rendición de cuentas: celebran tus victorias y te respaldan si flaqueas.
               </p>
             </div>
@@ -74,7 +74,7 @@ export default function EscuadronesPage() {
                   <div className="w-10 h-10 bg-temple-gold/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <feature.icon className="text-temple-gold" size={20} />
                   </div>
-                  <h3 className="text-temple-navy dark:text-temple-navy dark:text-white font-bold text-sm uppercase tracking-wider mb-2">{feature.title}</h3>
+                  <h3 className="text-temple-navy dark:text-white font-bold text-sm uppercase tracking-wider mb-2">{feature.title}</h3>
                   <p className="text-xs text-slate-600 dark:text-gray-400 font-light leading-relaxed">{feature.desc}</p>
                 </div>
               ))}
@@ -94,7 +94,7 @@ export default function EscuadronesPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[10px] font-bold text-temple-gold uppercase tracking-widest mb-1">Capacidad Máxima por Grupo</p>
-                  <p className="text-2xl font-black text-slate-800 dark:text-temple-navy dark:text-white">12 Atletas por Escuadrón</p>
+                  <p className="text-2xl font-black text-slate-800 dark:text-white">12 Atletas por Escuadrón</p>
                 </div>
                 <div className="w-12 h-12 rounded-full border-2 border-temple-gold border-dashed flex items-center justify-center bg-temple-gold/10">
                   <span className="text-temple-gold font-black text-lg">12</span>
@@ -111,7 +111,7 @@ export default function EscuadronesPage() {
           <span className="text-[10px] font-black uppercase tracking-[0.3em] text-temple-gold bg-temple-gold/10 px-3 py-1 rounded-full border border-temple-gold/20">
             METODOLOGÍA
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white">
+          <h2 className="text-3xl md:text-5xl font-serif font-black uppercase text-temple-navy dark:text-white">
             Las 3 Fases del <span className="italic text-temple-gold">Atleta TempleFit</span>
           </h2>
           <p className="text-slate-600 dark:text-gray-400 max-w-xl mx-auto text-sm font-light">
@@ -131,7 +131,7 @@ export default function EscuadronesPage() {
                   Corona Bronce
                 </span>
               </div>
-              <h3 className="text-2xl font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase">Escuadrón de Paz</h3>
+              <h3 className="text-2xl font-black text-temple-navy dark:text-white uppercase">Escuadrón de Paz</h3>
               <p className="text-xs text-slate-700 dark:text-gray-300 font-light leading-relaxed">
                 Iniciación y acondicionamiento. Diagnóstico postural y biométrico, adaptación neuromuscular a la calistenia y nutrición anti-inflamatoria.
               </p>
@@ -154,7 +154,7 @@ export default function EscuadronesPage() {
                   Corona Plata
                 </span>
               </div>
-              <h3 className="text-2xl font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase">Escuadrón de Gedeón</h3>
+              <h3 className="text-2xl font-black text-temple-navy dark:text-white uppercase">Escuadrón de Gedeón</h3>
               <p className="text-xs text-slate-700 dark:text-gray-300 font-light leading-relaxed">
                 El <strong className="text-temple-gold font-bold">Reto 21 Días = ÍNTEGROS</strong>. 3 horas de disciplina diaria (1h Cuerpo + 1h Mente + 1h Espíritu) y asistencia a CristoFit Camp.
               </p>
@@ -177,7 +177,7 @@ export default function EscuadronesPage() {
                   Corona de Oro
                 </span>
               </div>
-              <h3 className="text-2xl font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase">Escuadrón de Cristo</h3>
+              <h3 className="text-2xl font-black text-temple-navy dark:text-white uppercase">Escuadrón de Cristo</h3>
               <p className="text-xs text-slate-700 dark:text-gray-300 font-light leading-relaxed">
                 E.A.G.E. (Escuela de Atletas y Guías Evangelísticos). Formación de capitanes, mentoría a nuevos miembros y servicio social activo.
               </p>
@@ -192,6 +192,127 @@ export default function EscuadronesPage() {
         </div>
       </section>
 
+      {/* Exercise Routines & Technical Examples Section */}
+      <section className="max-w-7xl mx-auto px-4">
+        <div className="text-center space-y-3 mb-16">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-temple-gold bg-temple-gold/10 px-3 py-1 rounded-full border border-temple-gold/20">
+            MOVIMIENTOS MAESTROS
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif font-black uppercase text-temple-navy dark:text-white">
+            Rutinas de Ejercicios & <span className="italic text-temple-gold">Ejemplos Técnicos</span>
+          </h2>
+          <p className="text-slate-600 dark:text-gray-400 max-w-2xl mx-auto text-sm font-light leading-relaxed">
+            Cada atleta de los escuadrones entrena bajo estándares biomecánicos de calistenia, fuerza funcional y boxeo ético. 
+            Aquí tienes las imágenes guía y especificaciones de la rutina oficial.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: "1. Dominadas Estrictas en Jaula",
+              category: "Calistenia & Tracción",
+              level: "Fase 1 a 3",
+              prescription: "4 Series x 8-10 Reps • Tempo 3-0-1",
+              focus: "Dorsales, bíceps y agarre de hierro sin balanceo.",
+              cue: "Pecho a la barra, pausa de 1 segundo en contracción máxima.",
+              img: "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?q=80&w=1200&auto=format&fit=crop"
+            },
+            {
+              title: "2. Fondos en Paralelas Olímpicas",
+              category: "Fuerza de Empuje",
+              level: "Fase 1 a 3",
+              prescription: "4 Series x 10-12 Reps • Tempo 2-1-1",
+              focus: "Pectoral inferior, tríceps y estabilidad del manguito rotador.",
+              cue: "Baja hasta que el codo forme 90°, empuja con los talones de la mano.",
+              img: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1200&auto=format&fit=crop"
+            },
+            {
+              title: "3. Sentadilla Búlgara Táctica",
+              category: "Pierna Funcional",
+              level: "Fase 2 y 3",
+              prescription: "4 Series x 12 Reps por pierna • Tempo 3-0-1",
+              focus: "Cuádriceps, glúteo mayor y alineación sacro-lumbar.",
+              cue: "Espalda erguida, la rodilla trasera desciende rozando el piso con control.",
+              img: "https://images.unsplash.com/photo-1434682881908-b43d0467b798?q=80&w=1200&auto=format&fit=crop"
+            },
+            {
+              title: "4. Flexiones Diamante Explosivas",
+              category: "Calistenia Avanzada",
+              level: "Fase 2 y 3",
+              prescription: "4 Series x 15 Reps • Potencia",
+              focus: "Pectoral central, tríceps y rigidez de pared abdominal.",
+              cue: "Manos unidas formando un rombo debajo del esternón, core apretado.",
+              img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1200&auto=format&fit=crop"
+            },
+            {
+              title: "5. Boxeo Ético & Sparring Técnico",
+              category: "Cardio & Reflejos",
+              level: "Todas las Fases",
+              prescription: "5 Rounds x 3 Minutos • Guantes 16 oz",
+              focus: "Coordinación psicomotriz, guardia y esquiva sin golpes lesivos.",
+              cue: "Rotación de cadera, mentón bajo, respeto y honor dentro del cuadrilátero.",
+              img: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=1200&auto=format&fit=crop"
+            },
+            {
+              title: "6. Protocolo Buteyko & Movilidad",
+              category: "Recuperación Circadiana",
+              level: "Innegociable 06:00 AM",
+              prescription: "15 Minutos Diarios • Post-Entreno",
+              focus: "Baja inmediata de cortisol, oxigenación cerebral y movilidad articular.",
+              cue: "Inhalación nasal diafragmática pausada, apnea controlada y estiramiento.",
+              img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop"
+            }
+          ].map((exercise, idx) => (
+            <motion.div 
+              key={idx} 
+              variants={item}
+              className="bg-white dark:bg-[#0E1424]/90 border border-black/10 dark:border-white/10 rounded-3xl overflow-hidden shadow-xl hover:border-temple-gold/40 transition-all duration-300 flex flex-col justify-between group"
+            >
+              <div>
+                <div className="relative h-56 overflow-hidden bg-black/10">
+                  <img 
+                    src={exercise.img} 
+                    alt={exercise.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider text-temple-gold border border-white/10">
+                    {exercise.category}
+                  </div>
+                  <div className="absolute top-3 right-3 bg-temple-gold text-black px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider shadow-md">
+                    {exercise.level}
+                  </div>
+                </div>
+
+                <div className="p-6 space-y-3">
+                  <h3 className="text-lg font-black text-temple-navy dark:text-white group-hover:text-temple-gold transition-colors">
+                    {exercise.title}
+                  </h3>
+                  
+                  <div className="p-2.5 rounded-xl bg-amber-500/10 dark:bg-temple-gold/10 border border-amber-500/20 dark:border-temple-gold/20 text-xs font-black text-amber-900 dark:text-temple-gold">
+                    ⚡ {exercise.prescription}
+                  </div>
+
+                  <p className="text-xs text-slate-700 dark:text-gray-300 font-light leading-relaxed">
+                    <strong className="font-bold text-slate-900 dark:text-gray-100">Enfoque:</strong> {exercise.focus}
+                  </p>
+
+                  <p className="text-xs text-slate-600 dark:text-gray-400 italic bg-black/[0.03] dark:bg-white/[0.03] p-2.5 rounded-lg border border-black/5 dark:border-white/5">
+                    💡 <span className="font-semibold">Clave técnica:</span> "{exercise.cue}"
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-6 pt-0 border-t border-black/5 dark:border-white/5 mt-3">
+                <span className="text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-widest block text-center pt-3">
+                  Evaluado en CristoFit Camp los Sábados
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
       {/* CristoFit Camp Section */}
       <section className="relative py-24 bg-temple-cream dark:bg-[#07090E] border-t border-b border-black/5 dark:border-white/5">
         <div className="relative max-w-7xl mx-auto px-4 text-center">
@@ -199,7 +320,7 @@ export default function EscuadronesPage() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-temple-gold/10 text-temple-gold text-[10px] font-black uppercase tracking-[0.3em]">
               SÁBADOS 06:00 AM • AL AIRE LIBRE
             </div>
-            <h2 className="text-4xl md:text-6xl font-serif font-black uppercase text-temple-navy dark:text-temple-navy dark:text-white tracking-tight">
+            <h2 className="text-4xl md:text-6xl font-serif font-black uppercase text-temple-navy dark:text-white tracking-tight">
               CristoFit <span className="text-temple-gold">Camp</span>
             </h2>
             <p className="text-slate-700 dark:text-gray-300 text-sm md:text-base font-light leading-relaxed">
@@ -230,7 +351,7 @@ export default function EscuadronesPage() {
                 <img src={camp.img} alt={camp.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/60 to-transparent dark:from-[#07090E] dark:via-[#07090E]/60 dark:to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-left space-y-1">
-                  <h3 className="text-lg font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-wider">{camp.title}</h3>
+                  <h3 className="text-lg font-black text-temple-navy dark:text-white uppercase tracking-wider">{camp.title}</h3>
                   <p className="text-xs text-slate-700 dark:text-gray-300 font-light">{camp.desc}</p>
                 </div>
               </motion.div>

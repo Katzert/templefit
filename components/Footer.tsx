@@ -1,30 +1,23 @@
 'use client';
 
 import Link from 'next/link';
-import { Instagram, Facebook, MessageCircle } from 'lucide-react';
-
+import { Instagram, Facebook, MessageCircle, MapPin, Phone, ShieldCheck, HeartHandshake, BookOpen } from 'lucide-react';
+import { getAssetPath } from '../lib/utils';
 
 const WHATSAPP_URL = 'https://wa.me/59169127691?text=Hola%20TempleFit!%20Quiero%20mas%20informacion';
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#FBF9F5] dark:bg-[#05070B] text-temple-navy dark:text-temple-navy dark:text-white pt-20 pb-10 border-t border-[#E8E2D5] dark:border-white/5 overflow-hidden font-sans">
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-temple-gold/30 to-transparent" />
-      <div className="max-w-7xl mx-auto px-6 space-y-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+    <footer className="bg-[#FBF9F5] dark:bg-[#07090E] border-t border-black/10 dark:border-white/10 pt-16 pb-12 transition-colors duration-300 font-sans">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
           
           {/* Brand Column */}
           <div className="lg:col-span-5 space-y-6">
             <div className="flex flex-col space-y-4">
               <img 
-                src="assets/img/logo-tf-gestion.png" 
+                src={getAssetPath('/assets/img/logo-tf-gestion.png')} 
                 alt="TempleFit Logo Completo" 
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (!target.src.includes('templefit')) {
-                    target.src = '/templefit/assets/img/logo-tf-gestion.png';
-                  }
-                }}
                 className="h-16 md:h-20 object-contain drop-shadow-[0_2px_10px_rgba(0,33,71,0.1)] dark:drop-shadow-[0_0_15px_rgba(212,175,55,0.2)]" 
               />
             </div>
@@ -67,7 +60,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className="lg:col-span-3 space-y-4">
-            <h3 className="text-xs font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-[0.25em]">Navegación</h3>
+            <h3 className="text-xs font-black text-temple-navy dark:text-white uppercase tracking-[0.25em]">Navegación</h3>
             <ul className="space-y-3 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-400">
               <li><Link href="/escuadrones" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">CristoFit Camp</Link></li>
               <li><Link href="/recetas" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Nutrición & Salud</Link></li>
@@ -80,7 +73,7 @@ export default function Footer() {
 
           {/* Core Rule */}
           <div className="lg:col-span-4 space-y-4">
-            <h3 className="text-xs font-black text-temple-navy dark:text-temple-navy dark:text-white uppercase tracking-[0.25em]">Nuestra Regla</h3>
+            <h3 className="text-xs font-black text-temple-navy dark:text-white uppercase tracking-[0.25em]">Nuestra Regla</h3>
             <div className="p-6 rounded-2xl bg-white/80 dark:bg-white/[0.02] border border-[#E8E2D5] dark:border-white/5 hover:border-temple-gold/40 transition-colors shadow-sm">
               <p className="text-base text-slate-800 dark:text-gray-300 font-serif italic leading-relaxed">
                 &quot;Todo lo que hagan, háganlo de corazón, como para el Señor.&quot;
