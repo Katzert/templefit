@@ -37,6 +37,13 @@ export default function HeroSection() {
           />
         </motion.div>
 
+        {/* Official Registration Badge */}
+        <motion.div variants={item} className="flex justify-center -mt-2 mb-1">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 dark:bg-temple-gold/15 border border-amber-600/30 dark:border-temple-gold/30 text-amber-900 dark:text-temple-gold-bright text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] shadow-sm">
+            <span>Registro para el Centro de Transformación</span>
+          </div>
+        </motion.div>
+
         {/* Master Slogan Headline */}
         <motion.h1 variants={item} className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black uppercase text-temple-navy dark:text-white tracking-tight leading-[1.08] text-balance">
           El Cuerpo es el <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-temple-gold to-yellow-500">Templo.</span><br />
@@ -48,7 +55,6 @@ export default function HeroSection() {
           Entrena tu cuerpo, mejora tu alimentación y fortalece tu fe a través del <strong className="text-temple-navy dark:text-white font-bold">Reto de 21 Días</strong> y los <strong className="text-amber-600 dark:text-temple-gold font-bold">Escuadrones de 12 Atletas</strong>.
         </motion.p>
 
-        {/* CTAs */}
         {/* CTAs */}
         <motion.div variants={item} className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-4 sm:pt-6 w-full max-w-md sm:max-w-none mx-auto">
           <a

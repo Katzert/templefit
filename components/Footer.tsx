@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Instagram, Facebook, MessageCircle, MapPin, Phone, ShieldCheck, HeartHandshake, BookOpen } from 'lucide-react';
+import { Instagram, Facebook, MessageCircle, MapPin, Phone, ShieldCheck, HeartHandshake, BookOpen, Accessibility } from 'lucide-react';
 import { getAssetPath } from '../lib/utils';
 
 const WHATSAPP_URL = 'https://wa.me/59169127691?text=Hola%20TempleFit!%20Quiero%20mas%20informacion';
@@ -68,6 +68,19 @@ export default function Footer() {
               <li><Link href="/trayectoria" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Trayectoria</Link></li>
               <li><a href="https://katzert.github.io/templefit-wiki/" target="_blank" rel="noopener noreferrer" className="hover:text-temple-navy dark:hover:text-temple-gold dark:hover:text-white transition-colors text-slate-500 dark:text-gray-500">TempleFit Wiki</a></li>
               <li><a href="https://katzert.github.io/templefit-admin/" target="_blank" rel="noopener noreferrer" className="hover:text-temple-gold transition-colors text-temple-gold font-black">Portal CRM</a></li>
+              <li>
+                <button
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.dispatchEvent(new CustomEvent('toggle-accessibility-widget'));
+                    }
+                  }}
+                  className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm text-left flex items-center gap-1.5 pt-1 text-slate-700 dark:text-gray-300"
+                >
+                  <Accessibility size={14} className="text-temple-gold" aria-hidden="true" />
+                  <span>Opciones de Accesibilidad</span>
+                </button>
+              </li>
             </ul>
           </div>
 

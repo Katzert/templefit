@@ -90,14 +90,14 @@ export default function EscuadronesPage() {
             />
             
             {/* Glassmorphism Badge */}
-            <div className="absolute bottom-6 left-6 right-6 bg-temple-cream dark:bg-[#07090E]/80 backdrop-blur-xl border border-black/20 dark:border-white/20 p-6 rounded-2xl shadow-2xl">
+            <div className="absolute bottom-6 left-6 right-6 bg-white/95 dark:bg-[#07090E]/90 backdrop-blur-xl border border-black/15 dark:border-white/20 p-6 rounded-2xl shadow-2xl">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[10px] font-bold text-temple-gold uppercase tracking-widest mb-1">Capacidad Máxima por Grupo</p>
-                  <p className="text-2xl font-black text-slate-800 dark:text-white">12 Atletas por Escuadrón</p>
+                  <p className="text-[10px] font-bold text-amber-700 dark:text-temple-gold uppercase tracking-widest mb-1">Capacidad Máxima por Grupo</p>
+                  <p className="text-2xl font-black text-slate-900 dark:text-white">12 Atletas por Escuadrón</p>
                 </div>
                 <div className="w-12 h-12 rounded-full border-2 border-temple-gold border-dashed flex items-center justify-center bg-temple-gold/10">
-                  <span className="text-temple-gold font-black text-lg">12</span>
+                  <span className="text-amber-700 dark:text-temple-gold font-black text-lg">12</span>
                 </div>
               </div>
             </div>
@@ -124,7 +124,7 @@ export default function EscuadronesPage() {
           <motion.div variants={item} className="p-8 rounded-3xl bg-white dark:bg-[#0E1424]/90 border border-blue-500/30 space-y-5 shadow-2xl relative overflow-hidden flex flex-col justify-between">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-white/10 text-temple-navy dark:text-white border border-white/20">
+                <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-slate-100 dark:bg-white/10 text-slate-800 dark:text-white border border-slate-200 dark:border-white/20">
                   Fase 1 (Meses 1-3)
                 </span>
                 <span className="text-[10px] font-black uppercase text-[#CD7F32] bg-[#CD7F32]/10 px-2.5 py-1 rounded-md border border-[#CD7F32]/30">
@@ -147,7 +147,7 @@ export default function EscuadronesPage() {
           <motion.div variants={item} className="p-8 rounded-3xl bg-white dark:bg-gradient-to-b dark:from-[#0E1424] dark:to-[#141B2D] border-2 border-temple-gold space-y-5 shadow-2xl relative overflow-hidden flex flex-col justify-between">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-[#002147] text-temple-navy dark:text-white border border-[#C0C8D0]/30">
+                <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-[#002147] text-white border border-[#C0C8D0]/30 shadow-sm">
                   Fase 2 (Meses 4-8)
                 </span>
                 <span className="text-[10px] font-black uppercase text-[#C0C8D0] bg-[#C0C8D0]/10 px-2.5 py-1 rounded-md border border-[#C0C8D0]/30">

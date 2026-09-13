@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Accessibility } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from './ThemeToggle';
@@ -61,6 +61,20 @@ export default function Navbar() {
             </div>
             
             <ThemeToggle />
+            
+            <button
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('toggle-accessibility-widget'));
+                }
+              }}
+              className="min-h-[44px] px-3 py-2 flex items-center gap-1.5 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
+              aria-label="Abrir opciones de accesibilidad"
+              title="Opciones de accesibilidad (Alt + A)"
+            >
+              <Accessibility className="w-5 h-5 text-amber-700 dark:text-temple-gold" aria-hidden="true" />
+              <span className="hidden xl:inline-block text-[11px] font-bold uppercase tracking-wider">Accesibilidad</span>
+            </button>
             
             <button 
               className="lg:hidden min-h-[44px] min-w-[44px] flex items-center justify-center bg-black/5 dark:bg-white/5 px-3.5 py-2 border border-black/10 dark:border-white/10 rounded-xl cursor-pointer hover:bg-black/10 dark:hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold" 
@@ -130,6 +144,19 @@ export default function Navbar() {
                 >
                   Trayectoria
                 </Link>
+
+                <button 
+                  onClick={() => {
+                    setIsOpen(false);
+                    if (typeof window !== 'undefined') {
+                      window.dispatchEvent(new CustomEvent('toggle-accessibility-widget'));
+                    }
+                  }} 
+                  className="flex items-center gap-2.5 min-h-[44px] px-4 py-2.5 rounded-xl text-xs font-bold tracking-[0.15em] uppercase text-slate-900 dark:text-gray-100 hover:bg-black/5 dark:hover:bg-white/5 hover:text-amber-600 dark:hover:text-temple-gold transition-all text-left w-full"
+                >
+                  <Accessibility className="w-4 h-4 text-amber-700 dark:text-temple-gold" aria-hidden="true" />
+                  <span>Opciones de Accesibilidad</span>
+                </button>
                 
                 <a 
                   href={WHATSAPP_URL}

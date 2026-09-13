@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Brain, Heart, Lightbulb, Target, Award, Clock, ArrowRight, ShieldCheck, CheckCircle2, X, ZoomIn } from 'lucide-react';
+import { getAssetPath } from '@/lib/utils';
 
 interface Certificate {
   id: string;
@@ -18,7 +19,7 @@ interface Certificate {
 const CERTIFICATES: Certificate[] = [
   {
     id: 'cert1',
-    img: 'dashboard/media/media__1779149990472.jpg',
+    img: '/dashboard/media/media__1779149990472.jpg',
     category: 'Instructor Fitness & Imagen Personal',
     title: 'Técnicas en Instrucción Corporal y de Relajamiento',
     issuer: 'Centro de Capacitación Técnica Privada IBTA (R.M. 0259/2019 del Ministerio de Educación de Bolivia)',
@@ -28,7 +29,7 @@ const CERTIFICATES: Certificate[] = [
   },
   {
     id: 'cert2',
-    img: 'dashboard/media/media__1779149990428.jpg',
+    img: '/dashboard/media/media__1779149990428.jpg',
     category: 'Gestión de Servicio & Catering de Élite',
     title: 'Organización de Restaurantes, Eventos y Garzones',
     issuer: 'Centro de Capacitación Técnica Privada IBTA (R.M. 0259/2019 del Ministerio de Educación de Bolivia)',
@@ -38,7 +39,7 @@ const CERTIFICATES: Certificate[] = [
   },
   {
     id: 'cert3',
-    img: 'dashboard/media/media__1779149990274.jpg',
+    img: '/dashboard/media/media__1779149990274.jpg',
     category: 'Liderazgo & Discipulado de Gobierno',
     title: 'Principios y Modelos para Reformar Naciones',
     issuer: 'CGN Institute - Concilio Global de Naciones & Instituto Universitario Antonio Caso (IUAC)',
@@ -48,7 +49,7 @@ const CERTIFICATES: Certificate[] = [
   },
   {
     id: 'cert4',
-    img: 'dashboard/media/media__1779225988764.jpg',
+    img: '/dashboard/media/media__1779225988764.jpg',
     category: 'Terapia de Resultados',
     title: 'Minicurso Terapeuta de Resultados',
     issuer: 'IBFT - Instituto Brasileiro de Formação de Terapeutas (Brasil)',
@@ -58,7 +59,7 @@ const CERTIFICATES: Certificate[] = [
   },
   {
     id: 'cert5',
-    img: 'dashboard/media/media__1779225546898.jpg',
+    img: '/dashboard/media/media__1779225546898.jpg',
     category: 'Entrenamiento Funcional Avanzado',
     title: 'Aplicación Práctica del Entrenamiento Funcional',
     issuer: 'VirtuallCorp Consultora, dpp & Upllearn Global Free Education (Tarija - Bolivia)',
@@ -68,7 +69,7 @@ const CERTIFICATES: Certificate[] = [
   },
   {
     id: 'cert6',
-    img: 'dashboard/media/media__1779225546905.jpg',
+    img: '/dashboard/media/media__1779225546905.jpg',
     category: 'Biomecánica Deportiva',
     title: 'Biomecánica y Movimiento Corporal',
     issuer: 'VirtuallCorp Consultora, dpp & Upllearn Global Free Education (Tarija - Bolivia)',
@@ -78,7 +79,7 @@ const CERTIFICATES: Certificate[] = [
   },
   {
     id: 'cert7',
-    img: 'dashboard/media/media__1779225546923.jpg',
+    img: '/dashboard/media/media__1779225546923.jpg',
     category: 'Acondicionamiento Físico',
     title: 'Capacidades Físicas y el Entrenamiento Funcional',
     issuer: 'VirtuallCorp Consultora, dpp & Upllearn Global Free Education (Tarija - Bolivia)',
@@ -88,7 +89,7 @@ const CERTIFICATES: Certificate[] = [
   },
   {
     id: 'cert8',
-    img: 'dashboard/media/media__1779225546929.jpg',
+    img: '/dashboard/media/media__1779225546929.jpg',
     category: 'Fisioterapia & Kinesiología',
     title: 'Ejercicios Funcionales Terapéuticos y Rehabilitación Física',
     issuer: 'VirtuallCorp Consultora, dpp & Upllearn Global Free Education (Tarija - Bolivia)',
@@ -103,8 +104,9 @@ export default function NeuroVentasPage() {
 
   const handleImgFallback = (e: React.SyntheticEvent<HTMLImageElement, Event>, relativePath: string) => {
     const target = e.currentTarget;
-    if (!target.src.includes('templefit/')) {
-      target.src = '/templefit/' + relativePath;
+    const cleanPath = relativePath.startsWith('/') ? relativePath : `/${relativePath}`;
+    if (!target.src.includes('/templefit/')) {
+      target.src = `/templefit${cleanPath}`;
     }
   };
 
@@ -115,8 +117,8 @@ export default function NeuroVentasPage() {
       <section className="relative pt-32 pb-24 md:pt-44 md:pb-36 border-b border-temple-gold/25 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="dashboard/team_spirit.png" 
-            onError={(e) => handleImgFallback(e, 'dashboard/team_spirit.png')}
+            src={getAssetPath('/dashboard/team_spirit.png')} 
+            onError={(e) => handleImgFallback(e, '/dashboard/team_spirit.png')}
             className="w-full h-full object-cover opacity-50 dark:opacity-45 filter contrast-115 scale-105" 
             alt="Entrenamiento en ventas - TEMPLEFIT" 
           />
@@ -165,11 +167,11 @@ export default function NeuroVentasPage() {
             <div className="lg:col-span-5 flex items-end justify-center pr-4">
               <div className="flex -space-x-8 md:-space-x-12 overflow-hidden py-4">
                 {[
-                  'dashboard/media/media__1779142481129.jpg',
-                  'dashboard/media/media__1779142481197.jpg',
-                  'dashboard/media/media__1779142481265.jpg',
-                  'dashboard/media/media__1779142481269.jpg',
-                  'dashboard/media/media__1779142481315.jpg'
+                  '/dashboard/media/media__1779142481129.jpg',
+                  '/dashboard/media/media__1779142481197.jpg',
+                  '/dashboard/media/media__1779142481265.jpg',
+                  '/dashboard/media/media__1779142481269.jpg',
+                  '/dashboard/media/media__1779142481315.jpg'
                 ].map((src, i) => (
                   <motion.div 
                     key={i} 
@@ -177,7 +179,7 @@ export default function NeuroVentasPage() {
                     whileHover={{ y: -10, zIndex: 20, scale: 1.08 }}
                   >
                     <img 
-                      src={src} 
+                      src={getAssetPath(src)} 
                       onError={(e) => handleImgFallback(e, src)}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       alt={`Paulo Gil en Acción ${i+1}`}
@@ -304,8 +306,8 @@ export default function NeuroVentasPage() {
           <div className="flex justify-center relative">
             <div className="absolute inset-0 bg-temple-gold/15 blur-[90px] rounded-full max-w-md mx-auto h-full pointer-events-none" />
             <img 
-              src="dashboard/media/media__1779142594726.jpg" 
-              onError={(e) => handleImgFallback(e, 'dashboard/media/media__1779142594726.jpg')}
+              src={getAssetPath('/dashboard/media/media__1779142594726.jpg')} 
+              onError={(e) => handleImgFallback(e, '/dashboard/media/media__1779142594726.jpg')}
               className="w-full max-w-[280px] md:max-w-[340px] h-auto object-contain relative z-10 rounded-2xl shadow-2xl border-2 border-temple-gold/50 hover:scale-105 transition-transform duration-300" 
               alt="Certificación Oficial Paulo Gil Cuéllar - TEMPLEFIT"
             />
@@ -346,14 +348,14 @@ export default function NeuroVentasPage() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {[
-                'dashboard/media/media__1779142594729.jpg',
-                'dashboard/media/media__1779142594777.jpg',
-                'dashboard/media/media__1779142594814.jpg',
-                'dashboard/media/media__1779142594821.jpg'
+                '/dashboard/media/media__1779142594729.jpg',
+                '/dashboard/media/media__1779142594777.jpg',
+                '/dashboard/media/media__1779142594814.jpg',
+                '/dashboard/media/media__1779142594821.jpg'
               ].map((src, i) => (
                 <div key={i} className="aspect-[4/3] rounded-xl overflow-hidden border border-black/10 dark:border-white/10 hover:border-temple-gold shadow-lg transition-all duration-300 bg-[#0E1424]">
                   <img 
-                    src={src} 
+                    src={getAssetPath(src)} 
                     onError={(e) => handleImgFallback(e, src)}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
                     alt={`Experiencia Paulo Gil ${i+1}`}
@@ -368,8 +370,8 @@ export default function NeuroVentasPage() {
             <div className="space-y-3">
               <div className="h-64 md:h-80 rounded-2xl overflow-hidden border-2 border-temple-gold/40 hover:border-temple-gold transition-colors shadow-2xl bg-[#0E1424]">
                 <img 
-                  src="dashboard/media/media__1779142694557.jpg" 
-                  onError={(e) => handleImgFallback(e, 'dashboard/media/media__1779142694557.jpg')}
+                  src={getAssetPath('/dashboard/media/media__1779142694557.jpg')} 
+                  onError={(e) => handleImgFallback(e, '/dashboard/media/media__1779142694557.jpg')}
                   className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" 
                   alt="Capacitación Gastronómica y Servicio"
                 />
@@ -379,8 +381,8 @@ export default function NeuroVentasPage() {
             <div className="space-y-3">
               <div className="h-64 md:h-80 rounded-2xl overflow-hidden border-2 border-temple-gold/40 hover:border-temple-gold transition-colors shadow-2xl bg-[#0E1424]">
                 <img 
-                  src="dashboard/media/media__1779142694661.jpg" 
-                  onError={(e) => handleImgFallback(e, 'dashboard/media/media__1779142694661.jpg')}
+                  src={getAssetPath('/dashboard/media/media__1779142694661.jpg')} 
+                  onError={(e) => handleImgFallback(e, '/dashboard/media/media__1779142694661.jpg')}
                   className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300" 
                   alt="Dirección de Garzones en Buffet"
                 />
@@ -446,7 +448,7 @@ export default function NeuroVentasPage() {
                 >
                   <div className="aspect-[3/4] relative overflow-hidden bg-slate-100 dark:bg-black/60">
                     <img 
-                      src={cert.img} 
+                      src={getAssetPath(cert.img)} 
                       onError={(e) => handleImgFallback(e, cert.img)}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
                       alt={cert.title}
@@ -512,7 +514,7 @@ export default function NeuroVentasPage() {
             >
               <div className="md:w-1/2 bg-black flex items-center justify-center overflow-hidden max-h-[40vh] md:max-h-full p-2">
                 <img 
-                  src={selectedCert.img} 
+                  src={getAssetPath(selectedCert.img)} 
                   onError={(e) => handleImgFallback(e, selectedCert.img)}
                   className="w-full h-full object-contain rounded-xl" 
                   alt={`Diploma oficial: ${selectedCert.title}`} 

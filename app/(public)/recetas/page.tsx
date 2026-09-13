@@ -134,13 +134,13 @@ export default function RecetasPage() {
                     <ChefHat size={32} className="opacity-50" />
                   </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/40 to-transparent dark:from-[#0A0A0A] dark:via-[#0A0A0A]/40 dark:to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-95" />
 
-                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white dark:bg-black/60 backdrop-blur-md border border-black/10 dark:border-white/10 text-temple-gold text-[10px] font-bold uppercase tracking-widest shadow-lg">
+                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-temple-gold text-[10px] font-bold uppercase tracking-widest shadow-lg">
                   {recipe.category}
                 </div>
 
-                <div className="absolute bottom-4 left-4 right-4">
+                <div className="absolute bottom-4 left-4 right-4 z-10">
                   <h3 className="text-xl font-bold text-white group-hover:text-temple-gold transition-colors duration-300 drop-shadow-md">{recipe.name}</h3>
                 </div>
               </div>

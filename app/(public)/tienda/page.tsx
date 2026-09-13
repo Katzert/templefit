@@ -100,9 +100,9 @@ export default function TiendaPage() {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div variants={container} initial="hidden" animate="show" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((prod) => (
-            <div
+            <motion.div
               key={prod.id}
               variants={item}
               className="bg-white dark:bg-[#0E1424]/90 border border-black/10 dark:border-white/10 rounded-3xl overflow-hidden hover:border-temple-gold/40 transition-all duration-300 flex flex-col justify-between group shadow-xl hover:-translate-y-1"
@@ -114,7 +114,7 @@ export default function TiendaPage() {
                     alt={prod.name} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
                   />
-                  <div className="absolute top-4 right-4 bg-white dark:bg-black/7 dark:bg-black/70 backdrop-blur-md border border-black/20 dark:border-white/20 px-3 py-1 rounded-full text-[10px] font-black uppercase text-temple-gold tracking-widest">
+                  <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/70 backdrop-blur-md border border-black/20 dark:border-white/20 px-3 py-1 rounded-full text-[10px] font-black uppercase text-amber-800 dark:text-temple-gold tracking-widest">
                     {prod.category}
                   </div>
                 </div>
@@ -141,9 +141,9 @@ export default function TiendaPage() {
                   <span>Pedir</span>
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </div>
