@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   Users, 
@@ -8,7 +9,11 @@ import {
   Award, 
   Flame, 
   ShieldCheck, 
-  Send
+  Send,
+  Coffee,
+  ShoppingBag,
+  Activity,
+  ArrowRight
 } from 'lucide-react';
 
 const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.1 } } };
@@ -370,6 +375,88 @@ export default function EscuadronesPage() {
             </a>
             <p className="text-[10px] text-slate-500 dark:text-gray-500 uppercase tracking-widest font-black">Cupos limitados a 12 personas por grupo</p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Ecosystem Interconnection Bridges */}
+      <section className="max-w-7xl mx-auto px-4 pt-4">
+        <div className="border-t border-black/10 dark:border-white/10 pt-16">
+          <div className="text-center space-y-3 mb-12">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-amber-800 dark:text-temple-gold bg-temple-gold/10 px-3 py-1 rounded-full border border-temple-gold/20">
+              PILARES COMPLEMENTARIOS
+            </span>
+            <h2 className="text-2xl md:text-4xl font-serif font-black uppercase text-temple-navy dark:text-white">
+              Continúa tu <span className="text-temple-gold">Transformación</span>
+            </h2>
+            <p className="text-slate-600 dark:text-gray-400 text-xs md:text-sm max-w-lg mx-auto">
+              El entrenamiento físico se potencia con nutrición celular y equipamiento de precisión.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Link 
+              href="/recetas"
+              className="p-6 rounded-3xl bg-white dark:bg-[#0B0F19] border border-black/10 dark:border-white/10 hover:border-temple-gold/50 shadow-lg hover:-translate-y-1 transition-all group flex flex-col justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
+            >
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Coffee size={24} />
+                </div>
+                <h3 className="text-lg font-bold text-temple-navy dark:text-white group-hover:text-temple-gold transition-colors">
+                  Nutrición & Recetas
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-gray-400 font-light mt-2 leading-relaxed">
+                  Infusiones antiinflamatorias, batidos proteicos y recetas botánicas para recuperación celular.
+                </p>
+              </div>
+              <div className="mt-6 flex items-center gap-2 text-xs font-bold text-amber-700 dark:text-temple-gold uppercase tracking-wider">
+                <span>Ver Recetas</span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            <Link 
+              href="/tienda"
+              className="p-6 rounded-3xl bg-white dark:bg-[#0B0F19] border border-black/10 dark:border-white/10 hover:border-temple-gold/50 shadow-lg hover:-translate-y-1 transition-all group flex flex-col justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
+            >
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-temple-gold/10 text-amber-700 dark:text-temple-gold flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <ShoppingBag size={24} />
+                </div>
+                <h3 className="text-lg font-bold text-temple-navy dark:text-white group-hover:text-temple-gold transition-colors">
+                  Armería & Indumentaria
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-gray-400 font-light mt-2 leading-relaxed">
+                  Remeras oficiales de combate, correas, magnesio y accesorios de alto rendimiento.
+                </p>
+              </div>
+              <div className="mt-6 flex items-center gap-2 text-xs font-bold text-amber-700 dark:text-temple-gold uppercase tracking-wider">
+                <span>Ir a la Tienda</span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            <Link 
+              href="/#evaluacion"
+              className="p-6 rounded-3xl bg-white dark:bg-[#0B0F19] border border-black/10 dark:border-white/10 hover:border-temple-gold/50 shadow-lg hover:-translate-y-1 transition-all group flex flex-col justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
+            >
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Activity size={24} />
+                </div>
+                <h3 className="text-lg font-bold text-temple-navy dark:text-white group-hover:text-temple-gold transition-colors">
+                  Test de Diagnóstico
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-gray-400 font-light mt-2 leading-relaxed">
+                  Evalúa tu condición física, objetivos y agenda tu semana de prueba con Paulo.
+                </p>
+              </div>
+              <div className="mt-6 flex items-center gap-2 text-xs font-bold text-amber-700 dark:text-temple-gold uppercase tracking-wider">
+                <span>Hacer el Test</span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
 

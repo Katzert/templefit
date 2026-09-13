@@ -15,12 +15,12 @@ export default function Home() {
       
 
 
-      <main className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen">
         <HeroSection />
         <EcosystemSection />
         <RuleSection />
         <DiagnosticWidget />
-      </main>
+      </div>
 
     </motion.div>
   );

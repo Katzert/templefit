@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Dumbbell, Coffee, Brain, ChevronRight, X, CheckCircle, Send } from 'lucide-react';
+import { Dumbbell, Coffee, Brain, ChevronRight, X, CheckCircle, Send, ArrowRight } from 'lucide-react';
 
 const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
 
@@ -14,6 +15,8 @@ const triEcosystemUnits = [
     icon: <Dumbbell size={32} className="text-temple-gold" />,
     subtitle: "Cuerpo Físico: Fuerza y Resistencia",
     description: "Entrenamiento de fuerza y acondicionamiento físico. Incluye calistenia, crossfit y boxeo para mejorar tu condición física.",
+    pageLink: "/escuadrones",
+    pageLabel: "Ver Escuadrones & Horarios",
     features: [
       "Jaula de calistenia y anillas olímpicas",
       "Escuadrones Tácticos (Máx. 12 atletas)",
@@ -29,6 +32,8 @@ const triEcosystemUnits = [
     icon: <Coffee size={32} className="text-amber-400" />,
     subtitle: "Bebidas Botánicas y Proteína Limpia",
     description: "Infusiones antiinflamatorias, batidos de proteína aislada y repostería saludable para la recuperación.",
+    pageLink: "/recetas",
+    pageLabel: "Ver Recetas & Nutrición",
     features: [
       "Infusiones botánicas con miel pura",
       "Batidos proteicos sin azúcares refinados",
@@ -44,6 +49,8 @@ const triEcosystemUnits = [
     icon: <Brain size={32} className="text-emerald-400" />,
     subtitle: "Mente: Nutrición y Enfoque",
     description: "Nutrición orientada al rendimiento, suplementación y entrenamiento en ventas y liderazgo.",
+    pageLink: "/trayectoria",
+    pageLabel: "Ver Capacitación & Credenciales",
     features: [
       "Neuro-Entrenamiento en Ventas",
       "Respiración anti-estrés (Método Buteyko)",
@@ -160,17 +167,25 @@ export default function EcosystemSection() {
                 </ul>
               </div>
 
-              <div className="pt-6 border-t border-black/10 dark:border-white/10 flex flex-col sm:flex-row gap-4">
+              <div className="pt-6 border-t border-black/10 dark:border-white/10 flex flex-col sm:flex-row gap-3">
+                <Link
+                  href={triEcosystemUnits[activeUnitModal].pageLink}
+                  onClick={() => setActiveUnitModal(null)}
+                  className="flex-1 py-3.5 px-4 bg-gradient-to-r from-temple-gold to-amber-600 hover:from-temple-gold-bright hover:to-amber-500 text-black font-black uppercase tracking-wider text-xs rounded-xl shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-temple-gold text-center"
+                >
+                  <span>{triEcosystemUnits[activeUnitModal].pageLabel}</span>
+                  <ArrowRight size={16} />
+                </Link>
                 <button
                   onClick={() => {
                     const actionText = triEcosystemUnits[activeUnitModal].whatsappAction;
                     setActiveUnitModal(null);
                     openUnitWhatsApp(actionText);
                   }}
-                  className="flex-1 py-4 bg-gradient-to-r from-temple-gold to-amber-600 hover:from-temple-gold-bright hover:to-amber-500 text-black font-black uppercase tracking-widest text-xs rounded-xl shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-temple-gold"
+                  className="flex-1 py-3.5 px-4 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-slate-800 dark:text-gray-200 border border-black/10 dark:border-white/10 font-bold uppercase tracking-wider text-xs rounded-xl transition-all duration-300 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
                 >
-                  <Send size={18} />
-                  <span>Consultar por WhatsApp</span>
+                  <Send size={16} className="text-emerald-600 dark:text-emerald-400" />
+                  <span>WhatsApp</span>
                 </button>
               </div>
             </motion.div>

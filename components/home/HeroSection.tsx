@@ -68,7 +68,7 @@ export default function HeroSection() {
           </a>
 
           <a
-            href="#ecosistema"
+            href="#evaluacion"
             className="min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 bg-black/5 dark:bg-white/5 text-temple-navy dark:text-white font-bold text-xs sm:text-sm md:text-base uppercase tracking-[0.1em] rounded-2xl border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2.5 group"
           >
             <Activity size={18} className="text-amber-600 dark:text-temple-gold group-hover:scale-110 transition-transform" />
