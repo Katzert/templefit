@@ -67,9 +67,6 @@ export default function Footer() {
               <li><Link href="/tienda" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Tienda</Link></li>
               <li><Link href="/trayectoria" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Trayectoria</Link></li>
               <li><Link href="/#evaluacion" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Test Diagnóstico</Link></li>
-              <li><a href="https://katzert.github.io/templefit/dashboard/" target="_blank" rel="noopener noreferrer" className="hover:text-temple-gold transition-colors text-amber-800 dark:text-temple-gold font-bold">Simulador ADM (Métricas)</a></li>
-              <li><a href="https://katzert.github.io/templefit-wiki/" target="_blank" rel="noopener noreferrer" className="hover:text-temple-navy dark:hover:text-temple-gold dark:hover:text-white transition-colors text-slate-500 dark:text-gray-500">TempleFit Wiki</a></li>
-              <li><a href="https://katzert.github.io/templefit-admin/" target="_blank" rel="noopener noreferrer" className="hover:text-temple-gold transition-colors text-temple-gold font-black">Portal CRM</a></li>
               <li>
                 <button
                   onClick={() => {
