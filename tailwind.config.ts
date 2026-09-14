@@ -12,15 +12,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'temple-gold': '#D4AF37',
-        'temple-gold-bright': '#F3E5AB',
-        'temple-gold-dark': '#997D25',
-        'temple-navy': '#002147',
-        'temple-navy-dark': '#001630',
-        'temple-navy-light': '#003366',
         'temple-gold': '#C5A059',
         'temple-gold-bright': '#E5C175',
         'temple-gold-dark': '#9A7B3E',
+        'temple-navy': '#002147',
+        'temple-navy-dark': '#001630',
+        'temple-navy-light': '#003366',
         'temple-red': '#D32F2F',
         'temple-cream': '#F9F6F0',
         'metal-bronze': '#CD7F32',
