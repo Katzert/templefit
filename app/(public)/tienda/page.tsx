@@ -50,25 +50,25 @@ export default function TiendaPage() {
   useEffect(() => {
     if (!db) return;
     try {
-      const docRef = doc(db, 'workspaces', 'templefit-main');
+      const docRef = doc(db, 'public_content', 'main');
       const unsubscribe = onSnapshot(docRef, (docSnap) => {
         if (docSnap.exists()) {
           const data = docSnap.data();
           const showcaseList = Array.isArray(data.showcaseItems) ? [...data.showcaseItems] : [];
-          if (Array.isArray(data.inventory)) {
-            data.inventory.forEach((inv: any) => {
-              if (inv && inv.id && inv.name && !showcaseList.some(s => s.id === inv.id)) {
-                showcaseList.push({
-                  id: inv.id,
-                  title: inv.name,
-                  price: inv.price || inv.cost || 0,
-                  type: inv.category === 'snack' ? 'recipe' : 'apparel',
-                  description: `Disponible en tienda y barra física TempleFit. Stock: ${inv.stock ?? 0} unidades.`,
-                  imageUrl: inv.imageUrl
-                });
-              }
-            });
-          }
+          const inventorySource = Array.isArray(data.inventoryPublic) ? data.inventoryPublic : Array.isArray(data.inventory) ? data.inventory : [];
+          inventorySource.forEach((inv: any) => {
+            if (inv && inv.id && inv.name && !showcaseList.some(s => s.id === inv.id)) {
+              showcaseList.push({
+                id: inv.id,
+                title: inv.name,
+                price: inv.price || inv.cost || 0,
+                type: inv.category === 'snack' ? 'recipe' : 'apparel',
+                description: `Disponible en tienda y barra física TempleFit. Stock: ${inv.stock ?? 0} unidades.`,
+                imageUrl: inv.imageUrl
+              });
+            }
+          });
+
           if (Array.isArray(data.products) && data.products.length > 0) {
             setLiveProducts(data.products);
           } else if (showcaseList.length > 0) {

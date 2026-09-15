@@ -56,7 +56,7 @@ export default function RecetasPage() {
   useEffect(() => {
     if (!db) return;
     try {
-      const docRef = doc(db, 'workspaces', 'templefit-main');
+      const docRef = doc(db, 'public_content', 'main');
       const unsubscribe = onSnapshot(docRef, (docSnap) => {
         if (docSnap.exists()) {
           const data = docSnap.data();

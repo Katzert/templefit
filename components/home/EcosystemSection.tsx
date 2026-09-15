@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -84,7 +86,7 @@ export default function EcosystemSection() {
   useEffect(() => {
     if (!db) return;
     try {
-      const docRef = doc(db, 'workspaces', 'templefit-main');
+      const docRef = doc(db, 'public_content', 'main');
       const unsubscribe = onSnapshot(docRef, (snap) => {
         if (snap.exists()) {
           const data = snap.data();
