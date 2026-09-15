@@ -1,11 +1,22 @@
-'use client';
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Dumbbell, Coffee, Brain, ChevronRight, X, CheckCircle, Send, ArrowRight } from 'lucide-react';
+import { Dumbbell, Coffee, Brain, ChevronRight, X, CheckCircle, Send, ArrowRight, Sparkles, Utensils } from 'lucide-react';
+import { db } from '../../lib/firebase';
+import { doc, onSnapshot } from 'firebase/firestore';
+import { recipes as defaultRecipes } from '@/data/content';
 
 const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
+
+const DEFAULT_PRICES: Record<string, number> = {
+  'electrohidra-elite': 15,
+  'electrodetox-blast': 15,
+  'infusion-daniel': 12,
+  'bowl-guerrero': 22,
+  'smoothie-salomon': 20,
+  'pudin-shake': 25,
+  'panqueque-shake': 28
+};
 
 const triEcosystemUnits = [
   {
@@ -63,6 +74,35 @@ const triEcosystemUnits = [
 
 export default function EcosystemSection() {
   const [activeUnitModal, setActiveUnitModal] = useState<number | null>(null);
+  const [liveSnacks, setLiveSnacks] = useState<any[]>(() => 
+    defaultRecipes.map(r => ({
+      ...r,
+      suggestedPrice: (r as any).suggestedPrice || DEFAULT_PRICES[r.id] || 15
+    }))
+  );
+
+  useEffect(() => {
+    if (!db) return;
+    try {
+      const docRef = doc(db, 'workspaces', 'templefit-main');
+      const unsubscribe = onSnapshot(docRef, (snap) => {
+        if (snap.exists()) {
+          const data = snap.data();
+          if (Array.isArray(data.recipes) && data.recipes.length > 0) {
+            setLiveSnacks(data.recipes.map((r: any) => ({
+              ...r,
+              suggestedPrice: r.suggestedPrice || r.price || DEFAULT_PRICES[r.id] || 15
+            })));
+          }
+        }
+      }, (err) => {
+        console.warn("Error leyendo recipes en EcosystemSection:", err);
+      });
+      return () => unsubscribe();
+    } catch (e) {
+      console.warn("Firebase no activo:", e);
+    }
+  }, []);
 
   const openUnitWhatsApp = (text: string) => {
     window.open(`https://wa.me/59169127691?text=${encodeURIComponent(text)}`, '_blank');
@@ -103,7 +143,26 @@ export default function EcosystemSection() {
                 </span>
               </div>
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-temple-gold transition-colors duration-300">{unit.title}</h3>
-              <p className="text-sm text-slate-600 dark:text-gray-400 leading-relaxed font-light mb-8 group-hover:text-slate-800 dark:group-hover:text-gray-300 transition-colors">{unit.description}</p>
+              <p className="text-sm text-slate-600 dark:text-gray-400 leading-relaxed font-light mb-4 group-hover:text-slate-800 dark:group-hover:text-gray-300 transition-colors">{unit.description}</p>
+
+              {i === 1 && liveSnacks.length > 0 && (
+                <div className="mb-6 pt-1">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-amber-800 dark:text-temple-gold mb-2.5">
+                    <Sparkles size={12} />
+                    <span>Menú del Snack Bar (En Vivo):</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {liveSnacks.slice(0, 4).map((snack, sIdx) => (
+                      <span 
+                        key={sIdx}
+                        className="px-2.5 py-1 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-lg text-[11px] font-medium text-slate-800 dark:text-gray-200"
+                      >
+                        {snack.name} <strong className="text-amber-800 dark:text-temple-gold font-bold">({snack.suggestedPrice || 15} Bs.)</strong>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="pt-5 border-t border-black/5 dark:border-white/10 flex items-center justify-between text-xs font-bold text-amber-700 dark:text-temple-gold-bright group-hover:translate-x-2 transition-transform duration-300">
@@ -166,6 +225,43 @@ export default function EcosystemSection() {
                   ))}
                 </ul>
               </div>
+
+              {activeUnitModal === 1 && liveSnacks.length > 0 && (
+                <div className="space-y-3 pt-2">
+                  <div className="flex items-center justify-between">
+                    <h5 className="text-xs font-black text-amber-800 dark:text-temple-gold uppercase tracking-widest pl-1 flex items-center gap-1.5">
+                      <Sparkles size={14} />
+                      <span>Carta Fresca del Snack Bar (Cargada en Vivo):</span>
+                    </h5>
+                    <span className="text-[10px] text-slate-500 dark:text-gray-400 font-bold uppercase tracking-wider">
+                      {liveSnacks.length} opciones disponibles
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-[260px] overflow-y-auto custom-scrollbar pr-1">
+                    {liveSnacks.map((snack, idx) => (
+                      <div key={idx} className="p-3 rounded-xl bg-black/[0.03] dark:bg-black/40 border border-black/5 dark:border-white/5 flex items-center justify-between gap-3">
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{snack.name}</p>
+                          <p className="text-[10px] text-slate-500 dark:text-gray-400 capitalize">{snack.category || 'Nutrición'}</p>
+                        </div>
+                        <div className="flex items-center gap-2 shrink-0">
+                          <span className="text-xs font-black text-amber-800 dark:text-temple-gold">{snack.suggestedPrice || 15} Bs.</span>
+                          <button
+                            onClick={() => {
+                              setActiveUnitModal(null);
+                              openUnitWhatsApp(`¡Hola Paulo! Quiero pedir ${snack.name} (${snack.suggestedPrice || 15} Bs.) en el Snack Bar de TempleFit.`);
+                            }}
+                            className="p-1.5 rounded-lg bg-temple-gold text-black hover:scale-105 transition-transform"
+                            title={`Pedir ${snack.name} por WhatsApp`}
+                          >
+                            <Send size={12} />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div className="pt-6 border-t border-black/10 dark:border-white/10 flex flex-col sm:flex-row gap-3">
                 <Link

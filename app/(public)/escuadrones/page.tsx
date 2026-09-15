@@ -47,6 +47,24 @@ export default function EscuadronesPage() {
             Nadie entrena aislado. En TempleFit aplicamos la <strong className="text-temple-navy dark:text-white font-bold">Regla de los 12</strong>: 
             grupos de máximo 12 atletas para garantizar compañerismo y progreso.
           </motion.p>
+
+          <motion.div variants={item} className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <a 
+              href={WHATSAPP_CAMP} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-temple-gold to-amber-600 hover:from-temple-gold-bright hover:to-amber-500 text-black font-black uppercase tracking-wider text-xs rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+            >
+              <Send size={16} />
+              <span>Postular a un Escuadrón (WhatsApp)</span>
+            </a>
+            <Link 
+              href="/#ofertas"
+              className="w-full sm:w-auto px-6 py-4 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-slate-800 dark:text-gray-200 border border-black/10 dark:border-white/10 font-bold uppercase tracking-wider text-xs rounded-xl transition-all text-center"
+            >
+              <span>Ver Planes & Tarifas (200 Bs.)</span>
+            </Link>
+          </motion.div>
         </div>
       </section>
 

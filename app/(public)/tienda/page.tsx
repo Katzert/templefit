@@ -6,7 +6,7 @@ import { ShoppingBag, Utensils, Shirt, Zap, Star, ShieldCheck, CheckCircle2, Sen
 import { products as officialProducts } from '@/data/content';
 import { motion, AnimatePresence } from 'framer-motion';
 import { db } from '../../../lib/firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
 
 const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.08 } } };
 const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
@@ -48,28 +48,46 @@ export default function TiendaPage() {
   const [liveProducts, setLiveProducts] = useState<any[]>(officialProducts);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const docRef = doc(db, 'workspaces', 'templefit-main');
-        const docSnap = await getDoc(docRef);
+    if (!db) return;
+    try {
+      const docRef = doc(db, 'workspaces', 'templefit-main');
+      const unsubscribe = onSnapshot(docRef, (docSnap) => {
         if (docSnap.exists()) {
           const data = docSnap.data();
+          const showcaseList = Array.isArray(data.showcaseItems) ? [...data.showcaseItems] : [];
+          if (Array.isArray(data.inventory)) {
+            data.inventory.forEach((inv: any) => {
+              if (inv && inv.id && inv.name && !showcaseList.some(s => s.id === inv.id)) {
+                showcaseList.push({
+                  id: inv.id,
+                  title: inv.name,
+                  price: inv.price || inv.cost || 0,
+                  type: inv.category === 'snack' ? 'recipe' : 'apparel',
+                  description: `Disponible en tienda y barra física TempleFit. Stock: ${inv.stock ?? 0} unidades.`,
+                  imageUrl: inv.imageUrl
+                });
+              }
+            });
+          }
           if (Array.isArray(data.products) && data.products.length > 0) {
             setLiveProducts(data.products);
-          } else if (Array.isArray(data.showcaseItems) && data.showcaseItems.length > 0) {
-            setLiveProducts(mergeShowcaseProducts(data.showcaseItems, officialProducts));
+          } else if (showcaseList.length > 0) {
+            setLiveProducts(mergeShowcaseProducts(showcaseList, officialProducts));
           } else {
             setLiveProducts(officialProducts);
           }
         } else {
           setLiveProducts(officialProducts);
         }
-      } catch (err) {
-        console.warn("Firebase no configurado, usando data local", err);
-        setLiveProducts(officialProducts);
-      }
-    };
-    fetchProducts();
+      }, (err) => {
+        console.warn("Firebase snapshot error en tienda:", err);
+      });
+
+      return () => unsubscribe();
+    } catch (err) {
+      console.warn("Firebase no configurado, usando data local", err);
+      setLiveProducts(officialProducts);
+    }
   }, []);
 
   const categories = [

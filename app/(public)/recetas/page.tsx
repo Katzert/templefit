@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, Flame, ChefHat, X, ChevronRight, Sparkles, BookOpen, Utensils, Users, ShoppingBag, Activity, ArrowRight, Send } from 'lucide-react';
 import { recipes as defaultRecipes, recipeCategories } from '@/data/content';
 import { db } from '../../../lib/firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
 
 const DEFAULT_PRICES: Record<string, number> = {
   'electrohidra-elite': 15,
@@ -25,20 +25,23 @@ function getRecipePrice(recipe: any): number {
 }
 
 function mergeRecipes(custom: any[], defaults: any[]): any[] {
-  const map = new Map<string, any>();
-  defaults.forEach(d => map.set(d.id, { ...d, suggestedPrice: getRecipePrice(d) }));
-  if (Array.isArray(custom)) {
-    custom.forEach(c => {
-      if (c && c.id && c.name) {
-        const existing = map.get(c.id) || {};
-        map.set(c.id, { 
-          ...existing, 
-          ...c, 
-          suggestedPrice: getRecipePrice(c) 
-        });
-      }
-    });
+  if (!Array.isArray(custom) || custom.length === 0) {
+    return defaults.map(d => ({ ...d, suggestedPrice: getRecipePrice(d) }));
   }
+  const map = new Map<string, any>();
+  // Start with defaults so baseline details exist
+  defaults.forEach(d => map.set(d.id, { ...d, suggestedPrice: getRecipePrice(d) }));
+  // Overwrite or append with custom recipes from Paulo's admin panel
+  custom.forEach(c => {
+    if (c && c.id && c.name) {
+      const existing = map.get(c.id) || {};
+      map.set(c.id, { 
+        ...existing, 
+        ...c, 
+        suggestedPrice: getRecipePrice(c) 
+      });
+    }
+  });
   return Array.from(map.values());
 }
 
@@ -51,18 +54,17 @@ export default function RecetasPage() {
   const [liveRecipes, setLiveRecipes] = useState<any[]>(() => mergeRecipes([], defaultRecipes));
 
   useEffect(() => {
-    const fetchRecipes = async () => {
-      try {
-        if (!db) return;
-        const docRef = doc(db, 'workspaces', 'templefit-main');
-        const docSnap = await getDoc(docRef);
+    if (!db) return;
+    try {
+      const docRef = doc(db, 'workspaces', 'templefit-main');
+      const unsubscribe = onSnapshot(docRef, (docSnap) => {
         if (docSnap.exists()) {
           const data = docSnap.data();
-          const recipesPool = Array.isArray(data.recipes) ? data.recipes : [];
+          const recipesPool = Array.isArray(data.recipes) ? [...data.recipes] : [];
           // Also merge any showcaseItems of type 'recipe'
           if (Array.isArray(data.showcaseItems)) {
             data.showcaseItems.forEach((s: any) => {
-              if (s && s.type === 'recipe' && s.title) {
+              if (s && s.type === 'recipe' && s.title && !recipesPool.some(r => r.id === s.id)) {
                 recipesPool.push({
                   id: s.id,
                   name: s.title,
@@ -81,11 +83,14 @@ export default function RecetasPage() {
             setLiveRecipes(mergeRecipes(recipesPool, defaultRecipes));
           }
         }
-      } catch (err) {
-        console.warn("Firebase no configurado, usando data local", err);
-      }
-    };
-    fetchRecipes();
+      }, (err) => {
+        console.warn("Firebase snapshot error en recetas:", err);
+      });
+
+      return () => unsubscribe();
+    } catch (err) {
+      console.warn("Firebase no configurado, usando data local", err);
+    }
   }, []);
 
   const recipesPool = Array.isArray(liveRecipes) && liveRecipes.length > 0 ? liveRecipes : defaultRecipes;
