@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Instagram, Facebook, MessageCircle, MapPin, Phone, ShieldCheck, HeartHandshake, BookOpen, Accessibility } from 'lucide-react';
+import { Instagram, Facebook, MessageCircle, MapPin, Phone, ShieldCheck, HeartHandshake, BookOpen } from 'lucide-react';
 import { getAssetPath } from '../lib/utils';
 
 const WHATSAPP_URL = 'https://wa.me/59169127691?text=Hola%20TempleFit!%20Quiero%20mas%20informacion';
@@ -67,19 +67,6 @@ export default function Footer() {
               <li><Link href="/tienda" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Tienda</Link></li>
               <li><Link href="/trayectoria" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Trayectoria</Link></li>
               <li><Link href="/#evaluacion" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Test Diagnóstico</Link></li>
-              <li>
-                <button
-                  onClick={() => {
-                    if (typeof window !== 'undefined') {
-                      window.dispatchEvent(new CustomEvent('toggle-accessibility-widget'));
-                    }
-                  }}
-                  className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm text-left flex items-center gap-1.5 pt-1 text-slate-700 dark:text-gray-300"
-                >
-                  <Accessibility size={14} className="text-temple-gold" aria-hidden="true" />
-                  <span>Opciones de Accesibilidad</span>
-                </button>
-              </li>
             </ul>
           </div>
 
