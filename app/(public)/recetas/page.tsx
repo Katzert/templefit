@@ -3,20 +3,42 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Clock, Flame, ChefHat, X, ChevronRight, Sparkles, BookOpen, Utensils, Users, ShoppingBag, Activity, ArrowRight } from 'lucide-react';
+import { Clock, Flame, ChefHat, X, ChevronRight, Sparkles, BookOpen, Utensils, Users, ShoppingBag, Activity, ArrowRight, Send } from 'lucide-react';
 import { recipes as defaultRecipes, recipeCategories } from '@/data/content';
 import { db } from '../../../lib/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
+const DEFAULT_PRICES: Record<string, number> = {
+  'electrohidra-elite': 15,
+  'electrodetox-blast': 15,
+  'infusion-daniel': 12,
+  'bowl-guerrero': 22,
+  'smoothie-salomon': 20,
+  'pudin-shake': 25,
+  'panqueque-shake': 28
+};
+
+function getRecipePrice(recipe: any): number {
+  if (typeof recipe.suggestedPrice === 'number' && recipe.suggestedPrice > 0) return recipe.suggestedPrice;
+  if (typeof recipe.price === 'number' && recipe.price > 0) return recipe.price;
+  return DEFAULT_PRICES[recipe.id] || 15;
+}
+
 function mergeRecipes(custom: any[], defaults: any[]): any[] {
-  if (!Array.isArray(custom) || custom.length === 0) return defaults;
   const map = new Map<string, any>();
-  defaults.forEach(d => map.set(d.id, d));
-  custom.forEach(c => {
-    if (c && c.id && c.name) {
-      map.set(c.id, { ...(map.get(c.id) || {}), ...c });
-    }
-  });
+  defaults.forEach(d => map.set(d.id, { ...d, suggestedPrice: getRecipePrice(d) }));
+  if (Array.isArray(custom)) {
+    custom.forEach(c => {
+      if (c && c.id && c.name) {
+        const existing = map.get(c.id) || {};
+        map.set(c.id, { 
+          ...existing, 
+          ...c, 
+          suggestedPrice: getRecipePrice(c) 
+        });
+      }
+    });
+  }
   return Array.from(map.values());
 }
 
@@ -26,30 +48,41 @@ const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transiti
 export default function RecetasPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedRecipeId, setSelectedRecipeId] = useState<string | null>(null);
-  const [liveRecipes, setLiveRecipes] = useState<any[]>(defaultRecipes);
+  const [liveRecipes, setLiveRecipes] = useState<any[]>(() => mergeRecipes([], defaultRecipes));
 
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        if (!db) {
-          setLiveRecipes(defaultRecipes);
-          return;
-        }
+        if (!db) return;
         const docRef = doc(db, 'workspaces', 'templefit-main');
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          if (Array.isArray(data.recipes) && data.recipes.length > 0) {
-            setLiveRecipes(mergeRecipes(data.recipes, defaultRecipes));
-          } else {
-            setLiveRecipes(defaultRecipes);
+          const recipesPool = Array.isArray(data.recipes) ? data.recipes : [];
+          // Also merge any showcaseItems of type 'recipe'
+          if (Array.isArray(data.showcaseItems)) {
+            data.showcaseItems.forEach((s: any) => {
+              if (s && s.type === 'recipe' && s.title) {
+                recipesPool.push({
+                  id: s.id,
+                  name: s.title,
+                  category: 'snack',
+                  time: 10,
+                  description: s.description || '',
+                  image: s.imageUrl,
+                  suggestedPrice: s.price || 15,
+                  ingredientsText: ['Ingredientes naturales selectos'],
+                  steps: ['Preparado fresco en el Snack Bar TempleFit.']
+                });
+              }
+            });
           }
-        } else {
-          setLiveRecipes(defaultRecipes);
+          if (recipesPool.length > 0) {
+            setLiveRecipes(mergeRecipes(recipesPool, defaultRecipes));
+          }
         }
       } catch (err) {
         console.warn("Firebase no configurado, usando data local", err);
-        setLiveRecipes(defaultRecipes);
       }
     };
     fetchRecipes();
@@ -166,9 +199,17 @@ export default function RecetasPage() {
                   </div>
                 </div>
 
-                <div className="pt-1 flex items-center justify-between text-xs font-black text-temple-gold group-hover:translate-x-1 transition-transform duration-200">
-                  <span className="tracking-widest uppercase">Ver Preparación</span>
-                  <ChevronRight size={16} />
+                <div className="pt-2 border-t border-black/5 dark:border-white/5 flex items-center justify-between">
+                  <div>
+                    <span className="text-[9px] uppercase text-slate-500 dark:text-gray-500 font-bold block">Snack Bar</span>
+                    <span className="text-base font-black text-temple-navy dark:text-white">
+                      {recipe.suggestedPrice || 15} <span className="text-xs font-bold text-temple-gold">Bs.</span>
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs font-black text-temple-gold group-hover:translate-x-1 transition-transform duration-200">
+                    <span className="tracking-wider uppercase text-[11px]">Ver Receta</span>
+                    <ChevronRight size={14} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -330,6 +371,26 @@ export default function RecetasPage() {
                     </li>
                   ))}
                 </ol>
+              </div>
+
+              <div className="pt-6 border-t border-black/10 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                  <span className="text-[10px] text-slate-500 dark:text-gray-500 uppercase tracking-widest font-bold block">Consumo en Snack Bar</span>
+                  <span className="text-2xl font-black text-temple-navy dark:text-white">
+                    {openRecipe.suggestedPrice || 15} <span className="text-sm font-bold text-temple-gold">Bs.</span>
+                  </span>
+                </div>
+                <button
+                  onClick={() => {
+                    const price = openRecipe.suggestedPrice || 15;
+                    const text = encodeURIComponent(`¡Hola Paulo! 👋 Quiero pedir del Snack Bar TempleFit: *${openRecipe.name}* (${price} Bs.). ¿Cómo coordino mi pedido?`);
+                    window.open(`https://wa.me/59169127691?text=${text}`, '_blank');
+                  }}
+                  className="w-full sm:w-auto px-6 py-3 bg-temple-gold hover:bg-temple-gold-bright text-black font-extrabold uppercase tracking-wider text-xs rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-temple-gold/20"
+                >
+                  <Send size={14} />
+                  <span>Pedir al Snack Bar</span>
+                </button>
               </div>
             </div>
           </motion.div>

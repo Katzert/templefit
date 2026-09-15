@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 import HeroSection from '../../components/home/HeroSection';
 import EcosystemSection from '../../components/home/EcosystemSection';
+import OffersSection from '../../components/home/OffersSection';
 import RuleSection from '../../components/home/RuleSection';
 import DiagnosticWidget from '../../components/home/DiagnosticWidget';
 
@@ -18,6 +19,7 @@ export default function Home() {
       <div className="flex flex-col min-h-screen">
         <HeroSection />
         <EcosystemSection />
+        <OffersSection />
         <RuleSection />
         <DiagnosticWidget />
       </div>

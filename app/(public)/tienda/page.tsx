@@ -11,17 +11,56 @@ import { doc, getDoc } from 'firebase/firestore';
 const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.08 } } };
 const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
 
+function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
+  if (!Array.isArray(showcase) || showcase.length === 0) return defaults;
+  const map = new Map<string, any>();
+  defaults.forEach(d => map.set(d.id, d));
+  showcase.forEach(s => {
+    if (s && s.id && s.title && s.status !== 'hidden') {
+      let category = 'Suplemento';
+      if (s.type === 'recipe') {
+        category = 'Nutrición';
+      } else {
+        const titleLower = s.title.toLowerCase();
+        if (titleLower.includes('polera') || titleLower.includes('short') || titleLower.includes('hoodie') || titleLower.includes('canguro') || titleLower.includes('textil')) {
+          category = 'Textil';
+        } else if (titleLower.includes('reto') || titleLower.includes('membresía') || titleLower.includes('eage') || titleLower.includes('trimestral')) {
+          category = 'Membresía';
+        } else if (titleLower.includes('snack') || titleLower.includes('catering') || titleLower.includes('shake') || titleLower.includes('pudín') || titleLower.includes('panqueque')) {
+          category = 'Nutrición';
+        }
+      }
+      map.set(s.id, {
+        id: s.id,
+        name: s.title,
+        price: typeof s.price === 'number' ? s.price : Number(s.price) || 0,
+        category,
+        description: s.description || '',
+        image: s.imageUrl || 'https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=500&h=500&fit=crop'
+      });
+    }
+  });
+  return Array.from(map.values());
+}
+
 export default function TiendaPage() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
-  const [liveProducts, setLiveProducts] = useState<any[]>([]);
+  const [liveProducts, setLiveProducts] = useState<any[]>(officialProducts);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const docRef = doc(db, 'workspaces', 'templefit-main');
         const docSnap = await getDoc(docRef);
-        if (docSnap.exists() && docSnap.data().products) {
-          setLiveProducts(docSnap.data().products);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (Array.isArray(data.products) && data.products.length > 0) {
+            setLiveProducts(data.products);
+          } else if (Array.isArray(data.showcaseItems) && data.showcaseItems.length > 0) {
+            setLiveProducts(mergeShowcaseProducts(data.showcaseItems, officialProducts));
+          } else {
+            setLiveProducts(officialProducts);
+          }
         } else {
           setLiveProducts(officialProducts);
         }

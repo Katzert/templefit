@@ -12,8 +12,9 @@ const WHATSAPP_URL = 'https://wa.me/59169127691?text=Hola%20TempleFit!%20Quiero%
 
 const NAV_LINKS = [
   { href: '/', label: 'Inicio' },
+  { href: '/#ofertas', label: 'Ofertas' },
   { href: '/escuadrones', label: 'Escuadrones' },
-  { href: '/recetas', label: 'Recetas' },
+  { href: '/recetas', label: 'Snack & Recetas' },
   { href: '/tienda', label: 'Tienda' },
   { href: '/trayectoria', label: 'Trayectoria' },
 ];
@@ -27,6 +28,7 @@ export default function Navbar() {
 
   const isLinkActive = (href: string) => {
     if (href === '/') return pathname === '/';
+    if (href.startsWith('/#')) return false;
     return pathname.startsWith(href);
   };
 
