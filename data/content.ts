@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "TempleFit",
-  slogan: "Centro de Transformación Holística",
+  slogan: "Centro de Entrenamiento y Salud Integral",
   tagline: "El espíritu da el diseño. El cuerpo es el templo. La mente crea y edifica vidas.",
   contact: {
     whatsapp: "59169127691",
@@ -12,7 +12,7 @@ export const features = [
   {
     id: "reto21",
     title: "Reto 21 Días = ÍNTEGROS",
-    description: "3 horas diarias innegociables: 1h Cuerpo (45m entreno/15m estiramiento) + 1h Mente (estudio/devocional) + 1h Espíritu (Manual Guerra Espiritual / meditación). Reset circadiano (Dormir 10:00 PM - Despertar 06:00 AM).",
+    description: "3 horas diarias de hábitos: 1h Cuerpo (entrenamiento y estiramiento) + 1h Mente (estudio y lectura) + 1h Enfoque y gratitud. Orden circadiano (Dormir 10:00 PM - Despertar 06:00 AM).",
     icon: "Target",
     color: "temple-gold"
   },
@@ -52,15 +52,15 @@ export const products = [
     name: "Membresía Reto 21 Días / Gym Funcional",
     price: 200,
     category: "Membresía",
-    description: "Acceso integral a entrenamientos de calistenia, crossfit, boxeo ético y CristoFit Camp los sábados. 3h diarias de transformación integral.",
+    description: "Acceso a entrenamientos de calistenia, crossfit, boxeo formativo y CristoFit Camp los sábados. 3 horas diarias de hábitos y actividad física.",
     image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: "programa-eage",
-    name: "Formación E.A.G.E. - Atleta Inquebrantable (3 Meses)",
+    name: "Formación E.A.G.E. - Liderazgo y Rendimiento (3 Meses)",
     price: 1200,
     category: "Membresía",
-    description: "Capacitación avanzada de liderazgo, neuro-espiritualidad y Manual de Guerra Espiritual completo para capitanes de escuadrón.",
+    description: "Capacitación avanzada de liderazgo, disciplina y formación práctica para capitanes de escuadrón.",
     image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop"
   },
   {
@@ -89,7 +89,7 @@ export const products = [
   },
   {
     id: "ginkgo-biloba",
-    name: "Ginkgo Biloba Neuro-Circulatorio (120 caps)",
+    name: "Ginkgo Biloba Concentrado (120 caps)",
     price: 150,
     category: "Suplemento",
     description: "Mejora la circulación cerebral, memoria y concentración para el pilar mental. Inhibe factor activador plaquetario.",
@@ -145,7 +145,7 @@ export const products = [
   },
   {
     id: "complejo-b12",
-    name: "Complejo B12 Neuro-Protector (Cápsulas)",
+    name: "Complejo B12 Concentrado (Cápsulas)",
     price: 80,
     category: "Suplemento",
     description: "Soporte metabólico y neurogénesis para optimizar el rendimiento cognitivo y físico.",
@@ -263,7 +263,7 @@ export const recipes = [
   },
   {
     id: "smoothie-salomon",
-    name: "Smoothie Cerebral de Salomón (Neuro-Salud)",
+    name: "Smoothie de Frutos Rojos y Salomón",
     category: "bebidas",
     time: 5,
     difficulty: "Fácil",

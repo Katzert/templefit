@@ -57,20 +57,20 @@ const triEcosystemUnits = [
   },
   {
     id: 3,
-    title: "3. Neuro-Entrenamiento & Espíritu",
-    tag: "Cuerpo, Mente & Espíritu",
+    title: "3. Liderazgo, Mente & Disciplina",
+    tag: "Cuerpo, Mente & Valores",
     icon: <Brain size={32} className="text-emerald-400" />,
-    subtitle: "Mente: Nutrición y Enfoque",
-    description: "Nutrición orientada al rendimiento, suplementación y entrenamiento en ventas y liderazgo.",
+    subtitle: "Mente: Enfoque y Recuperación",
+    description: "Nutrición orientada al rendimiento, suplementación y formación en ventas y liderazgo.",
     pageLink: "/trayectoria",
     pageLabel: "Ver Capacitación & Credenciales",
     features: [
-      "Neuro-Entrenamiento en Ventas",
+      "Capacitación en Ventas y Liderazgo",
       "Respiración anti-estrés (Método Buteyko)",
-      "Club de lectura bíblica y mentoría",
+      "Club de lectura y mentoría grupal",
       "Evaluaciones preventivas"
     ],
-    whatsappAction: "Hola Paulo! Quiero información sobre los programas de Salud Integral y Neuro-Entrenamiento."
+    whatsappAction: "Hola Paulo! Quiero información sobre los programas y entrenamientos de TempleFit."
   }
 ];
 
@@ -116,13 +116,13 @@ export default function EcosystemSection() {
       
       <div className="text-center space-y-4 mb-20 relative z-10">
         <motion.div variants={item} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-temple-gold/15 dark:bg-temple-gold/10 border border-temple-gold/30 dark:border-temple-gold/20 text-temple-gold-dark dark:text-temple-gold-bright text-[10px] font-black uppercase tracking-[0.3em]">
-          EL TRI-ECOSISTEMA TEMPLEFIT
+          EL SISTEMA TEMPLEFIT
         </motion.div>
         <motion.h2 variants={item} className="text-4xl md:text-6xl font-serif font-black uppercase text-temple-navy dark:text-white tracking-tight text-balance">
-          Tres Ejes de <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-temple-gold dark:from-temple-gold-bright dark:to-temple-gold">Transformación</span>
+          Tres Ejes de <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-temple-gold dark:from-temple-gold-bright dark:to-temple-gold">Entrenamiento</span>
         </motion.h2>
         <motion.p variants={item} className="text-slate-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed text-pretty">
-          Entrenamiento de fuerza, nutrición celular y devoción espiritual en un solo lugar, diseñado para forjar atletas completos.
+          Fuerza física, nutrición y disciplina en un solo lugar para alcanzar tus metas.
         </motion.p>
       </div>
 

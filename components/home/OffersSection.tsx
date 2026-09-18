@@ -37,9 +37,9 @@ const OFFERS = [
     features: [
       'Acceso continuo a los 25 Escuadrones y turnos',
       'Progresión hacia Corona de Plata (Escuadrón Gedeón)',
-      'Evaluación antropométrica y biohacking mensual',
+      'Evaluación antropométrica y seguimiento mensual',
       '20% de descuento en consumos del Snack Bar',
-      'Talleres de Neuro-Entrenamiento y Hábitos'
+      'Talleres de Enfoque, Hábitos y Disciplina'
     ],
     whatsappMsg: '¡Hola Paulo! Quiero aprovechar la membresía *TRIMESTRAL ATLETA* (500 Bs. / 3 meses). ¿Cuáles son los métodos de pago?'
   },
@@ -49,7 +49,7 @@ const OFFERS = [
     subtitle: 'Nutrición Limpia (Alianza Abuela Fit)',
     price: 55,
     unit: 'Bs. / día',
-    badge: 'Nutrición Celular',
+    badge: 'Nutrición Saludable',
     badgeColor: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30',
     popular: false,
     features: [
@@ -71,13 +71,13 @@ const OFFERS = [
     badgeColor: 'bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30',
     popular: false,
     features: [
-      '210 horas académicas de teoría y práctica in situ',
-      'Manual de Guerra Espiritual y Formación de Capitanes',
-      'Neuro-Entrenamiento de Impacto en Ventas completo',
-      'Certificación avalada y acceso a liderazgo regional',
-      'Mentoría directa personalizada con Paulo Cuellar'
+      'Formación teórica y práctica en el gimnasio',
+      'Liderazgo y gestión de escuadrones',
+      'Capacitación en ventas y protocolo de servicio',
+      'Certificación y desarrollo como instructor',
+      'Mentoría directa con Paulo Cuellar'
     ],
-    whatsappMsg: '¡Hola Paulo! Deseo postular al programa de *FORMACIÓN E.A.G.E. - Atleta Inquebrantable* (1.200 Bs.).'
+    whatsappMsg: '¡Hola Paulo! Deseo información sobre el programa de *FORMACIÓN E.A.G.E.* (1.200 Bs.).'
   }
 ];
 
@@ -99,7 +99,7 @@ export default function OffersSection() {
         </motion.h2>
         
         <motion.p variants={item} className="text-slate-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed">
-          Precios oficiales en Bolivianos (Bs.). Sin costos ocultos. Diseñados para forjar disciplina física, nutrición consciente y mentalidad inquebrantable.
+          Precios oficiales en Bolivianos (Bs.). Sin costos ocultos. Diseñados para forjar constancia física, nutrición clara y hábitos sólidos.
         </motion.p>
       </div>
 

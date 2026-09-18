@@ -183,7 +183,7 @@ export default function EscuadronesPage() {
               </p>
               <ul className="space-y-2 text-xs text-slate-600 dark:text-gray-400">
                 <li className="flex items-center gap-2">• Disciplina 06:00 AM</li>
-                <li className="flex items-center gap-2">• Neuro-Entrenamiento en Ventas</li>
+                <li className="flex items-center gap-2">• Formación en Ventas y Liderazgo</li>
                 <li className="flex items-center gap-2">• Devocional y ayuno intermitente</li>
               </ul>
             </div>

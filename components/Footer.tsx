@@ -25,7 +25,7 @@ export default function Footer() {
               El Cuerpo es el Templo. La Mente Crea y Edifica Vidas.
             </p>
             <p className="text-sm text-slate-600 dark:text-gray-400 font-normal leading-relaxed border-l-2 border-temple-gold pl-4">
-              Centro de Transformación Holística: Forjando atletas íntegros en cuerpo, mente y espíritu desde el corazón de Santa Cruz, Bolivia.
+              Entrenamiento funcional, calistenia y nutrición para desarrollar fuerza, constancia y disciplina desde el corazón de Santa Cruz, Bolivia.
             </p>
             <div className="flex gap-3">
               <a
@@ -77,7 +77,7 @@ export default function Footer() {
               <p className="text-base text-slate-800 dark:text-gray-300 font-serif italic leading-relaxed">
                 &quot;Todo lo que hagan, háganlo de corazón, como para el Señor.&quot;
               </p>
-              <p className="text-[10px] text-amber-800 dark:text-temple-gold-bright uppercase tracking-[0.3em] mt-4 font-black">— Colosenses 3:23</p>
+              <p className="text-[10px] text-amber-800 dark:text-temple-gold-bright uppercase tracking-[0.3em] mt-4 font-black">Colosenses 3:23</p>
             </div>
           </div>
         </div>

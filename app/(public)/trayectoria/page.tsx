@@ -100,7 +100,7 @@ const CERTIFICATES: Certificate[] = [
   }
 ];
 
-export default function NeuroVentasPage() {
+export default function TrayectoriaPage() {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
 
   const handleImgFallback = (e: React.SyntheticEvent<HTMLImageElement, Event>, relativePath: string) => {
@@ -197,7 +197,7 @@ export default function NeuroVentasPage() {
       <section className="py-20 md:py-28 bg-[#FBF9F5] dark:bg-[#07090E] relative border-b border-black/5 dark:border-white/5">
         <div className="container mx-auto px-6 max-w-6xl text-center space-y-16">
           <div className="space-y-3">
-            <p className="text-temple-gold font-bold tracking-[0.25em] text-xs uppercase">Fundamentos de Neuroventas</p>
+            <p className="text-temple-gold font-bold tracking-[0.25em] text-xs uppercase">Fundamentos de Ventas & Persuasión</p>
             <h2 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-white uppercase tracking-tight">
               LOS 3 CEREBROS <span className="text-temple-gold ml-2">DEL VENDEDOR</span>
             </h2>
@@ -254,7 +254,7 @@ export default function NeuroVentasPage() {
                 <span className="text-[10px] font-bold text-temple-gold uppercase tracking-widest">Nivel 1</span>
                 <h3 className="text-xl font-bold text-temple-navy dark:text-white uppercase">Iniciación</h3>
                 <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
-                  Fundamentos de neuroventas, lenguaje corporal y protocolos de atención de impacto.
+                  Fundamentos de ventas, lenguaje corporal y protocolos de atención al cliente.
                 </p>
               </div>
               <div className="pt-4 border-t border-black/5 dark:border-white/5">
@@ -287,7 +287,7 @@ export default function NeuroVentasPage() {
                 <span className="text-[10px] font-bold text-temple-gold uppercase tracking-widest">Nivel 3</span>
                 <h3 className="text-xl font-bold text-temple-navy dark:text-white uppercase">Mentoría Integral</h3>
                 <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
-                  Programa completo de liderazgo, neuroventas, protocolo in situ y certificación técnica.
+                  Programa completo de liderazgo, ventas, protocolo in situ y certificación técnica.
                 </p>
               </div>
               <div className="pt-4 border-t border-black/5 dark:border-white/5">
@@ -319,7 +319,7 @@ export default function NeuroVentasPage() {
               CERTIFICACIÓN OFICIAL TEMPLEFIT
             </h2>
             <p className="text-temple-gold font-bold uppercase text-xs tracking-[0.25em]">
-              Neuroentrenamiento de Impacto en Ventas & Servicio
+              Entrenamiento Práctico en Ventas & Servicio
             </p>
             <p className="text-slate-600 dark:text-slate-400 text-xs uppercase tracking-widest">
               ✦ Certificación con Resultados · 240 horas técnicas · Respaldo Ministerial R.M. 0259/2019
@@ -343,7 +343,7 @@ export default function NeuroVentasPage() {
                 Servicio Protocolar y Dirección de Garzones
               </h3>
               <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                Paulo Alberto Gil Cuéllar es un profesional titulado directamente vinculado a la excelencia en el servicio protocolar de atención, dirección de garzones y organización de catering. Su entrenamiento no es solo teoría, sino disciplina forjada en la exigencia real del servicio al cliente de alto nivel.
+                Paulo Alberto Gil Cuéllar es un profesional titulado directamente vinculado al servicio protocolar de atención, dirección de equipos de salón y organización de eventos. Su metodología combina técnica formal con la práctica cotidiana del trato al público y la gestión operativa.
               </p>
             </div>
             
@@ -495,7 +495,7 @@ export default function NeuroVentasPage() {
               De la Teoría al <span className="text-temple-gold">Terreno Real</span>
             </h2>
             <p className="text-slate-600 dark:text-gray-400 text-xs md:text-sm max-w-lg mx-auto">
-              La formación mental y neuroventas se complementan con la práctica física en escuadrones y una nutrición equilibrada.
+              La formación mental y en ventas se complementa con la práctica física en escuadrones y una nutrición limpia.
             </p>
           </div>
 
