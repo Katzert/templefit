@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 export default function PublicLayout({
   children,
@@ -20,7 +19,6 @@ export default function PublicLayout({
         {children}
       </main>
       <Footer />
-      <AccessibilityWidget />
     </>
   );
 }
