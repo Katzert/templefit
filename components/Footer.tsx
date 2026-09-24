@@ -18,6 +18,8 @@ export default function Footer() {
               <img 
                 src={getAssetPath('/assets/img/logo-tf-gestion.png')} 
                 alt="TempleFit Logo Completo" 
+                loading="lazy"
+                decoding="async"
                 className="h-16 md:h-20 object-contain drop-shadow-[0_2px_10px_rgba(0,33,71,0.1)] dark:drop-shadow-[0_0_15px_rgba(212,175,55,0.2)]" 
               />
             </div>
@@ -33,25 +35,33 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-emerald-500/10 hover:border-emerald-500/40 text-emerald-600 dark:text-emerald-400 transition-all duration-300 transform hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-                title="WhatsApp Directo"
+                title="WhatsApp Directo (+591 69127691)"
               >
                 <MessageCircle className="h-5 w-5" />
               </a>
               <a
-                href="https://instagram.com"
+                href="tel:+59169127691"
+                className="p-3 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-temple-gold/15 hover:border-temple-gold/50 text-slate-700 dark:text-slate-300 transition-all duration-300 transform hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
+                title="Llamada Telefónica (+591 69127691)"
+                aria-label="Llamar a TempleFit (+591 69127691)"
+              >
+                <Phone className="h-5 w-5" />
+              </a>
+              <a
+                href="https://instagram.com/templefit.bo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-temple-gold/15 hover:border-temple-gold/50 text-amber-800 dark:text-temple-gold-bright transition-all duration-300 transform hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
-                title="Instagram Oficial"
+                title="Instagram Oficial @templefit.bo"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="https://facebook.com"
+                href="https://facebook.com/templefit.bo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-blue-500/15 hover:border-blue-500/50 text-blue-700 dark:text-blue-400 transition-all duration-300 transform hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-                aria-label="Ir a Facebook de TempleFit"
+                aria-label="Ir a Facebook de TempleFit Bolivia"
               >
                 <Facebook className="h-5 w-5" />
               </a>
@@ -77,15 +87,15 @@ export default function Footer() {
               <p className="text-base text-slate-800 dark:text-gray-300 font-serif italic leading-relaxed">
                 &quot;Todo lo que hagan, háganlo de corazón, como para el Señor.&quot;
               </p>
-              <p className="text-[10px] text-amber-800 dark:text-temple-gold-bright uppercase tracking-[0.3em] mt-4 font-black">Colosenses 3:23</p>
+              <p className="text-xs text-amber-800 dark:text-temple-gold-bright uppercase tracking-[0.2em] mt-4 font-black">Colosenses 3:23</p>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center text-[9px] text-slate-500 dark:text-gray-600 uppercase font-black tracking-[0.3em] gap-4">
-          <p>&copy; 2026 TempleFit • Santa Cruz, Bolivia</p>
+        <div className="pt-8 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-600 dark:text-gray-400 uppercase font-bold tracking-[0.2em] gap-4">
+          <p>&copy; 2026 TempleFit • Santa Cruz, Bolivia • Tel: +591 69127691</p>
           <div className="flex gap-6">
-            <span className="text-temple-gold">Valores Eternos</span>
+            <span className="text-amber-800 dark:text-temple-gold">Valores Eternos</span>
             <span>Atletas Valientes</span>
           </div>
         </div>

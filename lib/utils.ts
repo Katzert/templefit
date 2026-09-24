@@ -26,3 +26,18 @@ export function getAssetPath(path: string): string {
 
   return cleanPath;
 }
+
+export function formatBoliviaWhatsAppPhone(phone?: string): string {
+  if (!phone) return '59169127691';
+  const clean = phone.replace(/[^0-9]/g, '');
+  if (!clean) return '59169127691';
+  if (clean.length === 8 && (clean.startsWith('6') || clean.startsWith('7'))) {
+    return `591${clean}`;
+  }
+  return clean;
+}
+
+export function createWhatsAppLink(message: string, phone: string = '59169127691'): string {
+  const cleanPhone = formatBoliviaWhatsAppPhone(phone);
+  return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+}

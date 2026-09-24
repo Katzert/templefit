@@ -15,6 +15,7 @@ const DEFAULT_PRICES: Record<string, number> = {
   'electrodetox-blast': 15,
   'infusion-daniel': 12,
   'bowl-guerrero': 22,
+  'bowl-guerrero-elias': 22,
   'smoothie-salomon': 20,
   'pudin-shake': 25,
   'panqueque-shake': 28
@@ -51,7 +52,7 @@ const triEcosystemUnits = [
       "Infusiones botánicas con miel pura",
       "Batidos proteicos sin azúcares refinados",
       "Panadería saludable (Sin levadura)",
-      "20% OFF para atletas de escuadrón"
+      "Precios preferenciales para atletas de escuadrón"
     ],
     whatsappAction: "Hola Paulo! Quiero conocer el menú del Snack Bar de TempleFit."
   },
@@ -66,7 +67,7 @@ const triEcosystemUnits = [
     pageLabel: "Ver Capacitación & Credenciales",
     features: [
       "Capacitación en Ventas y Liderazgo",
-      "Respiración anti-estrés (Método Buteyko)",
+      "Respiración diafragmática y control del estrés",
       "Club de lectura y mentoría grupal",
       "Evaluaciones preventivas"
     ],
@@ -106,8 +107,16 @@ export default function EcosystemSection() {
     }
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setActiveUnitModal(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const openUnitWhatsApp = (text: string) => {
-    window.open(`https://wa.me/59169127691?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/59169127691?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -128,10 +137,18 @@ export default function EcosystemSection() {
 
       <div className="bento-grid relative z-10">
         {triEcosystemUnits.map((unit, i) => (
-          <motion.button 
+          <motion.div 
             key={i} 
             variants={item} 
+            role="button"
+            tabIndex={0}
             onClick={() => setActiveUnitModal(i)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setActiveUnitModal(i);
+              }
+            }}
             className={`tactical-card group cursor-pointer text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-temple-gold focus-visible:ring-offset-2 focus-visible:ring-offset-temple-cream dark:focus-visible:ring-offset-[#05070B] w-full block ${i === 0 ? 'md:col-span-2' : 'md:col-span-2'}`}
             aria-label={`Ver detalles sobre ${unit.title}`}
           >
@@ -171,7 +188,7 @@ export default function EcosystemSection() {
               <span className="tracking-wider uppercase">Ver Protocolo</span>
               <ChevronRight size={18} className="group-hover:scale-125 transition-transform" aria-hidden="true" />
             </div>
-          </motion.button>
+          </motion.div>
         ))}
       </div>
 

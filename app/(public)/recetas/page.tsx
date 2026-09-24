@@ -93,6 +93,14 @@ export default function RecetasPage() {
     }
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedRecipeId(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const recipesPool = Array.isArray(liveRecipes) && liveRecipes.length > 0 ? liveRecipes : defaultRecipes;
 
   const filteredRecipes = activeCategory === 'all'
@@ -157,8 +165,17 @@ export default function RecetasPage() {
           {filteredRecipes.map((recipe) => (
             <div
               key={recipe.id}
+              role="button"
+              tabIndex={0}
               onClick={() => setSelectedRecipeId(recipe.id)}
-              className="group rounded-3xl overflow-hidden bg-white dark:bg-gradient-to-br dark:from-[#0B0F19] dark:to-black border border-black/10 dark:border-white/10 hover:border-temple-gold/40 transition-all duration-500 cursor-pointer shadow-xl hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2 flex flex-col justify-between"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedRecipeId(recipe.id);
+                }
+              }}
+              aria-label={`Ver receta y preparación de ${recipe.name}`}
+              className="group rounded-3xl overflow-hidden bg-white dark:bg-gradient-to-br dark:from-[#0B0F19] dark:to-black border border-black/10 dark:border-white/10 hover:border-temple-gold/40 transition-all duration-500 cursor-pointer shadow-xl hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] hover:-translate-y-2 flex flex-col justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
             >
               {/* Recipe Image Header */}
               <div className="relative h-56 overflow-hidden bg-black/[0.03] dark:bg-black/40">
@@ -166,6 +183,8 @@ export default function RecetasPage() {
                   <img
                     src={recipe.image}
                     alt={recipe.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 ) : (
@@ -337,6 +356,8 @@ export default function RecetasPage() {
                 <img 
                   src={openRecipe.image || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop'} 
                   alt={`Fotografía de plato preparado: ${openRecipe.name}`} 
+                  loading="lazy"
+                  decoding="async"
                   onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop'; }}
                   className="w-full h-full object-cover" 
                 />
@@ -389,7 +410,7 @@ export default function RecetasPage() {
                   onClick={() => {
                     const price = openRecipe.suggestedPrice || 15;
                     const text = encodeURIComponent(`¡Hola Paulo! 👋 Quiero pedir del Snack Bar TempleFit: *${openRecipe.name}* (${price} Bs.). ¿Cómo coordino mi pedido?`);
-                    window.open(`https://wa.me/59169127691?text=${text}`, '_blank');
+                    window.open(`https://wa.me/59169127691?text=${text}`, '_blank', 'noopener,noreferrer');
                   }}
                   className="w-full sm:w-auto px-6 py-3 bg-temple-gold hover:bg-temple-gold-bright text-black font-extrabold uppercase tracking-wider text-xs rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-temple-gold/20"
                 >

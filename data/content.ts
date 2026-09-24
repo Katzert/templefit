@@ -12,7 +12,7 @@ export const features = [
   {
     id: "reto21",
     title: "Reto 21 Días = ÍNTEGROS",
-    description: "3 horas diarias de hábitos: 1h Cuerpo (entrenamiento y estiramiento) + 1h Mente (estudio y lectura) + 1h Enfoque y gratitud. Orden circadiano (Dormir 10:00 PM - Despertar 06:00 AM).",
+    description: "3 horas diarias de hábitos: 1h Cuerpo (entrenamiento funcional) + 1h Mente (estudio y lectura) + 1h Espíritu (enfoque y gratitud). Orden circadiano (22:00 a 06:00).",
     icon: "Target",
     color: "temple-gold"
   },
@@ -33,18 +33,20 @@ export const features = [
   {
     id: "sabado",
     title: "Sábados CristoFit Camp (06:00 AM)",
-    description: "Entrenamiento matutino, evaluaciones biométricas, servicio social 'Palabra y Pan' + campaña ecológica 'Ciudad sin Basura' (Plogging), Snack Bar y Show Fit.",
+    description: "Entrenamiento matutino, evaluaciones biométricas, servicio social 'Palabra y Pan' + campaña ecológica 'Ciudad sin Basura' (Plogging), Snack Bar y comunidad.",
     icon: "Sun",
     color: "temple-gold"
   },
   {
     id: "showfit",
     title: "Viernes de Show Fit",
-    description: "Demostración deportiva (4:00 - 5:30 PM), talleres gratuitos de salud mental y nutrición (6:00 - 7:00 PM) y degustaciones de Snack Bar e infusiones (7:00 PM).",
+    description: "Demostración deportiva (4:00 - 5:30 PM), charlas de salud mental y hábitos (6:00 - 7:00 PM) y degustaciones de Snack Bar e infusiones (7:00 PM). Horarios sujetos a confirmación por WhatsApp.",
     icon: "Sparkles",
     color: "temple-gold"
   }
 ];
+
+export const HEALTH_DISCLAIMER = "Aviso: Las recetas, preparaciones botánicas y suplementos ofrecidos por TempleFit son complementos alimenticios y nutricionales; no constituyen medicamentos ni sustituyen el diagnóstico, prescripción o tratamiento médico profesional.";
 
 export const products = [
   {
@@ -54,6 +56,14 @@ export const products = [
     category: "Membresía",
     description: "Acceso a entrenamientos de calistenia, crossfit, boxeo formativo y CristoFit Camp los sábados. 3 horas diarias de hábitos y actividad física.",
     image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    id: "trimestral-atleta",
+    name: "Membresía Trimestral Atleta (3 Meses)",
+    price: 500,
+    category: "Membresía",
+    description: "Plan de 90 días de entrenamiento integral continuo con evaluación física mensual y participación en CristoFit Camp.",
+    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: "programa-eage",
@@ -92,7 +102,7 @@ export const products = [
     name: "Ginkgo Biloba Concentrado (120 caps)",
     price: 150,
     category: "Suplemento",
-    description: "Mejora la circulación cerebral, memoria y concentración para el pilar mental. Inhibe factor activador plaquetario.",
+    description: "Extracto botánico tradicional para acompañar el pilar de enfoque mental y estudio. Suplemento alimenticio natural; no es medicamento.",
     image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800&auto=format&fit=crop"
   },
   {
@@ -100,7 +110,7 @@ export const products = [
     name: "Óleo de Coco Extra Virgen (200 ml)",
     price: 75,
     category: "Suplemento",
-    description: "Triglicéridos de cadena media (TCM): energía limpia inmediata para el cerebro y salud mitocondrial.",
+    description: "Triglicéridos de cadena media (TCM) de origen natural para energía y preparación culinaria saludable.",
     image: "https://images.unsplash.com/photo-1526947425960-945c6e72858f?q=80&w=800&auto=format&fit=crop"
   },
   {
@@ -108,23 +118,23 @@ export const products = [
     name: "Colágeno Hidrolizado Articular (100 ml)",
     price: 95,
     category: "Suplemento",
-    description: "Protección de articulaciones y tendones para absorción de impacto en barras de calistenia.",
+    description: "Complemento nutricional para apoyo articular y muscular en atletas con alta carga física.",
     image: "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: "glutamina-pura",
-    name: "Glutamina Pura Anticatabólica (300 gr)",
+    name: "Glutamina Pura (300 gr)",
     price: 150,
     category: "Suplemento",
-    description: "Reparación de la mucosa digestiva e inmunidad post-entrenamiento de alta exigencia metabólica.",
+    description: "Aminoácido puro de grado alimenticio para apoyo nutricional en la recuperación post-entrenamiento.",
     image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: "omega3-pescado",
-    name: "Tabletas de Pescado Omega-3 Puro (20 u)",
+    name: "Tabletas de Aceite de Pescado Omega-3 (20 u)",
     price: 10,
     category: "Suplemento",
-    description: "Ácidos grasos EPA/DHA de alta biodisponibilidad para salud cardiovascular, cerebral y control de triglicéridos.",
+    description: "Suplemento alimenticio con ácidos grasos esenciales para complementar la nutrición diaria del atleta. Consulte a su médico.",
     image: "https://images.unsplash.com/photo-1577401239170-897942555fb3?q=80&w=800&auto=format&fit=crop"
   },
   {
@@ -140,7 +150,7 @@ export const products = [
     name: "Cúrcuma Cupesí Pura en Polvo (250 gr)",
     price: 35,
     category: "Suplemento",
-    description: "Potente anti-inflamatorio y hepatoprotector botánico cosechado en la Chiquitanía.",
+    description: "Especia botánica natural originaria de la Chiquitanía para preparación de infusiones y condimento saludable.",
     image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=800&auto=format&fit=crop"
   },
   {
@@ -148,7 +158,7 @@ export const products = [
     name: "Complejo B12 Concentrado (Cápsulas)",
     price: 80,
     category: "Suplemento",
-    description: "Soporte metabólico y neurogénesis para optimizar el rendimiento cognitivo y físico.",
+    description: "Aporte de vitaminas del complejo B como complemento alimenticio en etapas de alta exigencia física.",
     image: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=800&auto=format&fit=crop"
   },
   {
@@ -156,7 +166,7 @@ export const products = [
     name: "Reumasan Crema Articular y Muscular",
     price: 15,
     category: "Suplemento",
-    description: "Bálsamo tópico de rápida acción para alivio articular, tendinitis y contracturas musculares.",
+    description: "Bálsamo tópico de rápida acción para masaje muscular relajante tras el entrenamiento.",
     image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800&auto=format&fit=crop"
   },
   {
@@ -164,7 +174,7 @@ export const products = [
     name: "Sal Marina Natural Pura (50 gr)",
     price: 20,
     category: "Suplemento",
-    description: "Minerales traza no refinados para preparación de sueros isotónicos ElectroHidra.",
+    description: "Minerales traza no refinados para preparación de bebidas hidratantes artesanas.",
     image: "https://images.unsplash.com/photo-1518110925495-5fe2fda0442c?q=80&w=800&auto=format&fit=crop"
   },
   {
@@ -187,7 +197,7 @@ export const products = [
     id: "masaje-recuperacion",
     name: "Masaje de Recuperación y Descarga Muscular",
     price: 100,
-    category: "Nutrición",
+    category: "Servicio",
     description: "Sesión de terapia manual y descontracturación muscular para atletas con entrenamiento continuo.",
     image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop"
   },
@@ -217,14 +227,14 @@ export const recipes = [
     time: 5,
     difficulty: "Fácil",
     servings: 1,
-    description: "Bebida isotónica natural (280-300 mOsm/kg) con buffer contra el lactato muscular y electrolitos puros.",
+    description: "Bebida hidratante artesanal de absorción rápida con agua pura, miel de abeja, limón fresco y sales minerales para soporte electrolítico.",
     ingredients: [
       "1 litro de agua filtrada",
       "1.2 g de sal marina natural",
-      "0.6 g de bicarbonato de sodio (buffer contra lactato)",
+      "0.6 g de bicarbonato de sodio",
       "0.6 g de cloruro de potasio",
-      "100 mg de citrato de magnesio (anticalambres)",
-      "60 g de miel pura de abeja (solución glucosa al 6%)",
+      "100 mg de citrato de magnesio",
+      "60 g de miel pura de abeja",
       "30 ml de jugo de limón recién exprimido"
     ],
     steps: [
@@ -238,12 +248,12 @@ export const recipes = [
   },
   {
     id: "electrodetox-blast",
-    name: "ElectroDetox Blast (Descanso & Autofagia)",
+    name: "ElectroDetox Blast (Descanso & Digestión)",
     category: "bebidas",
     time: 10,
     difficulty: "Fácil",
     servings: 1,
-    description: "Infusión antiparasitaria y desintoxicante. Cero azúcares para estimular la autofagia celular en días de reposo.",
+    description: "Infusión herbal digestiva y refrescante. Cero azúcares añadidos para acompañar días de descanso activo y ayuno intermitente.",
     ingredients: [
       "1 litro de infusión de clavo de olor y canela",
       "1/2 taza de jugo de pepino fresco colado",
@@ -263,12 +273,12 @@ export const recipes = [
   },
   {
     id: "smoothie-salomon",
-    name: "Smoothie de Frutos Rojos y Salomón",
+    name: "Smoothie de Salomón (Frutos Rojos y Cúrcuma)",
     category: "bebidas",
     time: 5,
     difficulty: "Fácil",
     servings: 1,
-    description: "Formulado para potenciar la neurogénesis, concentración y memoria. Con cúrcuma y piperina (+2000% absorción).",
+    description: "Batido denso con aguacate, espinaca, arándanos frescos, cúrcuma y pimienta negra para nutrición balanceada y energía matutina.",
     ingredients: [
       "60 g de aguacate maduro",
       "50 g de espinaca fresca",
@@ -367,12 +377,12 @@ export const recipes = [
   },
   {
     id: "te-profetas",
-    name: "Té de los Profetas (Inmunoestimulante)",
+    name: "Té de los Profetas (Infusión Herbal Caliente)",
     category: "bebidas",
     time: 8,
     difficulty: "Fácil",
     servings: 1,
-    description: "Bálsamo medicinal tradicional con clavo, canela, jengibre y menta para blindar el sistema inmune.",
+    description: "Infusión herbal reconfortante y caliente con clavo, canela, jengibre, menta y zumo de limón fresco.",
     ingredients: [
       "350 ml de agua hervida",
       "1 trozo de jengibre fresco (10g)",

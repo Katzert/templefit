@@ -95,7 +95,8 @@ export default function TiendaPage() {
     { id: 'Textil', label: 'Indumentaria Táctica' },
     { id: 'Suplemento', label: 'Botica & Suplementos' },
     { id: 'Membresía', label: 'Membresías' },
-    { id: 'Nutrición', label: 'Catering & Snack Bar' }
+    { id: 'Nutrición', label: 'Catering & Snack Bar' },
+    { id: 'Servicio', label: 'Recuperación & Servicios' }
   ];
 
   const filteredProducts = activeCategory === 'all'
@@ -106,7 +107,7 @@ export default function TiendaPage() {
     const text = encodeURIComponent(
       `¡Hola Paulo! 👋 Quisiera encargar de la Armería TempleFit: *${product.name}* (${product.price} Bs.). ¿Cómo realizo el 50% de seña para recogerlo este sábado en el CristoFit Camp?`
     );
-    window.open(`https://wa.me/59169127691?text=${text}`, '_blank');
+    window.open(`https://wa.me/59169127691?text=${text}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -132,8 +133,8 @@ export default function TiendaPage() {
           <p className="text-sm sm:text-base text-slate-700 dark:text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
             Ropa deportiva y suplementos en Santa Cruz.
           </p>
-          <div className="text-xs text-temple-gold font-bold uppercase tracking-widest bg-black/[0.03] dark:bg-black/40 py-2 px-4 rounded-xl max-w-md mx-auto border border-black/10 dark:border-white/10">
-            📦 Regla de Pedido: 50% de seña previa (Viernes) ➔ Entrega Sábado en Camp
+          <div className="text-xs text-temple-gold font-bold uppercase tracking-widest bg-black/[0.03] dark:bg-black/40 py-2 px-4 rounded-xl max-w-lg mx-auto border border-black/10 dark:border-white/10">
+            📦 Pedidos & Entregas: Reserva directa vía WhatsApp ➔ Retiro en Gimnasio o CristoFit Camp (Sábados)
           </div>
         </div>
       </section>
@@ -170,6 +171,8 @@ export default function TiendaPage() {
                   <img 
                     src={prod.image} 
                     alt={prod.name} 
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
                   />
                   <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/70 backdrop-blur-md border border-black/20 dark:border-white/20 px-3 py-1 rounded-full text-[10px] font-black uppercase text-amber-800 dark:text-temple-gold tracking-widest">
@@ -281,6 +284,13 @@ export default function TiendaPage() {
               </div>
             </Link>
           </div>
+        </div>
+
+        {/* Health Disclaimer */}
+        <div className="pt-6 pb-2 text-center text-xs text-slate-500 dark:text-gray-400 max-w-3xl mx-auto border-t border-black/5 dark:border-white/5">
+          <p>
+            <strong>Aviso de Salud:</strong> Las preparaciones botánicas y suplementos ofrecidos por TempleFit son complementos alimenticios y nutricionales; no constituyen medicamentos ni sustituyen el diagnóstico, prescripción o tratamiento médico profesional.
+          </p>
         </div>
 
       </div>

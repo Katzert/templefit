@@ -20,7 +20,7 @@ const OFFERS = [
       'Calistenia, Crossfit Funcional y Boxeo Ético',
       'Escuadrón Táctico de 12 atletas con capitán',
       'CristoFit Camp Sábados 06:00 AM (Plogging & Devocional)',
-      'Reset Circadiano (22:00 PM a 06:00 AM)',
+      'Reset Circadiano (22:00 a 06:00)',
       'Protocolo ElectroHidra isotónico post-entreno'
     ],
     whatsappMsg: '¡Hola Paulo! Quiero inscribirme al *Reto 21 Días = ÍNTEGROS* (200 Bs.). ¿Cómo reservo mi cupo en el escuadrón?'
@@ -38,7 +38,7 @@ const OFFERS = [
       'Acceso continuo a los 25 Escuadrones y turnos',
       'Progresión hacia Corona de Plata (Escuadrón Gedeón)',
       'Evaluación antropométrica y seguimiento mensual',
-      '20% de descuento en consumos del Snack Bar',
+      'Tarifas preferenciales en consumos del Snack Bar',
       'Talleres de Enfoque, Hábitos y Disciplina'
     ],
     whatsappMsg: '¡Hola Paulo! Quiero aprovechar la membresía *TRIMESTRAL ATLETA* (500 Bs. / 3 meses). ¿Cuáles son los métodos de pago?'
@@ -83,7 +83,7 @@ const OFFERS = [
 
 export default function OffersSection() {
   const handleSelectOffer = (msg: string) => {
-    window.open(`https://wa.me/59169127691?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/59169127691?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
   };
 
   return (

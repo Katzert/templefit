@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Brain, Heart, Lightbulb, Target, Award, Clock, ArrowRight, ShieldCheck, CheckCircle2, X, ZoomIn, Users, Coffee, ShoppingBag, Activity } from 'lucide-react';
@@ -103,6 +103,14 @@ const CERTIFICATES: Certificate[] = [
 export default function TrayectoriaPage() {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedCert(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const handleImgFallback = (e: React.SyntheticEvent<HTMLImageElement, Event>, relativePath: string) => {
     const target = e.currentTarget;
     const cleanPath = relativePath.startsWith('/') ? relativePath : `/${relativePath}`;
@@ -120,6 +128,8 @@ export default function TrayectoriaPage() {
           <img 
             src={getAssetPath('/dashboard/team_spirit.png')} 
             onError={(e) => handleImgFallback(e, '/dashboard/team_spirit.png')}
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover opacity-50 dark:opacity-45 filter contrast-115 scale-105" 
             alt="Entrenamiento en ventas - TEMPLEFIT" 
           />
@@ -182,6 +192,8 @@ export default function TrayectoriaPage() {
                     <img 
                       src={getAssetPath(src)} 
                       onError={(e) => handleImgFallback(e, src)}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       alt={`Paulo Gil en Acción ${i+1}`}
                     />
@@ -257,9 +269,20 @@ export default function TrayectoriaPage() {
                   Fundamentos de ventas, lenguaje corporal y protocolos de atención al cliente.
                 </p>
               </div>
-              <div className="pt-4 border-t border-black/5 dark:border-white/5">
-                <span className="text-3xl font-black text-temple-navy dark:text-white">450 Bs.</span>
-                <p className="text-[10px] text-slate-500 dark:text-gray-400 mt-1">Carga horaria: 40 horas académicas</p>
+              <div className="pt-4 border-t border-black/5 dark:border-white/5 space-y-4">
+                <div>
+                  <span className="text-3xl font-black text-temple-navy dark:text-white">450 Bs.</span>
+                  <p className="text-[10px] text-slate-500 dark:text-gray-400 mt-1">Carga horaria: 40 horas académicas</p>
+                </div>
+                <a
+                  href={`https://wa.me/59169127691?text=${encodeURIComponent('Hola Paulo, deseo inscribirme al Programa de Formación Nivel 1 (Iniciación - 450 Bs.). ¿Cuáles son las fechas disponibles?')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 bg-black/5 dark:bg-white/5 hover:bg-temple-gold hover:text-black text-slate-800 dark:text-white border border-black/10 dark:border-white/10 transition-all duration-300"
+                >
+                  <span>Inscribirme al Nivel 1</span>
+                  <ArrowRight size={13} />
+                </a>
               </div>
             </div>
 
@@ -275,9 +298,20 @@ export default function TrayectoriaPage() {
                   Cierre de ventas complejas, dirección de equipos y resolución de objeciones críticas.
                 </p>
               </div>
-              <div className="pt-4 border-t border-black/5 dark:border-white/5">
-                <span className="text-3xl font-black text-temple-gold">850 Bs.</span>
-                <p className="text-[10px] text-slate-500 dark:text-gray-400 mt-1">Carga horaria: 120 horas académicas</p>
+              <div className="pt-4 border-t border-black/5 dark:border-white/5 space-y-4">
+                <div>
+                  <span className="text-3xl font-black text-temple-gold">850 Bs.</span>
+                  <p className="text-[10px] text-slate-500 dark:text-gray-400 mt-1">Carga horaria: 120 horas académicas</p>
+                </div>
+                <a
+                  href={`https://wa.me/59169127691?text=${encodeURIComponent('Hola Paulo, deseo postular al Programa de Formación Nivel 2 (Avanzado Ejecutivo - 850 Bs.). ¿Cuáles son las fechas disponibles?')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-2.5 px-4 rounded-xl text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 bg-temple-gold hover:bg-temple-gold-bright text-black shadow-lg shadow-temple-gold/20 transition-all duration-300"
+                >
+                  <span>Inscribirme al Nivel 2</span>
+                  <ArrowRight size={13} />
+                </a>
               </div>
             </div>
 
@@ -290,9 +324,20 @@ export default function TrayectoriaPage() {
                   Programa completo de liderazgo, ventas, protocolo in situ y certificación técnica.
                 </p>
               </div>
-              <div className="pt-4 border-t border-black/5 dark:border-white/5">
-                <span className="text-3xl font-black text-temple-navy dark:text-white">1200 Bs.</span>
-                <p className="text-[10px] text-slate-500 dark:text-gray-400 mt-1">12 días Teoría + 9 días Práctica In Situ</p>
+              <div className="pt-4 border-t border-black/5 dark:border-white/5 space-y-4">
+                <div>
+                  <span className="text-3xl font-black text-temple-navy dark:text-white">1200 Bs.</span>
+                  <p className="text-[10px] text-slate-500 dark:text-gray-400 mt-1">12 días Teoría + 9 días Práctica In Situ</p>
+                </div>
+                <a
+                  href={`https://wa.me/59169127691?text=${encodeURIComponent('Hola Paulo, deseo información e inscripción para la Mentoría Integral Nivel 3 (1200 Bs.). ¿Cuáles son las fechas y plazas?')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 bg-black/5 dark:bg-white/5 hover:bg-temple-gold hover:text-black text-slate-800 dark:text-white border border-black/10 dark:border-white/10 transition-all duration-300"
+                >
+                  <span>Inscribirme a la Mentoría</span>
+                  <ArrowRight size={13} />
+                </a>
               </div>
             </div>
           </div>
@@ -309,6 +354,8 @@ export default function TrayectoriaPage() {
             <img 
               src={getAssetPath('/dashboard/media/media__1779142594726.jpg')} 
               onError={(e) => handleImgFallback(e, '/dashboard/media/media__1779142594726.jpg')}
+              loading="lazy"
+              decoding="async"
               className="w-full max-w-[280px] md:max-w-[340px] h-auto object-contain relative z-10 rounded-2xl shadow-2xl border-2 border-temple-gold/50 hover:scale-105 transition-transform duration-300" 
               alt="Certificación Oficial Paulo Gil Cuéllar - TEMPLEFIT"
             />
@@ -316,13 +363,13 @@ export default function TrayectoriaPage() {
 
           <div className="text-center space-y-6 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-serif font-black text-temple-navy dark:text-white uppercase tracking-tight">
-              CERTIFICACIÓN OFICIAL TEMPLEFIT
+              FORMACIÓN Y TRAYECTORIA PROFESIONAL
             </h2>
             <p className="text-temple-gold font-bold uppercase text-xs tracking-[0.25em]">
-              Entrenamiento Práctico en Ventas & Servicio
+              Entrenamiento Práctico, Liderazgo & Metodología
             </p>
             <p className="text-slate-600 dark:text-slate-400 text-xs uppercase tracking-widest">
-              ✦ Certificación con Resultados · 240 horas técnicas · Respaldo Ministerial R.M. 0259/2019
+              ✦ Formación Técnica y Liderazgo · Instructor Certificado IBTA (R.M. 0259/2019)
             </p>
             <div className="h-px w-20 bg-temple-gold/40 mx-auto" />
             <p className="text-temple-navy dark:text-white font-bold uppercase text-sm tracking-widest">
@@ -358,6 +405,8 @@ export default function TrayectoriaPage() {
                   <img 
                     src={getAssetPath(src)} 
                     onError={(e) => handleImgFallback(e, src)}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
                     alt={`Experiencia Paulo Gil ${i+1}`}
                   />
@@ -373,6 +422,8 @@ export default function TrayectoriaPage() {
                 <img 
                   src={getAssetPath('/dashboard/media/media__1779142694557.jpg')} 
                   onError={(e) => handleImgFallback(e, '/dashboard/media/media__1779142694557.jpg')}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" 
                   alt="Capacitación Gastronómica y Servicio"
                 />
@@ -384,6 +435,8 @@ export default function TrayectoriaPage() {
                 <img 
                   src={getAssetPath('/dashboard/media/media__1779142694661.jpg')} 
                   onError={(e) => handleImgFallback(e, '/dashboard/media/media__1779142694661.jpg')}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300" 
                   alt="Dirección de Garzones en Buffet"
                 />
@@ -444,13 +497,24 @@ export default function TrayectoriaPage() {
               {CERTIFICATES.map((cert) => (
                 <div 
                   key={cert.id} 
+                  role="button"
+                  tabIndex={0}
                   onClick={() => setSelectedCert(cert)}
-                  className="bg-white dark:bg-[#0C101A] border border-black/10 dark:border-white/10 hover:border-temple-gold transition-all duration-300 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between group shadow-lg hover:shadow-2xl hover:-translate-y-1"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setSelectedCert(cert);
+                    }
+                  }}
+                  aria-label={`Ampliar diploma: ${cert.title}`}
+                  className="bg-white dark:bg-[#0C101A] border border-black/10 dark:border-white/10 hover:border-temple-gold transition-all duration-300 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between group shadow-lg hover:shadow-2xl hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
                 >
                   <div className="aspect-[3/4] relative overflow-hidden bg-slate-100 dark:bg-black/60">
                     <img 
                       src={getAssetPath(cert.img)} 
                       onError={(e) => handleImgFallback(e, cert.img)}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
                       alt={cert.title}
                     />
@@ -599,6 +663,7 @@ export default function TrayectoriaPage() {
                 <img 
                   src={getAssetPath(selectedCert.img)} 
                   onError={(e) => handleImgFallback(e, selectedCert.img)}
+                  decoding="async"
                   className="w-full h-full object-contain rounded-xl" 
                   alt={`Diploma oficial: ${selectedCert.title}`} 
                 />

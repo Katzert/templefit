@@ -71,7 +71,8 @@ const jsonLd = {
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "BO",
-    "addressLocality": "Tarija"
+    "addressLocality": "Santa Cruz de la Sierra",
+    "addressRegion": "Santa Cruz"
   },
   "openingHours": "Mo-Sa 06:00-21:00",
   "url": "https://katzert.github.io/templefit/"

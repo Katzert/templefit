@@ -61,7 +61,7 @@ export default function DiagnosticWidget() {
   const openWhatsAppWithLead = () => {
     const plan = getRecommendedPlan();
     const message = `¡Hola Paulo! Acabo de completar mi evaluación en la web de TempleFit:\n\n*FICHA DE DIAGNÓSTICO*\n• *Nombre:* ${formData.fullName}\n• *Celular:* ${formData.phone}\n• *Edad:* ${formData.age ? formData.age + ' años' : 'N/A'} | *Peso:* ${formData.weight ? formData.weight + ' kg' : 'N/A'} | *Estatura:* ${formData.height ? formData.height + ' cm' : 'N/A'}\n• *Enfoque:* ${goal.toUpperCase()}\n• *Nivel Actual:* ${formData.activityLevel}\n• *Horario Preferido:* ${formData.preferredSchedule}\n• *Salud / Lesiones:* ${formData.injuries}\n• *Meta Concreta:* ${formData.specificGoal || 'Mejorar hábitos y disciplina'}\n\n*PLAN RECOMENDADO:* ${plan.title}\n\nQuiero coordinar mi semana de prueba y asegurar mi cupo.`;
-    window.open(`https://wa.me/59169127691?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://wa.me/59169127691?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
   };
 
   return (

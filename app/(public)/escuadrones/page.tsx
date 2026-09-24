@@ -109,6 +109,8 @@ export default function EscuadronesPage() {
             <img 
               src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=2069&auto=format&fit=crop" 
               alt="Escuadrón Entrenando"
+              loading="lazy"
+              decoding="async"
               className="relative w-full h-[520px] object-cover rounded-3xl border border-black/10 dark:border-white/10 shadow-2xl"
             />
             
@@ -297,6 +299,8 @@ export default function EscuadronesPage() {
                   <img 
                     src={exercise.img} 
                     alt={exercise.title} 
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider text-temple-gold border border-white/10">
@@ -371,7 +375,7 @@ export default function EscuadronesPage() {
               }
             ].map((camp, i) => (
               <motion.div key={i} variants={item} className="group relative h-96 rounded-3xl overflow-hidden cursor-pointer shadow-2xl border border-black/10 dark:border-white/10">
-                <img src={camp.img} alt={camp.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <img src={camp.img} alt={camp.title} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/60 to-transparent dark:from-[#07090E] dark:via-[#07090E]/60 dark:to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-left space-y-1">
                   <h3 className="text-lg font-black text-temple-navy dark:text-white uppercase tracking-wider">{camp.title}</h3>
