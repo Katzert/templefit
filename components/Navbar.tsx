@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from './ThemeToggle';
 import { getAssetPath } from '../lib/utils';
@@ -25,6 +25,22 @@ export default function Navbar() {
   const [logoFailed, setLogoFailed] = useState(false);
   const [triedFallback, setTriedFallback] = useState(false);
   const logoUrl = getAssetPath('/assets/img/logo-tf-abreviado.png');
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') setIsOpen(false);
+      };
+      window.addEventListener('keydown', handleEscape);
+      return () => {
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handleEscape);
+      };
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isOpen]);
 
   const isLinkActive = (href: string) => {
     if (href === '/') return pathname === '/';

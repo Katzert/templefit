@@ -272,14 +272,14 @@ export default function TiendaPage() {
                   <Activity size={24} />
                 </div>
                 <h3 className="text-lg font-bold text-temple-navy dark:text-white group-hover:text-temple-gold transition-colors">
-                  Test de Diagnóstico
+                  Evaluación Inicial
                 </h3>
                 <p className="text-xs text-slate-600 dark:text-gray-400 font-light mt-2 leading-relaxed">
                   Descubre tu nivel actual y coordina tu semana de prueba con Paulo directamente.
                 </p>
               </div>
               <div className="mt-6 flex items-center gap-2 text-xs font-bold text-amber-700 dark:text-temple-gold uppercase tracking-wider">
-                <span>Hacer el Test</span>
+                <span>Comenzar Evaluación</span>
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>

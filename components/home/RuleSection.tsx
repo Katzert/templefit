@@ -3,7 +3,7 @@ import { Sun, ArrowRight } from 'lucide-react';
 
 export default function RuleSection() {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-20 relative z-10">
+    <section id="regla" className="max-w-7xl mx-auto px-4 py-20 relative z-10 scroll-mt-24">
       <div className="p-8 md:p-14 rounded-[2rem] bg-white/80 dark:bg-gradient-to-r dark:from-[#0A0E17] dark:via-[#05070B] dark:to-[#0A0E17] border border-black/10 dark:border-white/5 shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden backdrop-blur-xl">
         
         {/* Glow effects */}

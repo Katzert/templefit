@@ -120,7 +120,7 @@ export default function EcosystemSection() {
   };
 
   return (
-    <section id="ecosistema" className="max-w-7xl mx-auto px-4 py-24 relative">
+    <section id="ecosistema" className="max-w-7xl mx-auto px-4 py-24 scroll-mt-24 relative">
       <div className="absolute top-0 right-0 w-[500px] max-w-full h-[500px] bg-temple-gold/5 dark:bg-white/5 rounded-full blur-[100px] pointer-events-none" />
       
       <div className="text-center space-y-4 mb-20 relative z-10">
@@ -185,7 +185,7 @@ export default function EcosystemSection() {
             </div>
 
             <div className="pt-5 border-t border-black/5 dark:border-white/10 flex items-center justify-between text-xs font-bold text-amber-700 dark:text-temple-gold-bright group-hover:translate-x-2 transition-transform duration-300">
-              <span className="tracking-wider uppercase">Ver Protocolo</span>
+              <span className="tracking-wider uppercase">Ver Detalles</span>
               <ChevronRight size={18} className="group-hover:scale-125 transition-transform" aria-hidden="true" />
             </div>
           </motion.div>
