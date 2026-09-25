@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, CheckCircle, Send, RotateCcw } from 'lucide-react';
+import { Check, ArrowRight, CheckCircle, Send, RotateCcw, Share2, Copy, CheckCheck } from 'lucide-react';
 import { db } from '../../lib/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 
@@ -10,6 +10,7 @@ export default function DiagnosticWidget() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [goal, setGoal] = useState<'fuerza' | 'habitos' | 'liderazgo'>('fuerza');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [copiedTest, setCopiedTest] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '', phone: '', age: '', weight: '', height: '',
     injuries: 'Ninguna (100% Sano)', preferredSchedule: 'Turno 06:00 AM (Reto 21 Días)',
@@ -62,6 +63,49 @@ export default function DiagnosticWidget() {
     const plan = getRecommendedPlan();
     const message = `¡Hola Paulo! Acabo de completar mi evaluación en la web de TempleFit:\n\n*FICHA DE DIAGNÓSTICO*\n• *Nombre:* ${formData.fullName}\n• *Celular:* ${formData.phone}\n• *Edad:* ${formData.age ? formData.age + ' años' : 'N/A'} | *Peso:* ${formData.weight ? formData.weight + ' kg' : 'N/A'} | *Estatura:* ${formData.height ? formData.height + ' cm' : 'N/A'}\n• *Enfoque:* ${goal.toUpperCase()}\n• *Nivel Actual:* ${formData.activityLevel}\n• *Horario Preferido:* ${formData.preferredSchedule}\n• *Salud / Lesiones:* ${formData.injuries}\n• *Meta Concreta:* ${formData.specificGoal || 'Mejorar hábitos y disciplina'}\n\n*PLAN RECOMENDADO:* ${plan.title}\n\nQuiero coordinar mi semana de prueba y asegurar mi cupo.`;
     window.open(`https://wa.me/59169127691?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+  };
+
+  const getTestShareText = () => {
+    const plan = getRecommendedPlan();
+    return `🏆 *TEMPLEFIT - FICHA DE DIAGNÓSTICO DEL ATLETA*\n\n` +
+      `• *Atleta:* ${formData.fullName}\n` +
+      `• *Teléfono:* ${formData.phone || 'N/A'}\n` +
+      `• *Edad:* ${formData.age ? formData.age + ' años' : 'N/A'} | *Peso:* ${formData.weight ? formData.weight + ' kg' : 'N/A'} | *Estatura:* ${formData.height ? formData.height + ' cm' : 'N/A'}\n` +
+      `• *Enfoque Principal:* ${goal.toUpperCase()}\n` +
+      `• *Nivel:* ${formData.activityLevel}\n` +
+      `• *Horario Preferido:* ${formData.preferredSchedule}\n` +
+      `• *Salud / Observaciones:* ${formData.injuries}\n` +
+      `• *Meta Específica:* ${formData.specificGoal || 'Cuerpo, mente y disciplina'}\n\n` +
+      `🎯 *PLAN RECOMENDADO:* ${plan.title}\n` +
+      `_${plan.desc}_\n\n` +
+      `📲 Web: https://katzert.github.io/templefit/`;
+  };
+
+  const handleShareTestGeneral = async () => {
+    const shareText = getTestShareText();
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: `Diagnóstico TempleFit - ${formData.fullName}`,
+          text: shareText,
+          url: 'https://katzert.github.io/templefit/#evaluacion'
+        });
+        return;
+      } catch (e) {
+        // User cancelled or share failed, fallback
+      }
+    }
+    // Fallback to WhatsApp general share
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleCopyTestSummary = () => {
+    const shareText = getTestShareText();
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(shareText);
+      setCopiedTest(true);
+      setTimeout(() => setCopiedTest(false), 2500);
+    }
   };
 
   return (
@@ -230,15 +274,60 @@ export default function DiagnosticWidget() {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button onClick={openWhatsAppWithLead} className="w-full sm:w-auto px-8 py-5 bg-gradient-to-r from-emerald-600 to-emerald-800 hover:from-emerald-500 hover:to-emerald-700 text-white font-black uppercase tracking-widest text-xs rounded-xl shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-500">
-                  <Send size={18} />
+              <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3">
+                <button
+                  type="button"
+                  onClick={openWhatsAppWithLead}
+                  className="w-full sm:w-auto px-6 py-4 bg-gradient-to-r from-emerald-600 to-emerald-800 hover:from-emerald-500 hover:to-emerald-700 text-white font-black uppercase tracking-widest text-xs rounded-xl shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-500"
+                >
+                  <Send size={16} />
                   <span>Enviar a WhatsApp Oficial</span>
                 </button>
 
-                <button onClick={() => { setStep(1); setFormData({ fullName: '', phone: '', age: '', weight: '', height: '', injuries: 'Ninguna (100% Sano)', preferredSchedule: 'Turno 06:00 AM (Reto 21 Días)', activityLevel: 'Principiante (1-2 días/sem)', daysAvailable: 'Lunes a Viernes', specificGoal: '' }); }} className="w-full sm:w-auto px-6 py-5 bg-transparent border border-black/10 dark:border-white/10 text-slate-600 dark:text-gray-400 font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-black/5 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-temple-gold dark:hover:text-white transition-colors flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold">
-                  <RotateCcw size={16} />
-                  <span>Reiniciar Test</span>
+                <button
+                  type="button"
+                  onClick={handleShareTestGeneral}
+                  className="w-full sm:w-auto px-5 py-4 bg-black/[0.05] dark:bg-white/[0.08] hover:bg-black/10 dark:hover:bg-white/15 text-slate-800 dark:text-white font-black uppercase tracking-widest text-xs rounded-xl border border-black/10 dark:border-white/10 transition-all flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
+                  title="Compartir por WhatsApp u otras aplicaciones"
+                >
+                  <Share2 size={16} className="text-amber-500 dark:text-temple-gold" />
+                  <span>Compartir Ficha</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleCopyTestSummary}
+                  className="w-full sm:w-auto px-5 py-4 bg-black/[0.05] dark:bg-white/[0.08] hover:bg-black/10 dark:hover:bg-white/15 text-slate-800 dark:text-white font-black uppercase tracking-widest text-xs rounded-xl border border-black/10 dark:border-white/10 transition-all flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
+                  title="Copiar resumen al portapapeles"
+                >
+                  {copiedTest ? (
+                    <>
+                      <CheckCheck size={16} className="text-emerald-500" />
+                      <span className="text-emerald-600 dark:text-emerald-400 font-bold">¡Copiado!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={16} className="text-amber-500 dark:text-temple-gold" />
+                      <span>Copiar Ficha</span>
+                    </>
+                  )}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setStep(1);
+                    setFormData({
+                      fullName: '', phone: '', age: '', weight: '', height: '',
+                      injuries: 'Ninguna (100% Sano)', preferredSchedule: 'Turno 06:00 AM (Reto 21 Días)',
+                      activityLevel: 'Principiante (1-2 días/sem)', daysAvailable: 'Lunes a Viernes',
+                      specificGoal: ''
+                    });
+                  }}
+                  className="w-full sm:w-auto px-4 py-4 bg-transparent border border-black/10 dark:border-white/10 text-slate-500 dark:text-gray-400 font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-black/5 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white transition-colors flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
+                >
+                  <RotateCcw size={15} />
+                  <span>Reiniciar</span>
                 </button>
               </div>
             </motion.div>
