@@ -40,7 +40,7 @@ export default function HeroSection() {
         {/* Official Registration Badge */}
         <motion.div variants={item} className="flex justify-center -mt-2 mb-1">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 dark:bg-temple-gold/15 border border-amber-600/30 dark:border-temple-gold/30 text-amber-900 dark:text-temple-gold-bright text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] shadow-sm">
-            <span>Registro para el Centro de Transformación</span>
+            <span>Centro de Entrenamiento TempleFit</span>
           </div>
         </motion.div>
 
@@ -72,7 +72,7 @@ export default function HeroSection() {
             className="min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 bg-black/5 dark:bg-white/5 text-temple-navy dark:text-white font-bold text-xs sm:text-sm md:text-base uppercase tracking-[0.1em] rounded-2xl border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2.5 group"
           >
             <Activity size={18} className="text-amber-600 dark:text-temple-gold group-hover:scale-110 transition-transform" />
-            <span>Test Diagnóstico</span>
+            <span>Evaluación Inicial</span>
           </a>
         </motion.div>
 

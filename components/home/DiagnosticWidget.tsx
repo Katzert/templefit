@@ -61,24 +61,34 @@ export default function DiagnosticWidget() {
 
   const openWhatsAppWithLead = () => {
     const plan = getRecommendedPlan();
-    const message = `¡Hola Paulo! Acabo de completar mi evaluación en la web de TempleFit:\n\n*FICHA DE DIAGNÓSTICO*\n• *Nombre:* ${formData.fullName}\n• *Celular:* ${formData.phone}\n• *Edad:* ${formData.age ? formData.age + ' años' : 'N/A'} | *Peso:* ${formData.weight ? formData.weight + ' kg' : 'N/A'} | *Estatura:* ${formData.height ? formData.height + ' cm' : 'N/A'}\n• *Enfoque:* ${goal.toUpperCase()}\n• *Nivel Actual:* ${formData.activityLevel}\n• *Horario Preferido:* ${formData.preferredSchedule}\n• *Salud / Lesiones:* ${formData.injuries}\n• *Meta Concreta:* ${formData.specificGoal || 'Mejorar hábitos y disciplina'}\n\n*PLAN RECOMENDADO:* ${plan.title}\n\nQuiero coordinar mi semana de prueba y asegurar mi cupo.`;
+    const message = `Hola Paulo, completé mi evaluación en la web de TempleFit:\n\n` +
+      `Nombre: ${formData.fullName}\n` +
+      `Teléfono: ${formData.phone || 'Sin registrar'}\n` +
+      `Datos: ${formData.age ? formData.age + ' años' : 'N/A'} | ${formData.weight ? formData.weight + ' kg' : 'N/A'} | ${formData.height ? formData.height + ' cm' : 'N/A'}\n` +
+      `Enfoque: ${goal === 'fuerza' ? 'Fuerza y acondicionamiento' : goal === 'habitos' ? 'Hábitos y disciplina' : 'Liderazgo y rendimiento'}\n` +
+      `Nivel actual: ${formData.activityLevel}\n` +
+      `Horario preferido: ${formData.preferredSchedule}\n` +
+      `Salud o lesiones: ${formData.injuries}\n` +
+      (formData.specificGoal ? `Meta personal: ${formData.specificGoal}\n` : '') +
+      `\nPlan recomendado: ${plan.title}\n` +
+      `Quiero coordinar mi semana de prueba en el gimnasio.`;
     window.open(`https://wa.me/59169127691?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
   };
 
   const getTestShareText = () => {
     const plan = getRecommendedPlan();
-    return `🏆 *TEMPLEFIT - FICHA DE DIAGNÓSTICO DEL ATLETA*\n\n` +
-      `• *Atleta:* ${formData.fullName}\n` +
-      `• *Teléfono:* ${formData.phone || 'N/A'}\n` +
-      `• *Edad:* ${formData.age ? formData.age + ' años' : 'N/A'} | *Peso:* ${formData.weight ? formData.weight + ' kg' : 'N/A'} | *Estatura:* ${formData.height ? formData.height + ' cm' : 'N/A'}\n` +
-      `• *Enfoque Principal:* ${goal.toUpperCase()}\n` +
-      `• *Nivel:* ${formData.activityLevel}\n` +
-      `• *Horario Preferido:* ${formData.preferredSchedule}\n` +
-      `• *Salud / Observaciones:* ${formData.injuries}\n` +
-      `• *Meta Específica:* ${formData.specificGoal || 'Cuerpo, mente y disciplina'}\n\n` +
-      `🎯 *PLAN RECOMENDADO:* ${plan.title}\n` +
-      `_${plan.desc}_\n\n` +
-      `📲 Web: https://katzert.github.io/templefit/`;
+    return `Ficha de evaluación - TempleFit\n\n` +
+      `Atleta: ${formData.fullName}\n` +
+      `Teléfono: ${formData.phone || 'N/A'}\n` +
+      `Datos: ${formData.age ? formData.age + ' años' : 'N/A'} | ${formData.weight ? formData.weight + ' kg' : 'N/A'} | ${formData.height ? formData.height + ' cm' : 'N/A'}\n` +
+      `Enfoque: ${goal === 'fuerza' ? 'Fuerza y acondicionamiento' : goal === 'habitos' ? 'Hábitos y disciplina' : 'Liderazgo y rendimiento'}\n` +
+      `Nivel: ${formData.activityLevel}\n` +
+      `Horario: ${formData.preferredSchedule}\n` +
+      `Salud: ${formData.injuries}\n` +
+      (formData.specificGoal ? `Meta: ${formData.specificGoal}\n` : '') +
+      `\nPlan recomendado: ${plan.title}\n` +
+      `${plan.desc}\n\n` +
+      `Web: https://katzert.github.io/templefit/`;
   };
 
   const handleShareTestGeneral = async () => {
@@ -86,7 +96,7 @@ export default function DiagnosticWidget() {
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({
-          title: `Diagnóstico TempleFit - ${formData.fullName}`,
+          title: `Evaluación TempleFit - ${formData.fullName}`,
           text: shareText,
           url: 'https://katzert.github.io/templefit/#evaluacion'
         });
@@ -126,12 +136,12 @@ export default function DiagnosticWidget() {
             <span className={step >= 3 ? "text-amber-800 dark:text-temple-gold-bright" : ""} aria-current={step === 3 ? "step" : undefined}>3. Plan</span>
           </div>
           <h3 className="text-3xl md:text-5xl font-serif font-black uppercase text-slate-900 dark:text-white tracking-tight text-balance">
-            Test de Diagnóstico <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-temple-gold dark:from-temple-gold-bright dark:to-temple-gold">del Atleta</span>
+            Evaluación Inicial <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-temple-gold dark:from-temple-gold-bright dark:to-temple-gold">del Atleta</span>
           </h3>
-          <p className="text-sm text-slate-600 dark:text-gray-400 max-w-xl mx-auto font-light leading-relaxed text-pretty">
-            {step === 1 && "Selecciona el área principal en la que deseas enfocarte."}
-            {step === 2 && "Completa tus datos. Esta información servirá para diseñar tu plan."}
-            {step === 3 && "Diagnóstico generado. Envía tu ficha a WhatsApp para agendar tu prueba."}
+          <p className="text-sm text-slate-600 dark:text-gray-400 max-w-xl mx-auto font-normal leading-relaxed text-pretty">
+            {step === 1 && "Elige lo que buscas mejorar primero."}
+            {step === 2 && "Completa tus datos para saber qué grupo y horario se adaptan mejor a ti."}
+            {step === 3 && "Listo. Envía tu ficha por WhatsApp o cópiala para coordinar tu semana de prueba."}
           </p>
         </div>
 
