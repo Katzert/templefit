@@ -325,7 +325,7 @@ export default function EscuadronesPage() {
                   </p>
 
                   <p className="text-xs text-slate-600 dark:text-gray-400 italic bg-black/[0.03] dark:bg-white/[0.03] p-2.5 rounded-lg border border-black/5 dark:border-white/5">
-                    💡 <span className="font-semibold">Clave técnica:</span> "{exercise.cue}"
+                    💡 <span className="font-semibold">Clave técnica:</span> &quot;{exercise.cue}&quot;
                   </p>
                 </div>
               </div>

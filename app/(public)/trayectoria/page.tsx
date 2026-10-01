@@ -148,7 +148,7 @@ export default function TrayectoriaPage() {
               
               <div className="border-l-4 border-temple-gold pl-6 space-y-4">
                 <p className="text-xl md:text-2xl text-slate-800 dark:text-slate-100 font-medium italic leading-relaxed">
-                  "El servicio de excelencia y la disciplina no son casualidad: se forman con preparación real."
+                  &quot;El servicio de excelencia y la disciplina no son casualidad: se forman con preparación real.&quot;
                 </p>
                 <p className="text-xs md:text-sm text-temple-gold uppercase tracking-[0.2em] font-bold">
                   Fundador & Lead Coach: Paulo Alberto Gil Cuéllar
@@ -326,11 +326,11 @@ export default function TrayectoriaPage() {
               </div>
               <div className="pt-4 border-t border-black/5 dark:border-white/5 space-y-4">
                 <div>
-                  <span className="text-3xl font-black text-temple-navy dark:text-white">1200 Bs.</span>
+                  <span className="text-3xl font-black text-temple-navy dark:text-white">1.200 Bs.</span>
                   <p className="text-[10px] text-slate-500 dark:text-gray-400 mt-1">12 días Teoría + 9 días Práctica In Situ</p>
                 </div>
                 <a
-                  href={`https://wa.me/59169127691?text=${encodeURIComponent('Hola Paulo, deseo información e inscripción para la Mentoría Integral Nivel 3 (1200 Bs.). ¿Cuáles son las fechas y plazas?')}`}
+                  href={`https://wa.me/59169127691?text=${encodeURIComponent('Hola Paulo, deseo información e inscripción para la Mentoría Integral Nivel 3 (1.200 Bs.). ¿Cuáles son las fechas y plazas?')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 bg-black/5 dark:bg-white/5 hover:bg-temple-gold hover:text-black text-slate-800 dark:text-white border border-black/10 dark:border-white/10 transition-all duration-300"
@@ -376,7 +376,7 @@ export default function TrayectoriaPage() {
               Paulo Alberto Gil Cuéllar · Fundador & Lead Coach
             </p>
             <p className="text-slate-800 dark:text-slate-200 italic font-medium text-lg border-l-4 border-r-4 border-temple-gold px-6 py-2 inline-block">
-              "Te llevaremos a la excelencia profesional mediante resultados, no por diplomas."
+              &quot;Te llevaremos a la excelencia profesional mediante resultados, no por diplomas.&quot;
             </p>
           </div>
           
