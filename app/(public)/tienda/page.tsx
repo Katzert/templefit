@@ -12,14 +12,35 @@ import { getAssetPath } from '../../../lib/utils';
 const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.04 } } };
 const item = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.2 } } };
 
-function getCanonicalProductKey(nameOrTitle: string, id?: string): string {
-  if (!nameOrTitle && !id) return '';
-  const s = (nameOrTitle || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  const idStr = (id || '').toLowerCase();
+function isItemVisible(item: any): boolean {
+  if (!item) return false;
+  if (item.active === false) return false;
+  const status = typeof item.status === 'string' ? item.status.toLowerCase().trim() : '';
+  if (status === 'hidden' || status === 'archived' || status === 'draft' || status === 'deleted') return false;
+  return true;
+}
+
+function parseSafePrice(price: any, fallbackPrice: number = 0): number {
+  if (typeof price === 'number') return isFinite(price) ? price : fallbackPrice;
+  if (typeof price === 'string') {
+    const trimmed = price.trim();
+    if (!trimmed) return fallbackPrice;
+    const n = Number(trimmed);
+    return isFinite(n) ? n : fallbackPrice;
+  }
+  return fallbackPrice;
+}
+
+function getCanonicalProductKey(nameOrTitle: any, id?: any): string {
+  const nameStr = typeof nameOrTitle === 'string' ? nameOrTitle : (nameOrTitle != null ? String(nameOrTitle) : '');
+  const idRaw = typeof id === 'string' ? id : (id != null ? String(id) : '');
+  if (!nameStr && !idRaw) return '';
+  const s = nameStr.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const idStr = idRaw.toLowerCase();
 
   // Explicit official catalog canonical matching to avoid substring collisions
   if ((s.includes('polera') && (s.includes('oficial') || s.includes('templefit') || s.includes('algodon'))) || idStr === 'polera-oficial') return 'polera-oficial';
-  if ((s.includes('short') && (s.includes('tactico') || s.includes('oficial') || s.includes('templefit') || s.includes('deportiv'))) || idStr === 'shorts-oficial') return 'shorts-oficial';
+  if ((s.includes('short') && (s.includes('tactico') || s.includes('oficial') || s.includes('templefit') || s.includes('deportiv'))) || idStr === 'shorts-oficial' || idStr === 'short-oficial') return 'shorts-oficial';
   if (((s.includes('hoodie') || s.includes('canguro')) && (s.includes('oficial') || s.includes('templefit'))) || idStr === 'hoodie-canguro') return 'hoodie-canguro';
   if (s.includes('ginkgo') || idStr === 'ginkgo-biloba') return 'ginkgo-biloba';
   if ((s.includes('coco') && (s.includes('oleo') || s.includes('aceite'))) || idStr === 'oleo-coco') return 'oleo-coco';
@@ -28,16 +49,22 @@ function getCanonicalProductKey(nameOrTitle: string, id?: string): string {
   if ((s.includes('omega') && (s.includes('3') || s.includes('pescado'))) || idStr === 'omega3-pescado') return 'omega3-pescado';
   if ((s.includes('levadura') && s.includes('cerveza')) || idStr === 'levadura-cerveza') return 'levadura-cerveza';
   if (s.includes('curcuma') || idStr === 'curcuma-cupesi') return 'curcuma-cupesi';
-  if (s.includes('b12') || idStr === 'complejo-b12') return 'complejo-b12';
+  if (s.includes('b12') || s.includes('b-12') || idStr === 'complejo-b12') return 'complejo-b12';
   if (s.includes('reumasan') || idStr === 'reumasan-articular') return 'reumasan-articular';
   if ((s.includes('sal') && s.includes('marin')) || idStr === 'sal-marina') return 'sal-marina';
   if (s.includes('pudin') || s.includes('pudding') || idStr === 'pudin-shake') return 'pudin-shake';
   if (s.includes('panqueque') || idStr === 'panqueque-shake') return 'panqueque-shake';
   if (s.includes('masaje') || idStr === 'masaje-recuperacion') return 'masaje-recuperacion';
-  if ((s.includes('catering') || s.includes('abuela')) || idStr === 'catering-abuelafit') return 'catering-abuelafit';
-  if (s.includes('reto') && s.includes('21')) return 'reto-21-dias';
-  if (s.includes('trimestral') || idStr === 'trimestral-atleta') return 'trimestral-atleta';
+  if ((s.includes('catering') && s.includes('abuela')) || s.includes('abuela fit') || idStr === 'catering-abuelafit') return 'catering-abuelafit';
+  if ((s.includes('reto') && (s.includes('21 dias') || s.includes('21 días') || s.includes('21-dias'))) || idStr === 'reto-21-dias') return 'reto-21-dias';
+  if ((s.includes('trimestral') && s.includes('atleta')) || idStr === 'trimestral-atleta') return 'trimestral-atleta';
   if (s.includes('eage') || s.includes('e.a.g.e') || idStr === 'programa-eage') return 'programa-eage';
+
+  // Snack bar & recipes canonical keys
+  if (s.includes('electrohidra') || s.includes('electrohydra') || idStr.includes('electrohidra') || idStr.includes('electrohydra')) return 'electrohidra-elite';
+  if (s.includes('electrodetox') || idStr.includes('electrodetox')) return 'electrodetox-blast';
+  if ((s.includes('smoothie') && s.includes('salomon')) || idStr === 'smoothie-salomon') return 'smoothie-salomon';
+  if ((s.includes('bowl') && s.includes('guerrero')) || idStr === 'bowl-guerrero-elias') return 'bowl-guerrero-elias';
 
   return s.replace(/[^a-z0-9]/g, '');
 }
@@ -47,9 +74,9 @@ function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
   const showcaseMap = new Map<string, any>();
   if (Array.isArray(showcase)) {
     showcase.forEach(s => {
-      if (s && (s.title || s.name) && s.status !== 'hidden' && s.active !== false) {
-        const title = (s.title || s.name || '').trim();
-        if (!title) return;
+      if (isItemVisible(s)) {
+        const title = typeof s.title === 'string' ? s.title.trim() : typeof s.name === 'string' ? s.name.trim() : '';
+        if (!title && !s.id) return;
         const canonKey = getCanonicalProductKey(title, s.id);
         if (canonKey) {
           showcaseMap.set(canonKey, s);
@@ -80,9 +107,7 @@ function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
         resolvedImage = d.image;
       }
 
-      const priceVal = typeof s.price === 'number'
-        ? s.price
-        : (s.price !== undefined && s.price !== null && s.price !== '' && !isNaN(Number(s.price)) ? Number(s.price) : d.price);
+      const priceVal = parseSafePrice(s.price, d.price);
 
       result.push({
         id: d.id,
@@ -100,30 +125,49 @@ function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
   // 2. Append any extra novel products from showcase that weren't in defaults
   if (Array.isArray(showcase)) {
     showcase.forEach(s => {
-      if (s && (s.title || s.name) && s.status !== 'hidden' && s.active !== false) {
-        const title = (s.title || s.name || '').trim();
-        if (!title) return;
+      if (isItemVisible(s)) {
+        const title = typeof s.title === 'string' ? s.title.trim() : typeof s.name === 'string' ? s.name.trim() : '';
+        if (!title && !s.id) return;
         const canonKey = getCanonicalProductKey(title, s.id);
         if (!canonKey || processedKeys.has(canonKey)) return;
         processedKeys.add(canonKey);
 
-        let category = s.category || (s.type === 'recipe' ? 'Nutrición' : s.type === 'apparel' ? 'Textil' : s.type === 'membership' ? 'Membresía' : s.type === 'service' ? 'Servicio' : 'Suplemento');
-        const priceVal = typeof s.price === 'number'
-          ? s.price
-          : (s.price !== undefined && s.price !== null && s.price !== '' && !isNaN(Number(s.price)) ? Number(s.price) : 0);
+        const rawType = typeof s.type === 'string' ? s.type.toLowerCase().trim() : '';
+        const rawCat = typeof s.category === 'string' ? s.category.toLowerCase().trim() : '';
+        let category = s.category;
+        if (!category) {
+          if (rawType === 'recipe' || rawCat.includes('nutri') || rawCat.includes('snack')) category = 'Nutrición';
+          else if (rawType === 'apparel' || rawCat.includes('textil') || rawCat.includes('ropa')) category = 'Textil';
+          else if (rawType === 'membership' || rawCat.includes('membres')) category = 'Membresía';
+          else if (rawType === 'service' || rawCat.includes('serv')) category = 'Servicio';
+          else category = 'Suplemento';
+        }
 
-        let fallbackImage = '/images/templefit_polera.webp';
-        if (category === 'Nutrición') fallbackImage = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop';
-        else if (category === 'Suplemento') fallbackImage = 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?q=80&w=800&auto=format&fit=crop';
-        else if (category === 'Membresía') fallbackImage = 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop';
+        const priceVal = parseSafePrice(s.price, 0);
+
+        let resolvedImage = s.imageUrl || s.image;
+        if (canonKey === 'electrohidra-elite' && (!resolvedImage || resolvedImage.includes('unsplash.com'))) {
+          resolvedImage = '/images/templefit_electrohidra.webp';
+        } else if (canonKey === 'electrodetox-blast' && (!resolvedImage || resolvedImage.includes('unsplash.com'))) {
+          resolvedImage = '/images/templefit_electrodetox.webp';
+        } else if (canonKey === 'smoothie-salomon' && !resolvedImage) {
+          resolvedImage = 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?q=80&w=800&auto=format&fit=crop';
+        } else if (canonKey === 'bowl-guerrero-elias' && !resolvedImage) {
+          resolvedImage = 'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?q=80&w=800&auto=format&fit=crop';
+        } else if (!resolvedImage) {
+          if (category === 'Nutrición') resolvedImage = '/images/templefit_electrohidra.webp';
+          else if (category === 'Suplemento') resolvedImage = '/images/templefit_glutamina.webp';
+          else if (category === 'Membresía') resolvedImage = 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop';
+          else resolvedImage = '/images/templefit_polera.webp';
+        }
 
         result.push({
           id: s.id ? String(s.id) : `showcase-${canonKey}`,
-          name: title,
+          name: title || (canonKey.charAt(0).toUpperCase() + canonKey.slice(1)),
           price: priceVal,
           category,
           description: s.description || '',
-          image: s.imageUrl || s.image || fallbackImage
+          image: resolvedImage
         });
       }
     });
@@ -147,7 +191,7 @@ export default function TiendaPage() {
           const inventorySource = Array.isArray(data.inventoryPublic) ? data.inventoryPublic : Array.isArray(data.inventory) ? data.inventory : [];
           
           inventorySource.forEach((inv: any) => {
-            if (!inv || !inv.name || inv.status === 'hidden' || inv.active === false) return;
+            if (!isItemVisible(inv) || !inv.name) return;
             const invCanon = getCanonicalProductKey(inv.name, inv.id);
             const exists = showcaseList.some(s => s.id === inv.id || getCanonicalProductKey(s.title || s.name, s.id) === invCanon);
             if (!exists) {
@@ -171,7 +215,7 @@ export default function TiendaPage() {
               showcaseList.push({
                 id: inv.id,
                 title: inv.name,
-                price: inv.price || inv.cost || 0,
+                price: parseSafePrice(inv.price ?? inv.cost, 0),
                 type: mappedType,
                 category: mappedCategory,
                 description: `Disponible en tienda y barra física TempleFit. Stock: ${inv.stock ?? 0} unidades.`,

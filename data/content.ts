@@ -127,7 +127,7 @@ export const products = [
     price: 150,
     category: "Suplemento",
     description: "Aminoácido puro de grado alimenticio para apoyo nutricional en la recuperación post-entrenamiento.",
-    image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?q=80&w=800&auto=format&fit=crop"
+    image: "/images/templefit_glutamina.webp"
   },
   {
     id: "omega3-pescado",
@@ -135,7 +135,7 @@ export const products = [
     price: 10,
     category: "Suplemento",
     description: "Suplemento alimenticio con ácidos grasos esenciales para complementar la nutrición diaria del atleta. Consulte a su médico.",
-    image: "https://images.unsplash.com/photo-1577401239170-897942555fb3?q=80&w=800&auto=format&fit=crop"
+    image: "/images/templefit_omega3.webp"
   },
   {
     id: "levadura-cerveza",
@@ -143,7 +143,7 @@ export const products = [
     price: 85,
     category: "Suplemento",
     description: "Aporte natural de vitaminas del complejo B, cromo y proteínas para recuperación muscular.",
-    image: "https://images.unsplash.com/photo-1509358271058-acd22cc93898?q=80&w=800&auto=format&fit=crop"
+    image: "/images/templefit_levadura.webp"
   },
   {
     id: "curcuma-cupesi",
@@ -151,7 +151,7 @@ export const products = [
     price: 35,
     category: "Suplemento",
     description: "Especia botánica natural originaria de la Chiquitanía para preparación de infusiones y condimento saludable.",
-    image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=800&auto=format&fit=crop"
+    image: "/images/templefit_curcuma.webp"
   },
   {
     id: "complejo-b12",
@@ -244,7 +244,7 @@ export const recipes = [
       "Consume antes y durante el entrenamiento de alta intensidad."
     ],
     macros: { calories: 190, protein: 0, fat: 0, carbs: 48 },
-    image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=800&auto=format&fit=crop"
+    image: "/images/templefit_electrohidra.webp"
   },
   {
     id: "electrodetox-blast",
@@ -269,7 +269,7 @@ export const recipes = [
       "Consumir en ayunas o en ventanas de descanso activo sin miel ni edulcorantes."
     ],
     macros: { calories: 35, protein: 1, fat: 0, carbs: 7 },
-    image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=800&auto=format&fit=crop"
+    image: "/images/templefit_electrodetox.webp"
   },
   {
     id: "smoothie-salomon",
