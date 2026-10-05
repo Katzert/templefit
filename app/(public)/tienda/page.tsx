@@ -13,30 +13,31 @@ const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { st
 const item = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.2 } } };
 
 function getCanonicalProductKey(nameOrTitle: string, id?: string): string {
-  if (!nameOrTitle) return '';
-  const s = nameOrTitle.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  if (!nameOrTitle && !id) return '';
+  const s = (nameOrTitle || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   const idStr = (id || '').toLowerCase();
 
-  if (s.includes('polera') || idStr.includes('polera')) return 'polera-oficial';
-  if (s.includes('short') || idStr.includes('short')) return 'shorts-oficial';
-  if (s.includes('hoodie') || s.includes('canguro') || idStr.includes('hoodie')) return 'hoodie-canguro';
-  if (s.includes('ginkgo') || idStr.includes('ginkgo')) return 'ginkgo-biloba';
-  if (s.includes('coco') || idStr.includes('coco')) return 'oleo-coco';
-  if (s.includes('colageno') || idStr.includes('colageno')) return 'colageno-hidrolizado';
-  if (s.includes('glutamina') || idStr.includes('glutamina')) return 'glutamina-pura';
-  if (s.includes('omega') || idStr.includes('omega')) return 'omega3-pescado';
-  if (s.includes('levadura') || idStr.includes('levadura')) return 'levadura-cerveza';
-  if (s.includes('curcuma') || idStr.includes('curcuma')) return 'curcuma-cupesi';
-  if (s.includes('b12') || idStr.includes('b12')) return 'complejo-b12';
-  if (s.includes('reumasan') || idStr.includes('reumasan')) return 'reumasan-articular';
-  if ((s.includes('sal') && s.includes('marin')) || idStr.includes('sal-marina')) return 'sal-marina';
-  if (s.includes('pudin') || s.includes('pudding') || idStr.includes('pudin')) return 'pudin-shake';
-  if (s.includes('panqueque') || idStr.includes('panqueque')) return 'panqueque-shake';
-  if (s.includes('masaje') || idStr.includes('masaje')) return 'masaje-recuperacion';
-  if (s.includes('catering') || s.includes('abuela') || idStr.includes('catering')) return 'catering-abuela';
+  // Explicit official catalog canonical matching to avoid substring collisions
+  if ((s.includes('polera') && (s.includes('oficial') || s.includes('templefit') || s.includes('algodon'))) || idStr === 'polera-oficial') return 'polera-oficial';
+  if ((s.includes('short') && (s.includes('tactico') || s.includes('oficial') || s.includes('templefit') || s.includes('deportiv'))) || idStr === 'shorts-oficial') return 'shorts-oficial';
+  if (((s.includes('hoodie') || s.includes('canguro')) && (s.includes('oficial') || s.includes('templefit'))) || idStr === 'hoodie-canguro') return 'hoodie-canguro';
+  if (s.includes('ginkgo') || idStr === 'ginkgo-biloba') return 'ginkgo-biloba';
+  if ((s.includes('coco') && (s.includes('oleo') || s.includes('aceite'))) || idStr === 'oleo-coco') return 'oleo-coco';
+  if ((s.includes('colageno') && s.includes('hidrolizad')) || idStr === 'colageno-hidrolizado') return 'colageno-hidrolizado';
+  if (s.includes('glutamina') || idStr === 'glutamina-pura') return 'glutamina-pura';
+  if ((s.includes('omega') && (s.includes('3') || s.includes('pescado'))) || idStr === 'omega3-pescado') return 'omega3-pescado';
+  if ((s.includes('levadura') && s.includes('cerveza')) || idStr === 'levadura-cerveza') return 'levadura-cerveza';
+  if (s.includes('curcuma') || idStr === 'curcuma-cupesi') return 'curcuma-cupesi';
+  if (s.includes('b12') || idStr === 'complejo-b12') return 'complejo-b12';
+  if (s.includes('reumasan') || idStr === 'reumasan-articular') return 'reumasan-articular';
+  if ((s.includes('sal') && s.includes('marin')) || idStr === 'sal-marina') return 'sal-marina';
+  if (s.includes('pudin') || s.includes('pudding') || idStr === 'pudin-shake') return 'pudin-shake';
+  if (s.includes('panqueque') || idStr === 'panqueque-shake') return 'panqueque-shake';
+  if (s.includes('masaje') || idStr === 'masaje-recuperacion') return 'masaje-recuperacion';
+  if ((s.includes('catering') || s.includes('abuela')) || idStr === 'catering-abuelafit') return 'catering-abuelafit';
   if (s.includes('reto') && s.includes('21')) return 'reto-21-dias';
-  if (s.includes('trimestral') || idStr.includes('trimestral')) return 'trimestral-atleta';
-  if (s.includes('eage') || s.includes('e.a.g.e') || idStr.includes('eage')) return 'programa-eage';
+  if (s.includes('trimestral') || idStr === 'trimestral-atleta') return 'trimestral-atleta';
+  if (s.includes('eage') || s.includes('e.a.g.e') || idStr === 'programa-eage') return 'programa-eage';
 
   return s.replace(/[^a-z0-9]/g, '');
 }
@@ -46,8 +47,9 @@ function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
   const showcaseMap = new Map<string, any>();
   if (Array.isArray(showcase)) {
     showcase.forEach(s => {
-      if (s && (s.title || s.name) && s.status !== 'hidden') {
+      if (s && (s.title || s.name) && s.status !== 'hidden' && s.active !== false) {
         const title = (s.title || s.name || '').trim();
+        if (!title) return;
         const canonKey = getCanonicalProductKey(title, s.id);
         if (canonKey) {
           showcaseMap.set(canonKey, s);
@@ -66,17 +68,18 @@ function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
     const s = showcaseMap.get(canonKey);
     if (s) {
       let resolvedImage = s.imageUrl || s.image;
-      if (
-        !resolvedImage ||
-        d.category === 'Textil' ||
-        resolvedImage.includes('unsplash.com/photo-1579722820308-d74e571900a9') ||
-        resolvedImage.includes('unsplash.com/photo-1521572267360-ee0c2909d518') ||
-        resolvedImage.includes('unsplash.com/photo-1591195853828-11db59a44f6b') ||
-        resolvedImage.includes('unsplash.com/photo-1556905055-8f358a7a47b2') ||
-        resolvedImage.includes('unsplash.com/photo-1578768079052-aa76e520028b')
-      ) {
+      const isExternalStock = !resolvedImage ||
+        resolvedImage.includes('unsplash.com') ||
+        resolvedImage.includes('pexels.com') ||
+        resolvedImage.includes('pixabay.com');
+
+      // Preserve authentic local WebP for official apparel and local products
+      if (isExternalStock && (d.category === 'Textil' || (typeof d.image === 'string' && d.image.startsWith('/images/')))) {
+        resolvedImage = d.image;
+      } else if (!resolvedImage) {
         resolvedImage = d.image;
       }
+
       const priceVal = typeof s.price === 'number'
         ? s.price
         : (s.price !== undefined && s.price !== null && s.price !== '' && !isNaN(Number(s.price)) ? Number(s.price) : d.price);
@@ -97,16 +100,22 @@ function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
   // 2. Append any extra novel products from showcase that weren't in defaults
   if (Array.isArray(showcase)) {
     showcase.forEach(s => {
-      if (s && (s.title || s.name) && s.status !== 'hidden') {
+      if (s && (s.title || s.name) && s.status !== 'hidden' && s.active !== false) {
         const title = (s.title || s.name || '').trim();
+        if (!title) return;
         const canonKey = getCanonicalProductKey(title, s.id);
         if (!canonKey || processedKeys.has(canonKey)) return;
         processedKeys.add(canonKey);
 
-        let category = s.category || (s.type === 'recipe' ? 'Nutrición' : s.type === 'apparel' ? 'Textil' : 'Suplemento');
+        let category = s.category || (s.type === 'recipe' ? 'Nutrición' : s.type === 'apparel' ? 'Textil' : s.type === 'membership' ? 'Membresía' : s.type === 'service' ? 'Servicio' : 'Suplemento');
         const priceVal = typeof s.price === 'number'
           ? s.price
           : (s.price !== undefined && s.price !== null && s.price !== '' && !isNaN(Number(s.price)) ? Number(s.price) : 0);
+
+        let fallbackImage = '/images/templefit_polera.webp';
+        if (category === 'Nutrición') fallbackImage = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop';
+        else if (category === 'Suplemento') fallbackImage = 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?q=80&w=800&auto=format&fit=crop';
+        else if (category === 'Membresía') fallbackImage = 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop';
 
         result.push({
           id: s.id ? String(s.id) : `showcase-${canonKey}`,
@@ -114,7 +123,7 @@ function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
           price: priceVal,
           category,
           description: s.description || '',
-          image: s.imageUrl || s.image || '/images/squad_training.webp'
+          image: s.imageUrl || s.image || fallbackImage
         });
       }
     });
@@ -138,14 +147,33 @@ export default function TiendaPage() {
           const inventorySource = Array.isArray(data.inventoryPublic) ? data.inventoryPublic : Array.isArray(data.inventory) ? data.inventory : [];
           
           inventorySource.forEach((inv: any) => {
+            if (!inv || !inv.name || inv.status === 'hidden' || inv.active === false) return;
             const invCanon = getCanonicalProductKey(inv.name, inv.id);
             const exists = showcaseList.some(s => s.id === inv.id || getCanonicalProductKey(s.title || s.name, s.id) === invCanon);
-            if (inv && inv.id && inv.name && !exists) {
+            if (!exists) {
+              const rawCat = (inv.category || '').toLowerCase();
+              let mappedType: string = 'apparel';
+              let mappedCategory: string = 'Textil';
+              if (rawCat === 'snack' || rawCat === 'recipe' || rawCat === 'nutricion' || rawCat === 'nutrición') {
+                mappedType = 'recipe';
+                mappedCategory = 'Nutrición';
+              } else if (rawCat === 'supplement' || rawCat === 'suplemento' || rawCat === 'botica') {
+                mappedType = 'supplement';
+                mappedCategory = 'Suplemento';
+              } else if (rawCat === 'service' || rawCat === 'servicio') {
+                mappedType = 'service';
+                mappedCategory = 'Servicio';
+              } else if (rawCat === 'membership' || rawCat === 'membresia' || rawCat === 'membresía') {
+                mappedType = 'membership';
+                mappedCategory = 'Membresía';
+              }
+
               showcaseList.push({
                 id: inv.id,
                 title: inv.name,
                 price: inv.price || inv.cost || 0,
-                type: inv.category === 'snack' ? 'recipe' : 'apparel',
+                type: mappedType,
+                category: mappedCategory,
                 description: `Disponible en tienda y barra física TempleFit. Stock: ${inv.stock ?? 0} unidades.`,
                 imageUrl: inv.imageUrl
               });
@@ -260,7 +288,8 @@ export default function TiendaPage() {
                     width={500}
                     height={500}
                     onError={(e) => {
-                      e.currentTarget.src = getAssetPath('/images/squad_training.webp');
+                      const fb = prod.category === 'Textil' ? '/images/templefit_polera.webp' : '/images/squad_training.webp';
+                      e.currentTarget.src = getAssetPath(fb);
                     }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
                   />
