@@ -331,7 +331,7 @@ export default function EscuadronesPage() {
               </div>
 
               <div className="p-6 pt-0 border-t border-black/5 dark:border-white/5 mt-3">
-                <span className="text-[10px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-widest block text-center pt-3">
+                <span className="text-[10px] font-bold text-slate-700 dark:text-gray-300 uppercase tracking-widest block text-center pt-3">
                   Evaluado en CristoFit Camp los Sábados
                 </span>
               </div>
@@ -395,7 +395,7 @@ export default function EscuadronesPage() {
               <Send size={16} />
               <span>Postular a un Escuadrón con Paulo</span>
             </a>
-            <p className="text-[10px] text-slate-500 dark:text-gray-500 uppercase tracking-widest font-black">Cupos limitados a 12 personas por grupo</p>
+            <p className="text-[10px] text-slate-700 dark:text-gray-300 uppercase tracking-widest font-black">Cupos limitados a 12 personas por grupo</p>
           </motion.div>
         </div>
       </section>

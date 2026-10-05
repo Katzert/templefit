@@ -210,22 +210,22 @@ export default function RecetasPage() {
                 {/* Macros Preview */}
                 <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 text-center text-xs group-hover:bg-black/[0.04] dark:group-hover:bg-white/[0.05] transition-colors">
                   <div>
-                    <span className="text-[9px] uppercase text-slate-500 dark:text-gray-500 block mb-0.5">Calorías</span>
+                    <span className="text-[9px] uppercase text-slate-700 dark:text-gray-300 block mb-0.5">Calorías</span>
                     <span className="font-black text-temple-navy dark:text-white drop-shadow-sm">{recipe.macros?.calories || 0}</span>
                   </div>
                   <div>
-                    <span className="text-[9px] uppercase text-slate-500 dark:text-gray-500 block mb-0.5">Proteína</span>
+                    <span className="text-[9px] uppercase text-slate-700 dark:text-gray-300 block mb-0.5">Proteína</span>
                     <span className="font-black text-temple-gold drop-shadow-sm">{recipe.macros?.protein || 0}g</span>
                   </div>
                   <div>
-                    <span className="text-[9px] uppercase text-slate-500 dark:text-gray-500 block mb-0.5">Tiempo</span>
+                    <span className="text-[9px] uppercase text-slate-700 dark:text-gray-300 block mb-0.5">Tiempo</span>
                     <span className="font-black text-slate-700 dark:text-gray-300 drop-shadow-sm">{recipe.time || 0}m</span>
                   </div>
                 </div>
 
                 <div className="pt-2 border-t border-black/5 dark:border-white/5 flex items-center justify-between">
                   <div>
-                    <span className="text-[9px] uppercase text-slate-500 dark:text-gray-500 font-bold block">Snack Bar</span>
+                    <span className="text-[9px] uppercase text-slate-700 dark:text-gray-300 font-bold block">Snack Bar</span>
                     <span className="text-base font-black text-temple-navy dark:text-white">
                       {recipe.suggestedPrice || 15} <span className="text-xs font-bold text-temple-gold">Bs.</span>
                     </span>
@@ -240,7 +240,7 @@ export default function RecetasPage() {
           ))}
           
           {filteredRecipes.length === 0 && (
-            <div className="col-span-full py-12 text-center text-slate-500 dark:text-gray-500">
+            <div className="col-span-full py-12 text-center text-slate-700 dark:text-gray-300">
               <p>No se encontraron recetas en esta categoría.</p>
             </div>
           )}
@@ -401,7 +401,7 @@ export default function RecetasPage() {
 
               <div className="pt-6 border-t border-black/10 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
-                  <span className="text-[10px] text-slate-500 dark:text-gray-500 uppercase tracking-widest font-bold block">Consumo en Snack Bar</span>
+                  <span className="text-[10px] text-slate-700 dark:text-gray-300 uppercase tracking-widest font-bold block">Consumo en Snack Bar</span>
                   <span className="text-2xl font-black text-temple-navy dark:text-white">
                     {openRecipe.suggestedPrice || 15} <span className="text-sm font-bold text-temple-gold">Bs.</span>
                   </span>

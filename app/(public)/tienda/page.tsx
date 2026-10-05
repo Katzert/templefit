@@ -56,10 +56,14 @@ function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
       ) {
         resolvedImage = d.image;
       }
+      const priceVal = typeof s.price === 'number'
+        ? s.price
+        : (s.price !== undefined && s.price !== null && s.price !== '' && !isNaN(Number(s.price)) ? Number(s.price) : d.price);
+
       result.push({
         id: d.id,
         name: d.name,
-        price: typeof s.price === 'number' ? s.price : Number(s.price) || d.price,
+        price: priceVal,
         category: d.category,
         description: s.description || d.description,
         image: resolvedImage
@@ -79,10 +83,14 @@ function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
         processedKeys.add(normKey);
 
         let category = s.category || (s.type === 'recipe' ? 'Nutrición' : 'Suplemento');
+        const priceVal = typeof s.price === 'number'
+          ? s.price
+          : (s.price !== undefined && s.price !== null && s.price !== '' && !isNaN(Number(s.price)) ? Number(s.price) : 0);
+
         result.push({
-          id: s.id || normKey,
+          id: s.id ? String(s.id) : `showcase-${normKey}`,
           name: title,
-          price: typeof s.price === 'number' ? s.price : Number(s.price) || 0,
+          price: priceVal,
           category,
           description: s.description || '',
           image: s.imageUrl || s.image || '/images/squad_training.webp'
@@ -250,7 +258,7 @@ export default function TiendaPage() {
 
               <div className="p-6 pt-0 border-t border-black/5 dark:border-white/5 flex items-center justify-between mt-4">
                 <div>
-                  <span className="text-[10px] text-slate-500 dark:text-gray-500 uppercase tracking-widest font-bold block">Inversión</span>
+                  <span className="text-[10px] text-slate-700 dark:text-gray-300 uppercase tracking-widest font-bold block">Inversión</span>
                   <span className="text-2xl font-black text-temple-navy dark:text-white">{prod.price} <span className="text-sm font-bold text-temple-gold">Bs.</span></span>
                 </div>
 

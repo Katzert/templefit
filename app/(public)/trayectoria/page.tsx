@@ -166,7 +166,7 @@ export default function TrayectoriaPage() {
 ¿Me podrías compartir los detalles para coordinar?`)}`} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20BA5A] text-white font-black text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_6px_24px_rgba(37,211,102,0.3)] hover:scale-[1.03] transition-all"
+                  className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20BA5A] text-slate-950 font-black text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_6px_24px_rgba(37,211,102,0.3)] hover:scale-[1.03] transition-all"
                 >
                   <span className="text-base">💬</span>
                   <span>Consultar por Capacitaciones</span>
@@ -235,7 +235,7 @@ export default function TrayectoriaPage() {
                 className={`p-8 bg-white dark:bg-[#0C101A] border border-black/10 dark:border-white/10 border-t-4 ${brain.border} rounded-2xl flex flex-col text-left group hover:shadow-xl transition-all duration-300`}
               >
                 <div className="text-4xl mb-4">{brain.emoji}</div>
-                <span className="text-[10px] text-temple-navy/60 dark:text-white/40 uppercase tracking-widest mb-1 font-bold">{brain.tag}</span>
+                <span className="text-[10px] text-slate-700 dark:text-gray-300 uppercase tracking-widest mb-1 font-bold">{brain.tag}</span>
                 <h3 className="text-xl font-bold text-temple-navy dark:text-white uppercase mb-4 tracking-tight">{brain.title}</h3>
                 <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed">{brain.desc}</p>
               </div>
@@ -506,7 +506,6 @@ export default function TrayectoriaPage() {
                       setSelectedCert(cert);
                     }
                   }}
-                  aria-label={`Ampliar diploma: ${cert.title}`}
                   className="bg-white dark:bg-[#0C101A] border border-black/10 dark:border-white/10 hover:border-temple-gold transition-all duration-300 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between group shadow-lg hover:shadow-2xl hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold"
                 >
                   <div className="aspect-[3/4] relative overflow-hidden bg-slate-100 dark:bg-black/60">
@@ -534,7 +533,7 @@ export default function TrayectoriaPage() {
                       <span className="inline-block bg-temple-gold/15 border border-temple-gold/30 text-temple-gold text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                         {cert.hours}
                       </span>
-                      <div className="flex justify-between items-center text-[10px] text-slate-500 dark:text-white/40 font-mono">
+                      <div className="flex justify-between items-center text-[10px] text-slate-700 dark:text-gray-300 font-mono">
                         <span>{cert.meta}</span>
                         <span>{cert.date}</span>
                       </div>
