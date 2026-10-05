@@ -1,21 +1,16 @@
-'use client';
-
-import { motion } from 'framer-motion';
-
+import dynamic from 'next/dynamic';
 import HeroSection from '../../components/home/HeroSection';
 import EcosystemSection from '../../components/home/EcosystemSection';
 import OffersSection from '../../components/home/OffersSection';
 import RuleSection from '../../components/home/RuleSection';
-import DiagnosticWidget from '../../components/home/DiagnosticWidget';
 
-const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.1 } } };
+const DiagnosticWidget = dynamic(() => import('../../components/home/DiagnosticWidget'), {
+  ssr: true
+});
 
 export default function Home() {
   return (
-    <motion.div variants={container} initial="hidden" animate="show" className="font-sans relative">
-      
-
-
+    <div className="font-sans relative">
       <div className="flex flex-col min-h-screen">
         <HeroSection />
         <EcosystemSection />
@@ -23,8 +18,6 @@ export default function Home() {
         <RuleSection />
         <DiagnosticWidget />
       </div>
-
-    </motion.div>
+    </div>
   );
 }
-

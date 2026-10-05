@@ -1,23 +1,23 @@
-'use client';
-
-import { motion, type Variants } from 'framer-motion';
 import { ArrowRight, Activity } from 'lucide-react';
 import { getAssetPath } from '../../lib/utils';
-
-const item: Variants = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } };
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-[92dvh] flex items-center justify-center overflow-hidden px-4 pt-24 pb-16 bg-[#FBF9F5] dark:bg-[#05070B]">
       {/* Background visual atmosphere */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <img 
-          src={getAssetPath('/media/hero_premium.png')} 
-          alt="TempleFit Athletic" 
-          fetchPriority="high"
-          decoding="async"
-          className="w-full h-full object-cover object-center opacity-45 dark:opacity-50 filter contrast-110 scale-105"
-        />
+        <picture>
+          <source srcSet={getAssetPath('/media/hero_premium.webp')} type="image/webp" />
+          <img 
+            src={getAssetPath('/media/hero_premium.webp')} 
+            alt="TempleFit Athletic" 
+            fetchPriority="high"
+            decoding="async"
+            width={1280}
+            height={720}
+            className="w-full h-full object-cover object-center opacity-45 dark:opacity-50 filter contrast-110 scale-105"
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-b from-[#FBF9F5]/50 via-[#FBF9F5]/40 to-[#FBF9F5] dark:from-[#05070B]/60 dark:via-[#05070B]/50 dark:to-[#05070B]" />
       </div>
 
@@ -27,36 +27,42 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
         
         {/* Master Logo */}
-        <motion.div variants={item} className="flex justify-center mb-2">
-          <img 
-            src={getAssetPath('/assets/img/logo-tf-corona.png')} 
-            alt="TempleFit" 
-            fetchPriority="high"
-            decoding="async"
-            className="h-32 sm:h-44 md:h-56 lg:h-64 object-contain drop-shadow-[0_4px_25px_rgba(179,134,40,0.25)] dark:drop-shadow-[0_0_35px_rgba(212,175,55,0.4)]" 
-          />
-        </motion.div>
+        <div className="flex justify-center mb-2">
+          <picture>
+            <source media="(max-width: 640px)" srcSet={getAssetPath('/assets/img/logo-tf-corona-256.webp')} type="image/webp" />
+            <source srcSet={getAssetPath('/assets/img/logo-tf-corona.webp')} type="image/webp" />
+            <img 
+              src={getAssetPath('/assets/img/logo-tf-corona-256.webp')} 
+              alt="TempleFit" 
+              fetchPriority="high"
+              decoding="async"
+              width={256}
+              height={256}
+              className="h-32 sm:h-44 md:h-56 lg:h-64 w-auto object-contain drop-shadow-[0_4px_25px_rgba(179,134,40,0.25)] dark:drop-shadow-[0_0_35px_rgba(212,175,55,0.4)]" 
+            />
+          </picture>
+        </div>
 
         {/* Official Registration Badge */}
-        <motion.div variants={item} className="flex justify-center -mt-2 mb-1">
+        <div className="flex justify-center -mt-2 mb-1">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 dark:bg-temple-gold/15 border border-amber-600/30 dark:border-temple-gold/30 text-amber-900 dark:text-temple-gold-bright text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] shadow-sm">
             <span>Centro de Entrenamiento TempleFit</span>
           </div>
-        </motion.div>
+        </div>
 
         {/* Master Slogan Headline */}
-        <motion.h1 variants={item} className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black uppercase text-temple-navy dark:text-white tracking-tight leading-[1.08] text-balance">
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black uppercase text-temple-navy dark:text-white tracking-tight leading-[1.08] text-balance">
           El Cuerpo es el <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-temple-gold to-yellow-500">Templo.</span><br />
           La Mente Crea y <span className="italic font-normal text-slate-700 dark:text-slate-200">Edifica Vidas.</span>
-        </motion.h1>
+        </h1>
 
         {/* Subtitle */}
-        <motion.p variants={item} className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed text-pretty">
+        <p className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed text-pretty">
           Entrena tu cuerpo, mejora tu alimentación y fortalece tu fe a través del <strong className="text-temple-navy dark:text-white font-bold">Reto de 21 Días</strong> y los <strong className="text-amber-600 dark:text-temple-gold font-bold">Escuadrones de 12 Atletas</strong>.
-        </motion.p>
+        </p>
 
         {/* CTAs */}
-        <motion.div variants={item} className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-4 sm:pt-6 w-full max-w-md sm:max-w-none mx-auto">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-4 sm:pt-6 w-full max-w-md sm:max-w-none mx-auto">
           <a
             href="https://wa.me/59169127691?text=¡Hola%20Paulo!%20Quiero%20reclamar%20mi%20Semana%20de%20Prueba%20Gratuita%20en%20TempleFit%20y%20conocer%20los%20Escuadrones."
             target="_blank"
@@ -74,10 +80,10 @@ export default function HeroSection() {
             <Activity size={18} className="text-amber-600 dark:text-temple-gold group-hover:scale-110 transition-transform" />
             <span>Evaluación Inicial</span>
           </a>
-        </motion.div>
+        </div>
 
         {/* Social Proof Counters */}
-        <motion.div variants={item} className="grid grid-cols-3 gap-1 sm:gap-4 max-w-2xl mx-auto pt-8 sm:pt-10 mt-6 border-t border-black/10 dark:border-white/10">
+        <div className="grid grid-cols-3 gap-1 sm:gap-4 max-w-2xl mx-auto pt-8 sm:pt-10 mt-6 border-t border-black/10 dark:border-white/10">
           <div className="space-y-0.5 sm:space-y-1 px-1">
             <p className="text-2xl sm:text-3xl md:text-4xl font-black text-amber-600 dark:text-temple-gold">21</p>
             <p className="text-[9px] sm:text-[10px] md:text-xs uppercase font-bold text-slate-600 dark:text-gray-400 tracking-[0.15em] sm:tracking-[0.2em]">Días de Reto</p>
@@ -90,7 +96,7 @@ export default function HeroSection() {
             <p className="text-2xl sm:text-3xl md:text-4xl font-black text-emerald-600 dark:text-emerald-400">06:00</p>
             <p className="text-[9px] sm:text-[10px] md:text-xs uppercase font-bold text-slate-600 dark:text-gray-400 tracking-[0.15em] sm:tracking-[0.2em]">CristoFit Camp</p>
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </section>

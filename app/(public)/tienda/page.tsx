@@ -7,40 +7,91 @@ import { products as officialProducts } from '@/data/content';
 import { motion, AnimatePresence } from 'framer-motion';
 import { db } from '../../../lib/firebase';
 import { doc, getDoc, onSnapshot } from 'firebase/firestore';
+import { getAssetPath } from '../../../lib/utils';
 
-const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.08 } } };
-const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
+const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.04 } } };
+const item = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.2 } } };
+
+function normalizeName(str: string): string {
+  if (!str) return '';
+  return str
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]/g, '');
+}
 
 function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
-  if (!Array.isArray(showcase) || showcase.length === 0) return defaults;
-  const map = new Map<string, any>();
-  defaults.forEach(d => map.set(d.id, d));
-  showcase.forEach(s => {
-    if (s && s.id && s.title && s.status !== 'hidden') {
-      let category = 'Suplemento';
-      if (s.type === 'recipe') {
-        category = 'Nutrición';
-      } else {
-        const titleLower = s.title.toLowerCase();
-        if (titleLower.includes('polera') || titleLower.includes('short') || titleLower.includes('hoodie') || titleLower.includes('canguro') || titleLower.includes('textil')) {
-          category = 'Textil';
-        } else if (titleLower.includes('reto') || titleLower.includes('membresía') || titleLower.includes('eage') || titleLower.includes('trimestral')) {
-          category = 'Membresía';
-        } else if (titleLower.includes('snack') || titleLower.includes('catering') || titleLower.includes('shake') || titleLower.includes('pudín') || titleLower.includes('panqueque')) {
-          category = 'Nutrición';
+  // Map showcase/inventory items by normalized name for quick lookup
+  const showcaseMap = new Map<string, any>();
+  if (Array.isArray(showcase)) {
+    showcase.forEach(s => {
+      if (s && (s.title || s.name) && s.status !== 'hidden') {
+        const title = (s.title || s.name || '').trim();
+        const normKey = normalizeName(title);
+        if (normKey) {
+          showcaseMap.set(normKey, s);
         }
       }
-      map.set(s.id, {
-        id: s.id,
-        name: s.title,
-        price: typeof s.price === 'number' ? s.price : Number(s.price) || 0,
-        category,
-        description: s.description || '',
-        image: s.imageUrl || 'https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=500&h=500&fit=crop'
+    });
+  }
+
+  const result: any[] = [];
+  const processedKeys = new Set<string>();
+
+  // 1. Maintain exact order of official default products, updating with live prices/stock without changing positions
+  defaults.forEach(d => {
+    const normKey = normalizeName(d.name);
+    processedKeys.add(normKey);
+    const s = showcaseMap.get(normKey);
+    if (s) {
+      let resolvedImage = s.imageUrl || s.image;
+      if (
+        !resolvedImage ||
+        (d.category === 'Textil' && d.image) ||
+        resolvedImage.includes('unsplash.com/photo-1579722820308-d74e571900a9') ||
+        resolvedImage.includes('unsplash.com/photo-1521572267360-ee0c2909d518') ||
+        resolvedImage.includes('unsplash.com/photo-1591195853828-11db59a44f6b') ||
+        resolvedImage.includes('unsplash.com/photo-1556905055-8f358a7a47b2')
+      ) {
+        resolvedImage = d.image;
+      }
+      result.push({
+        id: d.id,
+        name: d.name,
+        price: typeof s.price === 'number' ? s.price : Number(s.price) || d.price,
+        category: d.category,
+        description: s.description || d.description,
+        image: resolvedImage
       });
+    } else {
+      result.push(d);
     }
   });
-  return Array.from(map.values());
+
+  // 2. Append any extra novel products from showcase that weren't in defaults
+  if (Array.isArray(showcase)) {
+    showcase.forEach(s => {
+      if (s && (s.title || s.name) && s.status !== 'hidden') {
+        const title = (s.title || s.name || '').trim();
+        const normKey = normalizeName(title);
+        if (!normKey || processedKeys.has(normKey)) return;
+        processedKeys.add(normKey);
+
+        let category = s.category || (s.type === 'recipe' ? 'Nutrición' : 'Suplemento');
+        result.push({
+          id: s.id || normKey,
+          name: title,
+          price: typeof s.price === 'number' ? s.price : Number(s.price) || 0,
+          category,
+          description: s.description || '',
+          image: s.imageUrl || s.image || '/images/squad_training.webp'
+        });
+      }
+    });
+  }
+
+  return result;
 }
 
 export default function TiendaPage() {
@@ -56,8 +107,11 @@ export default function TiendaPage() {
           const data = docSnap.data();
           const showcaseList = Array.isArray(data.showcaseItems) ? [...data.showcaseItems] : [];
           const inventorySource = Array.isArray(data.inventoryPublic) ? data.inventoryPublic : Array.isArray(data.inventory) ? data.inventory : [];
+          
           inventorySource.forEach((inv: any) => {
-            if (inv && inv.id && inv.name && !showcaseList.some(s => s.id === inv.id)) {
+            const invNorm = normalizeName(inv.name);
+            const exists = showcaseList.some(s => s.id === inv.id || normalizeName(s.title || s.name) === invNorm);
+            if (inv && inv.id && inv.name && !exists) {
               showcaseList.push({
                 id: inv.id,
                 title: inv.name,
@@ -70,7 +124,7 @@ export default function TiendaPage() {
           });
 
           if (Array.isArray(data.products) && data.products.length > 0) {
-            setLiveProducts(data.products);
+            setLiveProducts(mergeShowcaseProducts(data.products, officialProducts));
           } else if (showcaseList.length > 0) {
             setLiveProducts(mergeShowcaseProducts(showcaseList, officialProducts));
           } else {
@@ -159,6 +213,7 @@ export default function TiendaPage() {
         </div>
 
         {/* Products Grid */}
+        <h2 className="sr-only">Catálogo Oficial de Productos</h2>
         <motion.div variants={container} initial="hidden" animate="show" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((prod) => (
             <motion.div
@@ -169,10 +224,15 @@ export default function TiendaPage() {
               <div>
                 <div className="relative h-60 overflow-hidden bg-black/[0.03] dark:bg-black/40">
                   <img 
-                    src={prod.image} 
+                    src={getAssetPath(prod.image)} 
                     alt={prod.name} 
                     loading="lazy"
                     decoding="async"
+                    width={500}
+                    height={500}
+                    onError={(e) => {
+                      e.currentTarget.src = getAssetPath('/images/squad_training.webp');
+                    }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
                   />
                   <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/70 backdrop-blur-md border border-black/20 dark:border-white/20 px-3 py-1 rounded-full text-[10px] font-black uppercase text-amber-800 dark:text-temple-gold tracking-widest">

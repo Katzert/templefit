@@ -52,8 +52,8 @@ export const metadata: Metadata = {
   },
   manifest: "/templefit/manifest.json",
   icons: {
-    icon: "/templefit/assets/img/logo-tf-abreviado.png",
-    apple: "/templefit/assets/img/logo-tf-corona.png",
+    icon: "/templefit/assets/img/logo-tf-abreviado.webp",
+    apple: "/templefit/assets/img/logo-tf-corona-256.webp",
   },
 };
 
@@ -88,9 +88,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${outfit.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
-        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-        <meta httpEquiv="Pragma" content="no-cache" />
-        <meta httpEquiv="Expires" content="0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" as="image" href="/templefit/assets/img/logo-tf-corona.webp" type="image/webp" fetchPriority="high" />
+        <link rel="preload" as="image" href="/templefit/media/hero_premium.webp" type="image/webp" fetchPriority="high" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

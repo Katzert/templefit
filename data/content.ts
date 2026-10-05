@@ -79,7 +79,7 @@ export const products = [
     price: 100,
     category: "Textil",
     description: "Algodón de alta densidad, corte vintage elegante y distintivo de escuadrón oficial.",
-    image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800&auto=format&fit=crop"
+    image: "/images/templefit_polera.webp"
   },
   {
     id: "shorts-oficial",
@@ -87,7 +87,7 @@ export const products = [
     price: 70,
     category: "Textil",
     description: "Microfibra de alto rendimiento transpirable para calistenia y sparring de boxeo ético.",
-    image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=800&auto=format&fit=crop"
+    image: "/images/templefit_shorts.webp"
   },
   {
     id: "hoodie-canguro",
@@ -95,7 +95,7 @@ export const products = [
     price: 150,
     category: "Textil",
     description: "Tejido térmico resistente para el amanecer 06:00 AM en el CristoFit Camp.",
-    image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=800&auto=format&fit=crop"
+    image: "/images/templefit_hoodie.webp"
   },
   {
     id: "ginkgo-biloba",

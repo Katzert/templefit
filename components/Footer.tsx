@@ -15,13 +15,18 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-5 space-y-6">
             <div className="flex flex-col space-y-4">
-              <img 
-                src={getAssetPath('/assets/img/logo-tf-gestion.png')} 
-                alt="TempleFit Logo Completo" 
-                loading="lazy"
-                decoding="async"
-                className="h-16 md:h-20 object-contain drop-shadow-[0_2px_10px_rgba(0,33,71,0.1)] dark:drop-shadow-[0_0_15px_rgba(212,175,55,0.2)]" 
-              />
+              <picture>
+                <source srcSet={getAssetPath('/assets/img/logo-tf-gestion.webp')} type="image/webp" />
+                <img 
+                  src={getAssetPath('/assets/img/logo-tf-gestion.png')} 
+                  alt="TempleFit Logo Completo" 
+                  loading="lazy"
+                  decoding="async"
+                  width={240}
+                  height={80}
+                  className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,33,71,0.1)] dark:drop-shadow-[0_0_15px_rgba(212,175,55,0.2)]" 
+                />
+              </picture>
             </div>
             <p className="text-xs md:text-sm text-slate-700 dark:text-gray-300 max-w-sm mb-6 leading-relaxed font-medium">
               El Cuerpo es el Templo. La Mente Crea y Edifica Vidas.

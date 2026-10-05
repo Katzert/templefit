@@ -150,7 +150,7 @@ export default function EcosystemSection() {
               }
             }}
             className={`tactical-card group cursor-pointer text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-temple-gold focus-visible:ring-offset-2 focus-visible:ring-offset-temple-cream dark:focus-visible:ring-offset-[#05070B] w-full block ${i === 0 ? 'md:col-span-2' : 'md:col-span-2'}`}
-            aria-label={`Ver detalles sobre ${unit.title}`}
+            aria-label={`${unit.tag}: ${unit.title} - Ver detalles`}
           >
             <div className="flex-grow">
               <div className="flex items-center justify-between mb-8">

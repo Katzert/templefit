@@ -24,7 +24,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [logoFailed, setLogoFailed] = useState(false);
   const [triedFallback, setTriedFallback] = useState(false);
-  const logoUrl = getAssetPath('/assets/img/logo-tf-abreviado.png');
+  const logoUrl = getAssetPath('/assets/img/logo-tf-abreviado.webp');
 
   useEffect(() => {
     if (isOpen) {
@@ -63,7 +63,7 @@ export default function Navbar() {
                       const target = e.currentTarget;
                       if (!triedFallback) {
                         setTriedFallback(true);
-                        target.src = getAssetPath('/assets/img/logo-tf-corona.png');
+                        target.src = getAssetPath('/assets/img/logo-tf-corona-256.webp');
                       } else {
                         setLogoFailed(true);
                       }
