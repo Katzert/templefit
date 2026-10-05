@@ -71,7 +71,7 @@ export const products = [
     price: 1200,
     category: "Membresía",
     description: "Capacitación avanzada de liderazgo, disciplina y formación práctica para capitanes de escuadrón.",
-    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop"
+    image: "/images/squad_training.webp"
   },
   {
     id: "polera-oficial",
@@ -143,7 +143,7 @@ export const products = [
     price: 85,
     category: "Suplemento",
     description: "Aporte natural de vitaminas del complejo B, cromo y proteínas para recuperación muscular.",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1509358271058-acd22cc93898?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: "curcuma-cupesi",

@@ -12,25 +12,45 @@ import { getAssetPath } from '../../../lib/utils';
 const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.04 } } };
 const item = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.2 } } };
 
-function normalizeName(str: string): string {
-  if (!str) return '';
-  return str
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]/g, '');
+function getCanonicalProductKey(nameOrTitle: string, id?: string): string {
+  if (!nameOrTitle) return '';
+  const s = nameOrTitle.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const idStr = (id || '').toLowerCase();
+
+  if (s.includes('polera') || idStr.includes('polera')) return 'polera-oficial';
+  if (s.includes('short') || idStr.includes('short')) return 'shorts-oficial';
+  if (s.includes('hoodie') || s.includes('canguro') || idStr.includes('hoodie')) return 'hoodie-canguro';
+  if (s.includes('ginkgo') || idStr.includes('ginkgo')) return 'ginkgo-biloba';
+  if (s.includes('coco') || idStr.includes('coco')) return 'oleo-coco';
+  if (s.includes('colageno') || idStr.includes('colageno')) return 'colageno-hidrolizado';
+  if (s.includes('glutamina') || idStr.includes('glutamina')) return 'glutamina-pura';
+  if (s.includes('omega') || idStr.includes('omega')) return 'omega3-pescado';
+  if (s.includes('levadura') || idStr.includes('levadura')) return 'levadura-cerveza';
+  if (s.includes('curcuma') || idStr.includes('curcuma')) return 'curcuma-cupesi';
+  if (s.includes('b12') || idStr.includes('b12')) return 'complejo-b12';
+  if (s.includes('reumasan') || idStr.includes('reumasan')) return 'reumasan-articular';
+  if ((s.includes('sal') && s.includes('marin')) || idStr.includes('sal-marina')) return 'sal-marina';
+  if (s.includes('pudin') || s.includes('pudding') || idStr.includes('pudin')) return 'pudin-shake';
+  if (s.includes('panqueque') || idStr.includes('panqueque')) return 'panqueque-shake';
+  if (s.includes('masaje') || idStr.includes('masaje')) return 'masaje-recuperacion';
+  if (s.includes('catering') || s.includes('abuela') || idStr.includes('catering')) return 'catering-abuela';
+  if (s.includes('reto') && s.includes('21')) return 'reto-21-dias';
+  if (s.includes('trimestral') || idStr.includes('trimestral')) return 'trimestral-atleta';
+  if (s.includes('eage') || s.includes('e.a.g.e') || idStr.includes('eage')) return 'programa-eage';
+
+  return s.replace(/[^a-z0-9]/g, '');
 }
 
 function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
-  // Map showcase/inventory items by normalized name for quick lookup
+  // Map showcase/inventory items by canonical key for exact semantic deduplication
   const showcaseMap = new Map<string, any>();
   if (Array.isArray(showcase)) {
     showcase.forEach(s => {
       if (s && (s.title || s.name) && s.status !== 'hidden') {
         const title = (s.title || s.name || '').trim();
-        const normKey = normalizeName(title);
-        if (normKey) {
-          showcaseMap.set(normKey, s);
+        const canonKey = getCanonicalProductKey(title, s.id);
+        if (canonKey) {
+          showcaseMap.set(canonKey, s);
         }
       }
     });
@@ -41,18 +61,19 @@ function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
 
   // 1. Maintain exact order of official default products, updating with live prices/stock without changing positions
   defaults.forEach(d => {
-    const normKey = normalizeName(d.name);
-    processedKeys.add(normKey);
-    const s = showcaseMap.get(normKey);
+    const canonKey = getCanonicalProductKey(d.name, d.id);
+    processedKeys.add(canonKey);
+    const s = showcaseMap.get(canonKey);
     if (s) {
       let resolvedImage = s.imageUrl || s.image;
       if (
         !resolvedImage ||
-        (d.category === 'Textil' && d.image) ||
+        d.category === 'Textil' ||
         resolvedImage.includes('unsplash.com/photo-1579722820308-d74e571900a9') ||
         resolvedImage.includes('unsplash.com/photo-1521572267360-ee0c2909d518') ||
         resolvedImage.includes('unsplash.com/photo-1591195853828-11db59a44f6b') ||
-        resolvedImage.includes('unsplash.com/photo-1556905055-8f358a7a47b2')
+        resolvedImage.includes('unsplash.com/photo-1556905055-8f358a7a47b2') ||
+        resolvedImage.includes('unsplash.com/photo-1578768079052-aa76e520028b')
       ) {
         resolvedImage = d.image;
       }
@@ -78,17 +99,17 @@ function mergeShowcaseProducts(showcase: any[], defaults: any[]): any[] {
     showcase.forEach(s => {
       if (s && (s.title || s.name) && s.status !== 'hidden') {
         const title = (s.title || s.name || '').trim();
-        const normKey = normalizeName(title);
-        if (!normKey || processedKeys.has(normKey)) return;
-        processedKeys.add(normKey);
+        const canonKey = getCanonicalProductKey(title, s.id);
+        if (!canonKey || processedKeys.has(canonKey)) return;
+        processedKeys.add(canonKey);
 
-        let category = s.category || (s.type === 'recipe' ? 'Nutrición' : 'Suplemento');
+        let category = s.category || (s.type === 'recipe' ? 'Nutrición' : s.type === 'apparel' ? 'Textil' : 'Suplemento');
         const priceVal = typeof s.price === 'number'
           ? s.price
           : (s.price !== undefined && s.price !== null && s.price !== '' && !isNaN(Number(s.price)) ? Number(s.price) : 0);
 
         result.push({
-          id: s.id ? String(s.id) : `showcase-${normKey}`,
+          id: s.id ? String(s.id) : `showcase-${canonKey}`,
           name: title,
           price: priceVal,
           category,
@@ -117,8 +138,8 @@ export default function TiendaPage() {
           const inventorySource = Array.isArray(data.inventoryPublic) ? data.inventoryPublic : Array.isArray(data.inventory) ? data.inventory : [];
           
           inventorySource.forEach((inv: any) => {
-            const invNorm = normalizeName(inv.name);
-            const exists = showcaseList.some(s => s.id === inv.id || normalizeName(s.title || s.name) === invNorm);
+            const invCanon = getCanonicalProductKey(inv.name, inv.id);
+            const exists = showcaseList.some(s => s.id === inv.id || getCanonicalProductKey(s.title || s.name, s.id) === invCanon);
             if (inv && inv.id && inv.name && !exists) {
               showcaseList.push({
                 id: inv.id,
