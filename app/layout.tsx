@@ -18,7 +18,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://katzert.github.io/templefit"),
+  metadataBase: new URL("https://katzert.github.io"),
   title: "TEMPLEFIT - Registro para el Centro de Transformación | Mente, Cuerpo & Espíritu",
   description: "Registro oficial para el Centro de Transformación Integral TempleFit. Entrenamiento funcional, nutrición preventiva, calistenia, liderazgo y desarrollo espiritual en Bolivia. Fundado por Paulo Alberto Gil Cuéllar.",
   keywords: ["TempleFit", "Registro Centro de Transformación", "Calistenia", "Nutrición Funcional", "CristoFit Camp", "Entrenamiento Bolivia", "Paulo Gil Cuellar", "Santa Cruz", "Tarija"],

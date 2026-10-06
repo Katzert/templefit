@@ -81,7 +81,22 @@ export default function Footer() {
               <li><Link href="/recetas" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Nutrición & Salud</Link></li>
               <li><Link href="/tienda" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Tienda</Link></li>
               <li><Link href="/trayectoria" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Trayectoria</Link></li>
-              <li><Link href="/#evaluacion" className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm">Evaluación Inicial</Link></li>
+              <li>
+                <Link 
+                  href="/#evaluacion" 
+                  onClick={(e) => {
+                    const el = document.getElementById('evaluacion');
+                    if (el) {
+                      e.preventDefault();
+                      el.scrollIntoView({ behavior: 'smooth' });
+                      window.history.pushState(null, '', '#evaluacion');
+                    }
+                  }}
+                  className="hover:text-temple-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-temple-gold rounded-sm"
+                >
+                  Evaluación Inicial
+                </Link>
+              </li>
             </ul>
           </div>
 

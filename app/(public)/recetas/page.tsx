@@ -7,6 +7,7 @@ import { Clock, Flame, ChefHat, X, ChevronRight, Sparkles, BookOpen, Utensils, U
 import { recipes as defaultRecipes, recipeCategories } from '@/data/content';
 import { db } from '../../../lib/firebase';
 import { doc, getDoc, onSnapshot } from 'firebase/firestore';
+import { getAssetPath } from '../../../lib/utils';
 
 const DEFAULT_PRICES: Record<string, number> = {
   'electrohidra-elite': 15,
@@ -181,7 +182,7 @@ export default function RecetasPage() {
               <div className="relative h-56 overflow-hidden bg-black/[0.03] dark:bg-black/40">
                 {recipe.image ? (
                   <img
-                    src={recipe.image}
+                    src={getAssetPath(recipe.image)}
                     alt={recipe.name}
                     loading="lazy"
                     decoding="async"
@@ -354,7 +355,7 @@ export default function RecetasPage() {
 
               <div className="aspect-[16/9] relative rounded-xl overflow-hidden mb-6 bg-slate-100 dark:bg-black">
                 <img 
-                  src={openRecipe.image || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop'} 
+                  src={getAssetPath(openRecipe.image || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop')} 
                   alt={`Fotografía de plato preparado: ${openRecipe.name}`} 
                   loading="lazy"
                   decoding="async"

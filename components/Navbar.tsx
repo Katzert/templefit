@@ -93,6 +93,17 @@ export default function Navbar() {
                   <Link 
                     key={link.href}
                     href={link.href} 
+                    onClick={(e) => {
+                      if (link.href.startsWith('/#')) {
+                        const targetId = link.href.split('#')[1];
+                        const el = document.getElementById(targetId);
+                        if (el) {
+                          e.preventDefault();
+                          el.scrollIntoView({ behavior: 'smooth' });
+                          window.history.pushState(null, '', `#${targetId}`);
+                        }
+                      }
+                    }}
                     aria-current={active ? 'page' : undefined}
                     className={`pb-1 border-b-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-temple-gold rounded-sm ${
                       active 
@@ -148,7 +159,20 @@ export default function Navbar() {
                     <Link 
                       key={link.href}
                       href={link.href} 
-                      onClick={() => setIsOpen(false)} 
+                      onClick={(e) => {
+                        setIsOpen(false);
+                        if (link.href.startsWith('/#')) {
+                          const targetId = link.href.split('#')[1];
+                          const el = document.getElementById(targetId);
+                          if (el) {
+                            e.preventDefault();
+                            setTimeout(() => {
+                              el.scrollIntoView({ behavior: 'smooth' });
+                            }, 100);
+                            window.history.pushState(null, '', `#${targetId}`);
+                          }
+                        }
+                      }} 
                       aria-current={active ? 'page' : undefined}
                       className={`flex items-center min-h-[44px] px-4 py-2.5 rounded-xl text-xs tracking-[0.15em] uppercase transition-all ${
                         active
